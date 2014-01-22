@@ -1,7 +1,11 @@
 <?php 
+
 add_action( 'init', 'create_post_type' );
-function create_post_type() {
-    register_post_type( 'ivanhoe_move',
+
+function create_post_type() 
+{
+    register_post_type( 
+        'ivanhoe_move',
         array(
             'labels' => array(
                 'name' => __( 'Moves' ),
@@ -14,7 +18,9 @@ function create_post_type() {
             'rewrite' => array('slug' => 'moves'),
             )
         );
-    register_post_type( 'ivanhoe_game',
+
+    register_post_type( 
+        'ivanhoe_game',
         array(
             'labels' => array(
                 'name' => __( 'Games' ),
