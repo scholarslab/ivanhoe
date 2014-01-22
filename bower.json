@@ -1,0 +1,21 @@
+{
+  "name": "ivanhoe",
+  "version": "0.0.0",
+  "homepage": "https://github.com/scholarslab/ivanhoe",
+  "authors": [
+    "Wayne Graham <wayne.graham@virginia.edu>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "assets/js/vendor",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "modernizr": "~2.6.2"
+  }
+}
