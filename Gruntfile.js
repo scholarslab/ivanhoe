@@ -82,6 +82,17 @@ module.exports = function(grunt) {
       }
     },
 
+    // phpcs
+    phpcs: {
+      application: {
+        dir: '.'
+      },
+      options: {
+        bin: 'vendor/bin/phpcs',
+        standard: 'PEAR'
+      }
+    },
+
     // deploy via rsync
     deploy: {
       staging: {
