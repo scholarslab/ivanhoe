@@ -12,6 +12,7 @@
     "grunt-phpcs": "~0.2.1",
     "grunt-rsync": "~0.1.1",
     "matchdep": "~0.1.2",
-    "bower": "~1.2.8"
+    "bower": "~1.2.8",
+    "grunt-wp-version": "~0.1.0"
   }
 }
