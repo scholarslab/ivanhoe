@@ -85,10 +85,10 @@ module.exports = function(grunt) {
     // phpcs
     phpcs: {
       application: {
-        dir: '.'
+        dir: '*.php'
       },
       options: {
-        bin: 'vendor/bin/phpcs',
+        //bin: 'vendor/bin/phpcs',
         standard: 'PEAR'
       }
     },
