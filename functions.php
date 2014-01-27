@@ -33,4 +33,19 @@ function create_post_type()
             'rewrite' => array('slug' => 'games'),
             )
         );
+
+    register_post_type(
+        'ivanhoe_role',
+        array(
+            'labels' => array(
+                'name' => __( 'Roles' ),
+                'singular_name' => __( 'Role'),
+                'all_items' => __( 'All Roles' ),
+                'add_new_item' => __( 'Add New Role' )
+                ),
+            'public' => true,
+            'has_archive' => true,
+            'rewrite' => array('slug' => 'roles'),
+            )
+        );
 }
