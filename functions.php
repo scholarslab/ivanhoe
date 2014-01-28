@@ -42,9 +42,8 @@ function create_post_type()
 function ivanhoe_move_meta_box($post)
 {
     $html = '<p><label for="post_parent">'.__('Game').'</label></p>'
-          . '<p><input type="text" name="post_parent" value="'.$post->post_parent.'">';
-
-    echo $html;
+          . '<p><input type="text" name="post_parent" value="'. $post->post_parent.'">'
+;    echo $html;
 }
 
 function ivanhoe_add_meta_boxes()
@@ -53,7 +52,17 @@ function ivanhoe_add_meta_boxes()
         'ivanhoe_move_metadata',
         __('Ivanhoe Move Metadata'),
         'ivanhoe_move_meta_box',
-        'ivanhoe_move');
-}
+        'ivanhoe_move')
+;}
 
 add_action('add_meta_boxes', 'ivanhoe_add_meta_boxes');
+
+/**
+ * Function to send the game id through the make_a_move html form
+ */
+
+function ivanhoe_get_game_id()
+{
+    $ivanhoe_game_id = $_POST["ivanhoe_game_id"];
+}
+
