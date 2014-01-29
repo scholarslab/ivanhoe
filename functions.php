@@ -42,8 +42,8 @@ function create_post_type()
 function ivanhoe_move_meta_box($post)
 {
     $html = '<p><label for="post_parent">'.__('Game').'</label></p>'
-/**          . '<p><input type="text" name="post_parent" value="'. $post->post_parent.'">'
- */
+          . '<p><input type="text" name="post_parent" value="'. $post->post_parent.'">'
+
 ;    echo $html;
 }
 
