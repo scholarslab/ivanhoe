@@ -24,4 +24,10 @@ if ( $query->have_posts()) : while($query->have_posts()) : $query->the_post(); ?
 
 <?php endwhile; endif; ?>
 
+<h1>Want to make a move?</h1>
+    <form action = "<?php bloginfo('template_url')?>/new_ivanhoe_move.php" method = "GET">
+    	<input type = "submit" value = "Make a Move">
+        <input type = "hidden" value = "<?php $post->ID ?>" name = "parent_post">
+    </form>
+
 <?php get_footer(); ?>
