@@ -21,8 +21,8 @@ $move = array(
 
 wp_insert_post( $move );
 
-//wp_redirect( $ivanhoe_permalink );
-//exit;
+wp_redirect( $ivanhoe_permalink );
+exit;
 
 }; 
 
