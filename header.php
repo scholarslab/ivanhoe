@@ -1,6 +1,3 @@
-<?php
-
-?>
 <!DOCTYPE html>
 
 <html <?php language_attributes(); ?>>
@@ -14,3 +11,5 @@
 </head>
 
 <body>
+
+<?php wp_nav_menu(array('theme_location' => 'ivanhoe_default', 'menu' => 'ivanhoe_default')); ?>
