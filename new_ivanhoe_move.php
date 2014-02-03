@@ -4,10 +4,10 @@
 
 <?php 
 
-if ( !empty( $_POST['title'] ) ){
+if ( !empty( $_POST['post_title'] ) ){
 
-$ivanhoe_post_title = $_POST['title'];
-$ivanhoe_post_content = $_POST['content'];
+$ivanhoe_post_title = $_POST['post_title'];
+$ivanhoe_post_content = $_POST['post_content'];
 $ivanhoe_post_parent = $_POST['parent_id'];
 $ivanhoe_permalink = $_POST['ivanhoe_parent'];
 
@@ -41,8 +41,8 @@ exit;
 ?>
 
 <form action="new_ivanhoe_move.php" method="post">
-	Title: <input type="text" name="title"><br>
-	Content: <input type="textarea" name="content"><br>
+	Title: <input type="text" name="post_title"><br>
+	Content: <?php wp_editor( '', "post_content"); ?><br>
 	<input type="hidden" value="<?php echo $ivanhoe_game_id ?>" name="parent_id"><br>
 	<input type="hidden" value="<?php echo $ivanhoe_parent_permalink ?>" name="ivanhoe_parent"><br>
 	<input type="submit" value="Submit">
