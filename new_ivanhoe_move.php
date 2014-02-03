@@ -21,7 +21,7 @@ if ( !empty( $_POST['post_title'] ) ) {
     wp_redirect( get_permalink($ivanhoe_post_parent) );
     exit;
 
-}; 
+}
 
 get_header();
 
