@@ -1,32 +1,29 @@
 <?php
-    require(dirname(__FILE__) . '/../../../wp-blog-header.php');
-    get_header(); ?>
 
-<?php 
+require('../../../wp-blog-header.php');
 
-if ( !empty( $_POST['post_title'] ) ){
+if ( !empty( $_POST['post_title'] ) ) {
 
-$ivanhoe_post_title = $_POST['post_title'];
-$ivanhoe_post_content = $_POST['post_content'];
-$ivanhoe_post_parent = $_POST['parent_id'];
-$ivanhoe_permalink = $_POST['ivanhoe_parent'];
+    $ivanhoe_post_title = $_POST['post_title'];
+    $ivanhoe_post_content = $_POST['post_content'];
+    $ivanhoe_post_parent = $_POST['parent_id'];
 
-$move = array(
-	'post_content' => $ivanhoe_post_content,
-	'post_title' => $ivanhoe_post_title,
-	'post_status' => 'publish',
-	'post_type' => 'ivanhoe_move',
-	'post_parent' => $ivanhoe_post_parent
-);
+    $move = array(
+        'post_content' => $ivanhoe_post_content,
+        'post_title' => $ivanhoe_post_title,
+        'post_status' => 'publish',
+        'post_type' => 'ivanhoe_move',
+        'post_parent' => $ivanhoe_post_parent
+    );
 
-wp_insert_post( $move );
+    wp_insert_post( $move );
 
-wp_redirect( $ivanhoe_permalink );
-exit;
+    wp_redirect( get_permalink($ivanhoe_post_parent) );
+    exit;
 
 }; 
 
-
+get_header();
 
 ?>     
 
