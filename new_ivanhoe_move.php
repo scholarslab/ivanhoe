@@ -1,6 +1,6 @@
 <?php
 
-require('../../../wp-blog-header.php');
+require_once('../../../wp-blog-header.php');
 
 // If parent_post is set as a query variable, use it, otherwise set to null.
 $ivanhoe_game_id = isset( $_GET['parent_post'] ) ? $_GET['parent_post'] : null;
