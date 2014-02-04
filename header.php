@@ -3,9 +3,10 @@
 <html <?php language_attributes(); ?>>
 
 <head>
-    <meta charset="utf-8">
+    <meta charset="<?php bloginfo( 'charset' ); ?>">
 
-    <title>Ghost Stories</title>
+   <title><?php wp_title( '|', true, 'right' ); ?></title>
+
     <link rel="stylesheet" href="style.css">
 
 </head>
@@ -13,3 +14,5 @@
 <body>
 
 <?php wp_nav_menu(array('theme_location' => 'ivanhoe_default', 'menu' => 'ivanhoe_default')); ?>
+
+
