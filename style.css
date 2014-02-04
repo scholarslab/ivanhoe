@@ -1,0 +1,35 @@
+    <style type="text/css" media="screen">
+    * {
+        -moz-box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        box-sizing:border-box;
+    }
+
+    html {
+        font-family: Petrona, serif;
+        background: #404040;
+        padding-top: 200px;
+        color: #fff;
+        color: rgba(255,255,255,0.8);
+        text-align:center;    
+    }
+
+    h1 {
+        text-shadow: 0 0 0.2em rgba(0,0,0,0.3);
+        font-size: 100px;
+    }
+
+    a:link,
+    a:visited {
+        color: #ddd;
+        color: rgba(255,255,255,0.8);
+    }
+
+    a:hover,
+    a:focus,
+    a:active{
+        color: white;
+    }
+
+    img {width: 40%;}
+    </style>
