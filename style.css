@@ -6,28 +6,34 @@
 
 html {
     font-family: Petrona, serif;
-    background: #404040;
     padding-top: 200px;
-    color: #fff;
-    color: rgba(255,255,255,0.8);
-    text-align:center;    
+    color: #444;
+}
+
+body {
+    max-width: 500px;
+    margin: 0 auto;
 }
 
 h1 {
     text-shadow: 0 0 0.2em rgba(0,0,0,0.3);
     font-size: 100px;
+    text-align:center;
+}
+
+nav {
+    text-align:center;
 }
 
 a:link,
 a:visited {
-    color: #ddd;
-    color: rgba(255,255,255,0.8);
+    color: #38c;
 }
 
 a:hover,
 a:focus,
 a:active{
-    color: white;
+    color: #8c3;
 }
 
 img {width: 40%;}
