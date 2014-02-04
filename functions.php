@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Add theme support for WP features.
 add_theme_support('menus');
@@ -7,7 +7,7 @@ add_action( 'init', 'ivanhoe_create_post_types' );
 
 function ivanhoe_create_post_types()
 {
-    register_post_type( 
+    register_post_type(
         'ivanhoe_move',
         array(
             'labels' => array(
@@ -22,7 +22,7 @@ function ivanhoe_create_post_types()
             )
         );
 
-    register_post_type( 
+    register_post_type(
         'ivanhoe_game',
         array(
             'labels' => array(
@@ -117,8 +117,36 @@ function ivanhoe_make_menus() {
 
 add_action('init', 'ivanhoe_make_menus');
 
-function ivanhoe_register_nav_menus() {
-    register_nav_menu('ivanhoe_default',__( 'Ivanhoe Default' ));
+/**
+ * Load site scripts.
+ *
+ * @since  1.0.0
+ *
+ * @return void
+ */
+function ivanhoe_enqueue_scripts()
+{
+  $postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
+
+	// Loads main stylesheet.
+	wp_enqueue_style( 'ivanhoetheme', get_template_directory_uri() . "/assets/css/style.css", array(), null, 'all' );
+
+	// Theme scripts.
+  wp_enqueue_script( 'ivanhoetheme', get_template_directory_uri() . "/assets/js/build/main{$postfix}.js", array(), null, true );
+
 }
 
-add_action( 'init', 'ivanhoe_register_nav_menus' );
+add_action( 'wp_enqueue_scripts', 'ivanhoe_enqueue_scripts');
+
+/**
+ * Add humans.txt to the <head> element.
+ */
+function wptheme_header_meta()
+{
+  $humans = '<link type="text/plain" rel="author" href="' . get_template_directory_uri() . '/humans.txt" />';
+
+  echo apply_filters( 'wptheme_humans', $humans );
+}
+
+add_action( 'wp_head', 'wptheme_header_meta' );
+
