@@ -6,13 +6,12 @@
 
 html {
     font-family: Petrona, serif;
-    padding-top: 200px;
     color: #444;
 }
 
 body {
     max-width: 500px;
-    margin: 0 auto;
+    margin: 50px auto;
 }
 
 h1 {
