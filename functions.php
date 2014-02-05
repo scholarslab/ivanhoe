@@ -126,13 +126,13 @@ add_action('init', 'ivanhoe_make_menus');
  */
 function ivanhoe_enqueue_scripts()
 {
-  $postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
+  //  $postfix = ( defined( 'SCRIPT_DEBUG' ) && true === SCRIPT_DEBUG ) ? '' : '.min';
 
 	// Loads main stylesheet.
 	wp_enqueue_style( 'ivanhoetheme', get_template_directory_uri() . "/assets/css/style.css", array(), null, 'all' );
 
 	// Theme scripts.
-  wp_enqueue_script( 'ivanhoetheme', get_template_directory_uri() . "/assets/js/build/main{$postfix}.js", array(), null, true );
+  wp_enqueue_script( 'ivanhoetheme', get_template_directory_uri() . "/assets/js/build/ivanhoe.min.js", array(), null, true );
 
 }
 

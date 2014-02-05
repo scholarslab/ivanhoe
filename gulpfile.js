@@ -22,7 +22,7 @@ var paths = {
 gulp.task('scripts', function() {
   return gulp.src(paths.js + '/*.{js}')
           .pipe(uglify())
-          .pipe(concat('main.js'))
+          .pipe(concat('ivanhoe.js'))
           .pipe(gulp.dest(paths.js + '/build/'))
           .pipe(livereload(server));
 });
