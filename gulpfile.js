@@ -41,21 +41,22 @@ gulp.task('sass', function() {
 });
 
 gulp.task('php', function() {
-  var child = spawn('php', ['-l'], {}),
-  stdout = '',
-  stderr = '';
+  livereload(server);
+  //var child = spawn('php', ['-l'], {}),
+  //stdout = '',
+  //stderr = '';
 
-  child.stdout.on('data', function(data) {
-    stdout += data;
-    util.log(data);
-  });
+  //child.stdout.on('data', function(data) {
+    //stdout += data;
+    //util.log(data);
+  //});
 
-  child.stderr.setEncoding('utf-8');
-  child.stderr.on('data', function(data) {
-    stderr += data;
-    util.log(util.colors.red(data));
-    util.beep();
-  });
+  //child.stderr.setEncoding('utf-8');
+  //child.stderr.on('data', function(data) {
+    //stderr += data;
+    //util.log(util.colors.red(data));
+    //util.beep();
+  //});
 });
 
 gulp.task('images', function() {
@@ -71,12 +72,14 @@ gulp.task('images', function() {
     .pipe(livereload(server));
 });
 
+
+
 gulp.task('watch', function() {
 
   server.listen(35729, function(err) {
     if(err) return console.log(err);
 
-    gulp.watch('*.php', ['reload']);
+    gulp.watch('*.php', ['php']);
     gulp.watch(paths.js + '/*.js', ['lint', 'scripts']);
     gulp.watch('./gulpfile.js', ['lint']);
     gulp.watch(paths.sass, ['sass']);

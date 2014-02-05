@@ -1,5 +1,6 @@
 <?php
-echo wp_footer();
+
+  echo wp_footer();
 ?>
 
 </body>
