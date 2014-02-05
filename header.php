@@ -23,7 +23,7 @@
 <p><?php echo $description ?></p>
 <?php endif; ?>
 
-<?php wp_nav_menu(array('theme_location' => 'ivanhoe_default', 'menu' => 'ivanhoe_default')); ?>
+<?php wp_nav_menu(array('theme_location' => 'ivanhoe_default', 'menu' => 'ivanhoe_default', 'container'=>'nav')); ?>
 
 </header>
 
