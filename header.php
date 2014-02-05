@@ -15,6 +15,16 @@
 
 <body>
 
+<header role="banner">
+
+<h1><?php bloginfo('name');?></h1>
+
+<?php if($description = get_bloginfo('description')):?>
+<p><?php echo $description ?></p>
+<?php endif; ?>
+
 <?php wp_nav_menu(array('theme_location' => 'ivanhoe_default', 'menu' => 'ivanhoe_default')); ?>
+
+</header>
 
 <main>
