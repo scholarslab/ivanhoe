@@ -20,7 +20,7 @@ var paths = {
 }
 
 gulp.task('scripts', function() {
-  return gulp.src(paths.js + '/*.{js}')
+  gulp.src(paths.js + '/src/*.{js}')
           .pipe(uglify())
           .pipe(concat('ivanhoe.js'))
           .pipe(gulp.dest(paths.js + '/build/'))
@@ -80,7 +80,7 @@ gulp.task('watch', function() {
     if(err) return console.log(err);
 
     gulp.watch('*.php', ['php']);
-    gulp.watch(paths.js + '/*.js', ['lint', 'scripts']);
+    gulp.watch(paths.js + '/**/*.js', ['lint', 'scripts']);
     gulp.watch('./gulpfile.js', ['lint']);
     gulp.watch(paths.sass, ['sass']);
     gulp.watch(paths.images + '/*', ['images']);
