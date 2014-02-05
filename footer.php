@@ -1,6 +1,9 @@
-<?php
+<footer>
+      <p>Copyright &copy; <?= date('Y') ?> <?php bloginfo('name') ?></p>
+</footer>
 
-  echo wp_footer();
+<?php
+echo wp_footer();
 ?>
 
 </body>
