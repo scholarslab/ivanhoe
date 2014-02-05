@@ -5,6 +5,13 @@ module.exports = function(grunt) {
   // load all grunt tasks
   require('matchdep').filterDev('grunt-*').forEach(grunt.loadNpmTasks);
 
+  var paths = {
+    js: './assets/js',
+    images: './assets/images',
+    sass:   './assets/scss/**/*',
+    css:    './assets/css'
+  };
+
   grunt.initConfig({
 
     // watch for changes and trigger compass, jshint, uglify and livereload
@@ -13,7 +20,7 @@ module.exports = function(grunt) {
         livereload: true
       },
       compass: {
-        files: ['assets/sass/**/*.{scss,sass}'],
+        files: [paths.sass],
         tasks: ['compass']
       },
       js: {
@@ -21,7 +28,7 @@ module.exports = function(grunt) {
         tasks: ['jshint', 'uglify']
       },
       livereload: {
-        files: ['*.html', '*.php', 'assets/images/**/*.{png,jpg,jpeg,gif,webp,svg}']
+        files: ['*.html', paths.css + '/*.css', '*.php', paths.images + '/**/*.{png,jpg,jpeg,gif,webp,svg}']
       }
     },
 
@@ -43,18 +50,18 @@ module.exports = function(grunt) {
       },
       all: [
         'Gruntfile.js',
-        'assets/js/source/**/*.js'
+        paths.js + '/source/**/*.js'
       ]
     },
 
     // uglify to concat, minify, and make source maps
-    uglify: {
+     uglify: {
       dist: {
         options: {
           sourceMap: 'assets/js/map/source-map.js'
         },
         files: {
-          'assets/js/plugins.min.js': [
+          'assets/js/ivanhoe.min.js': [
             'assets/js/source/plugins.js',
             'assets/js/vendor/**/*.js',
             '!assets/js/vendor/modernizr*.js'
@@ -65,7 +72,6 @@ module.exports = function(grunt) {
         }
       }
     },
-
     // image optimization
     imagemin: {
       dist: {
@@ -75,11 +81,16 @@ module.exports = function(grunt) {
         },
         files: [{
           expand: true,
-          cwd: 'assets/images/',
+          cwd: paths.images,
           src: '**/*',
-          dest: 'assets/images/'
+          dest: paths.images
         }]
       }
+    },
+
+    //phplint
+    phplint: {
+      good: ['./*.php']
     },
 
     // phpcs
@@ -88,7 +99,7 @@ module.exports = function(grunt) {
         dir: '*.php'
       },
       options: {
-        //bin: 'vendor/bin/phpcs',
+        bin: 'vendor/bin/phpcs',
         standard: 'PEAR'
       }
     },

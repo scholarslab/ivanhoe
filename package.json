@@ -13,6 +13,7 @@
     "grunt-rsync": "~0.1.1",
     "matchdep": "~0.1.2",
     "bower": "~1.2.8",
-    "grunt-wp-version": "~0.1.0"
+    "grunt-wp-version": "~0.1.0",
+    "grunt-phplint": "0.0.5"
   }
 }
