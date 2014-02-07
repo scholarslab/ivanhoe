@@ -9,5 +9,4 @@
 <p>OMG NO POSTS!!!!!</p>
 <?php endif; ?>
 
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>
