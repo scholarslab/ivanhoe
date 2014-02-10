@@ -2,10 +2,7 @@
 
 <?php
 
-$args = array ( 'post_type' => 'ivanhoe_game' );
-$query = new WP_Query( $args );
-
-if ( $query->have_posts()) : while($query->have_posts()) : $query->the_post(); ?>
+if ( have_posts()) : while(have_posts()) : the_post(); ?>
 <article>
     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
     <?php the_content(); ?>
