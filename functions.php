@@ -122,3 +122,25 @@ function ivanhoe_register_nav_menus() {
 }
 
 add_action( 'init', 'ivanhoe_register_nav_menus' );
+
+add_action( 'admin_init', 'ivanhoe_create_move_form_page');
+
+function ivanhoe_create_move_form_page()
+{
+    if (! get_option('ivanhoe_installed')) {
+        $args = array(
+            'post_title' => 'Make a Move',
+            'post_type' => 'page',
+            'post_author' => '1',
+            'post_status' => 'publish',
+            );
+        $ivanhoe_page = wp_insert_post($args);
+
+        if ($ivanhoe_page && !is_wp_error($ivanhoe_page)) {
+            update_post_meta( $ivanhoe_page, '_wp_page_template', 'new_ivanhoe_move.php' );
+            update_option( 'ivanhoe_move_page', $ivanhoe_page );
+        }
+        update_option( 'ivanhoe_installed', true );
+
+    }
+}
