@@ -32,6 +32,13 @@ if ( $query->have_posts()) : while($query->have_posts()) : $query->the_post(); ?
 <?php endwhile; endif; ?>
 
 <h1>Want to make a move?</h1>
-<a href="<?php echo get_permalink(get_option('ivanhoe_move_page')).'&parent_post='.$ivanhoe_game_id; ?>">Make a move</a>
+<?php
+$url = add_query_arg(
+    "parent_post",
+    $ivanhoe_game_id,
+    get_permalink(get_option('ivanhoe_move_page'))
+);
+?>
+<a href="<?php echo $url; ?>">Make a move</a>
 
 <?php get_footer(); ?>
