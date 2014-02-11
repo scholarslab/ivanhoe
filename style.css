@@ -50,7 +50,29 @@ img {width: 40%;}
     text-align: center;
 }
 
-#buttons a {
+#button1 a {
+    width: 150px;
+    line-height: 150px;
+    border-radius: 75px;
+    background-color: #e63232;
+    color: white;
+    display: block;
+    float: left;
+    
+}
+
+#button2 a {
+    width: 150px;
+    line-height: 150px;
+    border-radius: 75px;
+    background-color: #00db9f;
+    color: white;
+    display: block;
+    float: left;
+    
+}
+
+#button3 a {
     width: 150px;
     line-height: 150px;
     border-radius: 75px;
