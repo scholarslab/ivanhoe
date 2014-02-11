@@ -5,6 +5,7 @@ Template Name: Ivanhoe Move Form
 
 // If parent_post is set as a query variable, use it, otherwise set to null.
 $ivanhoe_game_id = isset( $_GET['parent_post'] ) ? $_GET['parent_post'] : null;
+$ivanhoe_move_source = isset ( $_GET['move_source'] ) ? $_GET['move_source'] : null;
 
 // If we have a game ID and a post title, insert a post.
 if ( $ivanhoe_game_id && !empty( $_POST['post_title'] ) ) {
@@ -20,8 +21,13 @@ if ( $ivanhoe_game_id && !empty( $_POST['post_title'] ) ) {
         'post_parent' => $ivanhoe_game_id
     );
 
-    wp_insert_post( $move );
-
+    $new_ivanhoe_post_id = wp_insert_post( $move );
+    update_post_meta(
+        $new_ivanhoe_post_id,
+        'Ivanhoe Move Source',
+        $ivanhoe_move_source
+        );
+    
     wp_redirect( get_permalink($ivanhoe_game_id) );
     exit;
 

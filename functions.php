@@ -18,8 +18,13 @@ function ivanhoe_create_post_types()
                 ),
             'public' => true,
             'has_archive' => true,
-            'rewrite' => array('slug' => 'moves'),
+            'rewrite' => array('slug' => 'moves')
             )
+        );
+
+    add_post_type_support(
+        'ivanhoe_move',
+        'custom-fields'
         );
 
     register_post_type( 
@@ -63,6 +68,11 @@ function ivanhoe_create_post_types()
 }
 
 /**
+ * Enables ivanhoe moves to support custom fields.
+*/
+
+
+/**
  * Generate HTML for Ivanhoe Move metabox.
  *
  * @return string The HTML for the form element.
@@ -72,23 +82,68 @@ function ivanhoe_move_meta_box($post)
     $html = '<p><label for="post_parent">'.__('Game').'</label></p>'
           . '<p><input type="text" name="post_parent" value="'. $post->post_parent.'">';
     
-    echo $html;
+    return $html;
 }
 
 /**
  * Wrapper function for adding meta boxes for our custom post types
  */
-function ivanhoe_add_meta_boxes()
+// function ivanhoe_add_meta_boxes()
+// {
+//     add_meta_box(
+//         'ivanhoe_move_metadata',
+//         __('Ivanhoe Move Metadata'),
+//         'ivanhoe_move_meta_box',
+//         'ivanhoe_move'
+//     );
+// }
+
+
+// function ivanhoe_source_meta_box($post)
+// {
+//      $html = '<p><label for="ivanhoe_move_source">'.__('Ivanhoe Move Source').'</label></p>'
+//            . '<p><input type="text" name="ivanhoe_move_source" value="'. $post->.'">';
+    
+//     return $html;
+// }
+
+// function ivanhoe_response_meta_box($post)
+// {    
+//     $html = '<p><label for="post_parent">'.__('Game').'</label></p>'
+//           . '<p><input type="text" name="post_parent" value="'. $post->post_parent.'">';
+    
+//     return $html;
+// }
+
+/**
+ * Function for getting the metadata for the post(s) which respond to the current move
+ */
+
+function ivanhoe_move_source()
 {
     add_meta_box(
-        'ivanhoe_move_metadata',
-        __('Ivanhoe Move Metadata'),
-        'ivanhoe_move_meta_box',
+        'ivanhoe_move_source',
+        __('Source for:'),
+        'ivanhoe_source_meta_box',
         'ivanhoe_move'
     );
 }
 
-add_action('add_meta_boxes', 'ivanhoe_add_meta_boxes');
+/**
+ * Function for getting the metadata for the post(s) to which the current move responds
+ */
+
+function ivanhoe_move_response()
+{
+    add_meta_box(
+        'ivanhoe_move_response',
+        __('Responds to:'),
+        'ivanhoe_response_meta_box',
+        'ivanhoe_move'
+    );
+}
+
+add_action('add_meta_boxes', 'ivanhoe_move_source', 'ivanhoe_move_response');
 
 function ivanhoe_make_menus() {
 
