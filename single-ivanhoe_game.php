@@ -2,6 +2,7 @@
 
 <?php 
 
+$original_query = $wp_query;
 $ivanhoe_game_id = $post->ID;
 $ivanhoe_parent_permalink = get_permalink( $post->ID );
 
@@ -14,10 +15,15 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
 
 <?php
 
-$args = array ( 'post_type' => 'ivanhoe_move', 'post_parent' => $post->ID);
-$query = new WP_Query( $args );
+$paged = get_query_var('paged') ? get_query_var('paged') : 1;
+$args = array (
+    'post_type' => 'ivanhoe_move',
+    'post_parent' => $post->ID,
+    'paged' => $paged,
+    'posts_per_page' => 10);
+$wp_query = new WP_Query( $args );
 
-if ( $query->have_posts()) : while($query->have_posts()) : $query->the_post(); ?>
+if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_post(); ?>
 <article>
     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
     <?php the_excerpt(); ?>
@@ -38,9 +44,16 @@ if ( $query->have_posts()) : while($query->have_posts()) : $query->the_post(); ?
 
 </article>
 
-<?php endwhile; else : ?>
+<?php endwhile; ?>
+
+<?php previous_posts_link('newer'); ?> | <?php next_posts_link('older'); ?>
+
+<?php else : ?>
+
 <p>OMG NO POSTS!!!!!</p>
 <?php endif; ?>
+
+<?php $wp_query = $original_query; ?>
 
 </article>
 
