@@ -28,20 +28,16 @@
 
 			$source_query = new WP_Query( $args );
 
-			echo $post->ID;
+            if ($source_query->have_posts() ) : ?>
+            <h2>Responses</h2>
+            <ul>
+			<?php while( $source_query->have_posts() ) : $source_query->the_post(); ?>
 
+			<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>	
 
-
-			if ($source_query->have_posts() ) : ?> Responses: <ul>
-			<?php while( $source_query->have_posts() ) : $source_query->the_post(); 
-
-			?>
-
-			<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a><?php echo get_post_meta(get_the_ID(), 'Ivanhoe Move Source', true) ?></li>	
-
-		<?php endwhile; ?>
-		</ul>
-		<?php else : ?>
+		    <?php endwhile; ?>
+		    </ul>
+		    <?php else : ?>
 		<p>There are no responses to this post.</p>
 	<?php endif; ?>
  
