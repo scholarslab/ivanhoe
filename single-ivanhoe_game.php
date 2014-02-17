@@ -20,7 +20,7 @@ $query = new WP_Query( $args );
 if ( $query->have_posts()) : while($query->have_posts()) : $query->the_post(); ?>
 <article>
     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-    <?php the_content(); ?>
+    <?php the_excerpt(); ?>
 	<?php
 		$ivanhoe_move_source = $post->ID;
 		$ivanhoe_param = array(
