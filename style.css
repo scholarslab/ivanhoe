@@ -259,8 +259,8 @@ border-top: 1px solid #C3D6DF;
 
 }
 
-.button:link {color: white;}
-.button:visited {color: white;}
+.button:link,
+.button:visited {color: white; color: rgba(255, 255, 255, 0.85);}
 .button:hover {color: white;}
 .button:active {color: white;}
 
