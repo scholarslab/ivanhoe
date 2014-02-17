@@ -223,43 +223,6 @@ body > footer a + a:before {
 }
 
 .button {
-    width: 250px;
-    height: 50px;
-    line-height: 50px;
-    color: white;
-    text-decoration: none;
-    font-size: 30px;
-    font-family: helvetica, arial;
-    display: block;
-    text-align: center;
-    position: relative;
-
-/*Background Gradients */
-
-    background-image: -webkit-gradient(
-    linear,
-    left top,
-    left bottom,
-    color-stop(0, #0D658E),
-    color-stop(1, #0C577A)
-);
-background-image: -o-linear-gradient(bottom, #0D658E 0%, #0C577A 50%, #014D71 51%, #003E5C);
-background-image: -moz-linear-gradient(bottom, #0D658E 0%, #0C577A 50%, #014D71 51%, #003E5C);
-background-image: -webkit-linear-gradient(bottom, #0D658E 0%, #0C577A 50%, #014D71 51%, #003E5C);
-background-image: -ms-linear-gradient(bottom, #0D658E 0%, #0C577A 50%, #014D71 51%, #003E5C);
-background-image: linear-gradient(to bottom, #0D658E 0%, #0C577A 50%, #014D71 51%, #003E5C);
-
-/*Border Radius */
-border-radius: 10px;
-border: 1px solid #368DBE;
-border-top: 1px solid #C3D6DF;
-
-/*Text Shadow */
-text-shadow: .5px .5px .5px #a8a8a8;
-
-}
-
-.button2 {
     width: 200px;
     height: 30px;
     line-height: 30px;
@@ -294,4 +257,16 @@ border-radius: 10px;
 border: 1px solid #368DBE;
 border-top: 1px solid #C3D6DF;
 
+}
+
+.button:link,
+.button:visited {color: white; color: rgba(255, 255, 255, 0.85);}
+.button:hover {color: white;}
+.button:active {color: white;}
+
+#make-a-move {
+    width: 250px;
+    height: 50px;
+    line-height: 50px;
+    font-size: 30px;
 }

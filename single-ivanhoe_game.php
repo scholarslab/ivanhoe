@@ -34,7 +34,7 @@ if ( $query->have_posts()) : while($query->have_posts()) : $query->the_post(); ?
 
 );
 ?>
-<a href="<?php echo $url; ?>" class="button2">Respond to this move</a>
+<a href="<?php echo $url; ?>" class="button">Respond to this move</a>
 
 </article>
 
@@ -54,7 +54,7 @@ $url = add_query_arg(
     get_permalink(get_option('ivanhoe_move_page'))
 );
 ?>
-<a href="<?php echo $url; ?>" class="button">Make a move</a>
+<a href="<?php echo $url; ?>" class="button" id="make-a-move">Make a move</a>
 </div>
 
 <?php get_footer(); ?>
