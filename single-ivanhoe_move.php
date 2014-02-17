@@ -22,7 +22,7 @@
 				'post_type' => 'ivanhoe_move',
 				'post_per_page' => -1,
 				'meta_key' => 'Ivanhoe Move Source',
-				'meta_value_num' => $post->ID,
+				'meta_value' => $post->ID,
 				'meta_value_compare' => '='
 				);
 
