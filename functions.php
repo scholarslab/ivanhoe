@@ -65,12 +65,23 @@ function ivanhoe_create_post_types()
             'rewrite' => array('slug' => 'roles'),
             )
         );
+
+    register_post_type(
+        'ivanhoe_role_journal',
+        array(
+            'labels' => array(
+                'name'          => __( 'Role Journal' ),
+                'singular_name' => __( 'Role Journal Entry' ),
+                'all_items'     => __( 'All Entries' ),
+                'add_new_item'  => __( 'Add New Entry' )
+            ),
+            'public'        => true,
+            'has_archive'   => true,
+            'rewrite'       => array( 'slug' => 'rolejournal' )
+        )
+    );
+
 }
-
-/**
- * Enables ivanhoe moves to support custom fields.
-*/
-
 
 /**
  * Generate HTML for Ivanhoe Move metabox.

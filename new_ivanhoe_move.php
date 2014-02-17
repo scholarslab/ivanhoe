@@ -12,13 +12,14 @@ if ( $ivanhoe_game_id && !empty( $_POST['post_title'] ) ) {
 
     $ivanhoe_post_title = $_POST['post_title'];
     $ivanhoe_post_content = $_POST['post_content'];
+    $ivanhoe_post_rationale = $_POST['post_rationale'];
 
     $move = array(
         'post_content' => $ivanhoe_post_content,
         'post_title' => $ivanhoe_post_title,
         'post_status' => 'publish',
         'post_type' => 'ivanhoe_move',
-        'post_parent' => $ivanhoe_game_id
+        'post_parent' => $ivanhoe_game_id,
     );
 
     $new_ivanhoe_post_id = wp_insert_post( $move );
@@ -28,6 +29,16 @@ if ( $ivanhoe_game_id && !empty( $_POST['post_title'] ) ) {
         $ivanhoe_move_source
         );
     
+    $journal_entry = array(
+        'post_content' => $ivanhoe_post_rationale,
+        'post_title' => 'Journal Entry for ' . $ivanhoe_post_title,
+        'post_status' => 'publish', //TODO: Decide whether or not we want the RJ to be public
+        'post_type' => 'ivanhoe_role_journal',
+        'post_parent' => $new_ivanhoe_post_id
+        );
+
+    $new_ivanhoe_journal_entry = wp_insert_post( $journal_entry);
+
     wp_redirect( get_permalink($ivanhoe_game_id) );
     exit;
 
@@ -40,6 +51,7 @@ get_header();
 <form action="" method="post">
 	Title: <input type="text" name="post_title"><br>
 	Content: <?php wp_editor( '', "post_content"); ?><br>
+    Rationale: <?php wp_editor( '', "post_rationale"); ?><br>
 	<input type="submit" value="Submit">
 </form>
 
