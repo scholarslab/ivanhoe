@@ -65,6 +65,9 @@ function ivanhoe_create_post_types()
             'rewrite' => array('slug' => 'roles'),
             )
         );
+
+    add_rewrite_rule( 'games/([.*]+)/page/([0-9]+)/?$', 'index.php?ivanhoe_game=[1]&paged=$matches[2]', 'top' );
+
 }
 
 /**
@@ -199,3 +202,24 @@ function ivanhoe_create_move_form_page()
 
     }
 }
+
+/**
+ * Overrides WP's auto redirect on pretty URLs (e.g. /games/game-title/page/2),
+ * so we can use native pagination for moves on single Ivanhoe game pages.
+ *
+ * Checks to see if the current page is a single Ivanhoe game, and returns the
+ * requested URL instead of the redirect URL.
+ */
+function ivanhoe_redirect_canonical( $redirect_url, $requested_url ){
+
+    if ( is_singular( 'ivanhoe_game' ) ) {
+
+        return $requested_url;
+
+    }
+
+    return $redirect_url;
+
+}
+
+add_filter( 'redirect_canonical', 'ivanhoe_redirect_canonical', 10, 2 );
