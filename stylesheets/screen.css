@@ -1,17 +1,17 @@
 @charset "UTF-8";
-/* line 3, ../sass/screen.scss */
+/* line 4, ../sass/screen.scss */
 * {
   -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
-/* line 7, ../sass/screen.scss */
+/* line 8, ../sass/screen.scss */
 html {
   background: #f6f6f6;
 }
 
-/* line 11, ../sass/screen.scss */
+/* line 12, ../sass/screen.scss */
 body {
   font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #444;
@@ -37,50 +37,50 @@ body {
   -moz-background-clip: content-box;
   background-clip: content-box;
 }
-/* line 38, ../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../../../../../Users/wsg4w/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 body:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* line 20, ../sass/screen.scss */
+/* line 21, ../sass/screen.scss */
 a:link {
   color: #37c;
 }
-/* line 21, ../sass/screen.scss */
+/* line 22, ../sass/screen.scss */
 a:visited {
   color: #39c;
 }
-/* line 22, ../sass/screen.scss */
+/* line 23, ../sass/screen.scss */
 a:hover {
   color: #8c3;
   text-decoration: none;
 }
-/* line 23, ../sass/screen.scss */
+/* line 24, ../sass/screen.scss */
 a:active {
   color: #8a3;
 }
 
-/* line 26, ../sass/screen.scss */
+/* line 27, ../sass/screen.scss */
 input[type=text], label, textarea {
   display: block;
 }
 
-/* line 28, ../sass/screen.scss */
+/* line 29, ../sass/screen.scss */
 img {
   max-width: 100%;
   max-height: 100%;
   height: auto;
 }
 
-/* line 37, ../sass/screen.scss */
+/* line 38, ../sass/screen.scss */
 label {
   font-size: 20px;
   font-weight: bold;
 }
 
-/* line 43, ../sass/screen.scss */
+/* line 44, ../sass/screen.scss */
 input[type=text], textarea {
   width: 100%;
   border-radius: 3px;
@@ -88,12 +88,12 @@ input[type=text], textarea {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-/* line 51, ../sass/screen.scss */
+/* line 52, ../sass/screen.scss */
 textarea {
   display: block;
 }
 
-/* line 58, ../sass/screen.scss */
+/* line 59, ../sass/screen.scss */
 .eyebrow {
   margin: 0;
   color: #777;
@@ -101,39 +101,39 @@ textarea {
   font-weight: bold;
 }
 
-/* line 65, ../sass/screen.scss */
+/* line 66, ../sass/screen.scss */
 .eyebrow + * {
   margin-top: 0 !important;
 }
 
-/* line 72, ../sass/screen.scss */
+/* line 73, ../sass/screen.scss */
 nav {
   display: block;
   float: right;
   text-align: right;
   width: 60%;
 }
-/* line 78, ../sass/screen.scss */
+/* line 79, ../sass/screen.scss */
 nav a {
   text-decoration: none;
   color: #777;
 }
-/* line 83, ../sass/screen.scss */
+/* line 84, ../sass/screen.scss */
 nav ul {
   list-style: none;
   padding-left: 0;
 }
-/* line 88, ../sass/screen.scss */
+/* line 89, ../sass/screen.scss */
 nav li {
   display: inline;
 }
-/* line 91, ../sass/screen.scss */
+/* line 92, ../sass/screen.scss */
 nav li + li:before {
   content: " · ";
   color: #ccc;
 }
 
-/* line 99, ../sass/screen.scss */
+/* line 100, ../sass/screen.scss */
 main {
   clear: both;
   overflow: hidden;
@@ -142,12 +142,12 @@ main {
   border-radius: 5px;
 }
 
-/* line 107, ../sass/screen.scss */
+/* line 108, ../sass/screen.scss */
 main :first-child {
   margin-top: 0;
 }
 
-/* line 111, ../sass/screen.scss */
+/* line 112, ../sass/screen.scss */
 article {
   width: 23.72881%;
   float: left;
@@ -155,25 +155,25 @@ article {
   display: inline;
 }
 
-/* line 114, ../sass/screen.scss */
+/* line 115, ../sass/screen.scss */
 article h2 {
   font-size: 95%;
 }
 
-/* line 118, ../sass/screen.scss */
+/* line 119, ../sass/screen.scss */
 article h3 {
   font-size: 85%;
   color: red;
 }
 
-/* line 123, ../sass/screen.scss */
+/* line 124, ../sass/screen.scss */
 #game-metadata {
   float: right;
   width: 30%;
   font-size: 87.5%;
 }
 
-/* line 130, ../sass/screen.scss */
+/* line 131, ../sass/screen.scss */
 #game-metadata .description,
 #game-metadata .players {
   background: rgba(0, 100, 200, 0.1);
@@ -182,14 +182,14 @@ article h3 {
 }
 
 /* Container for moves on single game template. */
-/* line 137, ../sass/screen.scss */
+/* line 138, ../sass/screen.scss */
 #moves {
   float: left;
   width: 68%;
 }
 
 /* Container for indivdiual games. */
-/* line 143, ../sass/screen.scss */
+/* line 144, ../sass/screen.scss */
 .game {
   width: 49.15254%;
   float: left;
@@ -198,7 +198,7 @@ article h3 {
 }
 
 /* This finds any element. */
-/* line 149, ../sass/screen.scss */
+/* line 150, ../sass/screen.scss */
 .game + .game:before,
 .move + .move:before {
   font-family: "Arial Unicode MS";
@@ -210,7 +210,7 @@ article h3 {
   margin: 2em 0;
 }
 
-/* line 159, ../sass/screen.scss */
+/* line 160, ../sass/screen.scss */
 .game h1,
 .game p {
   float: left;
@@ -218,7 +218,7 @@ article h3 {
   width: 48%;
 }
 
-/* line 166, ../sass/screen.scss */
+/* line 167, ../sass/screen.scss */
 .game h2,
 .game ul {
   float: right;
@@ -226,21 +226,21 @@ article h3 {
   width: 48%;
 }
 
-/* line 172, ../sass/screen.scss */
+/* line 173, ../sass/screen.scss */
 .game h3 {
   float: right;
   clear: right;
   width: 45%;
 }
 
-/* line 178, ../sass/screen.scss */
+/* line 179, ../sass/screen.scss */
 .game ul {
   list-style: none;
   margin-top: 0;
   font-size: 90%;
 }
 
-/* line 184, ../sass/screen.scss */
+/* line 185, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   font-style: italic;
@@ -249,7 +249,7 @@ article h3 {
   margin-bottom: 4em;
 }
 
-/* line 192, ../sass/screen.scss */
+/* line 193, ../sass/screen.scss */
 #responding, #response {
   float: left;
   padding-top: 30px;
@@ -257,37 +257,37 @@ article h3 {
   width: 48%;
 }
 
-/* line 199, ../sass/screen.scss */
+/* line 200, ../sass/screen.scss */
 #response {
   float: right;
 }
 
-/* line 203, ../sass/screen.scss */
+/* line 204, ../sass/screen.scss */
 body > footer {
   padding: 30px 0;
   text-align: right;
   font-size: 90%;
 }
 
-/* line 209, ../sass/screen.scss */
+/* line 210, ../sass/screen.scss */
 body > footer a {
   text-decoration: none;
 }
 
-/* line 213, ../sass/screen.scss */
+/* line 214, ../sass/screen.scss */
 body > footer a + a:before {
   content: " | ";
   color: #bbb;
 }
 
-/* line 218, ../sass/screen.scss */
+/* line 219, ../sass/screen.scss */
 #make-a-move-button {
   float: right;
   width: 30%;
   font-size: 87.5%;
 }
 
-/* line 224, ../sass/screen.scss */
+/* line 225, ../sass/screen.scss */
 .button {
   width: 200px;
   height: 30px;
@@ -303,36 +303,52 @@ body > footer a + a:before {
   margin-top: 10px;
   margin-bottom: 70px;
   /*Background Gradients */
-  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0d658e), color-stop(1, #0c577a));
-  background-image: -o-linear-gradient(bottom, #0d658e 0%, #0c577a 50%, #014d71 51%, #003e5c);
-  background-image: -moz-linear-gradient(bottom, #0d658e 0%, #0c577a 50%, #014d71 51%, #003e5c);
-  background-image: -webkit-linear-gradient(bottom, #0d658e 0%, #0c577a 50%, #014d71 51%, #003e5c);
-  background-image: -ms-linear-gradient(bottom, #0d658e 0%, #0c577a 50%, #014d71 51%, #003e5c);
-  background-image: linear-gradient(to bottom, #0d658e 0%, #0c577a 50%, #014d71 51%, #003e5c);
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #0d658e), color-stop(50%, #0c577a), color-stop(51%, #014d71), color-stop(100%, #003e5c));
+  background-image: -webkit-linear-gradient(bottom, #0d658e, #0c577a 50%, #014d71 51%, #003e5c);
+  background-image: -moz-linear-gradient(bottom, #0d658e, #0c577a 50%, #014d71 51%, #003e5c);
+  background-image: -o-linear-gradient(bottom, #0d658e, #0c577a 50%, #014d71 51%, #003e5c);
+  background-image: linear-gradient(bottom, #0d658e, #0c577a 50%, #014d71 51%, #003e5c);
+  /*background-image: -webkit-gradient(*/
+  /*linear,*/
+  /*left top,*/
+  /*left bottom,*/
+  /*color-stop(0, #0D658E),*/
+  /*color-stop(1, #0C577A)*/
+  /*);*/
+  /*background-image: -o-linear-gradient(bottom, #0D658E 0%, #0C577A 50%, #014D71 51%, #003E5C);*/
+  /*background-image: -moz-linear-gradient(bottom, #0D658E 0%, #0C577A 50%, #014D71 51%, #003E5C);*/
+  /*background-image: -webkit-linear-gradient(bottom, #0D658E 0%, #0C577A 50%, #014D71 51%, #003E5C);*/
+  /*background-image: -ms-linear-gradient(bottom, #0D658E 0%, #0C577A 50%, #014D71 51%, #003E5C);*/
+  /*background-image: linear-gradient(to bottom, #0D658E 0%, #0C577A 50%, #014D71 51%, #003E5C);*/
   /*Border Radius */
+  /*border-radius: 10px;*/
+  -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
   border-radius: 10px;
   border: 1px solid #368DBE;
   border-top: 1px solid #C3D6DF;
 }
 
-/* line 262, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 .button:link,
 .button:visited {
   color: white;
   color: rgba(255, 255, 255, 0.85);
 }
 
-/* line 263, ../sass/screen.scss */
+/* line 268, ../sass/screen.scss */
 .button:hover {
   color: white;
 }
 
-/* line 264, ../sass/screen.scss */
+/* line 269, ../sass/screen.scss */
 .button:active {
   color: white;
 }
 
-/* line 266, ../sass/screen.scss */
+/* line 271, ../sass/screen.scss */
 #make-a-move {
   width: 250px;
   height: 50px;
