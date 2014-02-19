@@ -1,68 +1,315 @@
-/* Welcome to Compass.
- * In this file you should write your main styles. (or centralize your imports)
- * Import this file using the following HTML or equivalent:
- * <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css" /> */
-/* line 17, ../../../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-html, body, div, span, applet, object, iframe,
-h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-a, abbr, acronym, address, big, cite, code,
-del, dfn, em, img, ins, kbd, q, s, samp,
-small, strike, strong, sub, sup, tt, var,
-b, u, i, center,
-dl, dt, dd, ol, ul, li,
-fieldset, form, label, legend,
-table, caption, tbody, tfoot, thead, tr, th, td,
-article, aside, canvas, details, embed,
-figure, figcaption, footer, header, hgroup,
-menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
-  margin: 0;
-  padding: 0;
-  border: 0;
-  font: inherit;
-  font-size: 100%;
-  vertical-align: baseline;
+@charset "UTF-8";
+/* line 3, ../sass/screen.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
 }
 
-/* line 22, ../../../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
+/* line 7, ../sass/screen.scss */
 html {
-  line-height: 1;
+  background: #f6f6f6;
 }
 
-/* line 24, ../../../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-ol, ul {
-  list-style: none;
+/* line 11, ../sass/screen.scss */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  margin: 0 auto;
+  width: 80%;
+  color: #444;
 }
 
-/* line 26, ../../../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-table {
-  border-collapse: collapse;
-  border-spacing: 0;
+/* line 20, ../sass/screen.scss */
+a:link {
+  color: #37c;
+}
+/* line 21, ../sass/screen.scss */
+a:visited {
+  color: #39c;
+}
+/* line 22, ../sass/screen.scss */
+a:hover {
+  color: #8c3;
+  text-decoration: none;
+}
+/* line 23, ../sass/screen.scss */
+a:active {
+  color: #8a3;
 }
 
-/* line 28, ../../../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-caption, th, td {
-  text-align: left;
-  font-weight: normal;
-  vertical-align: middle;
-}
-
-/* line 30, ../../../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-q, blockquote {
-  quotes: none;
-}
-/* line 103, ../../../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-q:before, q:after, blockquote:before, blockquote:after {
-  content: "";
-  content: none;
-}
-
-/* line 32, ../../../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-a img {
-  border: none;
-}
-
-/* line 116, ../../../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/reset/_utilities.scss */
-article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section, summary {
+/* line 26, ../sass/screen.scss */
+input[type=text], label, textarea {
   display: block;
+}
+
+/* line 28, ../sass/screen.scss */
+img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+}
+
+/* line 37, ../sass/screen.scss */
+label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* line 43, ../sass/screen.scss */
+input[type=text], textarea {
+  width: 100%;
+  border-radius: 3px;
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* line 51, ../sass/screen.scss */
+textarea {
+  display: block;
+}
+
+/* line 58, ../sass/screen.scss */
+.eyebrow {
+  margin: 0;
+  color: #777;
+  font-size: 90%;
+  font-weight: bold;
+}
+
+/* line 65, ../sass/screen.scss */
+.eyebrow + * {
+  margin-top: 0 !important;
+}
+
+/* line 72, ../sass/screen.scss */
+nav {
+  display: block;
+  float: right;
+  text-align: right;
+  width: 60%;
+}
+/* line 78, ../sass/screen.scss */
+nav a {
+  text-decoration: none;
+  color: #777;
+}
+/* line 83, ../sass/screen.scss */
+nav ul {
+  list-style: none;
+  padding-left: 0;
+}
+/* line 88, ../sass/screen.scss */
+nav li {
+  display: inline;
+}
+/* line 91, ../sass/screen.scss */
+nav li + li:before {
+  content: " · ";
+  color: #ccc;
+}
+
+/* line 99, ../sass/screen.scss */
+main {
+  clear: both;
+  overflow: hidden;
+  zoom: 1;
+  padding: 30px;
+  background: rgba(255, 255, 255, 0.9);
+  border-radius: 5px;
+}
+
+/* line 108, ../sass/screen.scss */
+main :first-child {
+  margin-top: 0;
+}
+
+/* line 112, ../sass/screen.scss */
+article {
+  display: block;
+  float: left;
+  width: 68%;
+}
+
+/* line 117, ../sass/screen.scss */
+article h2 {
+  font-size: 95%;
+}
+
+/* line 121, ../sass/screen.scss */
+article h3 {
+  font-size: 85%;
+  color: red;
+}
+
+/* line 126, ../sass/screen.scss */
+#game-metadata {
+  float: right;
+  width: 30%;
+  font-size: 87.5%;
+}
+
+/* line 133, ../sass/screen.scss */
+#game-metadata .description,
+#game-metadata .players {
+  background: rgba(0, 100, 200, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Container for moves on single game template. */
+/* line 140, ../sass/screen.scss */
+#moves {
+  float: left;
+  width: 68%;
+}
+
+/* Container for indivdiual games. */
+/* line 146, ../sass/screen.scss */
+.game {
+  overflow: hidden;
+  zoom: 1;
+  clear: both;
+}
+
+/* This finds any element. */
+/* line 154, ../sass/screen.scss */
+.game + .game:before,
+.move + .move:before {
+  font-family: "Arial Unicode MS";
+  color: #999;
+  content: "❖ ❖ ❖ ❖ ❖";
+  text-align: center;
+  display: block;
+  clear: both;
+  margin: 2em 0;
+}
+
+/* line 164, ../sass/screen.scss */
+.game h1,
+.game p {
+  float: left;
+  clear: left;
+  width: 48%;
+}
+
+/* line 171, ../sass/screen.scss */
+.game h2,
+.game ul {
+  float: right;
+  clear: right;
+  width: 48%;
+}
+
+/* line 177, ../sass/screen.scss */
+.game h3 {
+  float: right;
+  clear: right;
+  width: 45%;
+}
+
+/* line 183, ../sass/screen.scss */
+.game ul {
+  list-style: none;
+  margin-top: 0;
+  font-size: 90%;
+}
+
+/* line 189, ../sass/screen.scss */
+.move .meta {
+  font-size: 90%;
+  font-style: italic;
+  color: #999;
+  margin-top: 0;
+  margin-bottom: 4em;
+}
+
+/* line 197, ../sass/screen.scss */
+#responding, #response {
+  float: left;
+  padding-top: 30px;
+  text-align: left;
+  width: 48%;
+}
+
+/* line 204, ../sass/screen.scss */
+#response {
+  float: right;
+}
+
+/* line 208, ../sass/screen.scss */
+body > footer {
+  padding: 30px 0;
+  text-align: right;
+  font-size: 90%;
+}
+
+/* line 214, ../sass/screen.scss */
+body > footer a {
+  text-decoration: none;
+}
+
+/* line 218, ../sass/screen.scss */
+body > footer a + a:before {
+  content: " | ";
+  color: #bbb;
+}
+
+/* line 223, ../sass/screen.scss */
+#make-a-move-button {
+  float: right;
+  width: 30%;
+  font-size: 87.5%;
+}
+
+/* line 229, ../sass/screen.scss */
+.button {
+  width: 200px;
+  height: 30px;
+  line-height: 30px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: helvetica, arial;
+  display: block;
+  text-align: center;
+  position: relative;
+  background: #a8a8a8;
+  margin-top: 10px;
+  margin-bottom: 70px;
+  /*Background Gradients */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0d658e), color-stop(1, #0c577a));
+  background-image: -o-linear-gradient(bottom, #0d658e 0%, #0c577a 50%, #014d71 51%, #003e5c);
+  background-image: -moz-linear-gradient(bottom, #0d658e 0%, #0c577a 50%, #014d71 51%, #003e5c);
+  background-image: -webkit-linear-gradient(bottom, #0d658e 0%, #0c577a 50%, #014d71 51%, #003e5c);
+  background-image: -ms-linear-gradient(bottom, #0d658e 0%, #0c577a 50%, #014d71 51%, #003e5c);
+  background-image: linear-gradient(to bottom, #0d658e 0%, #0c577a 50%, #014d71 51%, #003e5c);
+  /*Border Radius */
+  border-radius: 10px;
+  border: 1px solid #368DBE;
+  border-top: 1px solid #C3D6DF;
+}
+
+/* line 267, ../sass/screen.scss */
+.button:link,
+.button:visited {
+  color: white;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* line 268, ../sass/screen.scss */
+.button:hover {
+  color: white;
+}
+
+/* line 269, ../sass/screen.scss */
+.button:active {
+  color: white;
+}
+
+/* line 271, ../sass/screen.scss */
+#make-a-move {
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 30px;
 }
