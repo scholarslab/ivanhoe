@@ -1,63 +1,341 @@
-/*
-Syntax error: Undefined mixin 'span-columns'.
-        on line 113 of /Users/jeremy/Sites/ivanhoe/wp-content/themes/ivanhoe/sass/screen.scss, in `span-columns'
-        from line 113 of /Users/jeremy/Sites/ivanhoe/wp-content/themes/ivanhoe/sass/screen.scss
+@charset "UTF-8";
+/* line 3, ../sass/screen.scss */
+* {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
 
-Backtrace:
-/Users/jeremy/Sites/ivanhoe/wp-content/themes/ivanhoe/sass/screen.scss:113:in `span-columns'
-/Users/jeremy/Sites/ivanhoe/wp-content/themes/ivanhoe/sass/screen.scss:113
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:253:in `visit_mixin'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:100:in `visit'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:320:in `visit_rule'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:100:in `visit'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `block in visit_children'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `map'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:53:in `visit_children'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:109:in `block in visit_children'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:121:in `with_environment'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:108:in `visit_children'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:37:in `block in visit'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:128:in `visit_root'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/base.rb:37:in `visit'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:100:in `visit'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/visitors/perform.rb:7:in `visit'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/tree/root_node.rb:20:in `render'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/engine.rb:315:in `_render'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/sass-3.2.12/lib/sass/engine.rb:262:in `render'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:140:in `block (2 levels) in compile'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:139:in `block in compile'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/logger.rb:45:in `red'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:138:in `compile'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:118:in `compile_if_required'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:103:in `block (2 levels) in run'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `each'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:101:in `block in run'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:126:in `timed'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/compiler.rb:100:in `run'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/commands/update_project.rb:45:in `perform'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/commands/base.rb:18:in `execute'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/commands/project_base.rb:19:in `execute'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:43:in `perform!'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/lib/compass/exec/sub_command_ui.rb:15:in `run!'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/bin/compass:30:in `block in <top (required)>'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/bin/compass:44:in `call'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/bin/compass:44:in `<top (required)>'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/bin/compass:23:in `load'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/bin/compass:23:in `<main>'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/bin/ruby_executable_hooks:15:in `eval'
-/Users/jeremy/.rvm/gems/ruby-2.1.0/bin/ruby_executable_hooks:15:in `<main>'
-*/
-body:before {
-  white-space: pre;
-  font-family: monospace;
-  content: "Syntax error: Undefined mixin 'span-columns'.\A         on line 113 of /Users/jeremy/Sites/ivanhoe/wp-content/themes/ivanhoe/sass/screen.scss, in `span-columns'\A         from line 113 of /Users/jeremy/Sites/ivanhoe/wp-content/themes/ivanhoe/sass/screen.scss"; }
+/* line 7, ../sass/screen.scss */
+html {
+  background: #f6f6f6;
+}
+
+/* line 11, ../sass/screen.scss */
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
+  *zoom: 1;
+  max-width: 59em;
+  _width: 59em;
+  padding-left: 1em;
+  padding-right: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  background-image: -webkit-gradient(linear, 0% 50%, 100% 50%, color-stop(0%, rgba(0, 0, 0, 0)), color-stop(0%, rgba(100, 100, 225, 0.25)), color-stop(6.77966%, rgba(100, 100, 225, 0.25)), color-stop(6.77966%, rgba(0, 0, 0, 0)), color-stop(8.47458%, rgba(0, 0, 0, 0)), color-stop(8.47458%, rgba(100, 100, 225, 0.25)), color-stop(15.25424%, rgba(100, 100, 225, 0.25)), color-stop(15.25424%, rgba(0, 0, 0, 0)), color-stop(16.94915%, rgba(0, 0, 0, 0)), color-stop(16.94915%, rgba(100, 100, 225, 0.25)), color-stop(23.72881%, rgba(100, 100, 225, 0.25)), color-stop(23.72881%, rgba(0, 0, 0, 0)), color-stop(25.42373%, rgba(0, 0, 0, 0)), color-stop(25.42373%, rgba(100, 100, 225, 0.25)), color-stop(32.20339%, rgba(100, 100, 225, 0.25)), color-stop(32.20339%, rgba(0, 0, 0, 0)), color-stop(33.89831%, rgba(0, 0, 0, 0)), color-stop(33.89831%, rgba(100, 100, 225, 0.25)), color-stop(40.67797%, rgba(100, 100, 225, 0.25)), color-stop(40.67797%, rgba(0, 0, 0, 0)), color-stop(42.37288%, rgba(0, 0, 0, 0)), color-stop(42.37288%, rgba(100, 100, 225, 0.25)), color-stop(49.15254%, rgba(100, 100, 225, 0.25)), color-stop(49.15254%, rgba(0, 0, 0, 0)), color-stop(50.84746%, rgba(0, 0, 0, 0)), color-stop(50.84746%, rgba(100, 100, 225, 0.25)), color-stop(57.62712%, rgba(100, 100, 225, 0.25)), color-stop(57.62712%, rgba(0, 0, 0, 0)), color-stop(59.32203%, rgba(0, 0, 0, 0)), color-stop(59.32203%, rgba(100, 100, 225, 0.25)), color-stop(66.10169%, rgba(100, 100, 225, 0.25)), color-stop(66.10169%, rgba(0, 0, 0, 0)), color-stop(67.79661%, rgba(0, 0, 0, 0)), color-stop(67.79661%, rgba(100, 100, 225, 0.25)), color-stop(74.57627%, rgba(100, 100, 225, 0.25)), color-stop(74.57627%, rgba(0, 0, 0, 0)), color-stop(76.27119%, rgba(0, 0, 0, 0)), color-stop(76.27119%, rgba(100, 100, 225, 0.25)), color-stop(83.05085%, rgba(100, 100, 225, 0.25)), color-stop(83.05085%, rgba(0, 0, 0, 0)), color-stop(84.74576%, rgba(0, 0, 0, 0)), color-stop(84.74576%, rgba(100, 100, 225, 0.25)), color-stop(91.52542%, rgba(100, 100, 225, 0.25)), color-stop(91.52542%, rgba(0, 0, 0, 0)), color-stop(93.22034%, rgba(0, 0, 0, 0)), color-stop(93.22034%, rgba(100, 100, 225, 0.25)), color-stop(100.0%, rgba(100, 100, 225, 0.25)), color-stop(100.0%, rgba(0, 0, 0, 0)), color-stop(100%, rgba(0, 0, 0, 0)));
+  background-image: -webkit-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(100, 100, 225, 0.25) 0%, rgba(100, 100, 225, 0.25) 6.77966%, rgba(0, 0, 0, 0) 6.77966%, rgba(0, 0, 0, 0) 8.47458%, rgba(100, 100, 225, 0.25) 8.47458%, rgba(100, 100, 225, 0.25) 15.25424%, rgba(0, 0, 0, 0) 15.25424%, rgba(0, 0, 0, 0) 16.94915%, rgba(100, 100, 225, 0.25) 16.94915%, rgba(100, 100, 225, 0.25) 23.72881%, rgba(0, 0, 0, 0) 23.72881%, rgba(0, 0, 0, 0) 25.42373%, rgba(100, 100, 225, 0.25) 25.42373%, rgba(100, 100, 225, 0.25) 32.20339%, rgba(0, 0, 0, 0) 32.20339%, rgba(0, 0, 0, 0) 33.89831%, rgba(100, 100, 225, 0.25) 33.89831%, rgba(100, 100, 225, 0.25) 40.67797%, rgba(0, 0, 0, 0) 40.67797%, rgba(0, 0, 0, 0) 42.37288%, rgba(100, 100, 225, 0.25) 42.37288%, rgba(100, 100, 225, 0.25) 49.15254%, rgba(0, 0, 0, 0) 49.15254%, rgba(0, 0, 0, 0) 50.84746%, rgba(100, 100, 225, 0.25) 50.84746%, rgba(100, 100, 225, 0.25) 57.62712%, rgba(0, 0, 0, 0) 57.62712%, rgba(0, 0, 0, 0) 59.32203%, rgba(100, 100, 225, 0.25) 59.32203%, rgba(100, 100, 225, 0.25) 66.10169%, rgba(0, 0, 0, 0) 66.10169%, rgba(0, 0, 0, 0) 67.79661%, rgba(100, 100, 225, 0.25) 67.79661%, rgba(100, 100, 225, 0.25) 74.57627%, rgba(0, 0, 0, 0) 74.57627%, rgba(0, 0, 0, 0) 76.27119%, rgba(100, 100, 225, 0.25) 76.27119%, rgba(100, 100, 225, 0.25) 83.05085%, rgba(0, 0, 0, 0) 83.05085%, rgba(0, 0, 0, 0) 84.74576%, rgba(100, 100, 225, 0.25) 84.74576%, rgba(100, 100, 225, 0.25) 91.52542%, rgba(0, 0, 0, 0) 91.52542%, rgba(0, 0, 0, 0) 93.22034%, rgba(100, 100, 225, 0.25) 93.22034%, rgba(100, 100, 225, 0.25) 100.0%, rgba(0, 0, 0, 0) 100.0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -moz-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(100, 100, 225, 0.25) 0%, rgba(100, 100, 225, 0.25) 6.77966%, rgba(0, 0, 0, 0) 6.77966%, rgba(0, 0, 0, 0) 8.47458%, rgba(100, 100, 225, 0.25) 8.47458%, rgba(100, 100, 225, 0.25) 15.25424%, rgba(0, 0, 0, 0) 15.25424%, rgba(0, 0, 0, 0) 16.94915%, rgba(100, 100, 225, 0.25) 16.94915%, rgba(100, 100, 225, 0.25) 23.72881%, rgba(0, 0, 0, 0) 23.72881%, rgba(0, 0, 0, 0) 25.42373%, rgba(100, 100, 225, 0.25) 25.42373%, rgba(100, 100, 225, 0.25) 32.20339%, rgba(0, 0, 0, 0) 32.20339%, rgba(0, 0, 0, 0) 33.89831%, rgba(100, 100, 225, 0.25) 33.89831%, rgba(100, 100, 225, 0.25) 40.67797%, rgba(0, 0, 0, 0) 40.67797%, rgba(0, 0, 0, 0) 42.37288%, rgba(100, 100, 225, 0.25) 42.37288%, rgba(100, 100, 225, 0.25) 49.15254%, rgba(0, 0, 0, 0) 49.15254%, rgba(0, 0, 0, 0) 50.84746%, rgba(100, 100, 225, 0.25) 50.84746%, rgba(100, 100, 225, 0.25) 57.62712%, rgba(0, 0, 0, 0) 57.62712%, rgba(0, 0, 0, 0) 59.32203%, rgba(100, 100, 225, 0.25) 59.32203%, rgba(100, 100, 225, 0.25) 66.10169%, rgba(0, 0, 0, 0) 66.10169%, rgba(0, 0, 0, 0) 67.79661%, rgba(100, 100, 225, 0.25) 67.79661%, rgba(100, 100, 225, 0.25) 74.57627%, rgba(0, 0, 0, 0) 74.57627%, rgba(0, 0, 0, 0) 76.27119%, rgba(100, 100, 225, 0.25) 76.27119%, rgba(100, 100, 225, 0.25) 83.05085%, rgba(0, 0, 0, 0) 83.05085%, rgba(0, 0, 0, 0) 84.74576%, rgba(100, 100, 225, 0.25) 84.74576%, rgba(100, 100, 225, 0.25) 91.52542%, rgba(0, 0, 0, 0) 91.52542%, rgba(0, 0, 0, 0) 93.22034%, rgba(100, 100, 225, 0.25) 93.22034%, rgba(100, 100, 225, 0.25) 100.0%, rgba(0, 0, 0, 0) 100.0%, rgba(0, 0, 0, 0) 100%);
+  background-image: -o-linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(100, 100, 225, 0.25) 0%, rgba(100, 100, 225, 0.25) 6.77966%, rgba(0, 0, 0, 0) 6.77966%, rgba(0, 0, 0, 0) 8.47458%, rgba(100, 100, 225, 0.25) 8.47458%, rgba(100, 100, 225, 0.25) 15.25424%, rgba(0, 0, 0, 0) 15.25424%, rgba(0, 0, 0, 0) 16.94915%, rgba(100, 100, 225, 0.25) 16.94915%, rgba(100, 100, 225, 0.25) 23.72881%, rgba(0, 0, 0, 0) 23.72881%, rgba(0, 0, 0, 0) 25.42373%, rgba(100, 100, 225, 0.25) 25.42373%, rgba(100, 100, 225, 0.25) 32.20339%, rgba(0, 0, 0, 0) 32.20339%, rgba(0, 0, 0, 0) 33.89831%, rgba(100, 100, 225, 0.25) 33.89831%, rgba(100, 100, 225, 0.25) 40.67797%, rgba(0, 0, 0, 0) 40.67797%, rgba(0, 0, 0, 0) 42.37288%, rgba(100, 100, 225, 0.25) 42.37288%, rgba(100, 100, 225, 0.25) 49.15254%, rgba(0, 0, 0, 0) 49.15254%, rgba(0, 0, 0, 0) 50.84746%, rgba(100, 100, 225, 0.25) 50.84746%, rgba(100, 100, 225, 0.25) 57.62712%, rgba(0, 0, 0, 0) 57.62712%, rgba(0, 0, 0, 0) 59.32203%, rgba(100, 100, 225, 0.25) 59.32203%, rgba(100, 100, 225, 0.25) 66.10169%, rgba(0, 0, 0, 0) 66.10169%, rgba(0, 0, 0, 0) 67.79661%, rgba(100, 100, 225, 0.25) 67.79661%, rgba(100, 100, 225, 0.25) 74.57627%, rgba(0, 0, 0, 0) 74.57627%, rgba(0, 0, 0, 0) 76.27119%, rgba(100, 100, 225, 0.25) 76.27119%, rgba(100, 100, 225, 0.25) 83.05085%, rgba(0, 0, 0, 0) 83.05085%, rgba(0, 0, 0, 0) 84.74576%, rgba(100, 100, 225, 0.25) 84.74576%, rgba(100, 100, 225, 0.25) 91.52542%, rgba(0, 0, 0, 0) 91.52542%, rgba(0, 0, 0, 0) 93.22034%, rgba(100, 100, 225, 0.25) 93.22034%, rgba(100, 100, 225, 0.25) 100.0%, rgba(0, 0, 0, 0) 100.0%, rgba(0, 0, 0, 0) 100%);
+  background-image: linear-gradient(left, rgba(0, 0, 0, 0) 0%, rgba(100, 100, 225, 0.25) 0%, rgba(100, 100, 225, 0.25) 6.77966%, rgba(0, 0, 0, 0) 6.77966%, rgba(0, 0, 0, 0) 8.47458%, rgba(100, 100, 225, 0.25) 8.47458%, rgba(100, 100, 225, 0.25) 15.25424%, rgba(0, 0, 0, 0) 15.25424%, rgba(0, 0, 0, 0) 16.94915%, rgba(100, 100, 225, 0.25) 16.94915%, rgba(100, 100, 225, 0.25) 23.72881%, rgba(0, 0, 0, 0) 23.72881%, rgba(0, 0, 0, 0) 25.42373%, rgba(100, 100, 225, 0.25) 25.42373%, rgba(100, 100, 225, 0.25) 32.20339%, rgba(0, 0, 0, 0) 32.20339%, rgba(0, 0, 0, 0) 33.89831%, rgba(100, 100, 225, 0.25) 33.89831%, rgba(100, 100, 225, 0.25) 40.67797%, rgba(0, 0, 0, 0) 40.67797%, rgba(0, 0, 0, 0) 42.37288%, rgba(100, 100, 225, 0.25) 42.37288%, rgba(100, 100, 225, 0.25) 49.15254%, rgba(0, 0, 0, 0) 49.15254%, rgba(0, 0, 0, 0) 50.84746%, rgba(100, 100, 225, 0.25) 50.84746%, rgba(100, 100, 225, 0.25) 57.62712%, rgba(0, 0, 0, 0) 57.62712%, rgba(0, 0, 0, 0) 59.32203%, rgba(100, 100, 225, 0.25) 59.32203%, rgba(100, 100, 225, 0.25) 66.10169%, rgba(0, 0, 0, 0) 66.10169%, rgba(0, 0, 0, 0) 67.79661%, rgba(100, 100, 225, 0.25) 67.79661%, rgba(100, 100, 225, 0.25) 74.57627%, rgba(0, 0, 0, 0) 74.57627%, rgba(0, 0, 0, 0) 76.27119%, rgba(100, 100, 225, 0.25) 76.27119%, rgba(100, 100, 225, 0.25) 83.05085%, rgba(0, 0, 0, 0) 83.05085%, rgba(0, 0, 0, 0) 84.74576%, rgba(100, 100, 225, 0.25) 84.74576%, rgba(100, 100, 225, 0.25) 91.52542%, rgba(0, 0, 0, 0) 91.52542%, rgba(0, 0, 0, 0) 93.22034%, rgba(100, 100, 225, 0.25) 93.22034%, rgba(100, 100, 225, 0.25) 100.0%, rgba(0, 0, 0, 0) 100.0%, rgba(0, 0, 0, 0) 100%);
+  background-position: left top;
+  -webkit-background-origin: content;
+  -moz-background-origin: content;
+  -ms-background-origin: content-box;
+  -o-background-origin: content-box;
+  background-origin: content-box;
+  -webkit-background-clip: content-box;
+  -moz-background-clip: content-box;
+  background-clip: content-box;
+}
+/* line 38, ../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+body:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* line 20, ../sass/screen.scss */
+a:link {
+  color: #37c;
+}
+/* line 21, ../sass/screen.scss */
+a:visited {
+  color: #39c;
+}
+/* line 22, ../sass/screen.scss */
+a:hover {
+  color: #8c3;
+  text-decoration: none;
+}
+/* line 23, ../sass/screen.scss */
+a:active {
+  color: #8a3;
+}
+
+/* line 26, ../sass/screen.scss */
+input[type=text], label, textarea {
+  display: block;
+}
+
+/* line 28, ../sass/screen.scss */
+img {
+  max-width: 100%;
+  max-height: 100%;
+  height: auto;
+}
+
+/* line 37, ../sass/screen.scss */
+label {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* line 43, ../sass/screen.scss */
+input[type=text], textarea {
+  width: 100%;
+  border-radius: 3px;
+  padding: 5px;
+  border: 1px solid rgba(0, 0, 0, 0.2);
+}
+
+/* line 51, ../sass/screen.scss */
+textarea {
+  display: block;
+}
+
+/* line 58, ../sass/screen.scss */
+.eyebrow {
+  margin: 0;
+  color: #777;
+  font-size: 90%;
+  font-weight: bold;
+}
+
+/* line 65, ../sass/screen.scss */
+.eyebrow + * {
+  margin-top: 0 !important;
+}
+
+/* line 72, ../sass/screen.scss */
+nav {
+  display: block;
+  float: right;
+  text-align: right;
+  width: 60%;
+}
+/* line 78, ../sass/screen.scss */
+nav a {
+  text-decoration: none;
+  color: #777;
+}
+/* line 83, ../sass/screen.scss */
+nav ul {
+  list-style: none;
+  padding-left: 0;
+}
+/* line 88, ../sass/screen.scss */
+nav li {
+  display: inline;
+}
+/* line 91, ../sass/screen.scss */
+nav li + li:before {
+  content: " · ";
+  color: #ccc;
+}
+
+/* line 99, ../sass/screen.scss */
+main {
+  clear: both;
+  overflow: hidden;
+  zoom: 1;
+  padding: 30px;
+  border-radius: 5px;
+}
+
+/* line 107, ../sass/screen.scss */
+main :first-child {
+  margin-top: 0;
+}
+
+/* line 111, ../sass/screen.scss */
+article {
+  width: 23.72881%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
+}
+
+/* line 114, ../sass/screen.scss */
+article h2 {
+  font-size: 95%;
+}
+
+/* line 118, ../sass/screen.scss */
+article h3 {
+  font-size: 85%;
+  color: red;
+}
+
+/* line 123, ../sass/screen.scss */
+#game-metadata {
+  float: right;
+  width: 30%;
+  font-size: 87.5%;
+}
+
+/* line 130, ../sass/screen.scss */
+#game-metadata .description,
+#game-metadata .players {
+  background: rgba(0, 100, 200, 0.1);
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+/* Container for moves on single game template. */
+/* line 137, ../sass/screen.scss */
+#moves {
+  float: left;
+  width: 68%;
+}
+
+/* Container for indivdiual games. */
+/* line 143, ../sass/screen.scss */
+.game {
+  width: 49.15254%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
+}
+
+/* This finds any element. */
+/* line 149, ../sass/screen.scss */
+.game + .game:before,
+.move + .move:before {
+  font-family: "Arial Unicode MS";
+  color: #999;
+  content: "❖ ❖ ❖ ❖ ❖";
+  text-align: center;
+  display: block;
+  clear: both;
+  margin: 2em 0;
+}
+
+/* line 159, ../sass/screen.scss */
+.game h1,
+.game p {
+  float: left;
+  clear: left;
+  width: 48%;
+}
+
+/* line 166, ../sass/screen.scss */
+.game h2,
+.game ul {
+  float: right;
+  clear: right;
+  width: 48%;
+}
+
+/* line 172, ../sass/screen.scss */
+.game h3 {
+  float: right;
+  clear: right;
+  width: 45%;
+}
+
+/* line 178, ../sass/screen.scss */
+.game ul {
+  list-style: none;
+  margin-top: 0;
+  font-size: 90%;
+}
+
+/* line 184, ../sass/screen.scss */
+.move .meta {
+  font-size: 90%;
+  font-style: italic;
+  color: #999;
+  margin-top: 0;
+  margin-bottom: 4em;
+}
+
+/* line 192, ../sass/screen.scss */
+#responding, #response {
+  float: left;
+  padding-top: 30px;
+  text-align: left;
+  width: 48%;
+}
+
+/* line 199, ../sass/screen.scss */
+#response {
+  float: right;
+}
+
+/* line 203, ../sass/screen.scss */
+body > footer {
+  padding: 30px 0;
+  text-align: right;
+  font-size: 90%;
+}
+
+/* line 209, ../sass/screen.scss */
+body > footer a {
+  text-decoration: none;
+}
+
+/* line 213, ../sass/screen.scss */
+body > footer a + a:before {
+  content: " | ";
+  color: #bbb;
+}
+
+/* line 218, ../sass/screen.scss */
+#make-a-move-button {
+  float: right;
+  width: 30%;
+  font-size: 87.5%;
+}
+
+/* line 224, ../sass/screen.scss */
+.button {
+  width: 200px;
+  height: 30px;
+  line-height: 30px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: helvetica, arial;
+  display: block;
+  text-align: center;
+  position: relative;
+  background: #a8a8a8;
+  margin-top: 10px;
+  margin-bottom: 70px;
+  /*Background Gradients */
+  background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, #0d658e), color-stop(1, #0c577a));
+  background-image: -o-linear-gradient(bottom, #0d658e 0%, #0c577a 50%, #014d71 51%, #003e5c);
+  background-image: -moz-linear-gradient(bottom, #0d658e 0%, #0c577a 50%, #014d71 51%, #003e5c);
+  background-image: -webkit-linear-gradient(bottom, #0d658e 0%, #0c577a 50%, #014d71 51%, #003e5c);
+  background-image: -ms-linear-gradient(bottom, #0d658e 0%, #0c577a 50%, #014d71 51%, #003e5c);
+  background-image: linear-gradient(to bottom, #0d658e 0%, #0c577a 50%, #014d71 51%, #003e5c);
+  /*Border Radius */
+  border-radius: 10px;
+  border: 1px solid #368DBE;
+  border-top: 1px solid #C3D6DF;
+}
+
+/* line 262, ../sass/screen.scss */
+.button:link,
+.button:visited {
+  color: white;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* line 263, ../sass/screen.scss */
+.button:hover {
+  color: white;
+}
+
+/* line 264, ../sass/screen.scss */
+.button:active {
+  color: white;
+}
+
+/* line 266, ../sass/screen.scss */
+#make-a-move {
+  width: 250px;
+  height: 50px;
+  line-height: 50px;
+  font-size: 30px;
+}
