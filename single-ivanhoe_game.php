@@ -41,16 +41,6 @@ if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_
     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
     <?php the_excerpt(); ?>
 	<?php
-		$ivanhoe_move_source = $post->ID;
-		$ivanhoe_param = array(
-		"parent_post" => $ivanhoe_game_id,
-		"move_source" => $ivanhoe_move_source
-		);
-
-		$url = add_query_arg(
-   		$ivanhoe_param,
-    	get_permalink(get_option('ivanhoe_move_page'))
-        );
 
         //Pulls post source and displays it
         ivanhoe_get_move_source($post);
@@ -59,7 +49,7 @@ if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_
         ivanhoe_get_move_responses( $post );
         ?>  
 
-<a href="<?php echo $url; ?>" class="button">Respond to this move</a>
+<a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a>
 
 </article>
 

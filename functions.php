@@ -270,4 +270,25 @@ function ivanhoe_get_move_responses( $post )
     <?php else : ?>
     <p>There are no responses to this post.</p>
     <?php endif;
-}           
+}    
+
+/*
+* Respond to move helper function
+*/
+
+function ivanhoe_response_form_url( $post )
+{
+    $url = "";
+
+    $ivanhoe_params = array(
+    "parent_post" => $post->post_parent,
+    "move_source" => $post->ID
+    );
+
+    $url = add_query_arg(
+        $ivanhoe_params,
+        get_permalink(get_option('ivanhoe_move_page'))
+    );
+
+    return $url;
+}       
