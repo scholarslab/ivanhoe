@@ -9,9 +9,22 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
  ?>
 
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
+
+    <div id = "make-a-move-button">
+        <?php
+        $url = add_query_arg(
+            "parent_post",
+            $ivanhoe_game_id,
+            get_permalink(get_option('ivanhoe_move_page'))
+        );
+        ?>
+        <a href="<?php echo $url; ?>" class="button" id="make-a-move">Make a move</a>
+
+        <?php the_content(); ?>
+    </div>
+
 <article>
     <h1><?php the_title(); ?></h1>
-    <?php the_content(); ?>
 
 <?php
 
@@ -64,16 +77,5 @@ if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_
 </article>
 
 <?php endwhile; endif; ?>
-
-<div id = "make-a-move-button">
-<?php
-$url = add_query_arg(
-    "parent_post",
-    $ivanhoe_game_id,
-    get_permalink(get_option('ivanhoe_move_page'))
-);
-?>
-<a href="<?php echo $url; ?>" class="button" id="make-a-move">Make a move</a>
-</div>
 
 <?php get_footer(); ?>
