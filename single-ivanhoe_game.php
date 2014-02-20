@@ -37,9 +37,15 @@ if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_
 		$url = add_query_arg(
    		$ivanhoe_param,
     	get_permalink(get_option('ivanhoe_move_page'))
+        );
 
-);
-?>
+        //Pulls post source and displays it
+        ivanhoe_get_move_source($post);
+
+        //Pulls post responses and displays them
+        ivanhoe_get_move_responses( $post );
+        ?>  
+
 <a href="<?php echo $url; ?>" class="button">Respond to this move</a>
 
 </article>

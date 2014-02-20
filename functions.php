@@ -223,3 +223,51 @@ function ivanhoe_redirect_canonical( $redirect_url, $requested_url ){
 }
 
 add_filter( 'redirect_canonical', 'ivanhoe_redirect_canonical', 10, 2 );
+
+/*
+* Calls the source metadata for each move and displays it 
+*/
+
+function ivanhoe_get_move_source( $post )
+{
+    $post_source = get_post_meta($post->ID, 'Ivanhoe Move Source', true);
+    $source_title = get_the_title($post_source);
+    $source_permalink = get_permalink($post_source);
+    if ( !empty($post_source) )
+    { 
+       echo "Source post:";
+    }   
+    ?>
+    <a href="<?php echo $source_permalink ?>"><?php echo $source_title ?></a>
+    <?php
+}
+
+/*
+* Gets responses for a move and displays them
+*/
+
+function ivanhoe_get_move_responses( $post )
+{
+    $args = array(
+        'post_type' => 'ivanhoe_move',
+        'post_per_page' => -1,
+        'meta_key' => 'Ivanhoe Move Source',
+        'meta_value' => $post->ID,
+        'meta_value_compare' => '='
+        );
+
+    $source_query = new WP_Query( $args );
+
+    if ($source_query->have_posts() ) : ?>
+    <h2>Responses</h2>
+    <ul>
+    <?php while( $source_query->have_posts() ) : $source_query->the_post(); ?>
+
+    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>  
+
+    <?php endwhile; ?>
+    </ul>
+    <?php else : ?>
+    <p>There are no responses to this post.</p>
+    <?php endif;
+}           
