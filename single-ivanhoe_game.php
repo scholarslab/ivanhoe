@@ -12,15 +12,23 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
 
     <div id = "make-a-move-button">
         <?php
-        $url = add_query_arg(
-            "parent_post",
-            $ivanhoe_game_id,
-            get_permalink(get_option('ivanhoe_move_page'))
-        );
+
+        if ( ivanhoe_user_has_role( $post->ID ) ) :
+            $url = add_query_arg(
+                "parent_post",
+                $ivanhoe_game_id,
+                get_permalink(get_option('ivanhoe_move_page'))
+            );
         ?>
         <a href="<?php echo $url; ?>" class="button" id="make-a-move">Make a move</a>
+        <?php else : ?>
 
+        <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button">Make a Role!</a>
+
+    <?php endif; ?>
+        
         <?php the_content(); ?>
+
     </div>
 
 <article>
