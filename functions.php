@@ -328,7 +328,7 @@ function ivanhoe_user_has_role($game_id, $user_id=null) {
         );
     $role = get_posts( $args );
     if ($role) {
-        return true;
+        return $role;
     }
 
     return false;

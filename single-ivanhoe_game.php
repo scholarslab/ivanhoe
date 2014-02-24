@@ -13,7 +13,7 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
     <div id = "make-a-move-button">
         <?php
 
-        if ( ivanhoe_user_has_role( $post->ID ) ) :
+        if ( $role = ivanhoe_user_has_role( $post->ID ) ) :
             $url = add_query_arg(
                 "parent_post",
                 $ivanhoe_game_id,
