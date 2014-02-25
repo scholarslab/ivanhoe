@@ -49,9 +49,12 @@ if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_
     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
         
         <?php 
+        
+
             $args = array(
                 'author' => $post->post_author,
-                'p' => $ivanhoe_game_id
+                'post_parent' => $ivanhoe_game_id,
+                'post_type' => 'ivanhoe_role'
                 );
 
             $role_query = new WP_Query( $args );
@@ -62,9 +65,12 @@ if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_
             endwhile;
             endif;
 
+            wp_reset_postdata();
         ?>    
+
+             <?php the_excerpt(); ?>
     
-    <?php the_excerpt(); ?>
+   
 	<?php
 
         //Pulls post source and displays it
