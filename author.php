@@ -27,6 +27,7 @@
 
 <ul>
 	<li><?php the_title(); ?></li>
+	<li><a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php echo get_the_title( $post->post_parent ); ?></a></li>
 </ul>	
 
 <?php
