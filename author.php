@@ -26,9 +26,36 @@
 ?>
 
 <ul>
-	<li><?php the_title(); ?></li>
-	<li><a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php echo get_the_title( $post->post_parent ); ?></a></li>
+	<li>Game title: <a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php echo get_the_title( $post->post_parent ); ?></a></li>
+	<li>Role: <?php the_title(); ?></li>
 </ul>	
+
+<?php 
+	$args = array
+	(
+		'post_type' => 'ivanhoe_move',
+		'post_parent' => $post->post_parent,
+		'author' => $author_name
+	);	
+
+	$moves_per_role_query = new WP_Query( $args );
+
+	if ($moves_per_role_query->have_posts()) : while($moves_per_role_query->have_posts()) : $moves_per_role_query->the_post();
+
+?>
+
+<ul>
+	<li><?php the_title(); ?></li>
+</ul>
+
+<?php	
+
+	endwhile;
+	endif;
+
+	wp_reset_postdata();
+
+?>
 
 <?php
 
