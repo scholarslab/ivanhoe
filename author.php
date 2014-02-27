@@ -25,10 +25,10 @@
 	if ($author_role_query->have_posts()) : while($author_role_query->have_posts()) : $author_role_query->the_post();	
 ?>
 
-<ul>
-	<li>Game title: <a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php echo get_the_title( $post->post_parent ); ?></a></li>
-	<li>Role: <?php the_title(); ?></li>
-</ul>	
+
+<p><strong>Game title: </strong><a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php echo get_the_title( $post->post_parent ); ?></a></p>
+<p><strong>Role: </strong><?php the_title(); ?></p>
+	
 
 <?php 
 	$args = array
