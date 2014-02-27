@@ -181,25 +181,30 @@ function ivanhoe_register_nav_menus() {
 
 add_action( 'init', 'ivanhoe_register_nav_menus' );
 
-add_action( 'admin_init', 'ivanhoe_create_move_form_page');
+add_action( 'admin_init', 'ivanhoe_create_form_pages');
 
-function ivanhoe_create_move_form_page()
+function ivanhoe_create_form_pages()
 {
     if (! get_option('ivanhoe_installed')) {
+        $pages = array( 
+            'ivanhoe_move' => 'Make a Move',
+            'ivanhoe_role' => 'Make a Role'
+            );
         $args = array(
-            'post_title' => 'Make a Move',
             'post_type' => 'page',
             'post_author' => '1',
             'post_status' => 'publish',
             );
-        $ivanhoe_page = wp_insert_post($args);
+        foreach ($pages as $page => $title) {
+            $args['post_title'] = $title;
+            $ivanhoe_page = wp_insert_post($args);
 
-        if ($ivanhoe_page && !is_wp_error($ivanhoe_page)) {
-            update_post_meta( $ivanhoe_page, '_wp_page_template', 'new_ivanhoe_move.php' );
-            update_option( 'ivanhoe_move_page', $ivanhoe_page );
+            if ($ivanhoe_page && !is_wp_error($ivanhoe_page)) {
+                update_post_meta( $ivanhoe_page, '_wp_page_template', 'new_' . $page. '.php' );
+                update_option( $page . '_page', $ivanhoe_page );
+            }
         }
         update_option( 'ivanhoe_installed', true );
-
     }
 }
 
@@ -291,4 +296,40 @@ function ivanhoe_response_form_url( $post )
     );
 
     return $url;
-}       
+}   
+
+function ivanhoe_role_form_url( $post )
+{
+    $url = "";
+
+    $ivanhoe_params = array(
+    "parent_post" => $post->ID,
+    );
+
+    $url = add_query_arg(
+        $ivanhoe_params,
+        get_permalink(get_option('ivanhoe_role_page'))
+    );
+
+    return $url;
+}
+
+/*
+* Helper for checking if user has a role
+*/
+
+function ivanhoe_user_has_role($game_id, $user_id=null) {
+    // WP Query to find role post type for game ID and user ID.
+    $user_id = $user_id ? $user_id : get_current_user_id();
+    $args = array(
+        'post_parent' => $game_id,
+        'post_author' => $user_id,
+        'post_type' => 'ivanhoe_role'
+        );
+    $role = get_posts( $args );
+    if ($role) {
+        return $role;
+    }
+
+    return false;
+}
