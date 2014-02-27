@@ -57,8 +57,11 @@ if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_
 
             $role_query = new WP_Query( $args );
             if( $role_query->have_posts() ) : while( $role_query->have_posts() ) : $role_query->the_post();
+        ?>    
 
-            the_title();
+        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
+
+        <?php
 
             endwhile;
             endif;
