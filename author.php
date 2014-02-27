@@ -35,7 +35,8 @@
 	(
 		'post_type' => 'ivanhoe_move',
 		'post_parent' => $post->post_parent,
-		'author' => $author_name
+		'author' => $author_name,
+		'posts_per_page' => '5'
 	);	
 
 	$moves_per_role_query = new WP_Query( $args );
