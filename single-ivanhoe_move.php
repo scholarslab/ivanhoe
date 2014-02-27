@@ -8,6 +8,8 @@
 		ivanhoe_get_move_responses( $post );
 	?>	
 
+	<p>Written by: <?php the_author_posts_link(); ?></p>
+
 	<a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a>
 
 	<a href="<?php echo get_permalink( $post->post_parent ); ?>">Return to game</a>
