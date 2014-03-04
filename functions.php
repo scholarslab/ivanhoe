@@ -324,10 +324,11 @@ function ivanhoe_user_has_role($game_id, $user_id=null) {
     if ($user_id) {
         $args = array(
             'post_parent' => $game_id,
-            'post_author' => $user_id,
+            'author' => $user_id,
             'post_type' => 'ivanhoe_role'
             );
-        $role = get_posts( $args );
+        $posts = get_posts($args);
+        $role = reset($posts);
         if ($role) {
             return $role;
         }
