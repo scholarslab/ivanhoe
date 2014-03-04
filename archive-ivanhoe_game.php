@@ -8,7 +8,7 @@ if ( have_posts()) : while(have_posts()) : the_post(); ?>
 </article>
 
 <?php endwhile; else : ?>
-<p>OMG NO POSTS!!!!!</p>
+<p>No one has made a move yet in this game.  Make the first move!</p>
 <?php endif; ?>
 
 <?php get_footer(); ?>

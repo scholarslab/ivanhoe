@@ -10,7 +10,7 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
 
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 
-    <div id = "make-a-move-button">
+    <div id = "right-column">
         <?php
 
         if ( $role = ivanhoe_user_has_role( $post->ID ) ) :
@@ -71,7 +71,7 @@ if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_
 
 <?php else : ?>
 
-<p>OMG NO POSTS!!!!!</p>
+<p>No one has made a move yet in this game.  Make the first move!</p>
 <?php endif; ?>
 
 <?php $wp_query = $original_query; ?>
