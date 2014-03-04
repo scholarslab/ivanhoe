@@ -321,15 +321,17 @@ function ivanhoe_role_form_url( $post )
 function ivanhoe_user_has_role($game_id, $user_id=null) {
     // WP Query to find role post type for game ID and user ID.
     $user_id = $user_id ? $user_id : get_current_user_id();
-    $args = array(
-        'post_parent' => $game_id,
-        'post_author' => $user_id,
-        'post_type' => 'ivanhoe_role'
-        );
-    $role = get_posts( $args );
-    if ($role) {
-        return $role;
+    if ($user_id) {
+        $args = array(
+            'post_parent' => $game_id,
+            'post_author' => $user_id,
+            'post_type' => 'ivanhoe_role'
+            );
+        $role = get_posts( $args );
+        if ($role) {
+            return $role;
+        }
+        return false;
     }
-
     return false;
 }
