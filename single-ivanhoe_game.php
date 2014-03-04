@@ -10,7 +10,7 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
 
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 
-    <div id = "make-a-move-button">
+    <div id = "right-column">
         <?php
 
         if ( $role = ivanhoe_user_has_role( $post->ID ) ) :
