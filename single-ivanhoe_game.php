@@ -90,7 +90,7 @@ if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_
 
 <?php else : ?>
 
-<p>OMG NO POSTS!!!!!</p>
+<p>No one has made a move yet in this game.  Make the first move!</p>
 <?php endif; ?>
 
 <?php $wp_query = $original_query; ?>
