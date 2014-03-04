@@ -48,26 +48,7 @@ if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_
 <article>
     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
         
-        <?php 
-            $args = array(
-                'author' => $post->post_author,
-                'post_parent' => $ivanhoe_game_id,
-                'post_type' => 'ivanhoe_role'
-                );
-
-            $role_query = new WP_Query( $args );
-            if( $role_query->have_posts() ) : while( $role_query->have_posts() ) : $role_query->the_post();
-        ?>    
-
-        <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-
-        <?php
-
-            endwhile;
-            endif;
-
-            wp_reset_postdata();
-        ?>    
+      <?php the_author_posts_link(); ?>  
 
         <?php the_excerpt(); ?>
     

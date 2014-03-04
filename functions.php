@@ -335,3 +335,33 @@ function ivanhoe_user_has_role($game_id, $user_id=null) {
     }
     return false;
 }
+
+/* 
+* Displays role name
+*/
+
+function ivanhoe_display_role_name ( $link )
+{
+    global $authordata, $post;
+    $args = array (
+        'post_type' => 'ivanhoe_role',
+        'author' => $authordata->ID,
+        'post_parent' => $post->post_parent
+        );
+    //$query = new WP_Query($args);
+    //$posts = $query->get_posts();
+    $posts = get_posts($args);
+    $role = reset($posts);
+    if ( $role ){
+        $link = sprintf(
+            '<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
+            esc_url( get_permalink($role->ID) ),
+            esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) ),
+            $role->post_title    
+            );
+    }
+
+    return $link;
+}
+
+add_filter( 'the_author_posts_link', 'ivanhoe_display_role_name', 10, 1);
