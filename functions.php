@@ -275,6 +275,7 @@ function ivanhoe_get_move_responses( $post )
     <?php else : ?>
     <p>There are no responses to this post.</p>
     <?php endif;
+    wp_reset_postdata();
 }    
 
 /*
