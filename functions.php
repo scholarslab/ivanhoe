@@ -181,25 +181,30 @@ function ivanhoe_register_nav_menus() {
 
 add_action( 'init', 'ivanhoe_register_nav_menus' );
 
-add_action( 'admin_init', 'ivanhoe_create_move_form_page');
+add_action( 'admin_init', 'ivanhoe_create_form_pages');
 
-function ivanhoe_create_move_form_page()
+function ivanhoe_create_form_pages()
 {
     if (! get_option('ivanhoe_installed')) {
+        $pages = array( 
+            'ivanhoe_move' => 'Make a Move',
+            'ivanhoe_role' => 'Make a Role'
+            );
         $args = array(
-            'post_title' => 'Make a Move',
             'post_type' => 'page',
             'post_author' => '1',
             'post_status' => 'publish',
             );
-        $ivanhoe_page = wp_insert_post($args);
+        foreach ($pages as $page => $title) {
+            $args['post_title'] = $title;
+            $ivanhoe_page = wp_insert_post($args);
 
-        if ($ivanhoe_page && !is_wp_error($ivanhoe_page)) {
-            update_post_meta( $ivanhoe_page, '_wp_page_template', 'new_ivanhoe_move.php' );
-            update_option( 'ivanhoe_move_page', $ivanhoe_page );
+            if ($ivanhoe_page && !is_wp_error($ivanhoe_page)) {
+                update_post_meta( $ivanhoe_page, '_wp_page_template', 'new_' . $page. '.php' );
+                update_option( $page . '_page', $ivanhoe_page );
+            }
         }
         update_option( 'ivanhoe_installed', true );
-
     }
 }
 
@@ -223,3 +228,142 @@ function ivanhoe_redirect_canonical( $redirect_url, $requested_url ){
 }
 
 add_filter( 'redirect_canonical', 'ivanhoe_redirect_canonical', 10, 2 );
+
+/*
+* Calls the source metadata for each move and displays it 
+*/
+
+function ivanhoe_get_move_source( $post )
+{
+    $post_source = get_post_meta($post->ID, 'Ivanhoe Move Source', true);
+    $source_title = get_the_title($post_source);
+    $source_permalink = get_permalink($post_source);
+    if ( !empty($post_source) )
+    { 
+       echo "Source post:";
+    }   
+    ?>
+    <a href="<?php echo $source_permalink ?>"><?php echo $source_title ?></a>
+    <?php
+}
+
+/*
+* Gets responses for a move and displays them
+*/
+
+function ivanhoe_get_move_responses( $post )
+{
+    $args = array(
+        'post_type' => 'ivanhoe_move',
+        'post_per_page' => -1,
+        'meta_key' => 'Ivanhoe Move Source',
+        'meta_value' => $post->ID,
+        'meta_value_compare' => '='
+        );
+
+    $source_query = new WP_Query( $args );
+
+    if ($source_query->have_posts() ) : ?>
+    <h2>Responses</h2>
+    <ul>
+    <?php while( $source_query->have_posts() ) : $source_query->the_post(); ?>
+
+    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>  
+
+    <?php endwhile; ?>
+    </ul>
+    <?php else : ?>
+    <p>There are no responses to this post.</p>
+    <?php endif;
+    wp_reset_postdata();
+}    
+
+/*
+* Respond to move helper function
+*/
+
+function ivanhoe_response_form_url( $post )
+{
+    $url = "";
+
+    $ivanhoe_params = array(
+    "parent_post" => $post->post_parent,
+    "move_source" => $post->ID
+    );
+
+    $url = add_query_arg(
+        $ivanhoe_params,
+        get_permalink(get_option('ivanhoe_move_page'))
+    );
+
+    return $url;
+}   
+
+function ivanhoe_role_form_url( $post )
+{
+    $url = "";
+
+    $ivanhoe_params = array(
+    "parent_post" => $post->ID,
+    );
+
+    $url = add_query_arg(
+        $ivanhoe_params,
+        get_permalink(get_option('ivanhoe_role_page'))
+    );
+
+    return $url;
+}
+
+/*
+* Helper for checking if user has a role
+*/
+
+function ivanhoe_user_has_role($game_id, $user_id=null) {
+    // WP Query to find role post type for game ID and user ID.
+    $user_id = $user_id ? $user_id : get_current_user_id();
+    if ($user_id) {
+        $args = array(
+            'post_parent' => $game_id,
+            'author' => $user_id,
+            'post_type' => 'ivanhoe_role'
+            );
+        $posts = get_posts($args);
+        $role = reset($posts);
+        if ($role) {
+            return $role;
+        }
+        return false;
+    }
+    return false;
+}
+
+/* 
+* Displays role name
+*/
+
+function ivanhoe_display_role_name ( $link )
+{
+    global $authordata, $post;
+    $args = array (
+        'post_type' => 'ivanhoe_role',
+        'author' => $authordata->ID,
+        'post_parent' => $post->post_parent
+        );
+    //$query = new WP_Query($args);
+    //$posts = $query->get_posts();
+    $posts = get_posts($args);
+    $role = reset($posts);
+    if ( $role ){
+        $link = sprintf(
+            '<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
+            esc_url( get_permalink($role->ID) ),
+            esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) ),
+            $role->post_title    
+            );
+    }
+
+    return $link;
+}
+
+add_filter( 'the_author_posts_link', 'ivanhoe_display_role_name', 10, 1);

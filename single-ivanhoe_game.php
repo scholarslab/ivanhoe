@@ -9,9 +9,30 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
  ?>
 
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
+
+    <div id = "right-column">
+        <?php
+
+        if ( $role = ivanhoe_user_has_role( $post->ID ) ) :
+            $url = add_query_arg(
+                "parent_post",
+                $ivanhoe_game_id,
+                get_permalink(get_option('ivanhoe_move_page'))
+            );
+        ?>
+        <a href="<?php echo $url; ?>" class="button" id="make-a-move">Make a move</a>
+        <?php else : ?>
+
+        <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button">Make a Role!</a>
+
+    <?php endif; ?>
+        
+        <?php the_content(); ?>
+
+    </div>
+
 <article>
     <h1><?php the_title(); ?></h1>
-    <?php the_content(); ?>
 
 <?php
 
@@ -26,21 +47,21 @@ $wp_query = new WP_Query( $args );
 if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_post(); ?>
 <article>
     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-    <?php the_excerpt(); ?>
+        
+      <?php the_author_posts_link(); ?>  
+
+        <?php the_excerpt(); ?>
+    
 	<?php
-		$ivanhoe_move_source = $post->ID;
-		$ivanhoe_param = array(
-		"parent_post" => $ivanhoe_game_id,
-		"move_source" => $ivanhoe_move_source
-		);
 
-		$url = add_query_arg(
-   		$ivanhoe_param,
-    	get_permalink(get_option('ivanhoe_move_page'))
+        //Pulls post source and displays it
+        ivanhoe_get_move_source($post);
 
-);
-?>
-<a href="<?php echo $url; ?>" class="button">Respond to this move</a>
+        //Pulls post responses and displays them
+        ivanhoe_get_move_responses( $post );
+    ?>  
+
+<a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a>
 
 </article>
 
@@ -50,7 +71,7 @@ if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_
 
 <?php else : ?>
 
-<p>OMG NO POSTS!!!!!</p>
+<p>No one has made a move yet in this game.  Make the first move!</p>
 <?php endif; ?>
 
 <?php $wp_query = $original_query; ?>
@@ -58,16 +79,5 @@ if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_
 </article>
 
 <?php endwhile; endif; ?>
-
-<div id = "make-a-move-button">
-<?php
-$url = add_query_arg(
-    "parent_post",
-    $ivanhoe_game_id,
-    get_permalink(get_option('ivanhoe_move_page'))
-);
-?>
-<a href="<?php echo $url; ?>" class="button" id="make-a-move">Make a move</a>
-</div>
 
 <?php get_footer(); ?>

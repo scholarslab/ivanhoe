@@ -27,6 +27,11 @@
 
 <?php wp_nav_menu(array('theme_location' => 'ivanhoe_default', 'menu' => 'ivanhoe_default', 'container'=>'nav')); ?>
 
+<?php
+	$current_url = add_query_arg( $wp->query_string, '', home_url( $wp->request) );
+
+	wp_loginout( $current_url ); ?>
+
 </header>
 
 <main>
