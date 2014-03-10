@@ -169,33 +169,37 @@ main :first-child {
   display: inline;
 }
 
-/* line 125, ../sass/screen.scss */
+/* line 126, ../sass/screen.scss */
+article .move {
+  margin-bottom: 70px;
+}
+/* line 130, ../sass/screen.scss */
 article h3 {
   font-size: 85%;
   color: red;
 }
 
-/* line 130, ../sass/screen.scss */
+/* line 136, ../sass/screen.scss */
 #game-metadata {
   float: right;
   width: 30%;
   font-size: 87.5%;
 }
-/* line 136, ../sass/screen.scss */
+/* line 142, ../sass/screen.scss */
 #game-metadata.description, #game-metadata.players {
   background: rgba(0, 100, 200, 0.1);
   padding: 20px;
   margin-bottom: 20px;
 }
 
-/* line 144, ../sass/screen.scss */
+/* line 150, ../sass/screen.scss */
 .game ul {
   list-style: none;
   margin-top: 0;
   font-size: 90%;
 }
 
-/* line 150, ../sass/screen.scss */
+/* line 156, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   font-style: italic;
@@ -204,25 +208,25 @@ article h3 {
   margin-bottom: 4em;
 }
 
-/* line 159, ../sass/screen.scss */
+/* line 165, ../sass/screen.scss */
 body > footer {
   padding: 30px 0;
   text-align: right;
   font-size: 90%;
 }
 
-/* line 165, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
 body > footer a {
   text-decoration: none;
 }
 
-/* line 169, ../sass/screen.scss */
+/* line 175, ../sass/screen.scss */
 body > footer a + a:before {
   content: " | ";
   color: #bbb;
 }
 
-/* line 175, ../sass/screen.scss */
+/* line 181, ../sass/screen.scss */
 .button {
   width: 200px;
   height: 30px;
@@ -236,7 +240,6 @@ body > footer a + a:before {
   position: relative;
   background: #a8a8a8;
   margin-top: 10px;
-  margin-bottom: 70px;
   /*Background Gradients */
   background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #0d658e), color-stop(50%, #0c577a), color-stop(51%, #014d71), color-stop(100%, #003e5c));
   background-image: -webkit-linear-gradient(bottom, #0d658e, #0c577a 50%, #014d71 51%, #003e5c);
@@ -252,16 +255,16 @@ body > footer a + a:before {
   border-top: 1px solid #C3D6DF;
 }
 
-/* line 202, ../sass/screen.scss */
+/* line 207, ../sass/screen.scss */
 .button:link, .button:visited {
   color: white;
   color: rgba(255, 255, 255, 0.85);
 }
-/* line 203, ../sass/screen.scss */
+/* line 208, ../sass/screen.scss */
 .button:hover {
   color: white;
 }
-/* line 204, ../sass/screen.scss */
+/* line 209, ../sass/screen.scss */
 .button:active {
   color: white;
 }

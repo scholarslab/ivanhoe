@@ -122,9 +122,15 @@ main :first-child {
   @include span-columns(9);
 }
 
-article h3 {
-  font-size: 85%;
-  color: red;
+article {
+  .move {
+    margin-bottom: 70px;
+  }
+
+  h3 {
+    font-size: 85%;
+    color: red;
+  }
 }
 
 #game-metadata {
@@ -185,7 +191,6 @@ body > footer a + a:before {
   position: relative;
   background: #a8a8a8;
   margin-top: 10px;
-  margin-bottom: 70px;
 
   /*Background Gradients */
   @include background-image(linear-gradient(bottom, #0d658e, #0c577a 50%, #014d71 51%, #003e5c));
@@ -203,5 +208,6 @@ body > footer a + a:before {
   &:hover {color: white;}
   &:active {color: white;}
 }
+
 
 
