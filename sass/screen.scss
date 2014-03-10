@@ -122,8 +122,21 @@ main :first-child {
   @include span-columns(9);
 }
 
+
 article {
-  .move {
+  &.single-move {
+    @include span-columns(12);
+  }
+
+  &.role{
+    @include span-columns(12);
+  }
+
+  &.insert-media{
+  @include span-columns(12);
+  }
+
+  &.move {
     margin-bottom: 70px;
   }
 
@@ -207,6 +220,10 @@ body > footer a + a:before {
   &:visited {color: white; color: rgba(255, 255, 255, 0.85);}
   &:hover {color: white;}
   &:active {color: white;}
+}
+
+#return-button{
+  margin-top: 20px;
 }
 
 

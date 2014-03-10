@@ -169,37 +169,58 @@ main :first-child {
   display: inline;
 }
 
-/* line 126, ../sass/screen.scss */
-article .move {
+/* line 127, ../sass/screen.scss */
+article.single-move {
+  width: 100%;
+  float: left;
+  margin-right: 2.12766%;
+  display: inline;
+}
+/* line 131, ../sass/screen.scss */
+article.role {
+  width: 100%;
+  float: left;
+  margin-right: 2.12766%;
+  display: inline;
+}
+/* line 135, ../sass/screen.scss */
+article.insert-media {
+  width: 100%;
+  float: left;
+  margin-right: 2.12766%;
+  display: inline;
+}
+/* line 139, ../sass/screen.scss */
+article.move {
   margin-bottom: 70px;
 }
-/* line 130, ../sass/screen.scss */
+/* line 143, ../sass/screen.scss */
 article h3 {
   font-size: 85%;
   color: red;
 }
 
-/* line 136, ../sass/screen.scss */
+/* line 149, ../sass/screen.scss */
 #game-metadata {
   float: right;
   width: 30%;
   font-size: 87.5%;
 }
-/* line 142, ../sass/screen.scss */
+/* line 155, ../sass/screen.scss */
 #game-metadata.description, #game-metadata.players {
   background: rgba(0, 100, 200, 0.1);
   padding: 20px;
   margin-bottom: 20px;
 }
 
-/* line 150, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 .game ul {
   list-style: none;
   margin-top: 0;
   font-size: 90%;
 }
 
-/* line 156, ../sass/screen.scss */
+/* line 169, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   font-style: italic;
@@ -208,25 +229,25 @@ article h3 {
   margin-bottom: 4em;
 }
 
-/* line 165, ../sass/screen.scss */
+/* line 178, ../sass/screen.scss */
 body > footer {
   padding: 30px 0;
   text-align: right;
   font-size: 90%;
 }
 
-/* line 171, ../sass/screen.scss */
+/* line 184, ../sass/screen.scss */
 body > footer a {
   text-decoration: none;
 }
 
-/* line 175, ../sass/screen.scss */
+/* line 188, ../sass/screen.scss */
 body > footer a + a:before {
   content: " | ";
   color: #bbb;
 }
 
-/* line 181, ../sass/screen.scss */
+/* line 194, ../sass/screen.scss */
 .button {
   width: 200px;
   height: 30px;
@@ -255,16 +276,21 @@ body > footer a + a:before {
   border-top: 1px solid #C3D6DF;
 }
 
-/* line 207, ../sass/screen.scss */
+/* line 220, ../sass/screen.scss */
 .button:link, .button:visited {
   color: white;
   color: rgba(255, 255, 255, 0.85);
 }
-/* line 208, ../sass/screen.scss */
+/* line 221, ../sass/screen.scss */
 .button:hover {
   color: white;
 }
-/* line 209, ../sass/screen.scss */
+/* line 222, ../sass/screen.scss */
 .button:active {
   color: white;
+}
+
+/* line 225, ../sass/screen.scss */
+#return-button {
+  margin-top: 20px;
 }
