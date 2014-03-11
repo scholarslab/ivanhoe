@@ -235,16 +235,22 @@ add_filter( 'redirect_canonical', 'ivanhoe_redirect_canonical', 10, 2 );
 
 function ivanhoe_get_move_source( $post )
 {
-    $post_source = get_post_meta($post->ID, 'Ivanhoe Move Source', true);
-    $source_title = get_the_title($post_source);
-    $source_permalink = get_permalink($post_source);
-    if ( !empty($post_source) )
-    { 
-       echo "Source post:";
-    }   
-    ?>
-    <a href="<?php echo $source_permalink ?>"><?php echo $source_title ?></a>
-    <?php
+    // Set $html to an empty string.
+    $html = '';
+
+    // Get the Move Source ID from custom post metadata.
+    $source_id = get_post_meta($post->ID, 'Ivanhoe Move Source', true);
+
+    // Check if $source_id isn't 0 and if we can get another post with its value.
+    if ( $source_id && $source = get_post($source_id) ) {
+
+        // Set $html to a string with a link to source post.
+        $html = 'Source post: <a href="'.get_permalink($source->ID).'">'.$source->post_title.'</a>';
+
+    }
+
+    // Print out the value of $html.
+    echo $html;
 }
 
 /*
