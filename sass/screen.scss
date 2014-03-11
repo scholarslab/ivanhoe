@@ -131,10 +131,6 @@ article {
     @include span-columns(12);
   }
 
-  &.insert-media{
-  @include span-columns(12);
-  }
-
   &.move {
     margin-bottom: 70px;
   }

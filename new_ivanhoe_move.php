@@ -36,13 +36,10 @@ if ( $ivanhoe_game_id && !empty( $_POST['post_title'] ) ) {
 get_header();
 
 ?>
-<article class="insert-media">
 <form action="" method="post">
 	Title: <input type="text" name="post_title"><br>
 	Content: <?php wp_editor( '', "post_content"); ?><br>
 	<input type="submit" value="Submit">
 </form>
-
-</article>
 
 <?php get_footer(); ?>
