@@ -89,36 +89,6 @@ function ivanhoe_move_meta_box($post)
 }
 
 /**
- * Wrapper function for adding meta boxes for our custom post types
- */
-// function ivanhoe_add_meta_boxes()
-// {
-//     add_meta_box(
-//         'ivanhoe_move_metadata',
-//         __('Ivanhoe Move Metadata'),
-//         'ivanhoe_move_meta_box',
-//         'ivanhoe_move'
-//     );
-// }
-
-
-// function ivanhoe_source_meta_box($post)
-// {
-//      $html = '<p><label for="ivanhoe_move_source">'.__('Ivanhoe Move Source').'</label></p>'
-//            . '<p><input type="text" name="ivanhoe_move_source" value="'. $post->.'">';
-    
-//     return $html;
-// }
-
-// function ivanhoe_response_meta_box($post)
-// {    
-//     $html = '<p><label for="post_parent">'.__('Game').'</label></p>'
-//           . '<p><input type="text" name="post_parent" value="'. $post->post_parent.'">';
-    
-//     return $html;
-// }
-
-/**
  * Function for getting the metadata for the post(s) which respond to the current move
  */
 
