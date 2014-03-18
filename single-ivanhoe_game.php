@@ -13,19 +13,21 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
     <div id = "right-column">
         <?php
 
-        if ( $role = ivanhoe_user_has_role( $post->ID ) ) :
-            $url = add_query_arg(
-                "parent_post",
-                $ivanhoe_game_id,
-                get_permalink(get_option('ivanhoe_move_page'))
-            );
-        ?>
-        <a href="<?php echo $url; ?>" class="button" id="make-a-move">Make a move</a>
-        <?php else : ?>
+        if ( is_user_logged_in() ) :
 
-        <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button">Make a Role!</a>
+            if ( $role = ivanhoe_user_has_role( $post->ID ) ) :
+                $url = add_query_arg(
+                    "parent_post",
+                    $ivanhoe_game_id,
+                    get_permalink(get_option('ivanhoe_move_page'))
+                );
+            ?>
+            <a href="<?php echo $url; ?>" class="button" id="make-a-move">Make a move</a>
+            <?php else : ?>
 
-    <?php endif; ?>
+            <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button">Make a Role!</a>
+
+        <?php endif; endif; ?>
         
         <?php the_content(); ?>
 
@@ -61,7 +63,15 @@ if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_
         ivanhoe_get_move_responses( $post );
     ?>  
 
-<a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a>
+<?php
+
+    if ( is_user_logged_in() & ivanhoe_user_has_role( $post->ID ) ) : ?>
+
+        <a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a>
+
+<?php endif; 
+
+?>    
 
 </article>
 
