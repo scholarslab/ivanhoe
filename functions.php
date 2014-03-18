@@ -151,12 +151,23 @@ function ivanhoe_register_nav_menus() {
 
 add_action( 'init', 'ivanhoe_register_nav_menus' );
 
-add_action( 'admin_init', 'ivanhoe_create_form_pages');
+add_action( 'switch_theme', 'ivanhoe_switch_themes');
 
-function ivanhoe_create_form_pages()
+function ivanhoe_switch_themes()
+{
+    wp_delete_post( get_option('ivanhoe_move_page'), true);
+    wp_delete_post( get_option('ivanhoe_role_page'), true);
+    delete_option( 'ivanhoe_installed' );
+    delete_option( 'ivanhoe_move_page' );
+    delete_option( 'ivanhoe_role_page' );
+}
+
+add_action ( 'after_switch_theme','ivanhoe_after_switch_theme' );
+
+function ivanhoe_after_switch_theme()
 {
     if (! get_option('ivanhoe_installed')) {
-        $pages = array( 
+       $pages = array( 
             'ivanhoe_move' => 'Make a Move',
             'ivanhoe_role' => 'Make a Role'
             );
@@ -174,9 +185,11 @@ function ivanhoe_create_form_pages()
                 update_option( $page . '_page', $ivanhoe_page );
             }
         }
-        update_option( 'ivanhoe_installed', true );
+        update_option( 'ivanhoe_installed', true ); 
     }
 }
+
+
 
 /**
  * Overrides WP's auto redirect on pretty URLs (e.g. /games/game-title/page/2),
