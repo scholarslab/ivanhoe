@@ -5,8 +5,9 @@
 $original_query = $wp_query;
 $ivanhoe_game_id = $post->ID;
 $ivanhoe_parent_permalink = get_permalink( $post->ID );
+$role = ivanhoe_user_has_role( $post->ID );
 
- ?>
+?>
 
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 <article class="game">
@@ -17,7 +18,7 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
 
         if ( is_user_logged_in() ) :
 
-            if ( $role = ivanhoe_user_has_role( $post->ID ) ) :
+            if ( $role ) :
                 $url = add_query_arg(
                     "parent_post",
                     $ivanhoe_game_id,
@@ -72,7 +73,7 @@ if ( $wp_query->have_posts()) : ?>
 
 <?php
 
-    if ( is_user_logged_in() & ivanhoe_user_has_role( $post->ID ) ) : ?>
+    if ( $role ) : ?>
 
         <a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a>
 
