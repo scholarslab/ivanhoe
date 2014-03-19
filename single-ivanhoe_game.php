@@ -9,8 +9,10 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
  ?>
 
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
+<article class="game">
+    <h1><?php the_title(); ?></h1>
 
-    <div id = "right-column">
+    <div id="game-data">
         <?php
 
         if ( is_user_logged_in() ) :
@@ -33,8 +35,7 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
 
     </div>
 
-<article>
-    <h1><?php the_title(); ?></h1>
+
 
 <?php
 
@@ -46,8 +47,14 @@ $args = array (
     'posts_per_page' => 10);
 $wp_query = new WP_Query( $args );
 
-if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_post(); ?>
-<article>
+
+if ( $wp_query->have_posts()) : ?>
+
+<div id="moves">
+
+<?php
+ while($wp_query->have_posts()) : $wp_query->the_post(); ?>
+<article class="move">
     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
         
       <?php the_author_posts_link(); ?>  
@@ -71,31 +78,17 @@ if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_
 
 <?php endif; 
 
-?>    
+?>
 
 </article>
 
 <?php endwhile; ?>
 
-<?php
+<div id="pagination">
+    <?php ivanhoe_paginate_links($wp_query);?>
+</div>
 
-$total = $wp_query->max_num_pages;
-
-if ( $total > 1 ) {
-    if ( !$current_page = $paged )
-    $current_page = 1;
-    if ( $format = '&paged=%#%' );
-
-    echo paginate_links(array(
-    'base'      => get_pagenum_link(1) . '%_%',
-    'format'    => $format,
-    'current'   => $current_page,
-    'total'     => $total,
-    'mid_size'  => 4,
-    'type'      => 'plain'));
-}
-
-?>
+</div>
 
 <?php else : ?>
 

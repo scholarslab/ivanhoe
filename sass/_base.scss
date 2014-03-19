@@ -1,0 +1,12 @@
+// Imports
+@import "compass";
+@import "susy";
+
+// Suzy Settings
+$total-columns  : 12;
+$column-width: 60px;
+$gutter-width: 20px;
+$grid-padding   : $gutter-width;
+$container-style: magic;
+
+$show-grid-backgrounds  : true;

@@ -36,7 +36,6 @@ if ( $ivanhoe_game_id && !empty( $_POST['post_title'] ) ) {
 get_header();
 
 ?>
-
 <form action="" method="post">
 	Title: <input type="text" name="post_title"><br>
 	Content: <?php wp_editor( '', "post_content"); ?><br>

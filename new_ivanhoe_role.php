@@ -30,7 +30,6 @@ if ( $ivanhoe_game_id && !empty( $_POST['post_title'] ) ) {
 get_header();
 
 ?>
-
 <form action="" method="post">
 	Role Name: <input type="text" name="post_title"><br>
 	Description: <?php wp_editor( '', "post_content"); ?><br>

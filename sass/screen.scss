@@ -1,0 +1,225 @@
+@import "base";
+
+* {
+  @include box-sizing(border-box);
+}
+
+html {
+  background: #f6f6f6;
+}
+
+body {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+  color: #444;
+}
+
+
+a {
+  &:link {color: #37c;}
+  &:visited {color: #39c;}
+  &:hover {color: #8c3; text-decoration:none;}
+  &:active {color: #8a3;}
+}
+
+input[type=text], label, textarea{display: block;}
+
+img {
+  max-width: 100%;
+  max-height:100%;
+  height:auto;
+}
+
+form {
+}
+
+label {
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+input[type=text], textarea {
+  width: 100%;
+  border-radius: 3px;
+  padding: 5px;
+  border: 1px solid rgba(0,0,0,0.2);
+
+}
+
+textarea {
+  display: block;
+}
+
+textarea[name=content] {
+}
+
+.eyebrow {
+  margin:0;
+  color: #777;
+  font-size: 90%;
+  font-weight:bold;
+}
+
+.eyebrow + * {
+  margin-top:0 !important;
+}
+
+header[role=banner] {
+  @include container;
+
+}
+
+nav {
+  display:block;
+  float:right;
+  text-align:right;
+  width: 60%;
+
+  a {
+    text-decoration:none;
+    color: #777;
+  }
+
+  ul {
+    list-style:none;
+    padding-left:0;
+  }
+
+  li {
+    display:inline;
+
+    & + li:before {
+      content: " · ";
+      color: #ccc;
+    }
+  }
+}
+
+
+main {
+  clear:both;
+  overflow:hidden;
+  zoom:1;
+  background-color: #fff;
+  border-radius: 5px;
+  @include container;
+  padding-top: $gutter-width;
+  padding-bottom: $gutter-width;
+  
+
+}
+
+main :first-child {
+  margin-top:0;
+}
+
+#game-data{
+  @include span-columns(3 omega);
+}
+
+#moves{
+  @include span-columns(9);
+}
+
+
+article {
+  &.single-move {
+    @include span-columns(12);
+  }
+
+  &.role{
+    @include span-columns(12);
+  }
+
+  &.move {
+    margin-bottom: 70px;
+  }
+
+  h3 {
+    font-size: 85%;
+    color: red;
+  }
+}
+
+#game-metadata {
+  float:right;
+  width: 30%;
+  font-size: 87.5%;
+
+  &.description,
+  &.players {
+   background: rgba(0,100,200,0.1);
+    padding: 20px;
+    margin-bottom: 20px;
+  }
+}
+
+
+.game ul {
+  list-style:none;
+  margin-top:0;
+  font-size: 90%;
+}
+
+.move .meta {
+  font-size: 90%;
+  font-style:italic;
+  color: #999;
+  margin-top:0;
+  margin-bottom: 4em;
+}
+
+
+body > footer {
+  padding: 30px 0;
+  text-align:right;
+  font-size: 90%;
+}
+
+body > footer a {
+  text-decoration:none;
+}
+
+body > footer a + a:before {
+  content: " | ";
+  color: #bbb;
+}
+
+
+.button {
+  width: 200px;
+  height: 30px;
+  line-height: 30px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  font-family: helvetica, arial;
+  display: block;
+  text-align: center;
+  position: relative;
+  background: #a8a8a8;
+  margin-top: 10px;
+
+  /*Background Gradients */
+  @include background-image(linear-gradient(bottom, #0d658e, #0c577a 50%, #014d71 51%, #003e5c));
+  @include border-radius(10px);
+
+  border: 1px solid #368DBE;
+  border-top: 1px solid #C3D6DF;
+
+}
+
+.button {
+
+  &:link,
+  &:visited {color: white; color: rgba(255, 255, 255, 0.85);}
+  &:hover {color: white;}
+  &:active {color: white;}
+}
+
+#return-button{
+  margin-top: 20px;
+}
+
+
+
