@@ -75,7 +75,9 @@ if ( $wp_query->have_posts()) : ?>
 <?php endwhile; ?>
 
 
-<?php previous_posts_link('newer'); ?> | <?php next_posts_link('older'); ?>
+<div id="pagination">
+    <?php ivanhoe_paginate_links($wp_query);?>
+</div>
 
 </div>
 

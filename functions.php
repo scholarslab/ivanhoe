@@ -367,3 +367,23 @@ function ivanhoe_display_role_name ( $link )
 }
 
 add_filter( 'the_author_posts_link', 'ivanhoe_display_role_name', 10, 1);
+
+/*
+*Displays Pagination
+*/
+function ivanhoe_paginate_links ( $query )
+{
+    global $wp_query;
+
+    $query = $query ? $query : $wp_query;
+
+    $big = 999999999; // need an unlikely integer
+
+    echo paginate_links( array(
+        'base' => str_replace( $big, '%#%', esc_url( get_pagenum_link( $big ) ) ),
+        'format' => '?paged=%#%',
+        'current' => max( 1, get_query_var('paged') ),
+        'total' => $wp_query->max_num_pages
+    ) );
+
+}

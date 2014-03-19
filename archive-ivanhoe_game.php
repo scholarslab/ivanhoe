@@ -7,7 +7,11 @@ if ( have_posts()) : while(have_posts()) : the_post(); ?>
     <?php the_excerpt(); ?>
 </article>
 
-<?php endwhile; else : ?>
+<?php endwhile; ?>
+<div id="pagination">
+	<?php ivanhoe_paginate_links();?>
+</div>
+<?php else : ?>
 <p>No one has made a move yet in this game.  Make the first move!</p>
 <?php endif; ?>
 
