@@ -8,7 +8,7 @@ if ( have_posts()) : while(have_posts()) : the_post(); ?>
 </article>
 
 <?php endwhile; else : ?>
-<p>No one has created game yet.</p>
+<p>No one has created a game yet.</p>
 <?php endif; ?>
 
 <?php get_footer(); ?>
