@@ -77,7 +77,25 @@ if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_
 
 <?php endwhile; ?>
 
-<?php previous_posts_link('newer'); ?> | <?php next_posts_link('older'); ?>
+<?php
+
+$total = $wp_query->max_num_pages;
+
+if ( $total > 1 ) {
+    if ( !$current_page = $paged )
+    $current_page = 1;
+    if ( $format = '&paged=%#%' );
+
+    echo paginate_links(array(
+    'base'      => get_pagenum_link(1) . '%_%',
+    'format'    => $format,
+    'current'   => $current_page,
+    'total'     => $total,
+    'mid_size'  => 4,
+    'type'      => 'plain'));
+}
+
+?>
 
 <?php else : ?>
 
