@@ -376,3 +376,28 @@ function ivanhoe_paginate_links ( $query = null )
     ) );
 
 }
+
+
+/*
+ * Function to display the 'respond to this move' button only when user has role
+ */
+
+function ivanhoe_move_link ( $post )
+{
+    $html = '';
+    $post_type = get_post_type($post );
+    $role = false;
+    if ($post_type == 'ivanhoe_game') {
+        $role = ivanhoe_user_has_role( $post->ID );
+    } elseif ($post_type == 'ivanhoe_move') {
+        $role = ivanhoe_user_has_role( $post->post_parent );
+    }
+
+    if ( $role )
+    {
+        $html = '<a href="'.ivanhoe_response_form_url( $post ).'" class="button">Respond to this move</a>';
+    }
+
+    return $html;
+
+}

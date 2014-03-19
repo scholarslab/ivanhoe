@@ -71,15 +71,7 @@ if ( $wp_query->have_posts()) : ?>
         ivanhoe_get_move_responses( $post );
     ?>  
 
-<?php
-
-    if ( $role ) : ?>
-
-        <a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a>
-
-<?php endif; 
-
-?>
+<?php echo ivanhoe_move_link( $post ); ?>
 
 </article>
 

@@ -11,11 +11,7 @@
 
 	<p>Written by: <?php the_author_posts_link(); ?></p>
 
-<?php if ( ivanhoe_user_has_role( $post->post_parent )) : ?>
-
-	<a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a>
-
-<?php endif; ?>
+<?php echo ivanhoe_move_link ( $post ); ?>
 
 <div id="return-button">
 
