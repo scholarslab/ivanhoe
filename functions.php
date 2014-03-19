@@ -360,7 +360,7 @@ add_filter( 'the_author_posts_link', 'ivanhoe_display_role_name', 10, 1);
 /*
 *Displays Pagination
 */
-function ivanhoe_paginate_links ( $query )
+function ivanhoe_paginate_links ( $query = null )
 {
     global $wp_query;
 
