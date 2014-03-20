@@ -31,15 +31,26 @@ if ( $ivanhoe_game_id && !empty( $_POST['post_title'] ) ) {
     wp_redirect( get_permalink($ivanhoe_game_id) );
     exit;
 
+} elseif ( isset($_POST['post_title']) ) {
+     $error_message = "Please enter a title for your move.";
 }
 
 get_header();
 
 ?>
 <form action="" method="post">
-	Title: <input type="text" name="post_title"><br>
+	Title: <input type="text" name="post_title" required><br>
 	Content: <?php wp_editor( '', "post_content"); ?><br>
 	<input type="submit" value="Submit">
 </form>
 
-<?php get_footer(); ?>
+<?php 
+
+    if( isset($error_message) )
+    {
+        echo $error_message;
+    }
+
+    get_footer(); 
+
+?>
