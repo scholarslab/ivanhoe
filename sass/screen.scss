@@ -105,6 +105,7 @@ main {
   @include container;
   padding-top: $gutter-width;
   padding-bottom: $gutter-width;
+  @include susy-grid-background;
   
 
 }
@@ -112,6 +113,15 @@ main {
 main :first-child {
   margin-top:0;
 }
+
+#eliza{
+  @include span-columns(4);
+
+  }
+#zach {
+  @include span-columns(6, 9);
+
+  }
 
 #game-data{
   @include span-columns(3 omega);
@@ -220,6 +230,8 @@ body > footer a + a:before {
 #return-button{
   margin-top: 20px;
 }
+
+
 
 
 
