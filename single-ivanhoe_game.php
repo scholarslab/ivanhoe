@@ -59,18 +59,21 @@ if ( $wp_query->have_posts()) : ?>
 
         <?php the_excerpt(); ?>
     
-	<?php
+        <div class="discussion-source">
+        <?php ivanhoe_get_move_source( $post ); ?>
+        </div>
+        
+        <div class="discussion-response">
+        <?php ivanhoe_get_move_responses( $post ); ?>  
+        </div>
 
-        //Pulls post source and displays it
-        ivanhoe_get_move_source($post);
 
-        //Pulls post responses and displays them
-        ivanhoe_get_move_responses( $post );
-    ?>  
-
-<a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a>
+      <div class="options">
+        <a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a>
 
 </article>
+
+</div>
 
 <?php endwhile; ?>
 

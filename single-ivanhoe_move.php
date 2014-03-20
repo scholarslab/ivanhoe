@@ -15,29 +15,24 @@
 
     <?php the_content(); ?>
 
-    <?php ivanhoe_get_move_source( $post ); ?>
-    <?php ivanhoe_get_move_responses( $post ); ?>  
+        <div class="discussion-source">
+        <?php ivanhoe_get_move_source( $post ); ?>
+        </div>
+        
+        <div class="discussion-response">
+        <?php ivanhoe_get_move_responses( $post ); ?>  
+        </div>
 
+        <div class="options">
 
-<!--     <div id="eliza">
+        <a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a>
 
-    <?php ivanhoe_get_move_source( $post ); ?>
+            <div id="return-button">
 
-</div>
-    <div id="zach">
+            <a href="<?php echo get_permalink( $post->post_parent ); ?>">Return to game</a>
 
-    <?php ivanhoe_get_move_responses( $post );
-	?>	
-
-</div> -->
-
-	<a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a>
-
-<div id="return-button">
-
-	<a href="<?php echo get_permalink( $post->post_parent ); ?>">Return to game</a>
-
-</div>
+            </div>
+    </div>
 
 </article>
 
