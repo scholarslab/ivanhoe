@@ -5,9 +5,25 @@ Template Name: Ivanhoe Role Form
 
 // If parent_post is set as a query variable, use it, otherwise set to null.
 $ivanhoe_game_id = isset( $_GET['parent_post'] ) ? $_GET['parent_post'] : null;
+$ivanhoe_post_title = !empty ( $_POST['post_title'] ) ? $_POST['post_title'] : null;
+$ivanhoe_post_content = !empty ( $_POST['post_content'] ) ? $_POST['post_content'] : null;
+
+// Creates an empty array for error messages.
+$error_messages = array();
+
+// If there is no game ID, move content, or move title an appropriate error message will display.
+if ( !$ivanhoe_game_id ) {
+    $error_messages[''] = 'There is no game ID.';
+}
+if ( !$ivanhoe_post_title && !empty( $_POST ) ) {
+    $error_messages[''] = 'There is no role name.';
+}
+if ( !$ivanhoe_post_content && !empty( $_POST ) ) {
+    $error_messages[''] = 'There is no description of this role.';
+}
 
 // If we have a game ID and a post title, insert a post.
-if ( $ivanhoe_game_id && !empty( $_POST['post_title'] ) ) {
+if ( empty ( $error_messages ) && !empty( $_POST ) ) {
 
     $ivanhoe_post_title = $_POST['post_title'];
     $ivanhoe_post_content = $_POST['post_content'];
@@ -38,12 +54,15 @@ get_header();
 	<input type="submit" value="Submit">
 </form>
 
-<?php 
+<?php if( $error_messages ) : ?>
+    <ul>
+        <?php foreach($error_messages as $message) : ?>
+        <li><?php echo $message; ?></li>
+    <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
 
-    if( isset($error_message) )
-    {
-        echo $error_message;
-    }
+<?php 
 
     get_footer(); 
 
