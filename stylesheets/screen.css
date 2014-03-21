@@ -222,7 +222,7 @@ article.move {
 /* line 152, ../sass/screen.scss */
 article h3 {
   font-size: 85%;
-  text-align: center;
+  /* text-align: center; */
 }
 
 /* line 158, ../sass/screen.scss */
