@@ -109,12 +109,13 @@ main {
 }
 
 main :first-child {
-  margin-top:0;
+  /* margin-top:0; */
 }
 
 #game-data{
   @include span-columns(3 omega);
-  /* background: #E0E0E0; */
+  background: #E0E0E0;
+  padding: 10px;
 }
 
 #moves{
@@ -151,7 +152,7 @@ article {
 
   h3 {
     font-size: 85%;
-    /* text-align: center; */
+    text-align: center;
   }
 }
 
@@ -239,5 +240,4 @@ body > footer a + a:before {
   @include span-columns(9);
   margin-bottom: 50px;
 }
-
 

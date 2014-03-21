@@ -149,7 +149,7 @@ main:after {
 
 /* line 111, ../sass/screen.scss */
 main :first-child {
-  margin-top: 0;
+  /* margin-top:0; */
 }
 
 /* line 115, ../sass/screen.scss */
@@ -159,10 +159,11 @@ main :first-child {
   margin-right: 0;
   *margin-left: -20px;
   display: inline;
-  /* background: #E0E0E0; */
+  background: #E0E0E0;
+  padding: 10px;
 }
 
-/* line 120, ../sass/screen.scss */
+/* line 121, ../sass/screen.scss */
 #moves {
   width: 74.46809%;
   float: left;
@@ -170,7 +171,7 @@ main :first-child {
   display: inline;
 }
 
-/* line 124, ../sass/screen.scss */
+/* line 125, ../sass/screen.scss */
 .discussion-source {
   width: 31.91489%;
   float: left;
@@ -178,7 +179,7 @@ main :first-child {
   display: inline;
 }
 
-/* line 128, ../sass/screen.scss */
+/* line 129, ../sass/screen.scss */
 .discussion-response {
   width: 40.42553%;
   float: right;
@@ -187,7 +188,7 @@ main :first-child {
   display: inline;
 }
 
-/* line 132, ../sass/screen.scss */
+/* line 133, ../sass/screen.scss */
 .options {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -197,21 +198,21 @@ main :first-child {
   display: inline;
 }
 
-/* line 139, ../sass/screen.scss */
+/* line 140, ../sass/screen.scss */
 article.single-move {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 143, ../sass/screen.scss */
+/* line 144, ../sass/screen.scss */
 article.role {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 147, ../sass/screen.scss */
+/* line 148, ../sass/screen.scss */
 article.move {
   margin-bottom: 70px;
   width: 74.46809%;
@@ -219,33 +220,33 @@ article.move {
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 152, ../sass/screen.scss */
+/* line 153, ../sass/screen.scss */
 article h3 {
   font-size: 85%;
-  /* text-align: center; */
+  text-align: center;
 }
 
-/* line 158, ../sass/screen.scss */
+/* line 159, ../sass/screen.scss */
 #game-metadata {
   float: right;
   width: 30%;
   font-size: 87.5%;
 }
-/* line 164, ../sass/screen.scss */
+/* line 165, ../sass/screen.scss */
 #game-metadata.description, #game-metadata.players {
   background: rgba(0, 100, 200, 0.1);
   padding: 20px;
   margin-bottom: 20px;
 }
 
-/* line 172, ../sass/screen.scss */
+/* line 173, ../sass/screen.scss */
 .game ul {
   list-style: none;
   margin-top: 0;
   font-size: 90%;
 }
 
-/* line 178, ../sass/screen.scss */
+/* line 179, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   font-style: italic;
@@ -254,25 +255,25 @@ article h3 {
   margin-bottom: 4em;
 }
 
-/* line 187, ../sass/screen.scss */
+/* line 188, ../sass/screen.scss */
 body > footer {
   padding: 30px 0;
   text-align: right;
   font-size: 90%;
 }
 
-/* line 193, ../sass/screen.scss */
+/* line 194, ../sass/screen.scss */
 body > footer a {
   text-decoration: none;
 }
 
-/* line 197, ../sass/screen.scss */
+/* line 198, ../sass/screen.scss */
 body > footer a + a:before {
   content: " | ";
   color: #bbb;
 }
 
-/* line 203, ../sass/screen.scss */
+/* line 204, ../sass/screen.scss */
 .button {
   width: 200px;
   height: 30px;
@@ -301,26 +302,26 @@ body > footer a + a:before {
   border-top: 1px solid #C3D6DF;
 }
 
-/* line 229, ../sass/screen.scss */
+/* line 230, ../sass/screen.scss */
 .button:link, .button:visited {
   color: white;
   color: rgba(255, 255, 255, 0.85);
 }
-/* line 230, ../sass/screen.scss */
+/* line 231, ../sass/screen.scss */
 .button:hover {
   color: white;
 }
-/* line 231, ../sass/screen.scss */
+/* line 232, ../sass/screen.scss */
 .button:active {
   color: white;
 }
 
-/* line 234, ../sass/screen.scss */
+/* line 235, ../sass/screen.scss */
 #return-button {
   margin-top: 20px;
 }
 
-/* line 238, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 #pagination {
   width: 74.46809%;
   float: left;
