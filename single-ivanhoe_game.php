@@ -28,7 +28,7 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
         <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button">Make a Role!</a>
 
     <?php endif; ?>
-        
+        <h3>GAME DESCRIPTION</h3>
         <?php the_content(); ?>
 
     </div>

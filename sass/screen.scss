@@ -105,7 +105,6 @@ main {
   @include container;
   padding-top: $gutter-width;
   padding-bottom: $gutter-width;
-  @include susy-grid-background;
 
 }
 
@@ -115,6 +114,7 @@ main :first-child {
 
 #game-data{
   @include span-columns(3 omega);
+  /* background: #E0E0E0; */
 }
 
 #moves{
@@ -146,11 +146,12 @@ article {
 
   &.move {
     margin-bottom: 70px;
+    @include span-columns(9);
   }
 
   h3 {
     font-size: 85%;
-    color: red;
+    text-align: center;
   }
 }
 
@@ -234,7 +235,9 @@ body > footer a + a:before {
   margin-top: 20px;
 }
 
-
-
+#pagination {
+  @include span-columns(9);
+  margin-bottom: 50px;
+}
 
 
