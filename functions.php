@@ -3,6 +3,8 @@
 // Add theme support for WP features.
 add_theme_support('menus');
 
+add_theme_support( 'post-thumbnails' );
+
 add_action( 'init', 'ivanhoe_create_post_types' );
 
 function ivanhoe_create_post_types()
@@ -228,7 +230,8 @@ function ivanhoe_get_move_source( $post )
     if ( $source_id && $source = get_post($source_id) ) {
 
         // Set $html to a string with a link to source post.
-        $html = 'Source post: <a href="'.get_permalink($source->ID).'">'.$source->post_title.'</a>';
+        $html = '<p>Source</p>
+        <ul><li><a href="'.get_permalink($source->ID).'">'.$source->post_title.'</a></li></ul>';
 
     }
 
@@ -253,7 +256,7 @@ function ivanhoe_get_move_responses( $post )
     $source_query = new WP_Query( $args );
 
     if ($source_query->have_posts() ) : ?>
-    <h2>Responses</h2>
+    <p>Responses</p>
     <ul>
     <?php while( $source_query->have_posts() ) : $source_query->the_post(); ?>
 
