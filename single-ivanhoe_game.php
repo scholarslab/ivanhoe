@@ -54,13 +54,20 @@ if ( $wp_query->have_posts()) : ?>
 <div id="moves">
 
 <?php
- while($wp_query->have_posts()) : $wp_query->the_post(); ?>
+while($wp_query->have_posts()) : $wp_query->the_post(); ?>
 <article class="move">
     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
         
       <?php the_author_posts_link(); ?>  
 
-        <?php the_excerpt(); ?>
+        <p><?php
+        $move_image_source = catch_that_image();
+
+        if ( !empty ( $move_image_source ) ) {
+            echo "<img src = '$move_image_source'>";
+        }
+        the_excerpt();
+        ?></p>
     
 	<?php
 

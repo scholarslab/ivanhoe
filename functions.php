@@ -404,3 +404,16 @@ function ivanhoe_move_link ( $post )
     return $html;
 
 }
+
+function catch_that_image() {
+    global $post, $posts;
+    $first_image = '';
+    ob_start();
+    ob_end_clean();
+    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+    if ( !empty( $matches [1] ) ) {
+        $first_image = $matches [1] [0];
+    }
+    
+    return $first_image;
+}
