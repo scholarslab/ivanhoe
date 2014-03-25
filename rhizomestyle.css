@@ -1,0 +1,130 @@
+html {
+    background: 
+        linear-gradient(transparent 0, rgba(125, 168, 113, 1) 30%),
+        url(WhiteBackground.png) -40% 0 repeat-x,
+        url(BlackBackground.png) -20% 0 repeat-x, 
+        #7DA871;
+
+        background-size: 100% 100%, auto, auto, auto;
+        background-attachment: fixed;
+}
+
+html.home {
+    background: 
+        linear-gradient(transparent 0, rgba(125, 168, 113, 0.8) 20%, rgba(125, 168, 113, 0.8) 80%, transparent 100%),
+        url(WhiteBackground.png) -40% 0 repeat-x,
+        url(BlackBackground.png) -20% 0 repeat-x, 
+        #7DA871;
+    background-size: 100% 100%, auto, auto, auto;
+    background-attachment: fixed;
+}
+h1 {
+    font-family: "Titillium Web", sans-serif;
+}
+p {
+    font-family: "Titillium Web", sans-serif;
+}
+a:link,
+a:active,
+a:visited,
+a:hover{
+    font-family: 'Titillium Web', sans-serif;
+    text-decoration: none;
+    color: black;
+}
+
+a:hover,
+a:active{
+    color: #900;
+}
+
+body {
+    margin: 0px auto;
+    width: 600px;
+    font-family: "Titillium Web," sans-serif;
+
+}
+img {
+    max-width: 100%;
+    width: auto;
+    height: auto;
+}
+
+
+header[role=banner] {
+
+    text-align: center;
+
+}
+
+footer {
+    text-align: center;
+}
+#logo {
+    width: 300px;
+    display: block;
+    float: right;
+
+
+}
+
+.home #logo {
+    width: auto;
+    float: none;
+}
+
+nav {
+    clear: both;
+}
+
+nav ul {
+    list-style: none;
+    margin-left: 0; 
+    padding-left: 0;
+
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 10px;
+    margin-right: 10px;
+
+}
+
+nav a:link,
+nav a:visited {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+    width: 150px;
+    line-height: 150px;
+    background-color: gray;
+    border-radius: 75px;
+    display: block;
+
+}
+nav a:hover,
+nav a:active{
+    width: 150px;
+    line-height: 150px;
+    background-color: #900;
+    border-radius: 75px;
+    display: block;
+}
+.about nav li.nav-about, 
+.install nav li.nav-documentation,
+.demo nav li.nav-download {
+    color: #900;
+}
+/*
+#nav-about a {
+    background-color: #7DA871;
+}
+
+#nav-documentation a {
+    background-color: #EAE18F;
+}
+
+#nav-download a {
+    background-color: #7DA871;
+}*/
