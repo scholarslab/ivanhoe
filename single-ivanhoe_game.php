@@ -70,13 +70,13 @@ if ( $wp_query->have_posts()) : ?>
 
       <div class="options">
         <a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a>
+    </div>
 
 </article>
 
-</div>
-
 <?php endwhile; ?>
 
+</div>
 
 <div id="pagination">
     <?php ivanhoe_paginate_links($wp_query);?>

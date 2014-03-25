@@ -260,60 +260,57 @@ main :first-child {
   text-align: center;
 }
 
-/* line 190, ../sass/screen.scss */
-.options a.button {
-  margin-left: auto;
-  margin-right: auto;
-}
-
-/* line 196, ../sass/screen.scss */
+/* line 191, ../sass/screen.scss */
 article.single-move {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 200, ../sass/screen.scss */
+/* line 195, ../sass/screen.scss */
 article.role {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 204, ../sass/screen.scss */
+/* line 199, ../sass/screen.scss */
 article.move {
   margin-bottom: 70px;
+  overflow: hidden;
+  *zoom: 1;
 }
-/* line 208, ../sass/screen.scss */
+/* line 204, ../sass/screen.scss */
 article h3 {
   font-size: 85%;
   text-align: center;
 }
 
-/* line 215, ../sass/screen.scss */
+/* line 211, ../sass/screen.scss */
 .game ul {
   list-style: none;
   margin-top: 0;
   font-size: 90%;
 }
 
-/* line 221, ../sass/screen.scss */
+/* line 217, ../sass/screen.scss */
 .game-discussion-source {
-  width: 23.40426%;
+  width: 42.85714%;
   float: left;
-  margin-right: 2.12766%;
+  margin-right: 2.85714%;
+  display: inline;
+}
+
+/* line 222, ../sass/screen.scss */
+.game-discussion-response {
+  width: 42.85714%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
   display: inline;
 }
 
 /* line 226, ../sass/screen.scss */
-.game-discussion-response {
-  width: 47.82609%;
-  float: left;
-  margin-right: 4.34783%;
-  display: inline;
-}
-
-/* line 230, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   font-style: italic;
@@ -322,25 +319,25 @@ article h3 {
   margin-bottom: 4em;
 }
 
-/* line 239, ../sass/screen.scss */
+/* line 235, ../sass/screen.scss */
 body > footer {
   padding: 30px 0;
   text-align: right;
   font-size: 90%;
 }
 
-/* line 245, ../sass/screen.scss */
+/* line 241, ../sass/screen.scss */
 body > footer a {
   text-decoration: none;
 }
 
-/* line 249, ../sass/screen.scss */
+/* line 245, ../sass/screen.scss */
 body > footer a + a:before {
   content: " | ";
   color: #bbb;
 }
 
-/* line 255, ../sass/screen.scss */
+/* line 251, ../sass/screen.scss */
 .button {
   width: 200px;
   height: 30px;
@@ -369,27 +366,27 @@ body > footer a + a:before {
   border-top: 1px solid #C3D6DF;
 }
 
-/* line 281, ../sass/screen.scss */
+/* line 277, ../sass/screen.scss */
 .button:link, .button:visited {
   color: white;
   color: rgba(255, 255, 255, 0.85);
 }
-/* line 282, ../sass/screen.scss */
+/* line 278, ../sass/screen.scss */
 .button:hover {
   color: white;
 }
-/* line 283, ../sass/screen.scss */
+/* line 279, ../sass/screen.scss */
 .button:active {
   color: white;
 }
 
-/* line 286, ../sass/screen.scss */
+/* line 282, ../sass/screen.scss */
 .return-button {
   margin-top: 20px;
   text-align: right;
 }
 
-/* line 291, ../sass/screen.scss */
+/* line 287, ../sass/screen.scss */
 #pagination {
   width: 74.46809%;
   float: left;

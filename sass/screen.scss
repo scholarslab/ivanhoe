@@ -187,11 +187,6 @@ main :first-child {
   text-align: center;
 }
 
-.options a.button {
-  margin-left: auto;
-  margin-right: auto;
-}
-
 article {
   &.single-move {
     @include span-columns(12);
@@ -203,6 +198,7 @@ article {
 
   &.move {
     margin-bottom: 70px;
+    @include clearfix;
   }
 
   h3 {
@@ -219,12 +215,12 @@ article {
 }
 
 .game-discussion-source {
-  @include span-columns(3);
+  @include span-columns(4,9);
   
 }
 
 .game-discussion-response {
-  @include span-columns(3,6);
+  @include span-columns(4 omega,9);
 }
 
 .move .meta {
