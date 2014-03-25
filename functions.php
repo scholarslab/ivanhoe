@@ -1,15 +1,21 @@
 <?php 
 
 // Add theme support for WP features.
-add_theme_support('menus');
-
-add_theme_support( 'post-thumbnails' );
+add_theme_support('menus', 'post_thumbnails' );
 
 add_action( 'init', 'ivanhoe_create_post_types' );
 
+add_action( 'admin_bar_menu', 'modify_admin_bar', 999 );
+
+function modify_admin_bar( $wp_admin_bar ) {
+  $wp_admin_bar->remove_node( 'new-ivanhoe_move' );
+  $wp_admin_bar->remove_node( 'new-ivanhoe_game' );
+  $wp_admin_bar->remove_node( 'new-ivanhoe_role' );
+}
+
 function ivanhoe_create_post_types()
 {
-    register_post_type( 
+    register_post_type(
         'ivanhoe_move',
         array(
             'labels' => array(
@@ -410,12 +416,6 @@ function catch_that_image() {
     $first_image = '';
     ob_start();
     ob_end_clean();
-    // $output_images = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-    //run check
-    //if ( empty( $matches [1] ) ){
-        // $output_videos = preg_match_all('/<embed.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-    //}
-
     $output_videos = preg_match_all('/<(img|embed|iframe|video)[^>]*>/i', $post->post_content, $matches);
     
     if ( !empty( $matches [0] ) ) {
@@ -424,4 +424,4 @@ function catch_that_image() {
     
     return $first_image;
 }
-///<(img|embed)[^>]*>
+
