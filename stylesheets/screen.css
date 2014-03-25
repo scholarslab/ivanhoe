@@ -216,13 +216,13 @@ main :first-child {
   background: #E0E0E0;
   padding: 10px;
   text-align: left;
-  border-left-style: dotted;
+  border-left: 1px dotted gray;
   clear: right;
 }
 
 /* line 160, ../sass/screen.scss */
 .single-move header {
-  border-bottom-style: dotted;
+  border-bottom: 1px dotted gray;
   overflow: hidden;
   *zoom: 1;
 }

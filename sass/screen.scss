@@ -153,12 +153,12 @@ main :first-child {
   background: #E0E0E0;
   padding: 10px;
   text-align: left;
-  border-left-style: dotted;
+  border-left: $border;
   clear: right;
 }
 
 .single-move header {
-  border-bottom-style: dotted;
+  border-bottom: $border;
   @include clearfix;
 }
 
