@@ -49,7 +49,7 @@ get_header();
 
 ?>
 <form action="" method="post">
-	Title: <input type="text" name="post_title" required><br>
+	Title: <input type="text" name="post_title" value="<?php echo $ivanhoe_post_title; ?>" required><br>
 	Content: <?php wp_editor( '', "post_content"); ?><br>
 	<input type="submit" value="Submit">
 </form>
