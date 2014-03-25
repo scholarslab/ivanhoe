@@ -59,11 +59,11 @@ if ( $wp_query->have_posts()) : ?>
 
         <?php the_excerpt(); ?>
     
-        <div class="discussion-source">
+        <div class="game-discussion-source">
         <?php ivanhoe_get_move_source( $post ); ?>
         </div>
         
-        <div class="discussion-response">
+        <div class="game-discussion-response">
         <?php ivanhoe_get_move_responses( $post ); ?>  
         </div>
 

@@ -139,21 +139,27 @@ main :first-child {
   @include span-columns(9);
   text-align: justify;
 }
-.masthead {
-  border-bottom-style: dotted;
-  border-left-style: dotted;
-  padding-left: .5em;
+
+.date-published {
+  float: left;
 }
+
+.single-move .button {
+  @include span-columns(3 omega);
+}
+
 .source-response-container {
   @include span-columns(3 omega);
   background: #E0E0E0;
   padding: 10px;
   text-align: left;
   border-left-style: dotted;
+  clear: right;
 }
 
-.discussion-source {
- 
+.single-move header {
+  border-bottom-style: dotted;
+  @include clearfix;
 }
 
 .discussion-source p {
@@ -211,6 +217,15 @@ article {
   list-style:none;
   margin-top:0;
   font-size: 90%;
+}
+
+.game-discussion-source {
+  @include span-columns(3);
+  
+}
+
+.game-discussion-response {
+  @include span-columns(3,6);
 }
 
 .move .meta {

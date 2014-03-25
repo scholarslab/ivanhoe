@@ -192,14 +192,21 @@ main :first-child {
   text-align: justify;
 }
 
-/* line 142, ../sass/screen.scss */
-.masthead {
-  border-bottom-style: dotted;
-  border-left-style: dotted;
-  padding-left: .5em;
+/* line 143, ../sass/screen.scss */
+.date-published {
+  float: left;
 }
 
 /* line 147, ../sass/screen.scss */
+.single-move .button {
+  width: 23.40426%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+}
+
+/* line 151, ../sass/screen.scss */
 .source-response-container {
   width: 23.40426%;
   float: right;
@@ -210,31 +217,39 @@ main :first-child {
   padding: 10px;
   text-align: left;
   border-left-style: dotted;
+  clear: right;
 }
 
-/* line 159, ../sass/screen.scss */
+/* line 160, ../sass/screen.scss */
+.single-move header {
+  border-bottom-style: dotted;
+  overflow: hidden;
+  *zoom: 1;
+}
+
+/* line 165, ../sass/screen.scss */
 .discussion-source p {
   font-style: italic;
 }
 
-/* line 163, ../sass/screen.scss */
+/* line 169, ../sass/screen.scss */
 .discussion-source h2 {
   font-style: italic;
 }
 
-/* line 167, ../sass/screen.scss */
+/* line 173, ../sass/screen.scss */
 .discussion-response h2 {
   font-style: italic;
 }
 
-/* line 171, ../sass/screen.scss */
+/* line 177, ../sass/screen.scss */
 .discussion-response ul {
   list-style: none;
   padding-left: 0;
   margin-left: 0;
 }
 
-/* line 177, ../sass/screen.scss */
+/* line 183, ../sass/screen.scss */
 .options {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -245,27 +260,27 @@ main :first-child {
   text-align: center;
 }
 
-/* line 184, ../sass/screen.scss */
+/* line 190, ../sass/screen.scss */
 .options a.button {
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 190, ../sass/screen.scss */
+/* line 196, ../sass/screen.scss */
 article.single-move {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 194, ../sass/screen.scss */
+/* line 200, ../sass/screen.scss */
 article.role {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 198, ../sass/screen.scss */
+/* line 204, ../sass/screen.scss */
 article.move {
   margin-bottom: 70px;
   width: 74.46809%;
@@ -273,20 +288,36 @@ article.move {
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 203, ../sass/screen.scss */
+/* line 209, ../sass/screen.scss */
 article h3 {
   font-size: 85%;
   text-align: center;
 }
 
-/* line 210, ../sass/screen.scss */
+/* line 216, ../sass/screen.scss */
 .game ul {
   list-style: none;
   margin-top: 0;
   font-size: 90%;
 }
 
-/* line 216, ../sass/screen.scss */
+/* line 222, ../sass/screen.scss */
+.game-discussion-source {
+  width: 23.40426%;
+  float: left;
+  margin-right: 2.12766%;
+  display: inline;
+}
+
+/* line 227, ../sass/screen.scss */
+.game-discussion-response {
+  width: 47.82609%;
+  float: left;
+  margin-right: 4.34783%;
+  display: inline;
+}
+
+/* line 231, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   font-style: italic;
@@ -295,25 +326,25 @@ article h3 {
   margin-bottom: 4em;
 }
 
-/* line 225, ../sass/screen.scss */
+/* line 240, ../sass/screen.scss */
 body > footer {
   padding: 30px 0;
   text-align: right;
   font-size: 90%;
 }
 
-/* line 231, ../sass/screen.scss */
+/* line 246, ../sass/screen.scss */
 body > footer a {
   text-decoration: none;
 }
 
-/* line 235, ../sass/screen.scss */
+/* line 250, ../sass/screen.scss */
 body > footer a + a:before {
   content: " | ";
   color: #bbb;
 }
 
-/* line 241, ../sass/screen.scss */
+/* line 256, ../sass/screen.scss */
 .button {
   width: 200px;
   height: 30px;
@@ -338,27 +369,27 @@ body > footer a + a:before {
   border-top: 1px solid #C3D6DF;
 }
 
-/* line 266, ../sass/screen.scss */
+/* line 281, ../sass/screen.scss */
 .button:link, .button:visited {
   color: white;
   color: rgba(255, 255, 255, 0.85);
 }
-/* line 268, ../sass/screen.scss */
+/* line 283, ../sass/screen.scss */
 .button:hover {
   color: white;
 }
-/* line 269, ../sass/screen.scss */
+/* line 284, ../sass/screen.scss */
 .button:active {
   color: white;
 }
 
-/* line 272, ../sass/screen.scss */
+/* line 287, ../sass/screen.scss */
 .return-button {
   margin-top: 20px;
   text-align: right;
 }
 
-/* line 277, ../sass/screen.scss */
+/* line 292, ../sass/screen.scss */
 #pagination {
   width: 74.46809%;
   float: left;

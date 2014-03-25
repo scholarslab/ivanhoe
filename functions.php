@@ -273,6 +273,7 @@ function ivanhoe_get_move_responses( $post )
     <?php endwhile; ?>
     </ul>
     <?php else : ?>
+    <h2>Responses</h2>
     <p>There are no responses to this post.</p>
     <?php endif;
     wp_reset_postdata();
