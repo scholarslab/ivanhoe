@@ -144,20 +144,24 @@ main :first-child {
   border-left-style: dotted;
   padding-left: .5em;
 }
+.source-response-container {
+  @include span-columns(3 omega);
+  background: #E0E0E0;
+  padding: 10px;
+  text-align: left;
+  border-left-style: dotted;
+}
+
 .discussion-source {
-  text-align: right;
+ 
 }
 
 .discussion-source p {
   font-style: italic;
 }
 
-.discussion-response {
-  @include span-columns(3 omega);
-  background: #E0E0E0;
-  padding: 10px;
-  text-align: left;
-  border-left-style: dotted;
+.discussion-source h2 {
+  font-style: italic;
 }
 
 .discussion-response h2 {

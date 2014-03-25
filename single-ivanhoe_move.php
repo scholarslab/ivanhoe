@@ -5,20 +5,24 @@
         <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
         <p>-<cite><?php the_author_posts_link(); ?></cite></p> 
         <p><?php the_date(); ?></p>
-	   <div class="discussion-response">
+    </div>
+    <div class="source-response-container">
+        <div class="discussion-source">
+            <?php ivanhoe_get_move_source( $post ); ?>
+        </div>
         <p>
+	   <div class="discussion-response">
             <!-- <h2><?php echo get_the_title($post->post_parent); ?></h2> -->
             <?php ivanhoe_get_move_responses( $post ); ?> 
-	   </div>
+       </div>
+       
     </div>
 
     <div id="moves">
 
     <?php the_content(); ?>
             
-        <div class="discussion-source">
-            <?php ivanhoe_get_move_source( $post ); ?>
-        </div>
+        
         <div class="return-button">
 
             <a href="<?php echo get_permalink( $post->post_parent ); ?>">Return to game</a>
