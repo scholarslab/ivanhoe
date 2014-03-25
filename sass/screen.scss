@@ -5,7 +5,7 @@
 }
 
 html {
-  background: #f6f6f6;
+  background: #DAF7DC;
 }
 
 body {
@@ -15,8 +15,8 @@ body {
 
 
 a {
-  &:link {color: #37c;}
-  &:visited {color: #39c;}
+  &:link {color: #004D05;}
+  &:visited {color: #004D05;}
   &:hover {color: #8c3; text-decoration:none;}
   &:active {color: #8a3;}
 }
@@ -28,6 +28,23 @@ img {
   max-height:100%;
   height:auto;
 }
+
+.alignright {
+  float: right;
+  padding-left: .5em;
+}
+
+.aligncenter {
+  margin-left: auto;
+  margin-right:auto;
+  padding-left: .5em;
+  padding-right: .5em;
+ }
+
+.wp-caption-text {
+ font-size: 75%;
+ text-align: center;
+ }
 
 form {
 }
@@ -120,20 +137,49 @@ main :first-child {
 
 #moves{
   @include span-columns(9);
+  text-align: justify;
+}
+.masthead {
+  border-bottom-style: dotted;
+  border-left-style: dotted;
+  padding-left: .5em;
+}
+.discussion-source {
+  text-align: right;
 }
 
-.discussion-source {
-  @include span-columns(4);
+.discussion-source p {
+  font-style: italic;
 }
 
 .discussion-response {
-  @include span-columns (5 omega);
+  @include span-columns(3 omega);
+  background: #E0E0E0;
+  padding: 10px;
+  text-align: left;
+  border-left-style: dotted;
+}
+
+.discussion-response h2 {
+  font-style: italic;
+}
+
+.discussion-response ul {
+  list-style: none;
+  padding-left: 0;
+  margin-left: 0;
 }
 
 .options {
   margin-top: 20px;
   margin-bottom: 20px;
-  @include span-columns(9);
+  @include span-columns(12);
+  text-align: center;
+}
+
+.options a.button {
+  margin-left: auto;
+  margin-right: auto;
 }
 
 article {
@@ -153,19 +199,6 @@ article {
   h3 {
     font-size: 85%;
     text-align: center;
-  }
-}
-
-#game-metadata {
-  float:right;
-  width: 30%;
-  font-size: 87.5%;
-
-  &.description,
-  &.players {
-   background: rgba(0,100,200,0.1);
-    padding: 20px;
-    margin-bottom: 20px;
   }
 }
 
@@ -232,8 +265,9 @@ body > footer a + a:before {
   &:active {color: white;}
 }
 
-#return-button{
+.return-button{
   margin-top: 20px;
+  text-align: right;
 }
 
 #pagination {

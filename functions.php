@@ -240,10 +240,10 @@ function ivanhoe_get_move_source( $post )
     $source_permalink = get_permalink($post_source);
     if ( !empty($post_source) )
     { 
-       echo "Source post:";
+       // echo "Source:";
     }   
     ?>
-    <a href="<?php echo $source_permalink ?>"><?php echo $source_title ?></a>
+    <p>Source:<a href="<?php echo $source_permalink ?>"><?php echo $source_title ?></a></p>
     <?php
 }
 
