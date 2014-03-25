@@ -410,10 +410,18 @@ function catch_that_image() {
     $first_image = '';
     ob_start();
     ob_end_clean();
-    $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
-    if ( !empty( $matches [1] ) ) {
-        $first_image = $matches [1] [0];
+    // $output_images = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+    //run check
+    //if ( empty( $matches [1] ) ){
+        // $output_videos = preg_match_all('/<embed.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+    //}
+
+    $output_videos = preg_match_all('/<(img|embed|iframe|video)[^>]*>/i', $post->post_content, $matches);
+    
+    if ( !empty( $matches [0] ) ) {
+        $first_image = $matches [0] [0];
     }
     
     return $first_image;
 }
+///<(img|embed)[^>]*>

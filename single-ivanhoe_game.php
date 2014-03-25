@@ -63,9 +63,7 @@ while($wp_query->have_posts()) : $wp_query->the_post(); ?>
         <p><?php
         $move_image_source = catch_that_image();
 
-        if ( !empty ( $move_image_source ) ) {
-            echo "<img src = '$move_image_source'>";
-        }
+        echo $move_image_source;
         the_excerpt();
         ?></p>
     
