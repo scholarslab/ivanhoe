@@ -431,6 +431,9 @@ function catch_that_image() {
 
     if ( !empty( $matches [0] ) ) {
         $first_image = $matches [0] [0];
+        if ( strpos( $first_image, 'iframe' ) !== FALSE ) {
+            $first_image = $first_image . '</iframe>';
+        }
     }
 
     return $first_image;
