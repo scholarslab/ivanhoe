@@ -269,7 +269,7 @@ body > footer a + a:before {
   margin-top: 10px;
 
   /*Background Gradients */
-  @include background-image(linear-gradient(bottom, #6FAD74, #498F4F 50%, #1F6925 51%, #004D05));
+  @include background-image(linear-gradient(bottom, #34612D 0%, #217D0F 100%, #B5D1B2 100%));
   @include border-radius(10px);
 
   border: 1px solid #368DBE;

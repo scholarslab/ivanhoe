@@ -359,9 +359,9 @@ body > footer a + a:before {
   background: #a8a8a8;
   margin-top: 10px;
   /*Background Gradients */
-  background-image: -moz-linear-gradient(bottom, #6fad74, #498f4f 50%, #1f6925 51%, #004d05);
-  background-image: -webkit-linear-gradient(bottom, #6fad74, #498f4f 50%, #1f6925 51%, #004d05);
-  background-image: linear-gradient(to top, #6fad74, #498f4f 50%, #1f6925 51%, #004d05);
+  background-image: -moz-linear-gradient(bottom, #34612d 0%, #217d0f 100%, #b5d1b2 100%);
+  background-image: -webkit-linear-gradient(bottom, #34612d 0%, #217d0f 100%, #b5d1b2 100%);
+  background-image: linear-gradient(to top, #34612d 0%, #217d0f 100%, #b5d1b2 100%);
   -moz-border-radius: 10px;
   -webkit-border-radius: 10px;
   border-radius: 10px;
