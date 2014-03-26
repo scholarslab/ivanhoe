@@ -132,6 +132,7 @@ main :first-child {
 #game-data{
   @include span-columns(3 omega);
   background: #E0E0E0;
+  clear: both;
 }
 
 #moves{
@@ -151,12 +152,25 @@ main :first-child {
   @include span-columns(3 omega);
 }
 
+.game header .button {
+    float: right;
+    display: inline;
+    @include clearfix;
+    }
+
+.game header p {
+    float: left;
+    display: inline;
+  }
+
+
 .single-move header {
   border-bottom: $border;
   border-left: $border;
   padding-left: .5em;
   @include clearfix;
 }
+
 
 .source-response-container {
   @include span-columns(3 omega);
@@ -224,10 +238,12 @@ article {
 }
 
 .game header {
+  @include span-columns(12);
   border-bottom: $border;
   font-style: italic;
   margin-top: 0;
   margin-bottom: 0;
+  float: left;
 
   h1 {
     font-size: 400%;

@@ -12,8 +12,7 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
 <article class="game">
     <header>
         <h1 class="single_game_title"><?php the_title(); ?></h1>
-        Playing since: <?php the_date(); ?> 
-    <div id="game-data">
+        <p>Playing since: <?php the_date(); ?></p> 
         <?php
 
         if ( $role = ivanhoe_user_has_role( $post->ID ) ) :
@@ -29,10 +28,9 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
         <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button">Make a Role!</a>
 
     <?php endif; ?>
-    </div>
     </header>   
 
-    <div>
+    <div id="game-data">
         <h3>GAME DESCRIPTION</h3>
         <?php the_content(); ?>
 
