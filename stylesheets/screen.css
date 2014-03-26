@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /* line 3, ../sass/screen.scss */
 * {
-  -webkit-box-sizing: border-box;
   -moz-box-sizing: border-box;
+  -webkit-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -109,7 +109,7 @@ header[role=banner] {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 38, ../../../../../../../../Users/testadm/.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../../usr/local/Cellar/ruby/2.1.1/lib/ruby/gems/2.1.0/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/utilities/general/_clearfix.scss */
 header[role=banner]:after {
   content: "";
   display: table;
@@ -160,7 +160,7 @@ main {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 38, ../../../../../../../../Users/testadm/.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../../usr/local/Cellar/ruby/2.1.1/lib/ruby/gems/2.1.0/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/utilities/general/_clearfix.scss */
 main:after {
   content: "";
   display: table;
@@ -223,33 +223,35 @@ main :first-child {
 /* line 160, ../sass/screen.scss */
 .single-move header {
   border-bottom: 1px dotted gray;
+  border-left: 1px dotted gray;
+  padding-left: .5em;
   overflow: hidden;
   *zoom: 1;
 }
 
-/* line 165, ../sass/screen.scss */
+/* line 167, ../sass/screen.scss */
 .discussion-source p {
   font-style: italic;
 }
 
-/* line 169, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
 .discussion-source h2 {
   font-style: italic;
 }
 
-/* line 173, ../sass/screen.scss */
+/* line 175, ../sass/screen.scss */
 .discussion-response h2 {
   font-style: italic;
 }
 
-/* line 177, ../sass/screen.scss */
+/* line 179, ../sass/screen.scss */
 .discussion-response ul {
   list-style: none;
   padding-left: 0;
   margin-left: 0;
 }
 
-/* line 183, ../sass/screen.scss */
+/* line 185, ../sass/screen.scss */
 .options {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -260,40 +262,45 @@ main :first-child {
   text-align: center;
 }
 
-/* line 191, ../sass/screen.scss */
+/* line 193, ../sass/screen.scss */
 article.single-move {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 195, ../sass/screen.scss */
+/* line 197, ../sass/screen.scss */
 article.role {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 199, ../sass/screen.scss */
+/* line 201, ../sass/screen.scss */
 article.move {
   margin-bottom: 70px;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 204, ../sass/screen.scss */
+/* line 206, ../sass/screen.scss */
 article h3 {
   font-size: 85%;
   text-align: center;
 }
 
-/* line 211, ../sass/screen.scss */
+/* line 212, ../sass/screen.scss */
+.game h1 {
+  border-bottom-style: dotted;
+}
+
+/* line 216, ../sass/screen.scss */
 .game ul {
   list-style: none;
   margin-top: 0;
   font-size: 90%;
 }
 
-/* line 217, ../sass/screen.scss */
+/* line 222, ../sass/screen.scss */
 .game-discussion-source {
   width: 42.85714%;
   float: left;
@@ -301,7 +308,7 @@ article h3 {
   display: inline;
 }
 
-/* line 222, ../sass/screen.scss */
+/* line 227, ../sass/screen.scss */
 .game-discussion-response {
   width: 42.85714%;
   float: right;
@@ -310,7 +317,7 @@ article h3 {
   display: inline;
 }
 
-/* line 226, ../sass/screen.scss */
+/* line 232, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   font-style: italic;
@@ -319,25 +326,25 @@ article h3 {
   margin-bottom: 4em;
 }
 
-/* line 235, ../sass/screen.scss */
+/* line 241, ../sass/screen.scss */
 body > footer {
   padding: 30px 0;
   text-align: right;
   font-size: 90%;
 }
 
-/* line 241, ../sass/screen.scss */
+/* line 247, ../sass/screen.scss */
 body > footer a {
   text-decoration: none;
 }
 
-/* line 245, ../sass/screen.scss */
+/* line 251, ../sass/screen.scss */
 body > footer a + a:before {
   content: " | ";
   color: #bbb;
 }
 
-/* line 251, ../sass/screen.scss */
+/* line 257, ../sass/screen.scss */
 .button {
   width: 200px;
   height: 30px;
@@ -352,41 +359,37 @@ body > footer a + a:before {
   background: #a8a8a8;
   margin-top: 10px;
   /*Background Gradients */
-  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #0d658e), color-stop(50%, #0c577a), color-stop(51%, #014d71), color-stop(100%, #003e5c));
-  background-image: -webkit-linear-gradient(bottom, #0d658e, #0c577a 50%, #014d71 51%, #003e5c);
-  background-image: -moz-linear-gradient(bottom, #0d658e, #0c577a 50%, #014d71 51%, #003e5c);
-  background-image: -o-linear-gradient(bottom, #0d658e, #0c577a 50%, #014d71 51%, #003e5c);
-  background-image: linear-gradient(bottom, #0d658e, #0c577a 50%, #014d71 51%, #003e5c);
-  -webkit-border-radius: 10px;
+  background-image: -moz-linear-gradient(bottom, #6fad74, #498f4f 50%, #1f6925 51%, #004d05);
+  background-image: -webkit-linear-gradient(bottom, #6fad74, #498f4f 50%, #1f6925 51%, #004d05);
+  background-image: linear-gradient(to top, #6fad74, #498f4f 50%, #1f6925 51%, #004d05);
   -moz-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -o-border-radius: 10px;
+  -webkit-border-radius: 10px;
   border-radius: 10px;
   border: 1px solid #368DBE;
   border-top: 1px solid #C3D6DF;
 }
 
-/* line 277, ../sass/screen.scss */
+/* line 282, ../sass/screen.scss */
 .button:link, .button:visited {
   color: white;
   color: rgba(255, 255, 255, 0.85);
 }
-/* line 278, ../sass/screen.scss */
+/* line 284, ../sass/screen.scss */
 .button:hover {
   color: white;
 }
-/* line 279, ../sass/screen.scss */
+/* line 285, ../sass/screen.scss */
 .button:active {
   color: white;
 }
 
-/* line 282, ../sass/screen.scss */
+/* line 288, ../sass/screen.scss */
 .return-button {
   margin-top: 20px;
   text-align: right;
 }
 
-/* line 287, ../sass/screen.scss */
+/* line 293, ../sass/screen.scss */
 #pagination {
   width: 74.46809%;
   float: left;

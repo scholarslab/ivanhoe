@@ -159,6 +159,8 @@ main :first-child {
 
 .single-move header {
   border-bottom: $border;
+  border-left: $border;
+  padding-left: .5em;
   @include clearfix;
 }
 
@@ -207,6 +209,9 @@ article {
   }
 }
 
+.game h1 {
+  border-bottom-style: dotted;
+}
 
 .game ul {
   list-style:none;
@@ -221,6 +226,7 @@ article {
 
 .game-discussion-response {
   @include span-columns(4 omega,9);
+
 }
 
 .move .meta {
@@ -263,7 +269,7 @@ body > footer a + a:before {
   margin-top: 10px;
 
   /*Background Gradients */
-  @include background-image(linear-gradient(bottom, #0d658e, #0c577a 50%, #014d71 51%, #003e5c));
+  @include background-image(linear-gradient(bottom, #6FAD74, #498F4F 50%, #1F6925 51%, #004D05));
   @include border-radius(10px);
 
   border: 1px solid #368DBE;
