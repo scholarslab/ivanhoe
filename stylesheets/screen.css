@@ -261,31 +261,37 @@ main :first-child {
 .source-response-container a {
   padding-left: 10px;
 }
+/* line 195, ../sass/screen.scss */
+.source-response-container h3 {
+  padding-left: 10px;
+  text-align: left;
+  font-size: 100%;
+}
 
-/* line 197, ../sass/screen.scss */
+/* line 202, ../sass/screen.scss */
 .discussion-source {
   border-bottom: 1px dotted gray;
 }
 
-/* line 201, ../sass/screen.scss */
+/* line 206, ../sass/screen.scss */
 .discussion-response {
   border-bottom: 1px dotted gray;
 }
 
-/* line 205, ../sass/screen.scss */
+/* line 210, ../sass/screen.scss */
 .game-discription {
   border-bottom: 1px dotted gray;
   border-top: 1px dotted gray;
 }
 
-/* line 210, ../sass/screen.scss */
+/* line 215, ../sass/screen.scss */
 .source-response-container ul {
   list-style: none;
   padding-left: 10px;
   margin-left: 10px;
 }
 
-/* line 216, ../sass/screen.scss */
+/* line 221, ../sass/screen.scss */
 .options {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -296,34 +302,34 @@ main :first-child {
   text-align: center;
 }
 
-/* line 224, ../sass/screen.scss */
+/* line 229, ../sass/screen.scss */
 article.single-move {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 228, ../sass/screen.scss */
+/* line 233, ../sass/screen.scss */
 article.role {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 232, ../sass/screen.scss */
+/* line 237, ../sass/screen.scss */
 article.move {
   margin-bottom: 70px;
   overflow: hidden;
   *zoom: 1;
   border-left: 1px dotted gray;
 }
-/* line 238, ../sass/screen.scss */
+/* line 243, ../sass/screen.scss */
 article h3 {
   font-size: 85%;
   text-align: center;
 }
 
-/* line 244, ../sass/screen.scss */
+/* line 249, ../sass/screen.scss */
 .game header {
   width: 100%;
   float: left;
@@ -335,21 +341,21 @@ article h3 {
   margin-bottom: 0;
   float: left;
 }
-/* line 252, ../sass/screen.scss */
+/* line 257, ../sass/screen.scss */
 .game header h1 {
   font-size: 400%;
   margin-bottom: 5px;
   margin-top: 5px;
 }
 
-/* line 259, ../sass/screen.scss */
+/* line 264, ../sass/screen.scss */
 .game ul {
   list-style: none;
   margin-top: 0;
   font-size: 90%;
 }
 
-/* line 265, ../sass/screen.scss */
+/* line 270, ../sass/screen.scss */
 .game-discussion-source {
   width: 42.85714%;
   float: left;
@@ -359,7 +365,7 @@ article h3 {
   border-right: 1px dotted gray;
 }
 
-/* line 272, ../sass/screen.scss */
+/* line 277, ../sass/screen.scss */
 .game-discussion-response {
   width: 42.85714%;
   float: right;
@@ -369,7 +375,7 @@ article h3 {
   border-bottom: 1px dotted gray;
 }
 
-/* line 278, ../sass/screen.scss */
+/* line 283, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   font-style: italic;
@@ -378,25 +384,25 @@ article h3 {
   margin-bottom: 4em;
 }
 
-/* line 287, ../sass/screen.scss */
+/* line 292, ../sass/screen.scss */
 body > footer {
   padding: 30px 0;
   text-align: right;
   font-size: 90%;
 }
 
-/* line 293, ../sass/screen.scss */
+/* line 298, ../sass/screen.scss */
 body > footer a {
   text-decoration: none;
 }
 
-/* line 297, ../sass/screen.scss */
+/* line 302, ../sass/screen.scss */
 body > footer a + a:before {
   content: " | ";
   color: #bbb;
 }
 
-/* line 303, ../sass/screen.scss */
+/* line 308, ../sass/screen.scss */
 .button {
   width: 200px;
   height: 30px;
@@ -421,27 +427,27 @@ body > footer a + a:before {
   border-top: 1px solid #C3D6DF;
 }
 
-/* line 328, ../sass/screen.scss */
+/* line 333, ../sass/screen.scss */
 .button:link, .button:visited {
   color: white;
   color: rgba(255, 255, 255, 0.85);
 }
-/* line 330, ../sass/screen.scss */
+/* line 335, ../sass/screen.scss */
 .button:hover {
   color: white;
 }
-/* line 331, ../sass/screen.scss */
+/* line 336, ../sass/screen.scss */
 .button:active {
   color: white;
 }
 
-/* line 334, ../sass/screen.scss */
+/* line 339, ../sass/screen.scss */
 .return-button {
   margin-top: 20px;
   text-align: right;
 }
 
-/* line 339, ../sass/screen.scss */
+/* line 344, ../sass/screen.scss */
 #pagination {
   width: 74.46809%;
   float: left;

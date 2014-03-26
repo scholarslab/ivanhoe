@@ -407,6 +407,6 @@ return $the_excerpt;
 function get_title_by_id($post_id){
 $the_post = get_post($post_id); //Gets post ID
 $the_title = $the_post->post_title; //Gets post_content to be used as a basis for the excerpt
-$the_title = '<p>' . $the_title . '</p>';
+$the_title = '<h3>' . $the_title . '</h3>';
 return $the_title;
 }
