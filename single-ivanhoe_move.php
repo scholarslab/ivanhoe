@@ -18,6 +18,17 @@
        </div>
         <div class="game-description">
             <h2>Game Info</h2>
+			<?php global $post;
+				/*if ($post->post_parent) {
+				$parent = get_page($post->post_parent);
+				/*echo apply_filters('the_content', $parent->post_content);
+				} 
+				*/
+				$parent_ID = $post->post_parent;
+			$game_excerpt = get_excerpt_by_id( $parent_ID );
+			echo $game_excerpt; ?>
+
+
         </div>
     </div>
  
