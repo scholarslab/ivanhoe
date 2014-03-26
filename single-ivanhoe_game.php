@@ -12,7 +12,7 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
 <article class="game">
     <header>
         <h1 class="single_game_title"><?php the_title(); ?></h1>
-        <p>Playing since: <?php the_date(); ?></p> 
+        <p><span class="italic">Playing since</span>: <?php the_date(); ?></p> 
         <?php
 
         if ( $role = ivanhoe_user_has_role( $post->ID ) ) :
@@ -31,7 +31,7 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
     </header>   
 
     <div id="game-data">
-        <h3>GAME DESCRIPTION</h3>
+        <h3>Game Description</h3>
         <?php the_content(); ?>
 
     </div>
@@ -60,7 +60,7 @@ if ( $wp_query->have_posts()) : ?>
         <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
         
       
-      <?php the_author_posts_link(); ?>  
+      By: <?php the_author_posts_link(); ?>  
 
         <?php the_excerpt(); ?>
     </div>

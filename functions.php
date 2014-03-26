@@ -243,7 +243,7 @@ function ivanhoe_get_move_source( $post )
        // echo "Source:";
     }   
     ?>
-    <p><h2>Source</h2><a href="<?php echo $source_permalink ?>"><?php echo $source_title ?></a></p>
+    <p><h3>Source</h3><a href="<?php echo $source_permalink ?>"><?php echo $source_title ?></a></p>
     <?php
 }
 
@@ -264,7 +264,7 @@ function ivanhoe_get_move_responses( $post )
     $source_query = new WP_Query( $args );
 
     if ($source_query->have_posts() ) : ?>
-    <h2>Responses</h2>
+    <h3>Responses</h3>
     <ul>
     <?php while( $source_query->have_posts() ) : $source_query->the_post(); ?>
 
@@ -273,7 +273,7 @@ function ivanhoe_get_move_responses( $post )
     <?php endwhile; ?>
     </ul>
     <?php else : ?>
-    <h2>Responses</h2>
+    <h3>Responses</h3>
     <p>There are no responses to this post.</p>
     <?php endif;
     wp_reset_postdata();

@@ -46,8 +46,6 @@ img {
  text-align: center;
  }
 
-form {
-}
 
 label {
   font-size: 20px;
@@ -140,36 +138,7 @@ main :first-child {
   text-align: justify;
 }
 
-.move {
-  border-bottom: $border;
-}
 
-.date-published {
-  float: left;
-}
-
-.single-move .button {
-  @include span-columns(3 omega);
-}
-
-.game header .button {
-    float: right;
-    display: inline;
-    @include clearfix;
-    }
-
-.game header p {
-    float: left;
-    display: inline;
-  }
-
-
-.single-move header {
-  border-bottom: $border;
-  border-left: $border;
-  padding-left: .5em;
-  @include clearfix;
-}
 
 
 .source-response-container {
@@ -228,6 +197,15 @@ main :first-child {
 article {
   &.single-move {
     @include span-columns(12);
+    header {
+        border-bottom: $border;
+        border-left: $border;
+        padding-left: .5em;
+        @include clearfix;
+        }
+    .button {
+      @include span-columns(3 omega);
+    }
   }
 
   &.role{
@@ -238,34 +216,60 @@ article {
     margin-bottom: 70px;
     @include clearfix;
     border-left: $border;
+    border-bottom: $border;
   }
 
-  h3 {
-    font-size: 85%;
-    text-align: center;
+  &.game {
+    header {
+      @include span-columns(12);
+      border-bottom: $border;
+      margin-top: 0;
+      margin-bottom: 0;
+      float: left;
+      }
+
+    h1 {
+      font-size: 400%;
+      font-style: italic;
+      margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    .italic {
+      font-style: italic;
+    }
+    .date-published {
+      float: left;
+      }
+    .excerpt {
+      h1 {
+        font-size: 200%;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        }
+      }
+    }
+
+  ul {
+    list-style:none;
+    margin-top: 0;
+    font-size: 90%;
+    padding-left: 0;
+  }
+  
+  header .button {
+    float: right;
+    display: inline;
+    @include clearfix;
+    }
+
+  header p {
+    float: left;
+    @include clearfix;
+    display: inline;
   }
 }
 
-.game header {
-  @include span-columns(12);
-  border-bottom: $border;
-  font-style: italic;
-  margin-top: 0;
-  margin-bottom: 0;
-  float: left;
-
-  h1 {
-    font-size: 400%;
-    margin-bottom: 5px;
-    margin-top: 5px;
-  }
-}
-
-.game ul {
-  list-style:none;
-  margin-top:0;
-  font-size: 90%;
-}
 
 .game-discussion-source {
   @include span-columns(4,9);

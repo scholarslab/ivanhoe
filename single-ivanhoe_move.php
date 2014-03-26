@@ -3,7 +3,7 @@
 <article class="single-move">
     <header>
             <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-            <p>-<cite><?php the_author_posts_link(); ?></cite></p> 
+            <p>-<cite><?php the_author_posts_link(); ?></cite></p>
             <p class="date-published"><?php the_date(); ?></p>
            <a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a> 
     </header>
