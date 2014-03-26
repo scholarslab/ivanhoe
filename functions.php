@@ -152,11 +152,14 @@ function ivanhoe_make_menus() {
         'menu-item-status' => 'publish')
     );
 
-    wp_update_nav_menu_item($menu_id, 0, array(
+    $current_user = wp_get_current_user();
+    if (is_user_logged_in()) {
+        wp_update_nav_menu_item($menu_id, 0, array(
         'menu-item-title' => __('Profile'),
-        'menu-item-url' => home_url('author.php'),
+        'menu-item-url' => site_url('author.php'),
         'menu-item-status' => 'publish')
     );
+    }
 }
 
 add_action('init', 'ivanhoe_make_menus');
