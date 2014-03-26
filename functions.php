@@ -1,4 +1,4 @@
-<?php 
+<?php
 
 // Add theme support for WP features.
 add_theme_support('menus', 'post_thumbnails' );
@@ -35,7 +35,7 @@ function ivanhoe_create_post_types()
         'custom-fields'
         );
 
-    register_post_type( 
+    register_post_type(
         'ivanhoe_game',
         array(
             'labels' => array(
@@ -92,7 +92,7 @@ function ivanhoe_move_meta_box($post)
 {
     $html = '<p><label for="post_parent">'.__('Game').'</label></p>'
           . '<p><input type="text" name="post_parent" value="'. $post->post_parent.'">';
-    
+
     return $html;
 }
 
@@ -133,31 +133,30 @@ function ivanhoe_make_menus() {
     // Check if the menu exists
     $nav_menu = wp_get_nav_menu_object( $menu_name );
 
-    if (!$nav_menu) {
-        $nav_menu = wp_create_nav_menu($menu_name);
+    if ($nav_menu) {
+        wp_delete_nav_menu($nav_menu->term_id);
     }
+    $menu_id = wp_create_nav_menu($menu_name);
 
-    // If it doesn't exist, let's create it.
-    if($nav_menu->count == 0){
-        $menu_id = $nav_menu->term_id;    
+    // Set up default menu items
+    wp_update_nav_menu_item($menu_id, 0, array(
+        'menu-item-title' =>  __('Home'),
+        'menu-item-classes' => 'home',
+        'menu-item-url' => home_url( '/' ),
+        'menu-item-status' => 'publish')
+    );
 
-        // Set up default menu items
-        wp_update_nav_menu_item($menu_id, 0, array(
-            'menu-item-title' =>  __('Home'),
-            'menu-item-classes' => 'home',
-            'menu-item-url' => home_url( '/' ),
-            'menu-item-status' => 'publish'));
+    wp_update_nav_menu_item($menu_id, 0, array(
+        'menu-item-title' =>  __('Games'),
+        'menu-item-url' => get_post_type_archive_link('ivanhoe_game'),
+        'menu-item-status' => 'publish')
+    );
 
-        wp_update_nav_menu_item($menu_id, 0, array(
-            'menu-item-title' =>  __('Games'),
-            'menu-item-url' => get_post_type_archive_link('ivanhoe_game'),
-            'menu-item-status' => 'publish'));
-
-        wp_update_nav_menu_item($menu_id, 0, array(
-            'menu-item-title' => __('Profile'),
-            'menu-item-url' => home_url('/author.php'),
-            'menu-item-status' => 'publish'));
-    }
+    wp_update_nav_menu_item($menu_id, 0, array(
+        'menu-item-title' => __('Profile'),
+        'menu-item-url' => home_url('author.php'),
+        'menu-item-status' => 'publish')
+    );
 }
 
 add_action('init', 'ivanhoe_make_menus');
@@ -184,7 +183,7 @@ add_action ( 'after_switch_theme','ivanhoe_after_switch_theme' );
 function ivanhoe_after_switch_theme()
 {
     if (! get_option('ivanhoe_installed')) {
-       $pages = array( 
+       $pages = array(
             'ivanhoe_move' => 'Make a Move',
             'ivanhoe_role' => 'Make a Role'
             );
@@ -202,7 +201,7 @@ function ivanhoe_after_switch_theme()
                 update_option( $page . '_page', $ivanhoe_page );
             }
         }
-        update_option( 'ivanhoe_installed', true ); 
+        update_option( 'ivanhoe_installed', true );
     }
 }
 
@@ -230,7 +229,7 @@ function ivanhoe_redirect_canonical( $redirect_url, $requested_url ){
 add_filter( 'redirect_canonical', 'ivanhoe_redirect_canonical', 10, 2 );
 
 /*
-* Calls the source metadata for each move and displays it 
+* Calls the source metadata for each move and displays it
 */
 
 function ivanhoe_get_move_source( $post )
@@ -275,7 +274,7 @@ function ivanhoe_get_move_responses( $post )
     <ul>
     <?php while( $source_query->have_posts() ) : $source_query->the_post(); ?>
 
-    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>  
+    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 
     <?php endwhile; ?>
     </ul>
@@ -283,7 +282,7 @@ function ivanhoe_get_move_responses( $post )
     <p>There are no responses to this post.</p>
     <?php endif;
     wp_reset_postdata();
-}    
+}
 
 /*
 * Respond to move helper function
@@ -304,7 +303,7 @@ function ivanhoe_response_form_url( $post )
     );
 
     return $url;
-}   
+}
 
 function ivanhoe_role_form_url( $post )
 {
@@ -345,7 +344,7 @@ function ivanhoe_user_has_role($game_id, $user_id=null) {
     return false;
 }
 
-/* 
+/*
 * Displays role name
 */
 
@@ -366,7 +365,7 @@ function ivanhoe_display_role_name ( $link )
             '<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
             esc_url( get_permalink($role->ID) ),
             esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) ),
-            $role->post_title    
+            $role->post_title
             );
     }
 
@@ -426,11 +425,11 @@ function catch_that_image() {
     ob_start();
     ob_end_clean();
     $output_videos = preg_match_all('/<(img|embed|iframe|video)[^>]*>/i', $post->post_content, $matches);
-    
+
     if ( !empty( $matches [0] ) ) {
         $first_image = $matches [0] [0];
     }
-    
+
     return $first_image;
 }
 
