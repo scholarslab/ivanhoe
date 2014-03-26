@@ -181,13 +181,17 @@ main :first-child {
   clear: both;
 }
 
-.source-response-container h2 {
-  font-style: italic;
-  padding-left: 10px;
-}
-
-.source-response-container p {
-  padding-left: 10px;
+.source-response-container {
+  h2 {
+      font-style: italic;
+      padding-left: 10px;
+      }
+  p {
+    padding-left: 10px;
+    }
+  a {
+    padding-left: 10px;
+  }
 }
 
 .discussion-source {
