@@ -13,7 +13,6 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
     <header>
         <h1 class="single_game_title"><?php the_title(); ?></h1>
         Playing since: <?php the_date(); ?> 
-    </header>
     <div id="game-data">
         <?php
 
@@ -30,6 +29,10 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
         <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button">Make a Role!</a>
 
     <?php endif; ?>
+    </div>
+    </header>   
+
+    <div>
         <h3>GAME DESCRIPTION</h3>
         <?php the_content(); ?>
 
