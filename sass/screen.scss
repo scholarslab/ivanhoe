@@ -139,8 +139,8 @@ main :first-child {
   text-align: justify;
 }
 
-.single-move #moves {
-
+.move {
+  border-bottom: $border;
 }
 
 .date-published {
@@ -214,6 +214,7 @@ article {
   &.move {
     margin-bottom: 70px;
     @include clearfix;
+    border-left: $border;
   }
 
   h3 {
@@ -222,12 +223,17 @@ article {
   }
 }
 
-.single_game_title{
+.game header {
   border-bottom: $border;
-  font-size: 400%;
   font-style: italic;
   margin-top: 0;
   margin-bottom: 0;
+
+  h1 {
+    font-size: 400%;
+    margin-bottom: 5px;
+    margin-top: 5px;
+  }
 }
 
 .game ul {
@@ -238,11 +244,14 @@ article {
 
 .game-discussion-source {
   @include span-columns(4,9);
+  border-top: $border;
+  border-right: $border;
   
 }
 
 .game-discussion-response {
   @include span-columns(4 omega,9);
+  border-bottom: $border;
 
 }
 

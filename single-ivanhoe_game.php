@@ -10,8 +10,10 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
 
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 <article class="game">
-    <h1 class="single_game_title"><?php the_title(); ?></h1>
-
+    <header>
+        <h1 class="single_game_title"><?php the_title(); ?></h1>
+        Playing since: <?php the_date(); ?> 
+    </header>
     <div id="game-data">
         <?php
 
@@ -53,11 +55,14 @@ if ( $wp_query->have_posts()) : ?>
 <?php
  while($wp_query->have_posts()) : $wp_query->the_post(); ?>
 <article class="move">
-    <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+    <div class="excerpt">
+        <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
         
+      
       <?php the_author_posts_link(); ?>  
 
         <?php the_excerpt(); ?>
+    </div>
     
         <div class="game-discussion-source">
         <?php ivanhoe_get_move_source( $post ); ?>

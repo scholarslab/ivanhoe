@@ -18,6 +18,9 @@
        </div>
         <div class="game-description">
             <h2>Game Info</h2>
+            <?php 
+                $game_excerpt = get_the_excerpt( $post->post_parent ); 
+                echo $game_excerpt; ?>
         </div>
     </div>
  
