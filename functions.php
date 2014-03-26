@@ -156,7 +156,7 @@ function ivanhoe_make_menus() {
     if (is_user_logged_in()) {
         wp_update_nav_menu_item($menu_id, 0, array(
         'menu-item-title' => __('Profile'),
-        'menu-item-url' => site_url('author.php'),
+        'menu-item-url' => get_author_posts_url($current_user->ID),
         'menu-item-status' => 'publish')
     );
     }
