@@ -180,10 +180,9 @@ main :first-child {
   *margin-left: -20px;
   display: inline;
   background: #E0E0E0;
-  padding: 10px;
 }
 
-/* line 138, ../sass/screen.scss */
+/* line 137, ../sass/screen.scss */
 #moves {
   width: 74.46809%;
   float: left;
@@ -192,12 +191,12 @@ main :first-child {
   text-align: justify;
 }
 
-/* line 143, ../sass/screen.scss */
+/* line 146, ../sass/screen.scss */
 .date-published {
   float: left;
 }
 
-/* line 147, ../sass/screen.scss */
+/* line 150, ../sass/screen.scss */
 .single-move .button {
   width: 23.40426%;
   float: right;
@@ -206,21 +205,7 @@ main :first-child {
   display: inline;
 }
 
-/* line 151, ../sass/screen.scss */
-.source-response-container {
-  width: 23.40426%;
-  float: right;
-  margin-right: 0;
-  *margin-left: -20px;
-  display: inline;
-  background: #E0E0E0;
-  padding: 10px;
-  text-align: left;
-  border-left: 1px dotted gray;
-  clear: right;
-}
-
-/* line 160, ../sass/screen.scss */
+/* line 154, ../sass/screen.scss */
 .single-move header {
   border-bottom: 1px dotted gray;
   border-left: 1px dotted gray;
@@ -229,29 +214,55 @@ main :first-child {
   *zoom: 1;
 }
 
-/* line 167, ../sass/screen.scss */
-.discussion-source p {
-  font-style: italic;
+/* line 161, ../sass/screen.scss */
+.source-response-container {
+  width: 23.40426%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+  background: #E0E0E0;
+  text-align: left;
+  border-left: 1px dotted gray;
+  border-bottom: 1px dotted gray;
+  clear: both;
 }
 
-/* line 171, ../sass/screen.scss */
-.discussion-source h2 {
+/* line 170, ../sass/screen.scss */
+.source-response-container h2 {
   font-style: italic;
+  padding-left: 10px;
 }
 
 /* line 175, ../sass/screen.scss */
-.discussion-response h2 {
-  font-style: italic;
+.source-response-container p {
+  padding-left: 10px;
 }
 
 /* line 179, ../sass/screen.scss */
-.discussion-response ul {
-  list-style: none;
-  padding-left: 0;
-  margin-left: 0;
+.discussion-source {
+  border-bottom: 1px dotted gray;
 }
 
-/* line 185, ../sass/screen.scss */
+/* line 183, ../sass/screen.scss */
+.discussion-response {
+  border-bottom: 1px dotted gray;
+}
+
+/* line 187, ../sass/screen.scss */
+.game-discription {
+  border-bottom: 1px dotted gray;
+  border-top: 1px dotted gray;
+}
+
+/* line 192, ../sass/screen.scss */
+.source-response-container ul {
+  list-style: none;
+  padding-left: 10px;
+  margin-left: 10px;
+}
+
+/* line 198, ../sass/screen.scss */
 .options {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -262,45 +273,49 @@ main :first-child {
   text-align: center;
 }
 
-/* line 193, ../sass/screen.scss */
+/* line 206, ../sass/screen.scss */
 article.single-move {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 197, ../sass/screen.scss */
+/* line 210, ../sass/screen.scss */
 article.role {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 201, ../sass/screen.scss */
+/* line 214, ../sass/screen.scss */
 article.move {
   margin-bottom: 70px;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 206, ../sass/screen.scss */
+/* line 219, ../sass/screen.scss */
 article h3 {
   font-size: 85%;
   text-align: center;
 }
 
-/* line 212, ../sass/screen.scss */
-.game h1 {
-  border-bottom-style: dotted;
+/* line 225, ../sass/screen.scss */
+.single_game_title {
+  border-bottom: 1px dotted gray;
+  font-size: 400%;
+  font-style: italic;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
-/* line 216, ../sass/screen.scss */
+/* line 233, ../sass/screen.scss */
 .game ul {
   list-style: none;
   margin-top: 0;
   font-size: 90%;
 }
 
-/* line 222, ../sass/screen.scss */
+/* line 239, ../sass/screen.scss */
 .game-discussion-source {
   width: 42.85714%;
   float: left;
@@ -308,7 +323,7 @@ article h3 {
   display: inline;
 }
 
-/* line 227, ../sass/screen.scss */
+/* line 244, ../sass/screen.scss */
 .game-discussion-response {
   width: 42.85714%;
   float: right;
@@ -317,7 +332,7 @@ article h3 {
   display: inline;
 }
 
-/* line 232, ../sass/screen.scss */
+/* line 249, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   font-style: italic;
@@ -326,25 +341,25 @@ article h3 {
   margin-bottom: 4em;
 }
 
-/* line 241, ../sass/screen.scss */
+/* line 258, ../sass/screen.scss */
 body > footer {
   padding: 30px 0;
   text-align: right;
   font-size: 90%;
 }
 
-/* line 247, ../sass/screen.scss */
+/* line 264, ../sass/screen.scss */
 body > footer a {
   text-decoration: none;
 }
 
-/* line 251, ../sass/screen.scss */
+/* line 268, ../sass/screen.scss */
 body > footer a + a:before {
   content: " | ";
   color: #bbb;
 }
 
-/* line 257, ../sass/screen.scss */
+/* line 274, ../sass/screen.scss */
 .button {
   width: 200px;
   height: 30px;
@@ -369,27 +384,27 @@ body > footer a + a:before {
   border-top: 1px solid #C3D6DF;
 }
 
-/* line 282, ../sass/screen.scss */
+/* line 299, ../sass/screen.scss */
 .button:link, .button:visited {
   color: white;
   color: rgba(255, 255, 255, 0.85);
 }
-/* line 284, ../sass/screen.scss */
+/* line 301, ../sass/screen.scss */
 .button:hover {
   color: white;
 }
-/* line 285, ../sass/screen.scss */
+/* line 302, ../sass/screen.scss */
 .button:active {
   color: white;
 }
 
-/* line 288, ../sass/screen.scss */
+/* line 305, ../sass/screen.scss */
 .return-button {
   margin-top: 20px;
   text-align: right;
 }
 
-/* line 293, ../sass/screen.scss */
+/* line 310, ../sass/screen.scss */
 #pagination {
   width: 74.46809%;
   float: left;

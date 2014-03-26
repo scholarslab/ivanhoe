@@ -10,7 +10,7 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
 
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 <article class="game">
-    <h1><?php the_title(); ?></h1>
+    <h1 class="single_game_title"><?php the_title(); ?></h1>
 
     <div id="game-data">
         <?php

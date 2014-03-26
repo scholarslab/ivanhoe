@@ -16,6 +16,9 @@
             <!-- <h2><?php echo get_the_title($post->post_parent); ?></h2> -->
             <?php ivanhoe_get_move_responses( $post ); ?> 
        </div>
+        <div class="game-description">
+            <h2>Game Info</h2>
+        </div>
     </div>
  
     <div id="moves">

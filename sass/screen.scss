@@ -132,12 +132,15 @@ main :first-child {
 #game-data{
   @include span-columns(3 omega);
   background: #E0E0E0;
-  padding: 10px;
 }
 
 #moves{
   @include span-columns(9);
   text-align: justify;
+}
+
+.single-move #moves {
+
 }
 
 .date-published {
@@ -148,15 +151,6 @@ main :first-child {
   @include span-columns(3 omega);
 }
 
-.source-response-container {
-  @include span-columns(3 omega);
-  background: #E0E0E0;
-  padding: 10px;
-  text-align: left;
-  border-left: $border;
-  clear: right;
-}
-
 .single-move header {
   border-bottom: $border;
   border-left: $border;
@@ -164,22 +158,41 @@ main :first-child {
   @include clearfix;
 }
 
-.discussion-source p {
-  font-style: italic;
+.source-response-container {
+  @include span-columns(3 omega);
+  background: #E0E0E0;
+  text-align: left;
+  border-left: $border;
+  border-bottom: $border;
+  clear: both;
 }
 
-.discussion-source h2 {
+.source-response-container h2 {
   font-style: italic;
+  padding-left: 10px;
 }
 
-.discussion-response h2 {
-  font-style: italic;
+.source-response-container p {
+  padding-left: 10px;
 }
 
-.discussion-response ul {
+.discussion-source {
+  border-bottom: $border;
+}
+
+.discussion-response {
+  border-bottom: $border;
+}
+
+.game-discription {
+  border-bottom: $border;
+  border-top: $border;
+}
+
+.source-response-container ul {
   list-style: none;
-  padding-left: 0;
-  margin-left: 0;
+  padding-left: 10px;
+  margin-left: 10px;
 }
 
 .options {
@@ -209,8 +222,12 @@ article {
   }
 }
 
-.game h1 {
-  border-bottom-style: dotted;
+.single_game_title{
+  border-bottom: $border;
+  font-size: 400%;
+  font-style: italic;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 
 .game ul {
