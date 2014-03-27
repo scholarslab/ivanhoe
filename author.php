@@ -4,7 +4,7 @@
 	$curauth = ( isset( $_GET['author_name'] ) ) ? get_user_by( 'slug', $author_name ) : get_userdata( intval( $author ) );
 ?>
 
-<h1>Hello <?php echo $curauth->first_name; ?></h1>	
+<h1>Hello <?php echo $curauth->first_name; ?></h1>
 
 <p>Here's a little bit about yourself: <?php echo $curauth->user_description; ?></p>
 
@@ -17,7 +17,7 @@
 	$args = array 
 		(
 			'post_type' => 'ivanhoe_role',
-			'author_name' => $author_name
+			'author' => $curauth->ID
 		);
 
 	$author_role_query = new WP_Query($args);
