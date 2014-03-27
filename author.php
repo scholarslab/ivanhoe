@@ -35,7 +35,7 @@
 	(
 		'post_type' => 'ivanhoe_move',
 		'post_parent' => $post->post_parent,
-		'author' => $author_name,
+		'author' => $curauth->ID,
 		'posts_per_page' => '5'
 	);	
 
