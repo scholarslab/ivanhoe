@@ -129,13 +129,6 @@ add_action('add_meta_boxes', 'ivanhoe_move_source', 'ivanhoe_move_response');
 function ivanhoe_make_menus() {
 
     $menu_name = 'ivanhoe_default';
-
-    // Check if the menu exists
-    $nav_menu = wp_get_nav_menu_object( $menu_name );
-
-    if ($nav_menu) {
-        wp_delete_nav_menu($nav_menu->term_id);
-    }
     $menu_id = wp_create_nav_menu($menu_name);
 
     // Set up default menu items
@@ -151,34 +144,46 @@ function ivanhoe_make_menus() {
         'menu-item-url' => get_post_type_archive_link('ivanhoe_game'),
         'menu-item-status' => 'publish')
     );
-
-    $current_user = wp_get_current_user();
-    if (is_user_logged_in()) {
-        wp_update_nav_menu_item($menu_id, 0, array(
-        'menu-item-title' => __('Profile'),
-        'menu-item-url' => get_author_posts_url($current_user->ID),
-        'menu-item-status' => 'publish')
-    );
-    }
 }
 
-add_action('init', 'ivanhoe_make_menus');
-
 function ivanhoe_register_nav_menus() {
+    ivanhoe_make_menus();
     register_nav_menu('ivanhoe_default',__( 'Ivanhoe Default' ));
 }
 
-add_action( 'init', 'ivanhoe_register_nav_menus' );
+add_action( 'after_switch_theme', 'ivanhoe_register_nav_menus' );
+
+function ivanhoe_append_profile_nav_menu($items) {
+    if (is_user_logged_in()) {
+        $user   = wp_get_current_user();
+        $url    = get_author_posts_url($user->ID);
+        $items .= "<li class='menu-item menu-item-type-custom "
+            . "menu-item-object-custom menu'>"
+            . "<a href='$url'>Profile</a></li>";
+    }
+
+    return $items;
+}
+
+add_filter('wp_nav_menu_items', 'ivanhoe_append_profile_nav_menu');
 
 add_action( 'switch_theme', 'ivanhoe_switch_themes');
 
 function ivanhoe_switch_themes()
 {
+    $menu_name = 'ivanhoe_default';
+
     wp_delete_post( get_option('ivanhoe_move_page'), true);
     wp_delete_post( get_option('ivanhoe_role_page'), true);
     delete_option( 'ivanhoe_installed' );
     delete_option( 'ivanhoe_move_page' );
     delete_option( 'ivanhoe_role_page' );
+
+    $nav_menu = wp_get_nav_menu_object( $menu_name );
+
+    if ($nav_menu) {
+        wp_delete_nav_menu($nav_menu->term_id);
+    }
 }
 
 add_action ( 'after_switch_theme','ivanhoe_after_switch_theme' );
