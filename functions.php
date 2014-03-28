@@ -144,17 +144,6 @@ function ivanhoe_make_menus() {
         'menu-item-url' => get_post_type_archive_link('ivanhoe_game'),
         'menu-item-status' => 'publish')
     );
-
-    /*
-     * $current_user = wp_get_current_user();
-     * if (is_user_logged_in()) {
-     *     wp_update_nav_menu_item($menu_id, 0, array(
-     *     'menu-item-title' => __('Profile'),
-     *     'menu-item-url' => get_author_posts_url($current_user->ID),
-     *     'menu-item-status' => 'publish')
-     * );
-     * }
-     */
 }
 
 function ivanhoe_register_nav_menus() {
@@ -163,6 +152,20 @@ function ivanhoe_register_nav_menus() {
 }
 
 add_action( 'after_switch_theme', 'ivanhoe_register_nav_menus' );
+
+function ivanhoe_append_profile_nav_menu($items) {
+    if (is_user_logged_in()) {
+        $user   = wp_get_current_user();
+        $url    = get_author_posts_url($user->ID);
+        $items .= "<li class='menu-item menu-item-type-custom "
+            . "menu-item-object-custom menu'>"
+            . "<a href='$url'>Profile</a></li>";
+    }
+
+    return $items;
+}
+
+add_filter('wp_nav_menu_items', 'ivanhoe_append_profile_nav_menu');
 
 add_action( 'switch_theme', 'ivanhoe_switch_themes');
 
