@@ -31,6 +31,14 @@ img {
     max-height:100%;
     width: auto;
 }
+#logo {
+    max-width: 22%;
+    max-height: 22%;
+}
+
+header {
+    text-align: center;
+}
 
 h1 {
     text-align:center;
