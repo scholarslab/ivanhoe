@@ -129,13 +129,6 @@ add_action('add_meta_boxes', 'ivanhoe_move_source', 'ivanhoe_move_response');
 function ivanhoe_make_menus() {
 
     $menu_name = 'ivanhoe_default';
-
-    // Check if the menu exists
-    $nav_menu = wp_get_nav_menu_object( $menu_name );
-
-    if ($nav_menu) {
-        wp_delete_nav_menu($nav_menu->term_id);
-    }
     $menu_id = wp_create_nav_menu($menu_name);
 
     // Set up default menu items
@@ -173,11 +166,19 @@ add_action( 'switch_theme', 'ivanhoe_switch_themes');
 
 function ivanhoe_switch_themes()
 {
+    $menu_name = 'ivanhoe_default';
+
     wp_delete_post( get_option('ivanhoe_move_page'), true);
     wp_delete_post( get_option('ivanhoe_role_page'), true);
     delete_option( 'ivanhoe_installed' );
     delete_option( 'ivanhoe_move_page' );
     delete_option( 'ivanhoe_role_page' );
+
+    $nav_menu = wp_get_nav_menu_object( $menu_name );
+
+    if ($nav_menu) {
+        wp_delete_nav_menu($nav_menu->term_id);
+    }
 }
 
 add_action ( 'after_switch_theme','ivanhoe_after_switch_theme' );
