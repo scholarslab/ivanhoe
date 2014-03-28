@@ -88,3 +88,13 @@ section + section {
     position: absolute;
     width: 1px;
 }
+
+footer[role=contentinfo] {
+    text-align:center;
+}
+
+
+#slab-link {
+    display:block;
+    margin-top: 20px;
+}
