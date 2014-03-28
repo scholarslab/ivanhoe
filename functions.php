@@ -145,14 +145,16 @@ function ivanhoe_make_menus() {
         'menu-item-status' => 'publish')
     );
 
-    $current_user = wp_get_current_user();
-    if (is_user_logged_in()) {
-        wp_update_nav_menu_item($menu_id, 0, array(
-        'menu-item-title' => __('Profile'),
-        'menu-item-url' => get_author_posts_url($current_user->ID),
-        'menu-item-status' => 'publish')
-    );
-    }
+    /*
+     * $current_user = wp_get_current_user();
+     * if (is_user_logged_in()) {
+     *     wp_update_nav_menu_item($menu_id, 0, array(
+     *     'menu-item-title' => __('Profile'),
+     *     'menu-item-url' => get_author_posts_url($current_user->ID),
+     *     'menu-item-status' => 'publish')
+     * );
+     * }
+     */
 }
 
 function ivanhoe_register_nav_menus() {
@@ -160,7 +162,7 @@ function ivanhoe_register_nav_menus() {
     register_nav_menu('ivanhoe_default',__( 'Ivanhoe Default' ));
 }
 
-add_action( 'after_setup_theme', 'ivanhoe_register_nav_menus' );
+add_action( 'after_switch_theme', 'ivanhoe_register_nav_menus' );
 
 add_action( 'switch_theme', 'ivanhoe_switch_themes');
 
