@@ -181,9 +181,11 @@ main :first-child {
   display: inline;
   background: #E0E0E0;
   clear: both;
+  border-left: 1px dotted gray;
+  padding: 5px;
 }
 
-/* line 135, ../sass/screen.scss */
+/* line 137, ../sass/screen.scss */
 #moves {
   width: 74.46809%;
   float: left;
@@ -192,7 +194,7 @@ main :first-child {
   text-align: justify;
 }
 
-/* line 143, ../sass/screen.scss */
+/* line 145, ../sass/screen.scss */
 .source-response-container {
   width: 23.40426%;
   float: right;
@@ -206,50 +208,50 @@ main :first-child {
   clear: both;
 }
 
-/* line 153, ../sass/screen.scss */
+/* line 155, ../sass/screen.scss */
 .source-response-container h2 {
   font-style: italic;
   padding-left: 10px;
 }
-/* line 157, ../sass/screen.scss */
+/* line 159, ../sass/screen.scss */
 .source-response-container p {
   padding-left: 10px;
 }
-/* line 160, ../sass/screen.scss */
+/* line 162, ../sass/screen.scss */
 .source-response-container a {
   padding-left: 10px;
 }
-/* line 163, ../sass/screen.scss */
+/* line 165, ../sass/screen.scss */
 .source-response-container h3 {
   padding-left: 10px;
   text-align: left;
   font-size: 100%;
 }
 
-/* line 170, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 .discussion-source {
   border-bottom: 1px dotted gray;
 }
 
-/* line 174, ../sass/screen.scss */
+/* line 176, ../sass/screen.scss */
 .discussion-response {
   border-bottom: 1px dotted gray;
 }
 
-/* line 178, ../sass/screen.scss */
+/* line 180, ../sass/screen.scss */
 .game-discription {
   border-bottom: 1px dotted gray;
   border-top: 1px dotted gray;
 }
 
-/* line 183, ../sass/screen.scss */
+/* line 185, ../sass/screen.scss */
 .source-response-container ul {
   list-style: none;
   padding-left: 10px;
   margin-left: 10px;
 }
 
-/* line 189, ../sass/screen.scss */
+/* line 191, ../sass/screen.scss */
 .options {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -260,14 +262,14 @@ main :first-child {
   text-align: center;
 }
 
-/* line 197, ../sass/screen.scss */
+/* line 199, ../sass/screen.scss */
 article.single-move {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 199, ../sass/screen.scss */
+/* line 201, ../sass/screen.scss */
 article.single-move header {
   border-bottom: 1px dotted gray;
   border-left: 1px dotted gray;
@@ -275,12 +277,12 @@ article.single-move header {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 204, ../sass/screen.scss */
+/* line 206, ../sass/screen.scss */
 article.single-move header .date-published {
   float: left;
   clear: both;
 }
-/* line 209, ../sass/screen.scss */
+/* line 211, ../sass/screen.scss */
 article.single-move .button {
   width: 23.40426%;
   float: right;
@@ -288,22 +290,21 @@ article.single-move .button {
   *margin-left: -20px;
   display: inline;
 }
-/* line 214, ../sass/screen.scss */
+/* line 216, ../sass/screen.scss */
 article.role {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 218, ../sass/screen.scss */
+/* line 220, ../sass/screen.scss */
 article.move {
   margin-bottom: 70px;
   overflow: hidden;
   *zoom: 1;
-  border-left: 1px dotted gray;
   border-bottom: 1px dotted gray;
 }
-/* line 226, ../sass/screen.scss */
+/* line 227, ../sass/screen.scss */
 article.game header {
   width: 100%;
   float: left;
@@ -314,38 +315,38 @@ article.game header {
   margin-bottom: 0;
   float: left;
 }
-/* line 234, ../sass/screen.scss */
+/* line 235, ../sass/screen.scss */
 article.game h1 {
   font-size: 400%;
   font-style: italic;
   margin-bottom: 5px;
   margin-top: 5px;
 }
-/* line 241, ../sass/screen.scss */
+/* line 242, ../sass/screen.scss */
 article.game .italic {
   font-style: italic;
 }
-/* line 245, ../sass/screen.scss */
+/* line 246, ../sass/screen.scss */
 article.game .excerpt h1 {
   font-size: 200%;
   margin-bottom: 5px;
   margin-top: 5px;
 }
-/* line 253, ../sass/screen.scss */
+/* line 254, ../sass/screen.scss */
 article ul {
   list-style: none;
   margin-top: 0;
   font-size: 90%;
   padding-left: 0;
 }
-/* line 260, ../sass/screen.scss */
+/* line 261, ../sass/screen.scss */
 article header .button {
   float: right;
   display: inline;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 266, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 article header p {
   float: left;
   overflow: hidden;
@@ -359,21 +360,18 @@ article header p {
   float: left;
   margin-right: 2.85714%;
   display: inline;
-  border-top: 1px dotted gray;
-  border-right: 1px dotted gray;
 }
 
-/* line 281, ../sass/screen.scss */
+/* line 278, ../sass/screen.scss */
 .game-discussion-response {
   width: 42.85714%;
   float: right;
   margin-right: 0;
   *margin-left: -20px;
   display: inline;
-  border-bottom: 1px dotted gray;
 }
 
-/* line 287, ../sass/screen.scss */
+/* line 282, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   font-style: italic;
@@ -382,25 +380,25 @@ article header p {
   margin-bottom: 4em;
 }
 
-/* line 296, ../sass/screen.scss */
+/* line 291, ../sass/screen.scss */
 body > footer {
   padding: 30px 0;
   text-align: right;
   font-size: 90%;
 }
 
-/* line 302, ../sass/screen.scss */
+/* line 297, ../sass/screen.scss */
 body > footer a {
   text-decoration: none;
 }
 
-/* line 306, ../sass/screen.scss */
+/* line 301, ../sass/screen.scss */
 body > footer a + a:before {
   content: " | ";
   color: #bbb;
 }
 
-/* line 312, ../sass/screen.scss */
+/* line 307, ../sass/screen.scss */
 .button {
   width: 200px;
   height: 30px;
@@ -425,27 +423,27 @@ body > footer a + a:before {
   border-top: 1px solid #C3D6DF;
 }
 
-/* line 337, ../sass/screen.scss */
+/* line 332, ../sass/screen.scss */
 .button:link, .button:visited {
   color: white;
   color: rgba(255, 255, 255, 0.85);
 }
-/* line 339, ../sass/screen.scss */
+/* line 334, ../sass/screen.scss */
 .button:hover {
   color: white;
 }
-/* line 340, ../sass/screen.scss */
+/* line 335, ../sass/screen.scss */
 .button:active {
   color: white;
 }
 
-/* line 343, ../sass/screen.scss */
+/* line 338, ../sass/screen.scss */
 .return-button {
   margin-top: 20px;
   text-align: right;
 }
 
-/* line 348, ../sass/screen.scss */
+/* line 343, ../sass/screen.scss */
 #pagination {
   width: 74.46809%;
   float: left;
@@ -454,7 +452,7 @@ body > footer a + a:before {
   margin-bottom: 50px;
 }
 
-/* line 353, ../sass/screen.scss */
+/* line 348, ../sass/screen.scss */
 .attribution {
   color: red;
   font-variant: small-caps;

@@ -130,6 +130,8 @@ main :first-child {
   @include span-columns(3 omega);
   background: #E0E0E0;
   clear: both;
+  border-left: $border;
+  padding: 5px;
 }
 
 #moves{
@@ -218,7 +220,6 @@ article {
   &.move {
     margin-bottom: 70px;
     @include clearfix;
-    border-left: $border;
     border-bottom: $border;
   }
 
@@ -270,18 +271,12 @@ article {
   }
 }
 
-
 .game-discussion-source {
   @include span-columns(4,9);
-  border-top: $border;
-  border-right: $border;
-  
 }
 
 .game-discussion-response {
   @include span-columns(4 omega,9);
-  border-bottom: $border;
-
 }
 
 .move .meta {
