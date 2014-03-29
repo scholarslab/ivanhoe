@@ -202,6 +202,10 @@ article {
         border-left: $border;
         padding-left: .5em;
         @include clearfix;
+        .date-published {
+          float: left;
+          clear: both;
+          }
         }
     .button {
       @include span-columns(3 omega);
@@ -238,9 +242,6 @@ article {
     .italic {
       font-style: italic;
     }
-    .date-published {
-      float: left;
-      }
     .excerpt {
       h1 {
         font-size: 200%;

@@ -275,7 +275,12 @@ article.single-move header {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 206, ../sass/screen.scss */
+/* line 205, ../sass/screen.scss */
+article.single-move header .date-published {
+  float: left;
+  clear: both;
+}
+/* line 210, ../sass/screen.scss */
 article.single-move .button {
   width: 23.40426%;
   float: right;
@@ -283,14 +288,14 @@ article.single-move .button {
   *margin-left: -20px;
   display: inline;
 }
-/* line 211, ../sass/screen.scss */
+/* line 215, ../sass/screen.scss */
 article.role {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 215, ../sass/screen.scss */
+/* line 219, ../sass/screen.scss */
 article.move {
   margin-bottom: 70px;
   overflow: hidden;
@@ -298,7 +303,7 @@ article.move {
   border-left: 1px dotted gray;
   border-bottom: 1px dotted gray;
 }
-/* line 223, ../sass/screen.scss */
+/* line 227, ../sass/screen.scss */
 article.game header {
   width: 100%;
   float: left;
@@ -309,42 +314,38 @@ article.game header {
   margin-bottom: 0;
   float: left;
 }
-/* line 231, ../sass/screen.scss */
+/* line 235, ../sass/screen.scss */
 article.game h1 {
   font-size: 400%;
   font-style: italic;
   margin-bottom: 5px;
   margin-top: 5px;
 }
-/* line 238, ../sass/screen.scss */
+/* line 242, ../sass/screen.scss */
 article.game .italic {
   font-style: italic;
 }
-/* line 241, ../sass/screen.scss */
-article.game .date-published {
-  float: left;
-}
-/* line 245, ../sass/screen.scss */
+/* line 246, ../sass/screen.scss */
 article.game .excerpt h1 {
   font-size: 200%;
   margin-bottom: 5px;
   margin-top: 5px;
 }
-/* line 253, ../sass/screen.scss */
+/* line 254, ../sass/screen.scss */
 article ul {
   list-style: none;
   margin-top: 0;
   font-size: 90%;
   padding-left: 0;
 }
-/* line 260, ../sass/screen.scss */
+/* line 261, ../sass/screen.scss */
 article header .button {
   float: right;
   display: inline;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 266, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 article header p {
   float: left;
   overflow: hidden;
@@ -352,7 +353,7 @@ article header p {
   display: inline;
 }
 
-/* line 274, ../sass/screen.scss */
+/* line 275, ../sass/screen.scss */
 .game-discussion-source {
   width: 42.85714%;
   float: left;
@@ -362,7 +363,7 @@ article header p {
   border-right: 1px dotted gray;
 }
 
-/* line 281, ../sass/screen.scss */
+/* line 282, ../sass/screen.scss */
 .game-discussion-response {
   width: 42.85714%;
   float: right;
@@ -372,7 +373,7 @@ article header p {
   border-bottom: 1px dotted gray;
 }
 
-/* line 287, ../sass/screen.scss */
+/* line 288, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   font-style: italic;
@@ -381,25 +382,25 @@ article header p {
   margin-bottom: 4em;
 }
 
-/* line 296, ../sass/screen.scss */
+/* line 297, ../sass/screen.scss */
 body > footer {
   padding: 30px 0;
   text-align: right;
   font-size: 90%;
 }
 
-/* line 302, ../sass/screen.scss */
+/* line 303, ../sass/screen.scss */
 body > footer a {
   text-decoration: none;
 }
 
-/* line 306, ../sass/screen.scss */
+/* line 307, ../sass/screen.scss */
 body > footer a + a:before {
   content: " | ";
   color: #bbb;
 }
 
-/* line 312, ../sass/screen.scss */
+/* line 313, ../sass/screen.scss */
 .button {
   width: 200px;
   height: 30px;
@@ -424,27 +425,27 @@ body > footer a + a:before {
   border-top: 1px solid #C3D6DF;
 }
 
-/* line 337, ../sass/screen.scss */
+/* line 338, ../sass/screen.scss */
 .button:link, .button:visited {
   color: white;
   color: rgba(255, 255, 255, 0.85);
 }
-/* line 339, ../sass/screen.scss */
+/* line 340, ../sass/screen.scss */
 .button:hover {
   color: white;
 }
-/* line 340, ../sass/screen.scss */
+/* line 341, ../sass/screen.scss */
 .button:active {
   color: white;
 }
 
-/* line 343, ../sass/screen.scss */
+/* line 344, ../sass/screen.scss */
 .return-button {
   margin-top: 20px;
   text-align: right;
 }
 
-/* line 348, ../sass/screen.scss */
+/* line 349, ../sass/screen.scss */
 #pagination {
   width: 74.46809%;
   float: left;
