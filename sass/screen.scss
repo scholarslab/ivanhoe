@@ -46,7 +46,6 @@ img {
  text-align: center;
  }
 
-
 label {
   font-size: 20px;
   font-weight: bold;
@@ -349,5 +348,10 @@ body > footer a + a:before {
 #pagination {
   @include span-columns(9);
   margin-bottom: 50px;
+}
+
+.attribution {
+  color: red;
+  font-variant: small-caps;
 }
 

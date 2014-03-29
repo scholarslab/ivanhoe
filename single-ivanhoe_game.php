@@ -58,9 +58,8 @@ if ( $wp_query->have_posts()) : ?>
 <article class="move">
     <div class="excerpt">
         <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-        
-      
-      By: <?php the_author_posts_link(); ?>  
+            <p>By: <?php the_author_posts_link(); ?></p>
+            <p>Date: <?php the_date(); ?></p> 
 
         <?php the_excerpt(); ?>
     </div>
