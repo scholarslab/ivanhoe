@@ -37,7 +37,11 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
     );
 
     $new_ivanhoe_post_id = wp_insert_post( $role );
-    ivanhoe_add_image( $_POST['post_thumbnail'], $new_ivanhoe_post_id );
+
+    if ($_FILES['post_thumbnail']) {
+        ivanhoe_add_image('post_thumbnail', $new_ivanhoe_post_id);
+    }
+
     wp_redirect( get_permalink($ivanhoe_game_id) );
     exit;
 
@@ -48,7 +52,7 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
 get_header();
 
 ?>
-<form action="" method="post">
+<form action="" method="post" enctype="multipart/form-data">
 	Role Name: <input type="text" name="post_title" required><br>
 	Description: <?php wp_editor( '', "post_content"); ?><br>
     <input type="file" name="post_thumbnail">
