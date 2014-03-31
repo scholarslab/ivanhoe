@@ -9,6 +9,14 @@ body {
   color: #444; 
 }
 
+h1 {
+    font-weight: 200;
+    @include adjust-font-size-to(60px);
+}
+
+h2 {
+    font-weight: 700;
+}
 
 a {
   &:link {color: #004D05;}
@@ -86,6 +94,11 @@ textarea {
 
 header[role=banner] {
   @include container;
+
+  h1 {
+      @include adjust-font-size-to(36px);
+  }
+
 }
 
 nav {
