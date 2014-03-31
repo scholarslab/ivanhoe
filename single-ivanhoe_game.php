@@ -11,8 +11,8 @@ $ivanhoe_parent_permalink = get_permalink( $post->ID );
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 <article class="game">
     <header>
-        <h1 class="single_game_title"><?php the_title(); ?></h1>
-        <p><span class="italic">Playing since</span>: <?php the_date(); ?></p> 
+        <h1><?php the_title(); ?></h1>
+        <p><span class="citation">Playing since</span>: <span class="italic"><?php the_date(); ?></span></p> 
         <?php
 
         if ( $role = ivanhoe_user_has_role( $post->ID ) ) :
@@ -58,7 +58,7 @@ if ( $wp_query->have_posts()) : ?>
 <article class="move">
     <div class="excerpt">
         <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-            <p>By: <?php the_author_posts_link(); ?></p>
+            <p><span class="citation">By:</span> <?php the_author_posts_link(); ?></p>
             <p>Date: <?php the_date(); ?></p> 
 
         <?php the_excerpt(); ?>

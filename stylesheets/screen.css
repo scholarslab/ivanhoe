@@ -77,17 +77,23 @@ img {
 }
 
 /* line 57, ../sass/screen.scss */
+.logosize {
+  width: 30%;
+  display: block;
+}
+
+/* line 62, ../sass/screen.scss */
 .author-date {
   font-style: italic;
 }
 
-/* line 61, ../sass/screen.scss */
+/* line 66, ../sass/screen.scss */
 label {
   font-size: 20px;
   font-weight: bold;
 }
 
-/* line 67, ../sass/screen.scss */
+/* line 72, ../sass/screen.scss */
 input[type=text], textarea {
   width: 100%;
   border-radius: 3px;
@@ -95,12 +101,12 @@ input[type=text], textarea {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-/* line 75, ../sass/screen.scss */
+/* line 80, ../sass/screen.scss */
 textarea {
   display: block;
 }
 
-/* line 82, ../sass/screen.scss */
+/* line 87, ../sass/screen.scss */
 .eyebrow {
   margin: 0;
   color: #777;
@@ -108,12 +114,12 @@ textarea {
   font-weight: bold;
 }
 
-/* line 89, ../sass/screen.scss */
+/* line 94, ../sass/screen.scss */
 .eyebrow + * {
   margin-top: 0 !important;
 }
 
-/* line 93, ../sass/screen.scss */
+/* line 98, ../sass/screen.scss */
 header[role=banner] {
   *zoom: 1;
   max-width: 940px;
@@ -130,34 +136,34 @@ header[role=banner]:after {
   clear: both;
 }
 
-/* line 98, ../sass/screen.scss */
+/* line 103, ../sass/screen.scss */
 nav {
   display: block;
   float: right;
   text-align: right;
   width: 60%;
 }
-/* line 104, ../sass/screen.scss */
+/* line 109, ../sass/screen.scss */
 nav a {
   text-decoration: none;
   color: #777;
 }
-/* line 109, ../sass/screen.scss */
+/* line 114, ../sass/screen.scss */
 nav ul {
   list-style: none;
   padding-left: 0;
 }
-/* line 114, ../sass/screen.scss */
+/* line 119, ../sass/screen.scss */
 nav li {
   display: inline;
 }
-/* line 117, ../sass/screen.scss */
+/* line 122, ../sass/screen.scss */
 nav li + li:before {
   content: " · ";
   color: #ccc;
 }
 
-/* line 125, ../sass/screen.scss */
+/* line 130, ../sass/screen.scss */
 main {
   clear: both;
   overflow: hidden;
@@ -180,12 +186,12 @@ main:after {
   clear: both;
 }
 
-/* line 136, ../sass/screen.scss */
+/* line 141, ../sass/screen.scss */
 main :first-child {
   /* margin-top:0; */
 }
 
-/* line 140, ../sass/screen.scss */
+/* line 145, ../sass/screen.scss */
 #game-data {
   width: 23.40426%;
   float: right;
@@ -198,7 +204,7 @@ main :first-child {
   padding: 5px;
 }
 
-/* line 148, ../sass/screen.scss */
+/* line 153, ../sass/screen.scss */
 #moves {
   width: 74.46809%;
   float: left;
@@ -207,7 +213,7 @@ main :first-child {
   text-align: justify;
 }
 
-/* line 156, ../sass/screen.scss */
+/* line 161, ../sass/screen.scss */
 .source-response-container {
   width: 23.40426%;
   float: right;
@@ -221,50 +227,50 @@ main :first-child {
   clear: both;
 }
 
-/* line 166, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
 .source-response-container h2 {
   font-style: italic;
   padding-left: 10px;
 }
-/* line 170, ../sass/screen.scss */
+/* line 175, ../sass/screen.scss */
 .source-response-container p {
   padding-left: 10px;
 }
-/* line 173, ../sass/screen.scss */
+/* line 178, ../sass/screen.scss */
 .source-response-container a {
   padding-left: 10px;
 }
-/* line 176, ../sass/screen.scss */
+/* line 181, ../sass/screen.scss */
 .source-response-container h3 {
   padding-left: 10px;
   text-align: left;
   font-size: 100%;
 }
 
-/* line 183, ../sass/screen.scss */
+/* line 188, ../sass/screen.scss */
 .discussion-source {
   border-bottom: 1px dotted gray;
 }
 
-/* line 187, ../sass/screen.scss */
+/* line 192, ../sass/screen.scss */
 .discussion-response {
   border-bottom: 1px dotted gray;
 }
 
-/* line 191, ../sass/screen.scss */
+/* line 196, ../sass/screen.scss */
 .game-discription {
   border-bottom: 1px dotted gray;
   border-top: 1px dotted gray;
 }
 
-/* line 196, ../sass/screen.scss */
+/* line 201, ../sass/screen.scss */
 .source-response-container ul {
   list-style: none;
   padding-left: 10px;
   margin-left: 10px;
 }
 
-/* line 202, ../sass/screen.scss */
+/* line 207, ../sass/screen.scss */
 .options {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -275,7 +281,7 @@ main :first-child {
   text-align: center;
 }
 
-/* line 210, ../sass/screen.scss */
+/* line 215, ../sass/screen.scss */
 article.single-move {
   width: 100%;
   float: left;
@@ -285,23 +291,23 @@ article.single-move {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.8);
 }
-/* line 215, ../sass/screen.scss */
+/* line 220, ../sass/screen.scss */
 article.single-move p {
   padding-left: 5px;
 }
-/* line 218, ../sass/screen.scss */
+/* line 223, ../sass/screen.scss */
 article.single-move header {
   border-bottom: 1px dotted gray;
   padding-left: .5em;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 222, ../sass/screen.scss */
+/* line 227, ../sass/screen.scss */
 article.single-move header .date-published {
   float: left;
   clear: both;
 }
-/* line 227, ../sass/screen.scss */
+/* line 232, ../sass/screen.scss */
 article.single-move .button {
   width: 23.40426%;
   float: right;
@@ -309,14 +315,14 @@ article.single-move .button {
   *margin-left: -20px;
   display: inline;
 }
-/* line 232, ../sass/screen.scss */
+/* line 237, ../sass/screen.scss */
 article.role {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 236, ../sass/screen.scss */
+/* line 241, ../sass/screen.scss */
 article.move {
   margin-bottom: 70px;
   overflow: hidden;
@@ -327,11 +333,11 @@ article.move {
   padding-left: 5px;
   padding-right: 5px;
 }
-/* line 246, ../sass/screen.scss */
+/* line 251, ../sass/screen.scss */
 article.game {
   border: solid 1px #ccc;
 }
-/* line 248, ../sass/screen.scss */
+/* line 253, ../sass/screen.scss */
 article.game header {
   width: 100%;
   float: left;
@@ -341,38 +347,38 @@ article.game header {
   margin-bottom: 0;
   float: left;
 }
-/* line 255, ../sass/screen.scss */
+/* line 260, ../sass/screen.scss */
 article.game h1 {
   font-size: 400%;
-  font-style: italic;
+  font-variant: small-caps;
   margin-bottom: 5px;
   margin-top: 5px;
 }
-/* line 262, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 article.game .italic {
   font-style: italic;
 }
-/* line 266, ../sass/screen.scss */
+/* line 271, ../sass/screen.scss */
 article.game .excerpt h1 {
   font-size: 200%;
   margin-bottom: 5px;
   margin-top: 5px;
 }
-/* line 274, ../sass/screen.scss */
+/* line 279, ../sass/screen.scss */
 article ul {
   list-style: none;
   margin-top: 0;
   font-size: 90%;
   padding-left: 0;
 }
-/* line 281, ../sass/screen.scss */
+/* line 286, ../sass/screen.scss */
 article header .button {
   float: right;
   display: inline;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 287, ../sass/screen.scss */
+/* line 292, ../sass/screen.scss */
 article header p {
   float: left;
   overflow: hidden;
@@ -380,7 +386,7 @@ article header p {
   display: inline;
 }
 
-/* line 294, ../sass/screen.scss */
+/* line 299, ../sass/screen.scss */
 .game-discussion-source {
   width: 42.85714%;
   float: left;
@@ -388,7 +394,7 @@ article header p {
   display: inline;
 }
 
-/* line 298, ../sass/screen.scss */
+/* line 303, ../sass/screen.scss */
 .game-discussion-response {
   width: 42.85714%;
   float: right;
@@ -397,7 +403,7 @@ article header p {
   display: inline;
 }
 
-/* line 302, ../sass/screen.scss */
+/* line 307, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   font-style: italic;
@@ -406,25 +412,25 @@ article header p {
   margin-bottom: 4em;
 }
 
-/* line 311, ../sass/screen.scss */
+/* line 316, ../sass/screen.scss */
 body > footer {
   padding: 30px 0;
   text-align: right;
   font-size: 90%;
 }
 
-/* line 317, ../sass/screen.scss */
+/* line 322, ../sass/screen.scss */
 body > footer a {
   text-decoration: none;
 }
 
-/* line 321, ../sass/screen.scss */
+/* line 326, ../sass/screen.scss */
 body > footer a + a:before {
   content: " | ";
   color: #bbb;
 }
 
-/* line 327, ../sass/screen.scss */
+/* line 332, ../sass/screen.scss */
 .button {
   width: 200px;
   height: 30px;
@@ -449,27 +455,27 @@ body > footer a + a:before {
   border-top: 1px solid #C3D6DF;
 }
 
-/* line 352, ../sass/screen.scss */
+/* line 357, ../sass/screen.scss */
 .button:link, .button:visited {
   color: white;
   color: rgba(255, 255, 255, 0.85);
 }
-/* line 354, ../sass/screen.scss */
+/* line 359, ../sass/screen.scss */
 .button:hover {
   color: white;
 }
-/* line 355, ../sass/screen.scss */
+/* line 360, ../sass/screen.scss */
 .button:active {
   color: white;
 }
 
-/* line 358, ../sass/screen.scss */
+/* line 363, ../sass/screen.scss */
 .return-button {
   margin-top: 20px;
   text-align: right;
 }
 
-/* line 363, ../sass/screen.scss */
+/* line 368, ../sass/screen.scss */
 #pagination {
   width: 74.46809%;
   float: left;
@@ -478,7 +484,7 @@ body > footer a + a:before {
   margin-bottom: 50px;
 }
 
-/* line 368, ../sass/screen.scss */
+/* line 373, ../sass/screen.scss */
 .attribution {
   color: red;
   font-variant: small-caps;

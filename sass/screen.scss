@@ -54,6 +54,11 @@ img {
   font-variant: small-caps;
 }
 
+.logosize {
+  width: 30%;
+  display: block;
+}
+
 .author-date {
   font-style: italic;
 }
@@ -254,7 +259,7 @@ article {
 
     h1 {
       font-size: 400%;
-      font-style: italic;
+      font-variant: small-caps;
       margin-bottom: 5px;
         margin-top: 5px;
     }

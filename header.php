@@ -19,7 +19,7 @@
 
 <header role="banner">
 
-<img class="aligncenter" src="<?php echo get_template_directory_uri() . '/ivanhoelogo.png'; ?>">
+<span class="logosize"><img class="aligncenter" src="<?php echo get_template_directory_uri() . '/ivanhoelogo.png'; ?>"></span>
 
 <?php if($description = get_bloginfo('description')):?>
 <p><?php echo $description ?></p>
