@@ -59,11 +59,6 @@ img {
   font-variant: small-caps;
 }
 
-.logosize {
-  width: 30%;
-  display: block;
-}
-
 .author-date {
   font-style: italic;
 }
@@ -318,21 +313,13 @@ article {
 }
 
 
-body > footer {
-  padding: 30px 0;
-  text-align:right;
-  font-size: 90%;
-}
+footer[role=contentinfo] {
+    @include container;
 
-body > footer a {
-  text-decoration:none;
+    .ivanhoelink {
+        @include span-columns(3 omega);
+    }
 }
-
-body > footer a + a:before {
-  content: " | ";
-  color: #bbb;
-}
-
 
 .button {
   width: 200px;
