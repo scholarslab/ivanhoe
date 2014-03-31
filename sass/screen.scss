@@ -376,3 +376,9 @@ body > footer a + a:before {
   font-variant: small-caps;
 }
 
+.new-post {
+    & > div {
+        @include trailer(1);
+    }
+}
+

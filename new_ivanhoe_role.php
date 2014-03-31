@@ -52,10 +52,21 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
 get_header();
 
 ?>
-<form action="" method="post" enctype="multipart/form-data">
-	Role Name: <input type="text" name="post_title" required><br>
-	Description: <?php wp_editor( '', "post_content"); ?><br>
+<form action="" class="new-post" method="post" enctype="multipart/form-data">
+    <div><label for="post_title">Role Name</label>
+    <input type="text" size="50" name="post_title" required>
+    </div>
+
+    <div>
+    <label for="post_thumbnail">Role Thumbnail</label>
     <input type="file" name="post_thumbnail">
+    </div>
+
+    <div>
+    <label for="post_content">Description</label>
+    <?php wp_editor( '', "post_content"); ?>
+    </div>
+
 	<input type="submit" value="Submit">
 </form>
 
