@@ -27,7 +27,7 @@
 
 
 <p><strong>Game title: </strong><a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php echo get_the_title( $post->post_parent ); ?></a></p>
-<p><strong>Role: </strong><?php the_title(); ?></p>
+<p><strong>Role: </strong><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></p>
 	
 
 <?php 
