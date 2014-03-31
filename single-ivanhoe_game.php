@@ -19,6 +19,7 @@ $role = ivanhoe_user_has_role( $post->ID );
         if ( is_user_logged_in() ) :
 
             if ( $role ) :
+
                 $url = add_query_arg(
                     "parent_post",
                     $ivanhoe_game_id,
@@ -26,11 +27,14 @@ $role = ivanhoe_user_has_role( $post->ID );
                 );
             ?>
             <a href="<?php echo $url; ?>" class="button" id="make-a-move">Make a move</a>
+
             <?php else : ?>
 
             <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button">Make a Role!</a>
 
-        <?php endif; endif; ?>
+            <?php endif; ?>
+
+        <?php endif; ?>
         
     </header>   
 
@@ -41,66 +45,65 @@ $role = ivanhoe_user_has_role( $post->ID );
 
     </div>
 
-<?php
+    <?php
 
-$paged = get_query_var('paged') ? get_query_var('paged') : 1;
-$args = array (
-    'post_type' => 'ivanhoe_move',
-    'post_parent' => $post->ID,
-    'paged' => $paged,
-    'posts_per_page' => 10);
-$wp_query = new WP_Query( $args );
+    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+    $args = array (
+        'post_type' => 'ivanhoe_move',
+        'post_parent' => $post->ID,
+        'paged' => $paged,
+        'posts_per_page' => 10);
+    $wp_query = new WP_Query( $args );
 
 
-if ( $wp_query->have_posts()) : ?>
+    if ( $wp_query->have_posts()) : ?>
 
-<div id="moves">
+    <div id="moves">
 
-<?php
-while($wp_query->have_posts()) : $wp_query->the_post(); ?>
-<article class="move">
-    <div class="excerpt">
-        <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-            <p><span class="citation">By:</span> <?php the_author_posts_link(); ?></p>
-            <p>Date: <?php the_date(); ?></p> 
+        <?php
+        while($wp_query->have_posts()) : $wp_query->the_post(); ?>
+        <article class="move">
+            <div class="excerpt">
+                <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+                    <p><span class="citation">By:</span> <?php the_author_posts_link(); ?></p>
+                    <p>Date: <?php the_date(); ?></p> 
 
-        <p><?php
-        $move_image_source = catch_that_image();
+                <p><?php
+                $move_image_source = catch_that_image();
 
-        echo $move_image_source;
-        the_excerpt();
-        ?></p>
+                echo $move_image_source;
+                the_excerpt();
+                ?></p>
+
+            </div>
+            
+            <div class="game-discussion-source">
+                <?php ivanhoe_get_move_source( $post ); ?>
+            </div>
+            
+            <div class="game-discussion-response">
+                <?php ivanhoe_get_move_responses( $post ); ?>  
+            </div>
+
+            <div class="options">
+                <?php echo ivanhoe_move_link( $post ); ?>
+            </div> 
+
+        </article>
+
+        <?php endwhile; ?>
 
     </div>
-    
-        <div class="game-discussion-source">
-        <?php ivanhoe_get_move_source( $post ); ?>
-        </div>
-        
-        <div class="game-discussion-response">
-        <?php ivanhoe_get_move_responses( $post ); ?>  
-        </div>
 
-    <div class="options">
-        <?php echo ivanhoe_move_link( $post ); ?>
-    </div> 
+    <div id="pagination">
+        <?php ivanhoe_paginate_links($wp_query);?>
+    </div>
 
-</article>
+    <?php else : ?>
 
-<?php endwhile; ?>
+    <p>No one has made a move yet in this game.  Make the first move!</p>
 
-</div>
-
-<div id="pagination">
-    <?php ivanhoe_paginate_links($wp_query);?>
-</div>
-
-</div>
-
-<?php else : ?>
-
-<p>No one has made a move yet in this game.  Make the first move!</p>
-<?php endif; ?>
+    <?php endif; ?>
 
 <?php $wp_query = $original_query; ?>
 
