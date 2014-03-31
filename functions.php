@@ -1,7 +1,8 @@
 <?php
 
 // Add theme support for WP features.
-add_theme_support('menus', 'post_thumbnails' );
+add_theme_support('menus');
+add_theme_support('post-thumbnails', array('ivanhoe_role'));
 
 add_action( 'init', 'ivanhoe_create_post_types' );
 
@@ -73,6 +74,8 @@ function ivanhoe_create_post_types()
             'rewrite' => array('slug' => 'roles'),
             )
         );
+
+    add_post_type_support( 'ivanhoe_role', 'thumbnail' );
 
     add_rewrite_rule( 'games/([.*]+)/page/([0-9]+)/?$', 'index.php?ivanhoe_game=[1]&paged=$matches[2]', 'top' );
 
