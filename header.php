@@ -15,7 +15,7 @@
 
 </head>
 
-<body>
+<body <?php echo body_class(); ?>>
 
 <header role="banner">
 

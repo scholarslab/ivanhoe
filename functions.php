@@ -4,6 +4,13 @@
 add_theme_support('menus');
 add_theme_support('post-thumbnails', array('ivanhoe_role'));
 
+$ivanhoe_background_defaults = array(
+	'default-color'          => '#fff',
+	'default-image'          => get_template_directory_uri() . '/images/tile.png'
+);
+
+add_theme_support( 'custom-background', $ivanhoe_background_defaults );
+
 add_action( 'init', 'ivanhoe_create_post_types' );
 
 add_action( 'admin_bar_menu', 'modify_admin_bar', 999 );

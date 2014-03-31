@@ -4,14 +4,6 @@
   @include box-sizing(border-box);
 }
 
-html {
-    background-color: #fff;
-    background-image: url('../tile2.png');
-    background-position: -5% 0;
-    background-attachment: fixed;
-    background-size: 300px;
-}
-
 body {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
   color: #444; 
