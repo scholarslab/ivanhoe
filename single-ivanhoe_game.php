@@ -81,11 +81,9 @@ while($wp_query->have_posts()) : $wp_query->the_post(); ?>
         <?php ivanhoe_get_move_responses( $post ); ?>  
         </div>
 
-<?php echo ivanhoe_move_link( $post ); ?>
-
-      <div class="options">
-        <a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a>
-    </div>
+    <div class="options">
+        <?php echo ivanhoe_move_link( $post ); ?>
+    </div> 
 
 </article>
 
