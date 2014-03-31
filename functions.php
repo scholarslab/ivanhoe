@@ -447,3 +447,35 @@ function catch_that_image() {
     return $first_image;
 }
 
+function ivanhoe_add_image( $filename, $parent_post_id) {
+    
+// Check the type of tile. We'll use this as the 'post_mime_type'.
+$filetype = wp_check_filetype( basename( $filename ), null );
+
+// Get the path to the upload directory.
+$wp_upload_dir = wp_upload_dir();
+//print_r($wp_upload_dir); 
+//exit;
+// Prepare an array of post data for the attachment.
+$attachment = array(
+    'guid'           => $wp_upload_dir['path'] . '/' . basename( $filename ), 
+    'post_mime_type' => $filetype['type'],
+    'post_title'     => preg_replace( '/\.[^.]+$/', '', basename( $filename ) ),
+    'post_content'   => '',
+    'post_status'    => 'inherit'
+);
+
+// Insert the attachment.
+$attach_id = wp_insert_attachment( $attachment, $filename, $parent_post_id );
+
+// Make sure that this file is included, as wp_generate_attachment_metadata() depends on it.
+require_once( ABSPATH . 'wp-admin/includes/image.php' );
+
+// Generate the metadata for the attachment, and update the database record.
+$attach_data = wp_generate_attachment_metadata( $attach_id, $filename );
+wp_update_attachment_metadata( $attach_id, $attach_data );
+
+set_post_thumbnail($parent_post_id, $attach_id);
+
+}
+

@@ -37,7 +37,7 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
     );
 
     $new_ivanhoe_post_id = wp_insert_post( $role );
-    
+    ivanhoe_add_image( $_POST['post_thumbnail'], $new_ivanhoe_post_id );
     wp_redirect( get_permalink($ivanhoe_game_id) );
     exit;
 
@@ -51,6 +51,7 @@ get_header();
 <form action="" method="post">
 	Role Name: <input type="text" name="post_title" required><br>
 	Description: <?php wp_editor( '', "post_content"); ?><br>
+    <input type="file" name="post_thumbnail">
 	<input type="submit" value="Submit">
 </form>
 
