@@ -74,14 +74,10 @@ input[type=text], textarea {
   border-radius: 3px;
   padding: 5px;
   border: 1px solid rgba(0,0,0,0.2);
-
 }
 
 textarea {
   display: block;
-}
-
-textarea[name=content] {
 }
 
 .eyebrow {
@@ -97,7 +93,6 @@ textarea[name=content] {
 
 header[role=banner] {
   @include container;
-
 }
 
 nav {
@@ -154,9 +149,6 @@ main :first-child {
   @include span-columns(9);
   text-align: justify;
 }
-
-
-
 
 .source-response-container {
   @include span-columns(3 omega);
