@@ -5,12 +5,16 @@
 }
 
 html {
-  background: #DAF7DC;
+    background-color: #fff;
+    background-image: url('../tile2.png');
+    background-position: -5% 0;
+    background-attachment: fixed;
+    background-size: 300px;
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #444;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  color: #444; 
 }
 
 
@@ -45,6 +49,14 @@ img {
  font-size: 75%;
  text-align: center;
  }
+
+.citation {
+  font-variant: small-caps;
+}
+
+.author-date {
+  font-style: italic;
+}
 
 label {
   font-size: 20px;
@@ -114,7 +126,6 @@ main {
   clear:both;
   overflow:hidden;
   zoom:1;
-  background-color: #fff;
   border-radius: 5px;
   @include container;
   padding-top: $gutter-width;
@@ -130,7 +141,7 @@ main :first-child {
   @include span-columns(3 omega);
   background: #E0E0E0;
   clear: both;
-  border-left: $border;
+  border: solid 1px #ccc;
   padding: 5px;
 }
 
@@ -198,9 +209,14 @@ main :first-child {
 article {
   &.single-move {
     @include span-columns(12);
+    border: solid 1px #ccc;
+    background-color: white;
+    background-color: rgba(white, 0.8);
+    p {
+      padding-left: 5px;
+      }
     header {
         border-bottom: $border;
-        border-left: $border;
         padding-left: .5em;
         @include clearfix;
         .date-published {
@@ -220,13 +236,17 @@ article {
   &.move {
     margin-bottom: 70px;
     @include clearfix;
-    border-bottom: $border;
+    border: solid 1px #ccc;
+    background-color: white;
+    background-color: rgba(white, 0.8);
+    padding-left: 5px;
+    padding-right: 5px;
   }
 
   &.game {
+    border: solid 1px #ccc;
     header {
       @include span-columns(12);
-      border-bottom: $border;
       margin-top: 0;
       margin-bottom: 0;
       float: left;

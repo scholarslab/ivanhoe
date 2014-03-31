@@ -7,7 +7,7 @@
 
    <title><?php wp_title( '|', true, 'right' ); ?></title>
 
-
+   <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() . '/stylesheets/screen.css'; ?>">
 
 
@@ -19,7 +19,7 @@
 
 <header role="banner">
 
-<img class="aligncenter" src="ivanhoelogo.png">
+<img class="aligncenter" src="<?php echo get_template_directory_uri() . '/ivanhoelogo.png'; ?>">
 
 <?php if($description = get_bloginfo('description')):?>
 <p><?php echo $description ?></p>
