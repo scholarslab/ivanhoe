@@ -15,6 +15,11 @@ a {
   &:visited {color: #004D05;}
   &:hover {color: #8c3; text-decoration:none;}
   &:active {color: #8a3;}
+
+  h1 &,
+  h2 & {
+      text-decoration:none;
+  }
 }
 
 input[type=text], label, textarea{display: block;}
