@@ -252,7 +252,7 @@ function ivanhoe_get_move_source( $post )
     if ( $source_id && $source = get_post($source_id) ) {
 
         // Set $html to a string with a link to source post.
-        $html = '<p>Source</p>
+        $html = '<h3>Source</h3>
         <ul><li><a href="'.get_permalink($source->ID).'">'.$source->post_title.'</a></li></ul>';
 
     }
@@ -278,7 +278,8 @@ function ivanhoe_get_move_responses( $post )
     $source_query = new WP_Query( $args );
 
     if ($source_query->have_posts() ) : ?>
-    <p>Responses</p>
+
+    <h3>Responses</h3>
     <ul>
     <?php while( $source_query->have_posts() ) : $source_query->the_post(); ?>
 
@@ -287,6 +288,7 @@ function ivanhoe_get_move_responses( $post )
     <?php endwhile; ?>
     </ul>
     <?php else : ?>
+    <h3>Responses</h3>
     <p>There are no responses to this post.</p>
     <?php endif;
     wp_reset_postdata();
@@ -402,7 +404,6 @@ function ivanhoe_paginate_links ( $query = null )
 
 }
 
-
 /*
  * Function to display the 'respond to this move' button only when user has role
  */
@@ -444,3 +445,24 @@ function catch_that_image() {
     return $first_image;
 }
 
+function get_excerpt_by_id($post_id){
+    $the_post = get_post($post_id); //Gets post ID
+    $the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
+    $excerpt_length = 55; //Sets excerpt length by word count
+    $the_excerpt = strip_tags(strip_shortcodes($the_excerpt)); //Strips tags and images
+    $words = explode(' ', $the_excerpt, $excerpt_length + 1);
+    if(count($words) > $excerpt_length) :
+        array_pop($words);
+        array_push($words, '…');
+    $the_excerpt = implode(' ', $words);
+    endif;
+    $the_excerpt = '<p>' . $the_excerpt . '</p>';
+    return $the_excerpt;
+}
+
+function get_title_by_id($post_id){
+    $the_post = get_post($post_id); //Gets post ID
+    $the_title = $the_post->post_title; //Gets post_content to be used as a basis for the excerpt
+    $the_title = '<h3>' . $the_title . '</h3>';
+    return $the_title;
+}

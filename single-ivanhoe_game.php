@@ -11,9 +11,9 @@ $role = ivanhoe_user_has_role( $post->ID );
 
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 <article class="game">
-    <h1><?php the_title(); ?></h1>
-
-    <div id="game-data">
+    <header>
+        <h1><?php the_title(); ?></h1>
+        <p><span class="citation">Playing since</span>: <span class="italic"><?php the_date(); ?></span></p> 
         <?php
 
         if ( is_user_logged_in() ) :
@@ -32,11 +32,16 @@ $role = ivanhoe_user_has_role( $post->ID );
 
         <?php endif; endif; ?>
         
+
+    <?php endif; ?>
+    </header>   
+
+    <div id="game-data">
+        <h3>Game Description</h3>
+
         <?php the_content(); ?>
 
     </div>
-
-
 
 <?php
 
@@ -56,9 +61,10 @@ if ( $wp_query->have_posts()) : ?>
 <?php
 while($wp_query->have_posts()) : $wp_query->the_post(); ?>
 <article class="move">
-    <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-        
-      <?php the_author_posts_link(); ?>  
+    <div class="excerpt">
+        <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+            <p><span class="citation">By:</span> <?php the_author_posts_link(); ?></p>
+            <p>Date: <?php the_date(); ?></p> 
 
         <p><?php
         $move_image_source = catch_that_image();
@@ -66,26 +72,31 @@ while($wp_query->have_posts()) : $wp_query->the_post(); ?>
         echo $move_image_source;
         the_excerpt();
         ?></p>
+
+    </div>
     
-	<?php
-
-        //Pulls post source and displays it
-        ivanhoe_get_move_source($post);
-
-        //Pulls post responses and displays them
-        ivanhoe_get_move_responses( $post );
-    ?>  
+        <div class="game-discussion-source">
+        <?php ivanhoe_get_move_source( $post ); ?>
+        </div>
+        
+        <div class="game-discussion-response">
+        <?php ivanhoe_get_move_responses( $post ); ?>  
+        </div>
 
 <?php echo ivanhoe_move_link( $post ); ?>
+
+      <div class="options">
+        <a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a>
+    </div>
 
 </article>
 
 <?php endwhile; ?>
 
-<div id="pagination">
-    <?php ivanhoe_paginate_links($wp_query);?>
 </div>
 
+<div id="pagination">
+    <?php ivanhoe_paginate_links($wp_query);?>
 </div>
 
 <?php else : ?>

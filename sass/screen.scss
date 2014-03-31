@@ -5,18 +5,22 @@
 }
 
 html {
-  background: #f6f6f6;
+    background-color: #fff;
+    background-image: url('../tile2.png');
+    background-position: -5% 0;
+    background-attachment: fixed;
+    background-size: 300px;
 }
 
 body {
-  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-  color: #444;
+  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+  color: #444; 
 }
 
 
 a {
-  &:link {color: #37c;}
-  &:visited {color: #39c;}
+  &:link {color: #004D05;}
+  &:visited {color: #004D05;}
   &:hover {color: #8c3; text-decoration:none;}
   &:active {color: #8a3;}
 }
@@ -29,7 +33,34 @@ img {
   height:auto;
 }
 
-form {
+.alignright {
+  float: right;
+  padding-left: .5em;
+}
+
+.aligncenter {
+  margin-left: auto;
+  margin-right:auto;
+  padding-left: .5em;
+  padding-right: .5em;
+ }
+
+.wp-caption-text {
+ font-size: 75%;
+ text-align: center;
+ }
+
+.citation {
+  font-variant: small-caps;
+}
+
+.logosize {
+  width: 30%;
+  display: block;
+}
+
+.author-date {
+  font-style: italic;
 }
 
 label {
@@ -100,31 +131,107 @@ main {
   clear:both;
   overflow:hidden;
   zoom:1;
-  background-color: #fff;
   border-radius: 5px;
   @include container;
   padding-top: $gutter-width;
   padding-bottom: $gutter-width;
-  
 
 }
 
 main :first-child {
-  margin-top:0;
+  /* margin-top:0; */
 }
 
 #game-data{
   @include span-columns(3 omega);
+  background: #E0E0E0;
+  clear: both;
+  border: solid 1px #ccc;
+  padding: 5px;
 }
 
 #moves{
   @include span-columns(9);
+  text-align: justify;
 }
 
+
+
+
+.source-response-container {
+  @include span-columns(3 omega);
+  background: #E0E0E0;
+  text-align: left;
+  border-left: $border;
+  border-bottom: $border;
+  clear: both;
+}
+
+.source-response-container {
+  h2 {
+      font-style: italic;
+      padding-left: 10px;
+      }
+  p {
+    padding-left: 10px;
+    }
+  a {
+    padding-left: 10px;
+  }
+  h3 {
+    padding-left: 10px;
+    text-align: left;
+    font-size: 100%;
+  }
+}
+
+.discussion-source {
+  border-bottom: $border;
+}
+
+.discussion-response {
+  border-bottom: $border;
+}
+
+.game-discription {
+  border-bottom: $border;
+  border-top: $border;
+}
+
+.source-response-container ul {
+  list-style: none;
+  padding-left: 10px;
+  margin-left: 10px;
+}
+
+.options {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  @include span-columns(12);
+  text-align: center;
+}
 
 article {
   &.single-move {
     @include span-columns(12);
+    border: solid 1px #ccc;
+    background-color: white;
+    background-color: rgba(white, 0.8);
+    p {
+      padding-left: 5px;
+      }
+    header {
+        border-bottom: $border;
+        padding-left: .5em;
+        @include clearfix;
+        .date-published {
+          float: left;
+          clear: both;
+          }
+        }
+    .button {
+      @include span-columns(3 omega);
+    }
   }
 
   &.role{
@@ -133,32 +240,68 @@ article {
 
   &.move {
     margin-bottom: 70px;
+    @include clearfix;
+    border: solid 1px #ccc;
+    background-color: white;
+    background-color: rgba(white, 0.8);
+    padding-left: 5px;
+    padding-right: 5px;
   }
 
-  h3 {
-    font-size: 85%;
-    color: red;
+  &.game {
+    border: solid 1px #ccc;
+    header {
+      @include span-columns(12);
+      margin-top: 0;
+      margin-bottom: 0;
+      float: left;
+      }
+
+    h1 {
+      font-size: 400%;
+      font-variant: small-caps;
+      margin-bottom: 5px;
+        margin-top: 5px;
+    }
+
+    .italic {
+      font-style: italic;
+    }
+    .excerpt {
+      h1 {
+        font-size: 200%;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        }
+      }
+    }
+
+  ul {
+    list-style:none;
+    margin-top: 0;
+    font-size: 90%;
+    padding-left: 0;
+  }
+  
+  header .button {
+    float: right;
+    display: inline;
+    @include clearfix;
+    }
+
+  header p {
+    float: left;
+    @include clearfix;
+    display: inline;
   }
 }
 
-#game-metadata {
-  float:right;
-  width: 30%;
-  font-size: 87.5%;
-
-  &.description,
-  &.players {
-   background: rgba(0,100,200,0.1);
-    padding: 20px;
-    margin-bottom: 20px;
-  }
+.game-discussion-source {
+  @include span-columns(4,9);
 }
 
-
-.game ul {
-  list-style:none;
-  margin-top:0;
-  font-size: 90%;
+.game-discussion-response {
+  @include span-columns(4 omega,9);
 }
 
 .move .meta {
@@ -201,7 +344,7 @@ body > footer a + a:before {
   margin-top: 10px;
 
   /*Background Gradients */
-  @include background-image(linear-gradient(bottom, #0d658e, #0c577a 50%, #014d71 51%, #003e5c));
+  @include background-image(linear-gradient(bottom, #34612D 0%, #217D0F 100%, #B5D1B2 100%));
   @include border-radius(10px);
 
   border: 1px solid #368DBE;
@@ -217,9 +360,19 @@ body > footer a + a:before {
   &:active {color: white;}
 }
 
-#return-button{
+.return-button{
   margin-top: 20px;
+  text-align: right;
+  float: right;
 }
 
+#pagination {
+  @include span-columns(9);
+  margin-bottom: 50px;
+}
 
+.attribution {
+  color: red;
+  font-variant: small-caps;
+}
 
