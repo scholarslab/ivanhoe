@@ -19,7 +19,7 @@
 
 <header role="banner">
 
-<h1><?php echo get_bloginfo('site_title'); ?></h1>
+<h1><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo('site_title'); ?></a></h1>
 <?php if($description = get_bloginfo('description')):?>
 <p><?php echo $description ?></p>
 <?php endif; ?>
