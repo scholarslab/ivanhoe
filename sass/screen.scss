@@ -18,6 +18,7 @@ h2 {
     font-weight: 700;
 }
 
+/* Links */
 a {
   &:link {color: #004D05;}
   &:visited {color: #004D05;}
@@ -30,14 +31,34 @@ a {
   }
 }
 
+/* Forms */
 input[type=text], label, textarea{display: block;}
 
+label {
+  font-size: 20px;
+  font-weight: bold;
+
+}
+
+input[type=text], textarea {
+  width: 100%;
+  border-radius: 3px;
+  padding: 5px;
+  border: 1px solid rgba(0,0,0,0.2);
+}
+
+textarea {
+  display: block;
+}
+
+/* Images */
 img {
   max-width: 100%;
   max-height:100%;
   height:auto;
 }
 
+/* WordPress Generated Classes */
 .alignright {
   float: right;
   padding-left: .5em;
@@ -60,25 +81,9 @@ img {
  text-align: center;
  }
 
+/* Custom Utility Classes */
 .citation {
   font-variant: small-caps;
-}
-
-label {
-  font-size: 20px;
-  font-weight: bold;
-
-}
-
-input[type=text], textarea {
-  width: 100%;
-  border-radius: 3px;
-  padding: 5px;
-  border: 1px solid rgba(0,0,0,0.2);
-}
-
-textarea {
-  display: block;
 }
 
 .eyebrow {
@@ -92,6 +97,41 @@ textarea {
   margin-top:0 !important;
 }
 
+.button {
+  width: 200px;
+  height: 30px;
+  line-height: 30px;
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  display: block;
+  text-align: center;
+  position: relative;
+  background: #a8a8a8;
+  margin-top: 10px;
+
+  /*Background Gradients */
+  @include background-image(linear-gradient(bottom, #34612D 0%, #217D0F 100%, #B5D1B2 100%));
+  @include border-radius(10px);
+
+  border: 1px solid #368DBE;
+  border-top: 1px solid #C3D6DF;
+
+  &:link,
+  &:visited {color: white; color: rgba(255, 255, 255, 0.85);}
+  &:hover {color: white;}
+  &:active {color: white;}
+
+}
+
+.return-button{
+  margin-top: 20px;
+  text-align: right;
+  float: right;
+}
+
+
+/* Banner */
 header[role=banner] {
   @include container;
 
@@ -101,6 +141,7 @@ header[role=banner] {
 
 }
 
+/* Main Navigation */
 nav {
   display:block;
   float:right;
@@ -127,7 +168,7 @@ nav {
   }
 }
 
-
+/* Main Content Container */
 main {
   clear:both;
   overflow:hidden;
@@ -137,10 +178,6 @@ main {
   padding-top: $gutter-width;
   padding-bottom: $gutter-width;
 
-}
-
-main :first-child {
-  /* margin-top:0; */
 }
 
 #game-data{
@@ -163,20 +200,16 @@ main :first-child {
   border-left: $border;
   border-bottom: $border;
   clear: both;
-}
 
-.source-response-container {
-  h2 {
-      padding-left: 10px;
-      }
-  p {
-    padding-left: 10px;
-    }
+  h2,
+  h3,
+  p,
+  ul,
   a {
     padding-left: 10px;
   }
+
   h3 {
-    padding-left: 10px;
     text-align: left;
     font-size: 100%;
   }
@@ -188,17 +221,6 @@ main :first-child {
 
 .discussion-response {
   border-bottom: $border;
-}
-
-.game-discription {
-  border-bottom: $border;
-  border-top: $border;
-}
-
-.source-response-container ul {
-  list-style: none;
-  padding-left: 10px;
-  margin-left: 10px;
 }
 
 .options {
@@ -305,7 +327,7 @@ article {
   margin-bottom: 4em;
 }
 
-
+/* Global footer */
 footer[role=contentinfo] {
     @include container;
 
@@ -314,42 +336,6 @@ footer[role=contentinfo] {
     }
 }
 
-.button {
-  width: 200px;
-  height: 30px;
-  line-height: 30px;
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  font-family: helvetica, arial;
-  display: block;
-  text-align: center;
-  position: relative;
-  background: #a8a8a8;
-  margin-top: 10px;
-
-  /*Background Gradients */
-  @include background-image(linear-gradient(bottom, #34612D 0%, #217D0F 100%, #B5D1B2 100%));
-  @include border-radius(10px);
-
-  border: 1px solid #368DBE;
-  border-top: 1px solid #C3D6DF;
-
-}
-
-.button {
-
-  &:link,
-  &:visited {color: white; color: rgba(255, 255, 255, 0.85);}
-  &:hover {color: white;}
-  &:active {color: white;}
-}
-
-.return-button{
-  margin-top: 20px;
-  text-align: right;
-  float: right;
-}
 
 #pagination {
   @include span-columns(9);

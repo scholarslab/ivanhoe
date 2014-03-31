@@ -17,6 +17,8 @@
 
 <body <?php echo body_class(); ?>>
 
+<div id="wrap">
+
 <header role="banner">
 
 <h1><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo('site_title'); ?></a></h1>
