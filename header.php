@@ -19,7 +19,7 @@
 
 <header role="banner">
 
-<h1><?php bloginfo('name');?></h1>
+<img class="aligncenter" src="ivanhoelogo.png">
 
 <?php if($description = get_bloginfo('description')):?>
 <p><?php echo $description ?></p>
