@@ -32,8 +32,6 @@ $role = ivanhoe_user_has_role( $post->ID );
 
         <?php endif; endif; ?>
         
-
-    <?php endif; ?>
     </header>   
 
     <div id="game-data">
@@ -97,6 +95,8 @@ while($wp_query->have_posts()) : $wp_query->the_post(); ?>
 
 <div id="pagination">
     <?php ivanhoe_paginate_links($wp_query);?>
+</div>
+
 </div>
 
 <?php else : ?>
