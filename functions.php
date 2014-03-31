@@ -1,7 +1,8 @@
 <?php
 
 // Add theme support for WP features.
-add_theme_support('menus', 'post_thumbnails' );
+add_theme_support('menus');
+add_theme_support('post-thumbnails', array('ivanhoe_role'));
 
 add_action( 'init', 'ivanhoe_create_post_types' );
 
@@ -73,6 +74,8 @@ function ivanhoe_create_post_types()
             'rewrite' => array('slug' => 'roles'),
             )
         );
+
+    add_post_type_support( 'ivanhoe_role', 'thumbnail' );
 
     add_rewrite_rule( 'games/([.*]+)/page/([0-9]+)/?$', 'index.php?ivanhoe_game=[1]&paged=$matches[2]', 'top' );
 
@@ -465,4 +468,17 @@ function get_title_by_id($post_id){
     $the_title = $the_post->post_title; //Gets post_content to be used as a basis for the excerpt
     $the_title = '<h3>' . $the_title . '</h3>';
     return $the_title;
+}
+
+function ivanhoe_add_image( $file_handler, $parent_post_id) {
+    
+    require_once(ABSPATH . 'wp-admin/includes/image.php');
+    require_once(ABSPATH . 'wp-admin/includes/file.php');
+    require_once(ABSPATH . 'wp-admin/includes/media.php');
+
+    $attach_id = media_handle_upload( $file_handler, $parent_post_id );
+
+    set_post_thumbnail($parent_post_id, $attach_id);
+
+    return $attach_id;
 }
