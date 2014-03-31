@@ -5,7 +5,7 @@
 <head>
     <meta charset="<?php bloginfo( 'charset' ); ?>">
 
-   <title><?php wp_title( '|', true, 'right' ); ?></title>
+   <title><?php echo wp_title( '|', true, 'right' ); ?><?php echo get_bloginfo( 'name' ); ?></title>
 
    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() . '/stylesheets/screen.css'; ?>">
