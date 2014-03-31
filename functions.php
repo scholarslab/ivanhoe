@@ -243,7 +243,8 @@ function ivanhoe_get_move_source( $post )
        // echo "Source:";
     }   
     ?>
-    <p><h3>Source</h3><a href="<?php echo $source_permalink ?>"><?php echo $source_title ?></a></p>
+    <p><h3>Source</h3>
+        <ul><li><a href="<?php echo $source_permalink ?>"><?php echo $source_title ?></li></ul></a></p>
     <?php
 }
 

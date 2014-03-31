@@ -24,7 +24,7 @@
             $game_excerpt = get_excerpt_by_id( $parent_ID );
             echo $game_title;
 			echo $game_excerpt; ?>
-            <a class="return-button" href="<?php echo get_permalink( $post->post_parent ); ?>">Return to game</a>
+
         </div>
     </div>
  
@@ -32,7 +32,7 @@
 
     <?php the_content(); ?>
             
-    
+    <a class="return-button" href="<?php echo get_permalink( $post->post_parent ); ?>">Return to game</a>
 
     </div>
 

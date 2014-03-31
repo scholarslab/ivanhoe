@@ -1,8 +1,8 @@
 @charset "UTF-8";
 /* line 3, ../sass/screen.scss */
 * {
-  -moz-box-sizing: border-box;
   -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
   box-sizing: border-box;
 }
 
@@ -129,7 +129,7 @@ header[role=banner] {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 38, ../../../../../usr/local/Cellar/ruby/2.1.1/lib/ruby/gems/2.1.0/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../../../../../Users/testadm/.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 header[role=banner]:after {
   content: "";
   display: table;
@@ -179,7 +179,7 @@ main {
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 38, ../../../../../usr/local/Cellar/ruby/2.1.1/lib/ruby/gems/2.1.0/gems/compass-core-1.0.0.alpha.19/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../../../../../Users/testadm/.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 main:after {
   content: "";
   display: table;
@@ -445,17 +445,21 @@ body > footer a + a:before {
   background: #a8a8a8;
   margin-top: 10px;
   /*Background Gradients */
-  background-image: -moz-linear-gradient(bottom, #34612d 0%, #217d0f 100%, #b5d1b2 100%);
+  background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #34612d), color-stop(100%, #217d0f), color-stop(100%, #b5d1b2));
   background-image: -webkit-linear-gradient(bottom, #34612d 0%, #217d0f 100%, #b5d1b2 100%);
-  background-image: linear-gradient(to top, #34612d 0%, #217d0f 100%, #b5d1b2 100%);
-  -moz-border-radius: 10px;
+  background-image: -moz-linear-gradient(bottom, #34612d 0%, #217d0f 100%, #b5d1b2 100%);
+  background-image: -o-linear-gradient(bottom, #34612d 0%, #217d0f 100%, #b5d1b2 100%);
+  background-image: linear-gradient(bottom, #34612d 0%, #217d0f 100%, #b5d1b2 100%);
   -webkit-border-radius: 10px;
+  -moz-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -o-border-radius: 10px;
   border-radius: 10px;
   border: 1px solid #368DBE;
   border-top: 1px solid #C3D6DF;
 }
 
-/* line 357, ../sass/screen.scss */
+/* line 358, ../sass/screen.scss */
 .button:link, .button:visited {
   color: white;
   color: rgba(255, 255, 255, 0.85);
@@ -473,9 +477,10 @@ body > footer a + a:before {
 .return-button {
   margin-top: 20px;
   text-align: right;
+  float: right;
 }
 
-/* line 368, ../sass/screen.scss */
+/* line 369, ../sass/screen.scss */
 #pagination {
   width: 74.46809%;
   float: left;
@@ -484,7 +489,7 @@ body > footer a + a:before {
   margin-bottom: 50px;
 }
 
-/* line 373, ../sass/screen.scss */
+/* line 374, ../sass/screen.scss */
 .attribution {
   color: red;
   font-variant: small-caps;
