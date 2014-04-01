@@ -490,3 +490,10 @@ footer[role=contentinfo] .ivanhoelink {
 .new-post > div {
   margin-bottom: 1.5em;
 }
+
+/* line 356, ../sass/screen.scss */
+.wp-editor-wrap * {
+  -webkit-box-sizing: content-box;
+  -moz-box-sizing: content-box;
+  box-sizing: content-box;
+}

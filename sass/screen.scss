@@ -353,3 +353,7 @@ footer[role=contentinfo] {
     }
 }
 
+.wp-editor-wrap * {
+    @include box-sizing(content-box); /* Fixes tab height issue. */
+}
+
