@@ -5,69 +5,110 @@
 $original_query = $wp_query;
 $ivanhoe_game_id = $post->ID;
 $ivanhoe_parent_permalink = get_permalink( $post->ID );
+$role = ivanhoe_user_has_role( $post->ID );
 
- ?>
+?>
 
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
-<article>
-    <h1><?php the_title(); ?></h1>
-    <?php the_content(); ?>
+<article class="game">
+    <header>
+        <h1><?php the_title(); ?></h1>
+        <p><span class="citation">Playing since</span>: <span class="italic"><?php the_date(); ?></span></p> 
+        <?php
 
-<?php
+        if ( is_user_logged_in() ) :
 
-$paged = get_query_var('paged') ? get_query_var('paged') : 1;
-$args = array (
-    'post_type' => 'ivanhoe_move',
-    'post_parent' => $post->ID,
-    'paged' => $paged,
-    'posts_per_page' => 10);
-$wp_query = new WP_Query( $args );
+            if ( $role ) :
 
-if ( $wp_query->have_posts()) : while($wp_query->have_posts()) : $wp_query->the_post(); ?>
-<article>
-    <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-    <?php the_excerpt(); ?>
-	<?php
-		$ivanhoe_move_source = $post->ID;
-		$ivanhoe_param = array(
-		"parent_post" => $ivanhoe_game_id,
-		"move_source" => $ivanhoe_move_source
-		);
+                $url = add_query_arg(
+                    "parent_post",
+                    $ivanhoe_game_id,
+                    get_permalink(get_option('ivanhoe_move_page'))
+                );
+            ?>
+            <a href="<?php echo $url; ?>" class="button" id="make-a-move">Make a move</a>
 
-		$url = add_query_arg(
-   		$ivanhoe_param,
-    	get_permalink(get_option('ivanhoe_move_page'))
+            <?php else : ?>
 
-);
-?>
-<a href="<?php echo $url; ?>" class="button">Respond to this move</a>
+            <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button">Make a Role!</a>
 
-</article>
+            <?php endif; ?>
 
-<?php endwhile; ?>
+        <?php endif; ?>
+        
+    </header>   
 
-<?php previous_posts_link('newer'); ?> | <?php next_posts_link('older'); ?>
+    <div id="game-data">
+        <h3>Game Description</h3>
 
-<?php else : ?>
+        <?php the_content(); ?>
 
-<p>OMG NO POSTS!!!!!</p>
-<?php endif; ?>
+    </div>
+
+    <?php
+
+    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+    $args = array (
+        'post_type' => 'ivanhoe_move',
+        'post_parent' => $post->ID,
+        'paged' => $paged,
+        'posts_per_page' => 10);
+    $wp_query = new WP_Query( $args );
+
+
+    if ( $wp_query->have_posts()) : ?>
+
+    <div id="moves">
+
+        <?php
+        while($wp_query->have_posts()) : $wp_query->the_post(); ?>
+        <article class="move">
+            <div class="excerpt">
+                <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+                    <p><span class="citation">By:</span> <?php the_author_posts_link(); ?></p>
+                    <p>Date: <?php the_date(); ?></p> 
+
+                <p><?php
+                $move_image_source = catch_that_image();
+
+                echo $move_image_source;
+                the_excerpt();
+                ?></p>
+
+            </div>
+            
+            <div class="game-discussion-source">
+                <?php ivanhoe_get_move_source( $post ); ?>
+            </div>
+            
+            <div class="game-discussion-response">
+                <?php ivanhoe_get_move_responses( $post ); ?>  
+            </div>
+
+            <div class="options">
+                <?php echo ivanhoe_move_link( $post ); ?>
+            </div> 
+
+        </article>
+
+        <?php endwhile; ?>
+
+    </div>
+
+    <div id="pagination">
+        <?php ivanhoe_paginate_links($wp_query);?>
+    </div>
+
+    <?php else : ?>
+
+    <p>No one has made a move yet in this game.  Make the first move!</p>
+
+    <?php endif; ?>
 
 <?php $wp_query = $original_query; ?>
 
 </article>
 
 <?php endwhile; endif; ?>
-
-<div id = "make-a-move-button">
-<?php
-$url = add_query_arg(
-    "parent_post",
-    $ivanhoe_game_id,
-    get_permalink(get_option('ivanhoe_move_page'))
-);
-?>
-<a href="<?php echo $url; ?>" class="button" id="make-a-move">Make a move</a>
-</div>
 
 <?php get_footer(); ?>

@@ -3,10 +3,15 @@
 <article>
     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
     <?php the_content(); ?>
+    <?php comments_template(); ?>
 </article>
 
-<?php endwhile; else : ?>
-<p>OMG NO POSTS!!!!!</p>
+<?php endwhile; ?>
+<div id="pagination">
+	<?php ivanhoe_paginate_links();?>
+</div>
+<?php else : ?>
+<p>No one has made a move yet in this game.  Make the first move!</p>
 <?php endif; ?>
 
 <?php get_footer(); ?>

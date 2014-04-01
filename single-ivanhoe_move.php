@@ -1,50 +1,48 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
-<article>
-    <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-    <?php the_content(); ?>
-		<?php 
-			$post_source = get_post_meta($post->ID, 'Ivanhoe Move Source', true);
-			$source_title = get_the_title($post_source);
-			$source_permalink = get_permalink($post_source);
-			if ( !empty($post_source) )
-			{ 
-				echo "Source post:";
-			?>
-			<a href="<?php echo $source_permalink ?>"><?php echo $source_title ?></a>
-			<?php
-			} 	
-		?>	
+<article class="single-move">
 
-		<?php
+    <header>
+            <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+            <p><span class="citation">By:</span><span class="author-date"><?php the_author_posts_link(); ?></span></p>
+            <p class="date-published"><?php the_date(); ?></p>
+           <a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a> 
+    </header>
+    <div class="source-response-container">
 
-			$args = array(
-				'post_type' => 'ivanhoe_move',
-				'post_per_page' => -1,
-				'meta_key' => 'Ivanhoe Move Source',
-				'meta_value' => $post->ID,
-				'meta_value_compare' => '='
-				);
+        <div class="discussion-source">
+            <?php ivanhoe_get_move_source( $post ); ?>
+        </div>
+	   <div class="discussion-response">
+            <!-- <h2><?php echo get_the_title($post->post_parent); ?></h2> -->
+            <?php ivanhoe_get_move_responses( $post ); ?> 
+       </div>
+        <div class="game-description">
+            <h2>Game Info</h2>
+			<?php global $post;
+            $parent_ID = $post->post_parent;
+			$game_title = get_title_by_id( $parent_ID );
+            $game_excerpt = get_excerpt_by_id( $parent_ID );
+            echo $game_title;
+			echo $game_excerpt; ?>
 
-			$source_query = new WP_Query( $args );
-
-            if ($source_query->have_posts() ) : ?>
-            <h2>Responses</h2>
-            <ul>
-			<?php while( $source_query->have_posts() ) : $source_query->the_post(); ?>
-
-			<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>	
-
-		    <?php endwhile; ?>
-		    </ul>
-		    <?php else : ?>
-		<p>There are no responses to this post.</p>
-	<?php endif; ?>
+        </div>
+    </div>
  
+    <div id="moves">
+
+    <?php the_content(); ?>
+            
+    <a class="return-button" href="<?php echo get_permalink( $post->post_parent ); ?>">Return to game</a>
+
+    </div>
+
 </article>
 
 <?php endwhile; else : ?>
-<p>OMG NO POSTS!!!!!</p>
+<p>No one has made a move yet in this game.  Make the first move!</p>
 <?php endif; ?>
+
+
 
 <?php get_footer(); ?>
