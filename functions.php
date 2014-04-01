@@ -104,7 +104,6 @@ function ivanhoe_create_post_types()
         )
     );
 
-}
 
 /**
  * Generate HTML for Ivanhoe Move metabox.
@@ -502,3 +501,31 @@ function ivanhoe_add_image( $file_handler, $parent_post_id) {
 
     return $attach_id;
 }
+
+function ivanhoe_get_rationales( $post )
+{
+    $args = array(
+        'post_type' => 'ivanhoe_role_journal',
+        'post_per_page' => -1,
+        'meta_key' => 'Ivanhoe Game Source',
+        'meta_value' => $post->post_parent,
+        'meta_value_compare' => '='
+        );
+
+    $game_query = new WP_Query( $args );
+
+    if ($game_query->have_posts() ) : ?>
+
+    <ul>
+    <?php while( $game_query->have_posts() ) : $game_query->the_post(); ?>
+
+    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+
+    <?php endwhile; ?>
+    </ul>
+    <?php else : ?>
+    <p>There are no journal entries.</p>
+    <?php endif;
+    wp_reset_postdata();
+}
+

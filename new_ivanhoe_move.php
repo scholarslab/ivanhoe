@@ -50,6 +50,13 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
         'post_parent' => $new_ivanhoe_post_id
         );
 
+    $new_ivanhoe_rationale_id = wp_insert_post( $journal_entry );
+    update_post_meta(
+        $new_ivanhoe_rationale_id,
+        'Ivanhoe Game Source',
+        $ivanhoe_game_id
+        );
+
     $new_ivanhoe_journal_entry = wp_insert_post( $journal_entry);
 
     wp_redirect( get_permalink($ivanhoe_game_id) );

@@ -9,7 +9,7 @@
     
     <?php the_content(); ?>	
 
-	<h3>Moves:</h3>
+	<h3>Moves</h3>
 
 	<?php 
 		$args = array
@@ -36,8 +36,12 @@
 		wp_reset_postdata();
 	?>
 
+	<h3>Rationales</h3>
+
+
+	<?php ivanhoe_get_rationales( $post ); ?>
 	
-	<a href="<?php echo get_permalink( $post->post_parent ); ?>">Return to game</a>
+<a href="<?php echo get_permalink( $post->post_parent ); ?>">Return to game</a>
 
 </article>
 
