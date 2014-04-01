@@ -12,7 +12,7 @@ if ( have_posts()) : while(have_posts()) : the_post(); ?>
 	<?php ivanhoe_paginate_links();?>
 </div>
 <?php else : ?>
-<p>No one has made a game yet.  Make the first game!</p>
+<p>There are no games yet.</p>
 <?php endif; ?>
 
 <?php get_footer(); ?>
