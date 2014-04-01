@@ -17,7 +17,6 @@ add_action( 'admin_bar_menu', 'modify_admin_bar', 999 );
 
 function modify_admin_bar( $wp_admin_bar ) {
   $wp_admin_bar->remove_node( 'new-ivanhoe_move' );
-  $wp_admin_bar->remove_node( 'new-ivanhoe_game' );
   $wp_admin_bar->remove_node( 'new-ivanhoe_role' );
 }
 
