@@ -4,9 +4,16 @@
   @include box-sizing(border-box);
 }
 
+html {
+    margin:0;
+    padding:40px;
+}
+
 body {
   font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-  color: #444; 
+  color: #444;
+  margin:0;
+  padding:0;
 }
 
 h1 {
@@ -133,6 +140,8 @@ img {
 
 /* Banner */
 header[role=banner] {
+  @include clearfix;
+  border-bottom: 1px solid #ccc;
 
   h1 {
       @include adjust-font-size-to(36px);
@@ -179,20 +188,21 @@ main {
 }
 
 #game-data{
-  @include span-columns(3 omega);
-  background: #E0E0E0;
+  @include span-columns(4 omega);
+  background: #eee;
+  background: rgba(black, 0.05);
   clear: both;
-  border: solid 1px #ccc;
-  padding: 5px;
+  border: dotted 1px #ccc;
+  padding: 1px rhythm(1);
 }
 
 #moves{
-  @include span-columns(9);
+  @include span-columns(8);
   text-align: justify;
 }
 
 .source-response-container {
-  @include span-columns(3 omega);
+  @include span-columns(4 omega);
   background: #E0E0E0;
   text-align: left;
   border-left: $border;
@@ -231,10 +241,18 @@ main {
 article {
   background-color: white;
   background-color: rgba(white, 0.9);
-  border: solid 1px #ccc;
-  padding-left: 1em;
-  padding-right: 1em;
-  margin-bottom: 1em;
+  border: dotted 1px #ccc;
+  margin-bottom: rhythm(1);
+  padding: 1px rhythm(1);
+
+  .single main > &,
+  .author main > & {
+      padding:0;
+      background:none;
+      border:none;
+  }
+
+  @include clearfix;
 
   &.single-move {
     @include span-columns(12);
@@ -251,7 +269,7 @@ article {
           }
         }
     .button {
-      @include span-columns(3 omega);
+      @include span-columns(4 omega);
     }
   }
 
@@ -260,17 +278,20 @@ article {
 
   .wp-post-image{
     float: left;
-    margin-right: 1em;
+    margin-right: rhythm(1);
   }
 
   }
 
   &.move {
-    margin-bottom: 70px;
+    margin-bottom: rhythm(3);
     @include clearfix;
   }
 
   &.game {
+    article {
+      padding: rhythm(1);
+    }
     header {
       @include span-columns(12);
       margin-top: 0;
@@ -327,9 +348,14 @@ article {
 
 /* Global footer */
 footer[role=contentinfo] {
-
+  @include clearfix;
+  border-top: 1px solid #ccc;
+  padding: rhythm(3) 0;
     .ivanhoelink {
-        @include span-columns(3 omega);
+        display:block;
+        width: space(3);
+        margin-left:auto;
+        margin-right:auto;
     }
 }
 
@@ -357,7 +383,8 @@ footer[role=contentinfo] {
 #wrap {
  background-color: white;
   background-color: rgba(white, 0.9);
- @include container; 
+  border: 1px solid #ccc;
+ @include container;
 }
 
 .moves{
