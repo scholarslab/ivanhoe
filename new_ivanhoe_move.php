@@ -67,6 +67,19 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
 
 get_header();
 
+// Get the game post.
+$ivanhoe_game = get_post($ivanhoe_game_id);
+
+$message = 'You are making a move on the game “<a href="'.get_permalink($ivanhoe_game_id).'">'.$ivanhoe_game->post_title.'</a>”';
+
+if ($ivanhoe_move_source) {
+    $ivanhoe_source = get_post($ivanhoe_move_source);
+
+    $message .= ' in response to the move “'.$ivanhoe_source->post_title.'”';
+}
+
+$message .= ".";
+
 ?>
 
 <header>
@@ -75,7 +88,11 @@ get_header();
 <h3>Game: <?php echo get_the_title($ivanhoe_game_id); ?></h3>
 </header>
 
-<form action="" method="post">
+<div class="new-ivanhoe-meta new-ivanhoe-move-meta">
+    <p><strong><?php echo $message; ?></strong></p>
+</div>
+
+<form action="" method="post" class="new-ivanhoe-form new-ivanhoe-move">
     <div>
     <label for="post_title">Title</label>
     <input type="text" name="post_title" value="<?php echo $ivanhoe_post_title; ?>" required>

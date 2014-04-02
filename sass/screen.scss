@@ -397,3 +397,14 @@ footer[role=contentinfo] {
   
 }
 
+.new-ivanhoe-meta {
+    @include span-columns(4 omega);
+    background: #eee;
+    background: rgba(black, 0.05);
+    border:1px solid #ccc;
+    padding: 1px rhythm(1);
+}
+.new-ivanhoe-form {
+    @include span-columns(8);
+}
+

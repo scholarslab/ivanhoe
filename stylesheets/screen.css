@@ -519,3 +519,24 @@ footer[role=contentinfo] .ivanhoelink {
   *margin-left: -20px;
   display: inline;
 }
+
+/* line 400, ../sass/screen.scss */
+.new-ivanhoe-meta {
+  width: 32.20339%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+  background: #eee;
+  background: rgba(0, 0, 0, 0.05);
+  border: 1px solid #ccc;
+  padding: 1px 1.5em;
+}
+
+/* line 407, ../sass/screen.scss */
+.new-ivanhoe-form {
+  width: 66.10169%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
+}
