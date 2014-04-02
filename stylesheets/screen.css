@@ -336,13 +336,18 @@ article.role {
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 261, ../sass/screen.scss */
+/* line 260, ../sass/screen.scss */
+article.role .wp-post-image {
+  float: left;
+  margin-right: 1em;
+}
+/* line 267, ../sass/screen.scss */
 article.move {
   margin-bottom: 70px;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 267, ../sass/screen.scss */
+/* line 273, ../sass/screen.scss */
 article.game header {
   width: 100%;
   float: left;
@@ -353,34 +358,34 @@ article.game header {
   float: left;
   padding: 0;
 }
-/* line 275, ../sass/screen.scss */
+/* line 281, ../sass/screen.scss */
 article.game h1 {
   font-size: 400%;
   font-variant: small-caps;
   margin-bottom: 5px;
   margin-top: 5px;
 }
-/* line 283, ../sass/screen.scss */
+/* line 289, ../sass/screen.scss */
 article.game .excerpt h1 {
   font-size: 200%;
   margin-bottom: 5px;
   margin-top: 5px;
 }
-/* line 291, ../sass/screen.scss */
+/* line 297, ../sass/screen.scss */
 article ul {
   list-style: none;
   margin-top: 0;
   font-size: 90%;
   padding-left: 0;
 }
-/* line 298, ../sass/screen.scss */
+/* line 304, ../sass/screen.scss */
 article header .button {
   float: right;
   display: inline;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 304, ../sass/screen.scss */
+/* line 310, ../sass/screen.scss */
 article header p {
   float: left;
   overflow: hidden;
@@ -388,7 +393,7 @@ article header p {
   display: inline;
 }
 
-/* line 311, ../sass/screen.scss */
+/* line 317, ../sass/screen.scss */
 .game-discussion-source {
   width: 42.85714%;
   float: left;
@@ -396,7 +401,7 @@ article header p {
   display: inline;
 }
 
-/* line 315, ../sass/screen.scss */
+/* line 321, ../sass/screen.scss */
 .game-discussion-response {
   width: 42.85714%;
   float: right;
@@ -405,7 +410,7 @@ article header p {
   display: inline;
 }
 
-/* line 319, ../sass/screen.scss */
+/* line 325, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   color: #999;
@@ -414,7 +419,7 @@ article header p {
 }
 
 /* Global footer */
-/* line 329, ../sass/screen.scss */
+/* line 335, ../sass/screen.scss */
 footer[role=contentinfo] .ivanhoelink {
   width: 23.40426%;
   float: right;
@@ -423,7 +428,7 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 335, ../sass/screen.scss */
+/* line 341, ../sass/screen.scss */
 #pagination {
   width: 74.46809%;
   float: left;
@@ -432,18 +437,18 @@ footer[role=contentinfo] .ivanhoelink {
   margin-bottom: 50px;
 }
 
-/* line 340, ../sass/screen.scss */
+/* line 346, ../sass/screen.scss */
 .attribution {
   color: red;
   font-variant: small-caps;
 }
 
-/* line 346, ../sass/screen.scss */
+/* line 352, ../sass/screen.scss */
 .new-post > div {
   margin-bottom: 1.5em;
 }
 
-/* line 351, ../sass/screen.scss */
+/* line 357, ../sass/screen.scss */
 .wp-editor-wrap * {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -451,7 +456,7 @@ footer[role=contentinfo] .ivanhoelink {
   /* Fixes tab height issue. */
 }
 
-/* line 355, ../sass/screen.scss */
+/* line 361, ../sass/screen.scss */
 #wrap {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.9);
@@ -470,15 +475,16 @@ footer[role=contentinfo] .ivanhoelink {
   clear: both;
 }
 
-/* line 361, ../sass/screen.scss */
+/* line 367, ../sass/screen.scss */
 .moves {
   width: 48.93617%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
+  clear: left;
 }
 
-/* line 365, ../sass/screen.scss */
+/* line 372, ../sass/screen.scss */
 .rationales {
   width: 48.93617%;
   float: right;

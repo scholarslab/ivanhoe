@@ -256,6 +256,12 @@ article {
 
   &.role{
     @include span-columns(12);
+
+  .wp-post-image{
+    float: left;
+    margin-right: 1em;
+  }
+
   }
 
   &.move {
@@ -360,6 +366,7 @@ footer[role=contentinfo] {
 
 .moves{
   @include span-columns(6);
+  clear: left;
 }
 
 .rationales{
