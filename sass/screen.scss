@@ -11,7 +11,7 @@ body {
 
 h1 {
     font-weight: 200;
-    @include adjust-font-size-to(60px);
+    @include adjust-font-size-to(40px);
 }
 
 h2 {
@@ -133,7 +133,6 @@ img {
 
 /* Banner */
 header[role=banner] {
-  @include container;
 
   h1 {
       @include adjust-font-size-to(36px);
@@ -174,7 +173,6 @@ main {
   overflow:hidden;
   zoom:1;
   border-radius: 5px;
-  @include container;
   padding-top: $gutter-width;
   padding-bottom: $gutter-width;
 
@@ -231,11 +229,14 @@ main {
 }
 
 article {
+  background-color: white;
+  background-color: rgba(white, 0.9);
+  border: solid 1px #ccc;
+  padding-left: 1em;
+  padding-right: 1em;
+
   &.single-move {
     @include span-columns(12);
-    border: solid 1px #ccc;
-    background-color: white;
-    background-color: rgba(white, 0.8);
     p {
       padding-left: 5px;
       }
@@ -260,20 +261,15 @@ article {
   &.move {
     margin-bottom: 70px;
     @include clearfix;
-    border: solid 1px #ccc;
-    background-color: white;
-    background-color: rgba(white, 0.8);
-    padding-left: 5px;
-    padding-right: 5px;
   }
 
   &.game {
-    border: solid 1px #ccc;
     header {
       @include span-columns(12);
       margin-top: 0;
       margin-bottom: 0;
       float: left;
+      padding: 0;
       }
 
     h1 {
@@ -329,7 +325,6 @@ article {
 
 /* Global footer */
 footer[role=contentinfo] {
-    @include container;
 
     .ivanhoelink {
         @include span-columns(3 omega);
@@ -355,5 +350,11 @@ footer[role=contentinfo] {
 
 .wp-editor-wrap * {
     @include box-sizing(content-box); /* Fixes tab height issue. */
+}
+
+#wrap {
+ background-color: white;
+  background-color: rgba(white, 0.9);
+ @include container; 
 }
 

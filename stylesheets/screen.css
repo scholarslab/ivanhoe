@@ -15,7 +15,7 @@ body {
 /* line 12, ../sass/screen.scss */
 h1 {
   font-weight: 200;
-  font-size: 3.75em;
+  font-size: 2.5em;
   line-height: 1.2em;
 }
 
@@ -175,81 +175,52 @@ img {
 }
 
 /* Banner */
-/* line 135, ../sass/screen.scss */
-header[role=banner] {
-  *zoom: 1;
-  max-width: 940px;
-  _width: 940px;
-  padding-left: 60px;
-  padding-right: 60px;
-  margin-left: auto;
-  margin-right: auto;
-}
-/* line 38, ../../../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
-header[role=banner]:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-/* line 138, ../sass/screen.scss */
+/* line 137, ../sass/screen.scss */
 header[role=banner] h1 {
   font-size: 2.25em;
   line-height: 1.33333em;
 }
 
 /* Main Navigation */
-/* line 145, ../sass/screen.scss */
+/* line 144, ../sass/screen.scss */
 nav {
   display: block;
   float: right;
   text-align: right;
   width: 60%;
 }
-/* line 151, ../sass/screen.scss */
+/* line 150, ../sass/screen.scss */
 nav a {
   text-decoration: none;
   color: #777;
 }
-/* line 156, ../sass/screen.scss */
+/* line 155, ../sass/screen.scss */
 nav ul {
   list-style: none;
   padding-left: 0;
 }
-/* line 161, ../sass/screen.scss */
+/* line 160, ../sass/screen.scss */
 nav li {
   display: inline;
 }
-/* line 164, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 nav li + li:before {
   content: " · ";
   color: #ccc;
 }
 
 /* Main Content Container */
-/* line 172, ../sass/screen.scss */
+/* line 171, ../sass/screen.scss */
 main {
   clear: both;
   overflow: hidden;
   zoom: 1;
   border-radius: 5px;
-  *zoom: 1;
-  max-width: 940px;
-  _width: 940px;
-  padding-left: 60px;
-  padding-right: 60px;
-  margin-left: auto;
-  margin-right: auto;
   padding-top: 20px;
   padding-bottom: 20px;
 }
-/* line 38, ../../../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
-main:after {
-  content: "";
-  display: table;
-  clear: both;
-}
 
-/* line 183, ../sass/screen.scss */
+/* line 181, ../sass/screen.scss */
 #game-data {
   width: 23.40426%;
   float: right;
@@ -262,7 +233,7 @@ main:after {
   padding: 5px;
 }
 
-/* line 191, ../sass/screen.scss */
+/* line 189, ../sass/screen.scss */
 #moves {
   width: 74.46809%;
   float: left;
@@ -271,7 +242,7 @@ main:after {
   text-align: justify;
 }
 
-/* line 196, ../sass/screen.scss */
+/* line 194, ../sass/screen.scss */
 .source-response-container {
   width: 23.40426%;
   float: right;
@@ -284,7 +255,7 @@ main:after {
   border-bottom: 1px dotted gray;
   clear: both;
 }
-/* line 208, ../sass/screen.scss */
+/* line 206, ../sass/screen.scss */
 .source-response-container h2,
 .source-response-container h3,
 .source-response-container p,
@@ -292,23 +263,23 @@ main:after {
 .source-response-container a {
   padding-left: 10px;
 }
-/* line 212, ../sass/screen.scss */
+/* line 210, ../sass/screen.scss */
 .source-response-container h3 {
   text-align: left;
   font-size: 100%;
 }
 
-/* line 218, ../sass/screen.scss */
+/* line 216, ../sass/screen.scss */
 .discussion-source {
   border-bottom: 1px dotted gray;
 }
 
-/* line 222, ../sass/screen.scss */
+/* line 220, ../sass/screen.scss */
 .discussion-response {
   border-bottom: 1px dotted gray;
 }
 
-/* line 226, ../sass/screen.scss */
+/* line 224, ../sass/screen.scss */
 .options {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -319,33 +290,38 @@ main:after {
   text-align: center;
 }
 
-/* line 234, ../sass/screen.scss */
+/* line 231, ../sass/screen.scss */
+article {
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
+  border: solid 1px #ccc;
+  padding-left: 1em;
+  padding-right: 1em;
+}
+/* line 238, ../sass/screen.scss */
 article.single-move {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
-  border: solid 1px #ccc;
-  background-color: white;
-  background-color: rgba(255, 255, 255, 0.8);
 }
-/* line 239, ../sass/screen.scss */
+/* line 240, ../sass/screen.scss */
 article.single-move p {
   padding-left: 5px;
 }
-/* line 242, ../sass/screen.scss */
+/* line 243, ../sass/screen.scss */
 article.single-move header {
   border-bottom: 1px dotted gray;
   padding-left: .5em;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 246, ../sass/screen.scss */
+/* line 247, ../sass/screen.scss */
 article.single-move header .date-published {
   float: left;
   clear: both;
 }
-/* line 251, ../sass/screen.scss */
+/* line 252, ../sass/screen.scss */
 article.single-move .button {
   width: 23.40426%;
   float: right;
@@ -353,29 +329,20 @@ article.single-move .button {
   *margin-left: -20px;
   display: inline;
 }
-/* line 256, ../sass/screen.scss */
+/* line 257, ../sass/screen.scss */
 article.role {
   width: 100%;
   float: left;
   margin-right: 2.12766%;
   display: inline;
 }
-/* line 260, ../sass/screen.scss */
+/* line 261, ../sass/screen.scss */
 article.move {
   margin-bottom: 70px;
   overflow: hidden;
   *zoom: 1;
-  border: solid 1px #ccc;
-  background-color: white;
-  background-color: rgba(255, 255, 255, 0.8);
-  padding-left: 5px;
-  padding-right: 5px;
 }
-/* line 270, ../sass/screen.scss */
-article.game {
-  border: solid 1px #ccc;
-}
-/* line 272, ../sass/screen.scss */
+/* line 267, ../sass/screen.scss */
 article.game header {
   width: 100%;
   float: left;
@@ -384,35 +351,36 @@ article.game header {
   margin-top: 0;
   margin-bottom: 0;
   float: left;
+  padding: 0;
 }
-/* line 279, ../sass/screen.scss */
+/* line 275, ../sass/screen.scss */
 article.game h1 {
   font-size: 400%;
   font-variant: small-caps;
   margin-bottom: 5px;
   margin-top: 5px;
 }
-/* line 287, ../sass/screen.scss */
+/* line 283, ../sass/screen.scss */
 article.game .excerpt h1 {
   font-size: 200%;
   margin-bottom: 5px;
   margin-top: 5px;
 }
-/* line 295, ../sass/screen.scss */
+/* line 291, ../sass/screen.scss */
 article ul {
   list-style: none;
   margin-top: 0;
   font-size: 90%;
   padding-left: 0;
 }
-/* line 302, ../sass/screen.scss */
+/* line 298, ../sass/screen.scss */
 article header .button {
   float: right;
   display: inline;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 308, ../sass/screen.scss */
+/* line 304, ../sass/screen.scss */
 article header p {
   float: left;
   overflow: hidden;
@@ -420,7 +388,7 @@ article header p {
   display: inline;
 }
 
-/* line 315, ../sass/screen.scss */
+/* line 311, ../sass/screen.scss */
 .game-discussion-source {
   width: 42.85714%;
   float: left;
@@ -428,7 +396,7 @@ article header p {
   display: inline;
 }
 
-/* line 319, ../sass/screen.scss */
+/* line 315, ../sass/screen.scss */
 .game-discussion-response {
   width: 42.85714%;
   float: right;
@@ -437,7 +405,7 @@ article header p {
   display: inline;
 }
 
-/* line 323, ../sass/screen.scss */
+/* line 319, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   color: #999;
@@ -446,23 +414,7 @@ article header p {
 }
 
 /* Global footer */
-/* line 331, ../sass/screen.scss */
-footer[role=contentinfo] {
-  *zoom: 1;
-  max-width: 940px;
-  _width: 940px;
-  padding-left: 60px;
-  padding-right: 60px;
-  margin-left: auto;
-  margin-right: auto;
-}
-/* line 38, ../../../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
-footer[role=contentinfo]:after {
-  content: "";
-  display: table;
-  clear: both;
-}
-/* line 334, ../sass/screen.scss */
+/* line 329, ../sass/screen.scss */
 footer[role=contentinfo] .ivanhoelink {
   width: 23.40426%;
   float: right;
@@ -471,7 +423,7 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 340, ../sass/screen.scss */
+/* line 335, ../sass/screen.scss */
 #pagination {
   width: 74.46809%;
   float: left;
@@ -480,20 +432,40 @@ footer[role=contentinfo] .ivanhoelink {
   margin-bottom: 50px;
 }
 
-/* line 345, ../sass/screen.scss */
+/* line 340, ../sass/screen.scss */
 .attribution {
   color: red;
   font-variant: small-caps;
 }
 
-/* line 351, ../sass/screen.scss */
+/* line 346, ../sass/screen.scss */
 .new-post > div {
   margin-bottom: 1.5em;
 }
 
-/* line 356, ../sass/screen.scss */
+/* line 351, ../sass/screen.scss */
 .wp-editor-wrap * {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
   box-sizing: content-box;
+  /* Fixes tab height issue. */
+}
+
+/* line 355, ../sass/screen.scss */
+#wrap {
+  background-color: white;
+  background-color: rgba(255, 255, 255, 0.9);
+  *zoom: 1;
+  max-width: 940px;
+  _width: 940px;
+  padding-left: 60px;
+  padding-right: 60px;
+  margin-left: auto;
+  margin-right: auto;
+}
+/* line 38, ../../../../../../../../Users/testadm/.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+#wrap:after {
+  content: "";
+  display: table;
+  clear: both;
 }
