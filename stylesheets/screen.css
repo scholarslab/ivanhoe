@@ -540,3 +540,27 @@ footer[role=contentinfo] .ivanhoelink {
   margin-right: 1.69492%;
   display: inline;
 }
+
+/* line 411, ../sass/screen.scss */
+.author .description {
+  width: 32.20339%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+}
+
+/* line 415, ../sass/screen.scss */
+.author .roles {
+  width: 66.10169%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
+}
+/* line 418, ../sass/screen.scss */
+.author .roles .wp-post-image {
+  float: right;
+  margin-right: 0;
+  margin-left: 1.5em;
+  margin-top: 1.5em;
+}

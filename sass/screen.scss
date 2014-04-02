@@ -408,3 +408,18 @@ footer[role=contentinfo] {
     @include span-columns(8);
 }
 
+.author .description {
+    @include span-columns(4 omega);
+}
+
+.author .roles {
+    @include span-columns(8);
+
+    .wp-post-image {
+        float:right;
+        margin-right:0;
+        margin-left: rhythm(1);
+        margin-top: rhythm(1);
+    }
+}
+
