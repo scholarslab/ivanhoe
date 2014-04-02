@@ -234,6 +234,7 @@ article {
   border: solid 1px #ccc;
   padding-left: 1em;
   padding-right: 1em;
+  margin-bottom: 1em;
 
   &.single-move {
     @include span-columns(12);
@@ -256,6 +257,12 @@ article {
 
   &.role{
     @include span-columns(12);
+
+  .wp-post-image{
+    float: left;
+    margin-right: 1em;
+  }
+
   }
 
   &.move {
@@ -301,11 +308,6 @@ article {
     @include clearfix;
     }
 
-  header p {
-    float: left;
-    @include clearfix;
-    display: inline;
-  }
 }
 
 .game-discussion-source {
@@ -356,5 +358,15 @@ footer[role=contentinfo] {
  background-color: white;
   background-color: rgba(white, 0.9);
  @include container; 
+}
+
+.moves{
+  @include span-columns(6);
+  clear: left;
+}
+
+.rationales{
+  @include span-columns(6 omega);
+  
 }
 
