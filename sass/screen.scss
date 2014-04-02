@@ -308,11 +308,6 @@ article {
     @include clearfix;
     }
 
-  header p {
-    float: left;
-    @include clearfix;
-    display: inline;
-  }
 }
 
 .game-discussion-source {

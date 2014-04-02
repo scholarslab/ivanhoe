@@ -386,15 +386,8 @@ article header .button {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 311, ../sass/screen.scss */
-article header p {
-  float: left;
-  overflow: hidden;
-  *zoom: 1;
-  display: inline;
-}
 
-/* line 318, ../sass/screen.scss */
+/* line 313, ../sass/screen.scss */
 .game-discussion-source {
   width: 42.85714%;
   float: left;
@@ -402,7 +395,7 @@ article header p {
   display: inline;
 }
 
-/* line 322, ../sass/screen.scss */
+/* line 317, ../sass/screen.scss */
 .game-discussion-response {
   width: 42.85714%;
   float: right;
@@ -411,7 +404,7 @@ article header p {
   display: inline;
 }
 
-/* line 326, ../sass/screen.scss */
+/* line 321, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   color: #999;
@@ -420,7 +413,7 @@ article header p {
 }
 
 /* Global footer */
-/* line 336, ../sass/screen.scss */
+/* line 331, ../sass/screen.scss */
 footer[role=contentinfo] .ivanhoelink {
   width: 23.40426%;
   float: right;
@@ -429,7 +422,7 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 342, ../sass/screen.scss */
+/* line 337, ../sass/screen.scss */
 #pagination {
   width: 74.46809%;
   float: left;
@@ -438,18 +431,18 @@ footer[role=contentinfo] .ivanhoelink {
   margin-bottom: 50px;
 }
 
-/* line 347, ../sass/screen.scss */
+/* line 342, ../sass/screen.scss */
 .attribution {
   color: red;
   font-variant: small-caps;
 }
 
-/* line 353, ../sass/screen.scss */
+/* line 348, ../sass/screen.scss */
 .new-post > div {
   margin-bottom: 1.5em;
 }
 
-/* line 358, ../sass/screen.scss */
+/* line 353, ../sass/screen.scss */
 .wp-editor-wrap * {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -457,7 +450,7 @@ footer[role=contentinfo] .ivanhoelink {
   /* Fixes tab height issue. */
 }
 
-/* line 362, ../sass/screen.scss */
+/* line 357, ../sass/screen.scss */
 #wrap {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.9);
@@ -476,7 +469,7 @@ footer[role=contentinfo] .ivanhoelink {
   clear: both;
 }
 
-/* line 368, ../sass/screen.scss */
+/* line 363, ../sass/screen.scss */
 .moves {
   width: 48.93617%;
   float: left;
@@ -485,7 +478,7 @@ footer[role=contentinfo] .ivanhoelink {
   clear: left;
 }
 
-/* line 373, ../sass/screen.scss */
+/* line 368, ../sass/screen.scss */
 .rationales {
   width: 48.93617%;
   float: right;

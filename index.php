@@ -1,7 +1,13 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 <article>
-    <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+    <header>
+            <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+            <p><span class="citation">By:</span><span class="author-date"><?php the_author_posts_link(); ?></span></p>
+            <p class="date-published"><?php the_date(); ?></p>
+    </header>
+
+
     <?php the_content(); ?>
     <?php comments_template(); ?>
 </article>
