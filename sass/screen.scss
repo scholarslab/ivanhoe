@@ -234,6 +234,7 @@ article {
   border: solid 1px #ccc;
   padding-left: 1em;
   padding-right: 1em;
+  margin-bottom: 1em;
 
   &.single-move {
     @include span-columns(12);
