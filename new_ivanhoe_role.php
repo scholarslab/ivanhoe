@@ -52,6 +52,11 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
 get_header();
 
 ?>
+
+<header>
+<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+</header>
+
 <form action="" class="new-post" method="post" enctype="multipart/form-data">
     <div><label for="post_title">Role Name</label>
     <input type="text" size="50" name="post_title" required>

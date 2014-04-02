@@ -81,15 +81,27 @@ function ivanhoe_create_post_types()
             )
         );
 
+
     add_post_type_support( 'ivanhoe_role', 'thumbnail' );
 
     add_rewrite_rule( 'games/([.*]+)/page/([0-9]+)/?$', 'index.php?ivanhoe_game=[1]&paged=$matches[2]', 'top' );
 
 }
 
-/**
- * Enables ivanhoe moves to support custom fields.
-*/
+    register_post_type(
+        'ivanhoe_role_journal',
+        array(
+            'labels' => array(
+                'name'          => __( 'Role Journal' ),
+                'singular_name' => __( 'Role Journal Entry' ),
+                'all_items'     => __( 'All Entries' ),
+                'add_new_item'  => __( 'Add New Entry' )
+            ),
+            'public'        => true,
+            'has_archive'   => true,
+            'rewrite'       => array( 'slug' => 'rolejournal' )
+        )
+    );
 
 
 /**
@@ -263,10 +275,14 @@ function ivanhoe_get_move_source( $post )
         // Set $html to a string with a link to source post.
         $html = '<h3>Source</h3>
         <ul><li><a href="'.get_permalink($source->ID).'">'.$source->post_title.'</a></li></ul>';
-
+    }
+    
+    else {
+        $html = '<h3>Source</h3>
+        <p>There is no source for this post.</p>';
     }
 
-    // Print out the value of $html.
+   // Print out the value of $html.
     echo $html;
 }
 
@@ -488,3 +504,31 @@ function ivanhoe_add_image( $file_handler, $parent_post_id) {
 
     return $attach_id;
 }
+
+function ivanhoe_get_rationales( $post )
+{
+    $args = array(
+        'post_type' => 'ivanhoe_role_journal',
+        'post_per_page' => -1,
+        'meta_key' => 'Ivanhoe Game Source',
+        'meta_value' => $post->post_parent,
+        'meta_value_compare' => '='
+        );
+
+    $game_query = new WP_Query( $args );
+
+    if ($game_query->have_posts() ) : ?>
+
+    <ul>
+    <?php while( $game_query->have_posts() ) : $game_query->the_post(); ?>
+
+    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+
+    <?php endwhile; ?>
+    </ul>
+    <?php else : ?>
+    <p>There are no journal entries.</p>
+    <?php endif;
+    wp_reset_postdata();
+}
+

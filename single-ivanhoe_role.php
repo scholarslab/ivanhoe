@@ -5,11 +5,15 @@
 
     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
-    <?php the_post_thumbnail(); ?>
+    <?php the_post_thumbnail('medium'); ?>
     
     <?php the_content(); ?>	
 
-	<h3>Moves:</h3>
+	<a href="<?php echo get_permalink( $post->post_parent ); ?>">Return to game</a>
+
+    <div class="moves">
+
+	<h2>Moves</h2>
 
 	<?php 
 		$args = array
@@ -36,8 +40,14 @@
 		wp_reset_postdata();
 	?>
 
-	
-	<a href="<?php echo get_permalink( $post->post_parent ); ?>">Return to game</a>
+</div>
+<div class="rationales">
+	<h2>Rationales</h2>
+
+
+	<?php ivanhoe_get_rationales( $post ); ?>
+
+</div>
 
 </article>
 

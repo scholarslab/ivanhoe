@@ -4,7 +4,8 @@
 	$curauth = ( isset( $_GET['author_name'] ) ) ? get_user_by( 'slug', $author_name ) : get_userdata( intval( $author ) );
 ?>
 
-<h1>Hello <?php echo $curauth->display_name; ?></h1>
+<article>
+<h1><?php echo $curauth->display_name; ?></h1>
 
 <p>Here's a little bit about yourself: <?php echo $curauth->user_description; ?></p>
 
@@ -65,8 +66,7 @@
 
 ?>	
 
-
-
+</article>
 
 
 
