@@ -275,10 +275,14 @@ function ivanhoe_get_move_source( $post )
         // Set $html to a string with a link to source post.
         $html = '<h3>Source</h3>
         <ul><li><a href="'.get_permalink($source->ID).'">'.$source->post_title.'</a></li></ul>';
-
+    }
+    
+    else {
+        $html = '<h3>Source</h3>
+        <p>There is no source for this post.</p>';
     }
 
-    // Print out the value of $html.
+   // Print out the value of $html.
     echo $html;
 }
 
