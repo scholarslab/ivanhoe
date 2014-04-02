@@ -2,7 +2,7 @@
 
 <header>
 <h1>Games</h1>
-</header>>
+</header>
 
 <?php
 if ( have_posts()) : while(have_posts()) : the_post(); ?>
