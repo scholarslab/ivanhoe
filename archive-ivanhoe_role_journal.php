@@ -1,5 +1,9 @@
 <?php get_header(); ?>
 
+<header>
+<h1>Roles</h1>
+</header>
+
 <?php
 if ( have_posts()) : while(have_posts()) : the_post(); ?>
 <article>

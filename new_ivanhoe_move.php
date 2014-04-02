@@ -66,6 +66,11 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
 get_header();
 
 ?>
+
+<header>
+<h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+</header>
+
 <form action="" method="post">
     <div>
     <label for="post_title">Title</label>
