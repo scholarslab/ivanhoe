@@ -40,7 +40,7 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
         'Ivanhoe Move Source',
         $ivanhoe_move_source
         );
-    
+
     wp_redirect( get_permalink($ivanhoe_game_id) );
     exit;
 }
@@ -48,12 +48,16 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
 get_header();
 
 ?>
+
+<h1>Make a Move!</h1>
+
+<h3>Game: <?php echo get_the_title($ivanhoe_game_id); ?></h3>
 <form action="" method="post">
     <div>
     <label for="post_title">Title</label>
     <input type="text" name="post_title" value="<?php echo $ivanhoe_post_title; ?>" required>
     </div>
-    
+
     <div>
     <label for="post_content">Content</label>
     <?php wp_editor( '', "post_content"); ?>
@@ -72,6 +76,6 @@ get_header();
 
 <?php
 
-    get_footer(); 
+    get_footer();
 
 ?>
