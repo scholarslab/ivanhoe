@@ -84,8 +84,6 @@ $message .= ".";
 
 <header>
 <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-
-<h3>Game: <?php echo get_the_title($ivanhoe_game_id); ?></h3>
 </header>
 
 <div class="new-ivanhoe-meta new-ivanhoe-move-meta">
