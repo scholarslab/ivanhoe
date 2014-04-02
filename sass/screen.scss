@@ -358,3 +358,12 @@ footer[role=contentinfo] {
  @include container; 
 }
 
+.moves{
+  @include span-columns(6);
+}
+
+.rationales{
+  @include span-columns(6 omega);
+  
+}
+

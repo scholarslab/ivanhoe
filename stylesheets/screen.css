@@ -469,3 +469,20 @@ footer[role=contentinfo] .ivanhoelink {
   display: table;
   clear: both;
 }
+
+/* line 361, ../sass/screen.scss */
+.moves {
+  width: 48.93617%;
+  float: left;
+  margin-right: 2.12766%;
+  display: inline;
+}
+
+/* line 365, ../sass/screen.scss */
+.rationales {
+  width: 48.93617%;
+  float: right;
+  margin-right: 0;
+  *margin-left: -20px;
+  display: inline;
+}
