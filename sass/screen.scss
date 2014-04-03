@@ -1,7 +1,7 @@
 @import "base";
 
 * {
-  @include box-sizing(border-box);
+    @include box-sizing(border-box);
 }
 
 html {
@@ -10,10 +10,10 @@ html {
 }
 
 body {
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-  color: #444;
-  margin:0;
-  padding:0;
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    color: #444;
+    margin:0;
+    padding:0;
 }
 
 h1 {
@@ -27,330 +27,339 @@ h2 {
 
 /* Links */
 a {
-  &:link {color: #004D05;}
-  &:visited {color: #004D05;}
-  &:hover {color: #8c3; text-decoration:none;}
-  &:active {color: #8a3;}
+    &:link {color: #004D05;}
+    &:visited {color: #004D05;}
+    &:hover {color: #8c3; text-decoration:none;}
+    &:active {color: #8a3;}
 
-  h1 &,
-  h2 & {
-      text-decoration:none;
-  }
+    h1 &,
+    h2 & {
+        text-decoration:none;
+    }
 }
 
 /* Forms */
 input[type=text], label, textarea{display: block;}
 
 label {
-  font-size: 20px;
-  font-weight: bold;
-
+    font-size: 20px;
+    font-weight: bold;
 }
 
 input[type=text], textarea {
-  width: 100%;
-  border-radius: 3px;
-  padding: 5px;
-  border: 1px solid rgba(0,0,0,0.2);
+    width: 100%;
+    border-radius: 3px;
+    padding: 5px;
+    border: 1px solid rgba(0,0,0,0.2);
 }
 
 textarea {
-  display: block;
+    display: block;
 }
 
 /* Images */
 img {
-  max-width: 100%;
-  max-height:100%;
-  height:auto;
+    max-width: 100%;
+    max-height:100%;
+    height:auto;
 }
 
 /* WordPress Generated Classes */
 .alignright {
-  float: right;
-  padding-left: .5em;
+    float: right;
+    padding-left: .5em;
 }
 
 .aligncenter {
-  margin-left: auto;
-  margin-right:auto;
-  padding-left: .5em;
-  padding-right: .5em;
- }
+    margin-left: auto;
+    margin-right:auto;
+    padding-left: .5em;
+    padding-right: .5em;
+}
 
 .alignleft {
-  float: left;
-  padding-right: .5em;
+    float: left;
+    padding-right: .5em;
 }
 
 .wp-caption-text {
- font-size: 75%;
- text-align: center;
- }
+    font-size: 75%;
+    text-align: center;
+}
 
 /* Custom Utility Classes */
 .citation {
-  font-variant: small-caps;
+    font-variant: small-caps;
 }
 
 .eyebrow {
-  margin:0;
-  color: #777;
-  font-size: 90%;
-  font-weight:bold;
+    margin:0;
+    color: #777;
+    font-size: 90%;
+    font-weight:bold;
 }
 
 .eyebrow + * {
-  margin-top:0 !important;
+    margin-top:0 !important;
 }
 
 .button {
-  width: 200px;
-  height: 30px;
-  line-height: 30px;
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  display: block;
-  text-align: center;
-  position: relative;
-  background: #a8a8a8;
-  margin-top: 10px;
+    width: 200px;
+    height: 30px;
+    line-height: 30px;
+    color: white;
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    text-align: center;
+    position: relative;
+    background: #a8a8a8;
+    margin-top: 10px;
 
-  /*Background Gradients */
-  @include background-image(linear-gradient(bottom, #34612D 0%, #217D0F 100%, #B5D1B2 100%));
-  @include border-radius(10px);
+    /*Background Gradients */
+    @include background-image(linear-gradient(bottom, #34612D 0%, #217D0F 100%, #B5D1B2 100%));
+    @include border-radius(10px);
 
-  border: 1px solid #368DBE;
-  border-top: 1px solid #C3D6DF;
+    border: 1px solid #368DBE;
+    border-top: 1px solid #C3D6DF;
 
-  &:link,
-  &:visited {color: white; color: rgba(255, 255, 255, 0.85);}
-  &:hover {color: white;}
-  &:active {color: white;}
+    &:link,
+    &:visited {
+        color: white;
+        color: rgba(255, 255, 255, 0.85);
+    }
+    &:hover,
+    &:active {
+        color: white;
+    }
 
 }
 
 .return-button{
-  margin-top: 20px;
-  text-align: right;
-  float: right;
+    margin-top: 20px;
+    text-align: right;
+    float: right;
 }
 
 
 /* Banner */
 header[role=banner] {
-  @include clearfix;
-  border-bottom: 1px solid #ccc;
+    @include clearfix;
+    border-bottom: 1px solid #ccc;
 
-  h1 {
-      @include adjust-font-size-to(36px);
-  }
+    h1 {
+        @include adjust-font-size-to(36px);
+    }
 
 }
 
 /* Main Navigation */
 nav {
-  display:block;
-  float:right;
-  text-align:right;
-  width: 60%;
+    display:block;
+    float:right;
+    text-align:right;
+    width: 60%;
 
-  a {
-    text-decoration:none;
-    color: #777;
-  }
-
-  ul {
-    list-style:none;
-    padding-left:0;
-  }
-
-  li {
-    display:inline;
-
-    & + li:before {
-      content: " · ";
-      color: #ccc;
+    a {
+        text-decoration:none;
+        color: #777;
     }
-  }
+
+    ul {
+        list-style:none;
+        padding-left:0;
+    }
+
+    li {
+        display:inline;
+
+        & + li:before {
+            content: " · ";
+            color: #ccc;
+        }
+    }
 }
 
 /* Main Content Container */
 main {
-  clear:both;
-  overflow:hidden;
-  zoom:1;
-  border-radius: 5px;
-  padding-top: $gutter-width;
-  padding-bottom: $gutter-width;
-
+    clear:both;
+    overflow:hidden;
+    zoom:1;
+    border-radius: 5px;
+    padding-top: $gutter-width;
+    padding-bottom: $gutter-width;
 }
 
 #game-data{
-  @include span-columns(4 omega);
-  background: #eee;
-  background: rgba(black, 0.05);
-  clear: both;
-  border: dotted 1px #ccc;
-  padding: 1px rhythm(1);
+    @include span-columns(4 omega);
+    background: #eee;
+    background: rgba(black, 0.05);
+    clear: both;
+    border: dotted 1px #ccc;
+    padding: 1px rhythm(1);
 }
 
 #moves{
-  @include span-columns(8);
-  text-align: justify;
+    @include span-columns(8);
+    text-align: justify;
 }
 
 .source-response-container {
-  @include span-columns(4 omega);
-  background: #E0E0E0;
-  text-align: left;
-  border-left: $border;
-  border-bottom: $border;
-  clear: both;
-
-  h2,
-  h3,
-  p,
-  ul,
-  a {
-    padding-left: 10px;
-  }
-
-  h3 {
+    @include span-columns(4 omega);
+    background: #E0E0E0;
     text-align: left;
-    font-size: 100%;
-  }
+    border-left: $border;
+    border-bottom: $border;
+    clear: both;
+
+    h2,
+    h3,
+    p,
+    ul,
+    a {
+        padding-left: 10px;
+    }
+
+    h3 {
+        text-align: left;
+        font-size: 100%;
+    }
 }
 
 .discussion-source {
-  border-bottom: $border;
+    border-bottom: $border;
 }
 
 .discussion-response {
-  border-bottom: $border;
+    border-bottom: $border;
 }
 
 .options {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  @include span-columns(12);
-  text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    @include span-columns(12);
+    text-align: center;
 }
 
 article {
-  background-color: white;
-  background-color: rgba(white, 0.9);
-  border: dotted 1px #ccc;
-  margin-bottom: rhythm(1);
-  padding: 1px rhythm(1);
+    background-color: white;
+    background-color: rgba(white, 0.9);
+    border: dotted 1px #ccc;
+    margin-bottom: rhythm(1);
+    padding: 1px rhythm(1);
 
-  .single main > &,
-  .author main > & {
-      padding:0;
-      background:none;
-      border:none;
-  }
-
-  @include clearfix;
-
-  &.single-move {
-    @include span-columns(12);
-    p {
-      padding-left: 5px;
-      }
-    header {
-        border-bottom: $border;
-        padding-left: .5em;
-        @include clearfix;
-        .date-published {
-          float: left;
-          clear: both;
-          }
-        }
-    .button {
-      @include span-columns(4 omega);
+    /* Removes padding, background, and border on the first article on blog posts and author pages. */
+    .single main > &,
+    .author main > & {
+        padding:0;
+        background:none;
+        border:none;
     }
-  }
 
-  &.role{
-    @include span-columns(12);
-
-  .wp-post-image{
-    float: left;
-    margin-right: rhythm(1);
-  }
-
-  }
-
-  &.move {
-    margin-bottom: rhythm(3);
     @include clearfix;
-  }
 
-  &.game {
-    article {
-      padding: rhythm(1);
+    &.single-move {
+        @include span-columns(12);
+        p {
+            padding-left: 5px;
+        }
+        header {
+            border-bottom: $border;
+            padding-left: .5em;
+            @include clearfix;
+            .date-published {
+                float: left;
+                clear: both;
+            }
+        }
+
+        .button {
+            @include span-columns(4 omega);
+        }
     }
-    header {
-      @include span-columns(12);
-      margin-top: 0;
-      margin-bottom: 0;
-      float: left;
-      padding: 0;
-      }
 
-    h1 {
-      font-size: 400%;
-      font-variant: small-caps;
-      margin-bottom: 5px;
-        margin-top: 5px;
+    /* Articles with a class of role. */
+    &.role{
+        @include span-columns(12);
+
+        .wp-post-image{
+            float: left;
+            margin-right: rhythm(1);
+        }
     }
 
-    .excerpt {
-      h1 {
-        font-size: 200%;
+    /* Articles with a class of move.
+    &.move {
+        margin-bottom: rhythm(3);
+        @include clearfix;
+    }
+
+    /* Articles with a class of game. */
+    &.game {
+        article {
+            padding: rhythm(1);
+        }
+
+        header {
+            @include span-columns(12);
+            margin-top: 0;
+            margin-bottom: 0;
+            float: left;
+            padding: 0;
+        }
+
+        h1 {
+        font-size: 400%;
+        font-variant: small-caps;
         margin-bottom: 5px;
         margin-top: 5px;
         }
-      }
+
+        .excerpt {
+            h1 {
+                font-size: 200%;
+                margin-bottom: 5px;
+                margin-top: 5px;
+            }
+        }
     }
 
-  ul {
-    list-style:none;
-    margin-top: 0;
-    font-size: 90%;
-    padding-left: 0;
-  }
-  
-  header .button {
-    float: right;
-    display: inline;
-    @include clearfix;
+    ul {
+        list-style:none;
+        margin-top: 0;
+        font-size: 90%;
+        padding-left: 0;
+    }
+
+    header .button {
+        float: right;
+        display: inline;
+        @include clearfix;
     }
 
 }
 
 .game-discussion-source {
-  @include span-columns(4,9);
+    @include span-columns(4,9);
 }
 
 .game-discussion-response {
-  @include span-columns(4 omega,9);
+    @include span-columns(4 omega,9);
 }
 
 .move .meta {
-  font-size: 90%;
-  color: #999;
-  margin-top:0;
-  margin-bottom: 4em;
+    font-size: 90%;
+    color: #999;
+    margin-top:0;
+    margin-bottom: 4em;
 }
 
 /* Global footer */
 footer[role=contentinfo] {
-  @include clearfix;
-  border-top: 1px solid #ccc;
-  padding: rhythm(3) 0;
+    @include clearfix;
+    border-top: 1px solid #ccc;
+    padding: rhythm(3) 0;
+
     .ivanhoelink {
         display:block;
         width: space(3);
@@ -361,13 +370,13 @@ footer[role=contentinfo] {
 
 
 #pagination {
-  @include span-columns(9);
-  margin-bottom: 50px;
+    @include span-columns(9);
+    margin-bottom: 50px;
 }
 
 .attribution {
-  color: red;
-  font-variant: small-caps;
+    color: red;
+    font-variant: small-caps;
 }
 
 .new-post {
@@ -381,20 +390,19 @@ footer[role=contentinfo] {
 }
 
 #wrap {
- background-color: white;
-  background-color: rgba(white, 0.9);
-  border: 1px solid #ccc;
- @include container;
+    background-color: white;
+    background-color: rgba(white, 0.9);
+    border: 1px solid #ccc;
+    @include container;
 }
 
 .moves{
-  @include span-columns(6);
-  clear: left;
+    @include span-columns(6);
+    clear: left;
 }
 
 .rationales{
-  @include span-columns(6 omega);
-  
+    @include span-columns(6 omega);
 }
 
 .new-ivanhoe-meta {

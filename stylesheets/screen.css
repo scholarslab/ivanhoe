@@ -67,7 +67,7 @@ label {
   font-weight: bold;
 }
 
-/* line 50, ../sass/screen.scss */
+/* line 49, ../sass/screen.scss */
 input[type=text], textarea {
   width: 100%;
   border-radius: 3px;
@@ -75,13 +75,13 @@ input[type=text], textarea {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-/* line 57, ../sass/screen.scss */
+/* line 56, ../sass/screen.scss */
 textarea {
   display: block;
 }
 
 /* Images */
-/* line 62, ../sass/screen.scss */
+/* line 61, ../sass/screen.scss */
 img {
   max-width: 100%;
   max-height: 100%;
@@ -89,13 +89,13 @@ img {
 }
 
 /* WordPress Generated Classes */
-/* line 69, ../sass/screen.scss */
+/* line 68, ../sass/screen.scss */
 .alignright {
   float: right;
   padding-left: .5em;
 }
 
-/* line 74, ../sass/screen.scss */
+/* line 73, ../sass/screen.scss */
 .aligncenter {
   margin-left: auto;
   margin-right: auto;
@@ -103,25 +103,25 @@ img {
   padding-right: .5em;
 }
 
-/* line 81, ../sass/screen.scss */
+/* line 80, ../sass/screen.scss */
 .alignleft {
   float: left;
   padding-right: .5em;
 }
 
-/* line 86, ../sass/screen.scss */
+/* line 85, ../sass/screen.scss */
 .wp-caption-text {
   font-size: 75%;
   text-align: center;
 }
 
 /* Custom Utility Classes */
-/* line 92, ../sass/screen.scss */
+/* line 91, ../sass/screen.scss */
 .citation {
   font-variant: small-caps;
 }
 
-/* line 96, ../sass/screen.scss */
+/* line 95, ../sass/screen.scss */
 .eyebrow {
   margin: 0;
   color: #777;
@@ -129,12 +129,12 @@ img {
   font-weight: bold;
 }
 
-/* line 103, ../sass/screen.scss */
+/* line 102, ../sass/screen.scss */
 .eyebrow + * {
   margin-top: 0 !important;
 }
 
-/* line 107, ../sass/screen.scss */
+/* line 106, ../sass/screen.scss */
 .button {
   width: 200px;
   height: 30px;
@@ -161,21 +161,17 @@ img {
   border: 1px solid #368DBE;
   border-top: 1px solid #C3D6DF;
 }
-/* line 128, ../sass/screen.scss */
+/* line 127, ../sass/screen.scss */
 .button:link, .button:visited {
   color: white;
   color: rgba(255, 255, 255, 0.85);
 }
-/* line 129, ../sass/screen.scss */
-.button:hover {
-  color: white;
-}
-/* line 130, ../sass/screen.scss */
-.button:active {
+/* line 132, ../sass/screen.scss */
+.button:hover, .button:active {
   color: white;
 }
 
-/* line 134, ../sass/screen.scss */
+/* line 138, ../sass/screen.scss */
 .return-button {
   margin-top: 20px;
   text-align: right;
@@ -183,48 +179,48 @@ img {
 }
 
 /* Banner */
-/* line 142, ../sass/screen.scss */
+/* line 146, ../sass/screen.scss */
 header[role=banner] {
   overflow: hidden;
   *zoom: 1;
   border-bottom: 1px solid #ccc;
 }
-/* line 146, ../sass/screen.scss */
+/* line 150, ../sass/screen.scss */
 header[role=banner] h1 {
   font-size: 2.25em;
   line-height: 1.33333em;
 }
 
 /* Main Navigation */
-/* line 153, ../sass/screen.scss */
+/* line 157, ../sass/screen.scss */
 nav {
   display: block;
   float: right;
   text-align: right;
   width: 60%;
 }
-/* line 159, ../sass/screen.scss */
+/* line 163, ../sass/screen.scss */
 nav a {
   text-decoration: none;
   color: #777;
 }
-/* line 164, ../sass/screen.scss */
+/* line 168, ../sass/screen.scss */
 nav ul {
   list-style: none;
   padding-left: 0;
 }
-/* line 169, ../sass/screen.scss */
+/* line 173, ../sass/screen.scss */
 nav li {
   display: inline;
 }
-/* line 172, ../sass/screen.scss */
+/* line 176, ../sass/screen.scss */
 nav li + li:before {
   content: " · ";
   color: #ccc;
 }
 
 /* Main Content Container */
-/* line 180, ../sass/screen.scss */
+/* line 184, ../sass/screen.scss */
 main {
   clear: both;
   overflow: hidden;
@@ -234,7 +230,7 @@ main {
   padding-bottom: 20px;
 }
 
-/* line 190, ../sass/screen.scss */
+/* line 193, ../sass/screen.scss */
 #game-data {
   width: 32.20339%;
   float: right;
@@ -248,7 +244,7 @@ main {
   padding: 1px 1.5em;
 }
 
-/* line 199, ../sass/screen.scss */
+/* line 202, ../sass/screen.scss */
 #moves {
   width: 66.10169%;
   float: left;
@@ -257,7 +253,7 @@ main {
   text-align: justify;
 }
 
-/* line 204, ../sass/screen.scss */
+/* line 207, ../sass/screen.scss */
 .source-response-container {
   width: 32.20339%;
   float: right;
@@ -270,7 +266,7 @@ main {
   border-bottom: 1px dotted gray;
   clear: both;
 }
-/* line 216, ../sass/screen.scss */
+/* line 219, ../sass/screen.scss */
 .source-response-container h2,
 .source-response-container h3,
 .source-response-container p,
@@ -278,23 +274,23 @@ main {
 .source-response-container a {
   padding-left: 10px;
 }
-/* line 220, ../sass/screen.scss */
+/* line 223, ../sass/screen.scss */
 .source-response-container h3 {
   text-align: left;
   font-size: 100%;
 }
 
-/* line 226, ../sass/screen.scss */
+/* line 229, ../sass/screen.scss */
 .discussion-source {
   border-bottom: 1px dotted gray;
 }
 
-/* line 230, ../sass/screen.scss */
+/* line 233, ../sass/screen.scss */
 .discussion-response {
   border-bottom: 1px dotted gray;
 }
 
-/* line 234, ../sass/screen.scss */
+/* line 237, ../sass/screen.scss */
 .options {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -305,46 +301,55 @@ main {
   text-align: center;
 }
 
-/* line 241, ../sass/screen.scss */
+/* line 244, ../sass/screen.scss */
 article {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.9);
   border: dotted 1px #ccc;
   margin-bottom: 1.5em;
   padding: 1px 1.5em;
+  /* Removes padding, background, and border on the first article on blog posts and author pages. */
   overflow: hidden;
   *zoom: 1;
+  /* Articles with a class of role. */
+    /* Articles with a class of move.
+    &.move {
+        margin-bottom: rhythm(3);
+        @include clearfix;
+    }
+
+    /* Articles with a class of game. */
 }
-/* line 249, ../sass/screen.scss */
+/* line 253, ../sass/screen.scss */
 .single main > article, .author main > article {
   padding: 0;
   background: none;
   border: none;
 }
-/* line 257, ../sass/screen.scss */
+/* line 261, ../sass/screen.scss */
 article.single-move {
   width: 100%;
   float: left;
   margin-right: 1.69492%;
   display: inline;
 }
-/* line 259, ../sass/screen.scss */
+/* line 263, ../sass/screen.scss */
 article.single-move p {
   padding-left: 5px;
 }
-/* line 262, ../sass/screen.scss */
+/* line 266, ../sass/screen.scss */
 article.single-move header {
   border-bottom: 1px dotted gray;
   padding-left: .5em;
   overflow: hidden;
   *zoom: 1;
 }
-/* line 266, ../sass/screen.scss */
+/* line 270, ../sass/screen.scss */
 article.single-move header .date-published {
   float: left;
   clear: both;
 }
-/* line 271, ../sass/screen.scss */
+/* line 276, ../sass/screen.scss */
 article.single-move .button {
   width: 32.20339%;
   float: right;
@@ -352,29 +357,23 @@ article.single-move .button {
   *margin-left: -20px;
   display: inline;
 }
-/* line 276, ../sass/screen.scss */
+/* line 282, ../sass/screen.scss */
 article.role {
   width: 100%;
   float: left;
   margin-right: 1.69492%;
   display: inline;
 }
-/* line 279, ../sass/screen.scss */
+/* line 285, ../sass/screen.scss */
 article.role .wp-post-image {
   float: left;
   margin-right: 1.5em;
 }
-/* line 286, ../sass/screen.scss */
-article.move {
-  margin-bottom: 4.5em;
-  overflow: hidden;
-  *zoom: 1;
-}
-/* line 292, ../sass/screen.scss */
+/* line 299, ../sass/screen.scss */
 article.game article {
   padding: 1.5em;
 }
-/* line 295, ../sass/screen.scss */
+/* line 303, ../sass/screen.scss */
 article.game header {
   width: 100%;
   float: left;
@@ -385,27 +384,27 @@ article.game header {
   float: left;
   padding: 0;
 }
-/* line 303, ../sass/screen.scss */
+/* line 311, ../sass/screen.scss */
 article.game h1 {
   font-size: 400%;
   font-variant: small-caps;
   margin-bottom: 5px;
   margin-top: 5px;
 }
-/* line 311, ../sass/screen.scss */
+/* line 319, ../sass/screen.scss */
 article.game .excerpt h1 {
   font-size: 200%;
   margin-bottom: 5px;
   margin-top: 5px;
 }
-/* line 319, ../sass/screen.scss */
+/* line 327, ../sass/screen.scss */
 article ul {
   list-style: none;
   margin-top: 0;
   font-size: 90%;
   padding-left: 0;
 }
-/* line 326, ../sass/screen.scss */
+/* line 334, ../sass/screen.scss */
 article header .button {
   float: right;
   display: inline;
@@ -413,7 +412,7 @@ article header .button {
   *zoom: 1;
 }
 
-/* line 334, ../sass/screen.scss */
+/* line 342, ../sass/screen.scss */
 .game-discussion-source {
   width: 43.18182%;
   float: left;
@@ -421,7 +420,7 @@ article header .button {
   display: inline;
 }
 
-/* line 338, ../sass/screen.scss */
+/* line 346, ../sass/screen.scss */
 .game-discussion-response {
   width: 43.18182%;
   float: right;
@@ -430,7 +429,7 @@ article header .button {
   display: inline;
 }
 
-/* line 342, ../sass/screen.scss */
+/* line 350, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   color: #999;
@@ -439,14 +438,14 @@ article header .button {
 }
 
 /* Global footer */
-/* line 350, ../sass/screen.scss */
+/* line 358, ../sass/screen.scss */
 footer[role=contentinfo] {
   overflow: hidden;
   *zoom: 1;
   border-top: 1px solid #ccc;
   padding: 4.5em 0;
 }
-/* line 354, ../sass/screen.scss */
+/* line 363, ../sass/screen.scss */
 footer[role=contentinfo] .ivanhoelink {
   display: block;
   width: 25.42373%;
@@ -454,7 +453,7 @@ footer[role=contentinfo] .ivanhoelink {
   margin-right: auto;
 }
 
-/* line 363, ../sass/screen.scss */
+/* line 372, ../sass/screen.scss */
 #pagination {
   width: 74.57627%;
   float: left;
@@ -463,18 +462,18 @@ footer[role=contentinfo] .ivanhoelink {
   margin-bottom: 50px;
 }
 
-/* line 368, ../sass/screen.scss */
+/* line 377, ../sass/screen.scss */
 .attribution {
   color: red;
   font-variant: small-caps;
 }
 
-/* line 374, ../sass/screen.scss */
+/* line 383, ../sass/screen.scss */
 .new-post > div {
   margin-bottom: 1.5em;
 }
 
-/* line 379, ../sass/screen.scss */
+/* line 388, ../sass/screen.scss */
 .wp-editor-wrap * {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -482,7 +481,7 @@ footer[role=contentinfo] .ivanhoelink {
   /* Fixes tab height issue. */
 }
 
-/* line 383, ../sass/screen.scss */
+/* line 392, ../sass/screen.scss */
 #wrap {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.9);
@@ -502,7 +501,7 @@ footer[role=contentinfo] .ivanhoelink {
   clear: both;
 }
 
-/* line 390, ../sass/screen.scss */
+/* line 399, ../sass/screen.scss */
 .moves {
   width: 49.15254%;
   float: left;
@@ -511,7 +510,7 @@ footer[role=contentinfo] .ivanhoelink {
   clear: left;
 }
 
-/* line 395, ../sass/screen.scss */
+/* line 404, ../sass/screen.scss */
 .rationales {
   width: 49.15254%;
   float: right;
@@ -520,7 +519,7 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 400, ../sass/screen.scss */
+/* line 408, ../sass/screen.scss */
 .new-ivanhoe-meta {
   width: 32.20339%;
   float: right;
@@ -533,7 +532,7 @@ footer[role=contentinfo] .ivanhoelink {
   padding: 1px 1.5em;
 }
 
-/* line 407, ../sass/screen.scss */
+/* line 415, ../sass/screen.scss */
 .new-ivanhoe-form {
   width: 66.10169%;
   float: left;
@@ -541,7 +540,7 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 411, ../sass/screen.scss */
+/* line 419, ../sass/screen.scss */
 .author .description {
   width: 32.20339%;
   float: right;
@@ -550,14 +549,14 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 415, ../sass/screen.scss */
+/* line 423, ../sass/screen.scss */
 .author .roles {
   width: 66.10169%;
   float: left;
   margin-right: 1.69492%;
   display: inline;
 }
-/* line 418, ../sass/screen.scss */
+/* line 426, ../sass/screen.scss */
 .author .roles .wp-post-image {
   float: right;
   margin-right: 0;
