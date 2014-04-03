@@ -63,10 +63,14 @@ $role = ivanhoe_user_has_role( $post->ID );
         <?php
         while($wp_query->have_posts()) : $wp_query->the_post(); ?>
         <article class="move">
-            <div class="excerpt">
+            <header>
                 <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-                    <p><span class="citation">By:</span> <?php the_author_posts_link(); ?></p>
-                    <p>Date: <?php the_date(); ?></p> 
+                <p><span class="citation">By:</span><span class="author-date"><?php the_author_posts_link(); ?></span>
+                · <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
+                <?php echo ivanhoe_move_link( $post ); ?>
+            </header>
+
+            <div class="excerpt">
 
                 <p><?php
                 $move_image_source = catch_that_image();
@@ -84,10 +88,6 @@ $role = ivanhoe_user_has_role( $post->ID );
             <div class="game-discussion-response">
                 <?php ivanhoe_get_move_responses( $post ); ?>  
             </div>
-
-            <div class="options">
-                <?php echo ivanhoe_move_link( $post ); ?>
-            </div> 
 
         </article>
 

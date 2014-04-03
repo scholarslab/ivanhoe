@@ -4,8 +4,8 @@
 
     <header>
             <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-            <p><span class="citation">By:</span><span class="author-date"><?php the_author_posts_link(); ?></span></p>
-            <p class="date-published"><?php the_date(); ?></p>
+            <p><span class="citation">By:</span><span class="author-date"><?php the_author_posts_link(); ?></span>
+            · <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
            <a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a> 
     </header>
     <div class="source-response-container">

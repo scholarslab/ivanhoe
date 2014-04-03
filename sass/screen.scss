@@ -190,7 +190,7 @@ main {
     padding-bottom: $gutter-width;
 }
 
-#game-data{
+#game-data, .source-response-container {
     @include span-columns(4 omega);
     background: #eee;
     background: rgba(black, 0.05);
@@ -202,28 +202,6 @@ main {
 #moves{
     @include span-columns(8);
     text-align: justify;
-}
-
-.source-response-container {
-    @include span-columns(4 omega);
-    background: #E0E0E0;
-    text-align: left;
-    border-left: $border;
-    border-bottom: $border;
-    clear: both;
-
-    h2,
-    h3,
-    p,
-    ul,
-    a {
-        padding-left: 10px;
-    }
-
-    h3 {
-        text-align: left;
-        font-size: 100%;
-    }
 }
 
 .discussion-source {
@@ -258,25 +236,6 @@ article {
 
     @include clearfix;
 
-    &.single-move {
-        @include span-columns(12);
-        p {
-            padding-left: 5px;
-        }
-        header {
-            border-bottom: $border;
-            padding-left: .5em;
-            @include clearfix;
-            .date-published {
-                float: left;
-                clear: both;
-            }
-        }
-
-        .button {
-            @include span-columns(4 omega);
-        }
-    }
 
     /* Articles with a class of role. */
     &.role{
@@ -303,8 +262,7 @@ article {
         header {
             @include span-columns(12);
             margin-top: 0;
-            margin-bottom: 0;
-            float: left;
+            margin-bottom: rhythm(1);
             padding: 0;
         }
 
@@ -315,7 +273,7 @@ article {
         margin-top: 5px;
         }
 
-        .excerpt {
+        .move {
             h1 {
                 font-size: 200%;
                 margin-bottom: 5px;
@@ -335,6 +293,10 @@ article {
         float: right;
         display: inline;
         @include clearfix;
+    }
+
+    header p {
+        @include span-columns(6);
     }
 
 }
