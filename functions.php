@@ -407,7 +407,7 @@ function ivanhoe_display_role_name ( $link )
     return $link;
 }
 
-if ($post->post_type !== 'post' || 'page'){
+if ($post->post_type !== 'post'){
     add_filter( 'the_author_posts_link', 'ivanhoe_display_role_name', 10, 1);
 }
 
