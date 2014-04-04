@@ -83,12 +83,12 @@ $role = ivanhoe_user_has_role( $post->ID );
 
             <div class="excerpt">
 
-                <p><?php
+                <?php
                 $move_image_source = catch_that_image();
 
                 echo $move_image_source;
                 the_excerpt();
-                ?></p>
+                ?>
 
             </div>
             
