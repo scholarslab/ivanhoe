@@ -25,6 +25,10 @@ h2 {
     font-weight: 700;
 }
 
+.excerpt {
+  @include clearfix;
+}
+
 /* Links */
 a {
     &:link {color: #004D05;}
