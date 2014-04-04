@@ -16,43 +16,44 @@
 	<h2>Moves</h2>
 
 	<?php 
-		$args = array
-		(
-			'post_type' => "ivanhoe_move",
-			'post_parent' => $post->post_parent,
-			'author' => $post->post_author
-		);
+    $args = array
+    (
+        'post_type' => "ivanhoe_move",
+        'post_parent' => $post->post_parent,
+        'author' => $post->post_author
+    );
 
-		$move_query = new WP_Query( $args );
+    $move_query = new WP_Query( $args );
 
-		if ($move_query->have_posts()) : while($move_query->have_posts()) : $move_query->the_post(); 
-	?>
-	
-	<ul>
-		<li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
-	</ul>	
+    if ($move_query->have_posts()) : ?>
 
-	<?php
+    <ul>
 
-		endwhile;
-		endif;
+    <?php while($move_query->have_posts()) : $move_query->the_post(); ?>
 
-		wp_reset_postdata();
-	?>
+        <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
 
-</div>
-<div class="rationales">
-	<h2>Rationales</h2>
+    <?php endwhile; ?>
 
+    </ul>
 
-	<?php ivanhoe_get_rationales( $post ); ?>
+    <?php endif; ?>
 
-</div>
+    <?php wp_reset_postdata(); ?>
+
+    </div>
+
+    <div class="rationales">
+
+        <h2>Rationales</h2>
+
+        <?php ivanhoe_get_rationales( $post ); ?>
+
+    </div>
 
 </article>
 
-<?php endwhile; else : ?>
-<p>No one has made a move yet in this game.  Make the first move!</p>
+<?php endwhile; ?>
 <?php endif; ?>
 
 <?php get_footer(); ?>
