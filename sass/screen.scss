@@ -289,14 +289,17 @@ article {
         padding-left: 0;
     }
 
-    header .button {
-        float: right;
-        display: inline;
+    header {
         @include clearfix;
-    }
 
-    header p {
-        @include span-columns(6);
+        .button {
+            float: right;
+            display: inline;
+        }
+
+        p {
+            @include span-columns(6);
+        }
     }
 
 }
