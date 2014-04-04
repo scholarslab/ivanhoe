@@ -395,7 +395,8 @@ function ivanhoe_display_role_name ( $link )
     //$posts = $query->get_posts();
     $posts = get_posts($args);
     $role = reset($posts);
-    if ( $role ){
+
+    if ( $role && ($post->post_type !== 'post') ){
         $link = sprintf(
             '<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
             esc_url( get_permalink($role->ID) ),
@@ -407,9 +408,7 @@ function ivanhoe_display_role_name ( $link )
     return $link;
 }
 
-if ($post->post_type !== 'post'){
-    add_filter( 'the_author_posts_link', 'ivanhoe_display_role_name', 10, 1);
-}
+add_filter( 'the_author_posts_link', 'ivanhoe_display_role_name', 10, 1);
 
 /*
 *Displays Pagination
