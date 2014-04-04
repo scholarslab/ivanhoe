@@ -175,6 +175,8 @@ function ivanhoe_register_nav_menus() {
 add_action( 'after_switch_theme', 'ivanhoe_register_nav_menus' );
 
 function ivanhoe_append_profile_nav_menu($items) {
+    global $wp;
+
     if (is_user_logged_in()) {
         $user   = wp_get_current_user();
         $url    = get_author_posts_url($user->ID);
@@ -182,6 +184,12 @@ function ivanhoe_append_profile_nav_menu($items) {
             . "menu-item-object-custom menu'>"
             . "<a href='$url'>Profile</a></li>";
     }
+    
+    $current_url = add_query_arg( $wp->query_string, '', home_url( $wp->request) );
+
+    $items .= "<li class='menu-item menu-item-type-custom "
+            . "menu-item-object-custom menu'>"
+            . wp_loginout( $current_url, false )  . "</li>";
 
     return $items;
 }
