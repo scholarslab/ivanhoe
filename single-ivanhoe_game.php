@@ -39,6 +39,17 @@ $role = ivanhoe_user_has_role( $post->ID );
     </header>   
 
     <div id="game-data">
+        <?php if($role): ?>
+
+        <h3>Your Current Role</h3>
+        <article class="role">
+        <?php echo get_the_post_thumbnail($role->ID, 'thumbnail'); ?>
+        <?php echo $role->post_title; ?>
+
+    </article>
+
+        <?php endif; ?>
+
         <h3>Game Description</h3>
 
         <?php the_content(); ?>

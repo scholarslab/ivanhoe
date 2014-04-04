@@ -197,6 +197,13 @@ main {
     clear: both;
     border: dotted 1px #ccc;
     padding: 1px rhythm(1);
+
+    .role{
+        img{
+            width:75px;
+            height:75px;
+        }
+    }
 }
 
 #moves{
