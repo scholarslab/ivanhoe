@@ -14,7 +14,7 @@
 
             if ( $role ) : ?>
 
-            <a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a> 
+           <?php echo ivanhoe_move_link( $post ); ?> 
 
             <?php else : ?>
 

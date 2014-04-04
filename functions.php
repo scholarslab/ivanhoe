@@ -447,7 +447,9 @@ function ivanhoe_move_link ( $post )
 
     if ( $role )
     {
-        $html = '<a href="'.ivanhoe_response_form_url( $post ).'" class="button">Respond to this move</a>';
+        $html = '<a href="'.ivanhoe_response_form_url( $post ).'" class="button">Respond ' 
+              . '<span class="visuallyhidden">to '.$post->post_title .'</span>' 
+              . '</a>';
     }
 
     return $html;
