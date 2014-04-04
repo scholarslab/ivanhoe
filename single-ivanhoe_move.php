@@ -4,9 +4,28 @@
 
     <header>
             <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-            <p><span class="citation">By:</span><span class="author-date"><?php the_author_posts_link(); ?></span>
+
+            <p><span class="citation">By:</span><span class="author-date"><?php the_author_posts_link(); ?></span></p>
             · <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
-           <a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a> 
+<!--             <p class="date-published"><?php the_date(); ?></p> -->
+            <?php
+           $game_id = $post->post_parent;
+           $role = ivanhoe_user_has_role( $game_id );
+
+           if ( is_user_logged_in() ) :
+
+            if ( $role ) : ?>
+
+            <a href="<?php echo ivanhoe_response_form_url( $post ); ?>" class="button">Respond to this move</a> 
+
+            <?php else : ?>
+
+            <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button">Make a Role!</a>
+
+            <?php endif; ?>
+
+        <?php endif; ?>
+
     </header>
     <div class="source-response-container">
 
