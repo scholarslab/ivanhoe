@@ -353,9 +353,34 @@ footer[role=contentinfo] {
 }
 
 
-#pagination {
-    @include span-columns(9);
+.pagination {
     margin-bottom: 50px;
+    a {
+      text-decoration: none;
+    }
+    .page-numbers {
+    border: 1px solid #004D05;
+    border-radius: 15px;
+    min-width: 30px;
+    min-height: 30px;
+    line-height: 100%;
+    text-align: center;
+    margin: 0px 3px;
+    padding: 6px 0px 0px;
+    vertical-align: middle;
+    display: inline-block;
+    border-radius: 10em;
+    &.current {
+      border-color: #004D05;
+      background-color: #004D05;
+      color: white;
+    }
+    &:hover {
+      border-color: #004D05;
+      background-color: rgba(#004D05, 0.2);
+      color: black;
+    }
+    }
 }
 
 .attribution {
