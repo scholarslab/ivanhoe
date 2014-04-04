@@ -276,7 +276,7 @@ function ivanhoe_get_move_source( $post )
         $html = '<h3>Source</h3>
         <ul><li><a href="'.get_permalink($source->ID).'">'.$source->post_title.'</a></li></ul>';
     }
-    
+
     else {
         $html = '<h3>Source</h3>
         <p>There is no source for this post.</p>';
@@ -407,17 +407,8 @@ function ivanhoe_display_role_name ( $link )
     return $link;
 }
 
-function get_author_or_role()
-{
-    $author_or_role = null;
-
-    if ($post->post_type == 'post') {
-        $author_or_role = the_author_posts_link();
-    } else {
-        $author_or_role = the_author_posts_link();
-        add_filter( 'the_author_posts_link', 'ivanhoe_display_role_name', 10, 1);
-    }
-    return $author_or_role;
+if ($post->post_type !== 'post' || 'page'){
+    add_filter( 'the_author_posts_link', 'ivanhoe_display_role_name', 10, 1);
 }
 
 /*
@@ -504,7 +495,7 @@ function get_title_by_id($post_id){
 }
 
 function ivanhoe_add_image( $file_handler, $parent_post_id) {
-    
+
     require_once(ABSPATH . 'wp-admin/includes/image.php');
     require_once(ABSPATH . 'wp-admin/includes/file.php');
     require_once(ABSPATH . 'wp-admin/includes/media.php');
