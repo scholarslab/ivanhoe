@@ -339,20 +339,16 @@ article.game .move h1 {
   margin-top: 5px;
 }
 /* line 285, ../sass/screen.scss */
-article ul {
-  list-style: none;
-  margin-top: 0;
-  font-size: 90%;
-  padding-left: 0;
-}
-/* line 292, ../sass/screen.scss */
-article header .button {
-  float: right;
-  display: inline;
+article header {
   overflow: hidden;
   *zoom: 1;
 }
-/* line 298, ../sass/screen.scss */
+/* line 288, ../sass/screen.scss */
+article header .button {
+  float: right;
+  display: inline;
+}
+/* line 293, ../sass/screen.scss */
 article header p {
   width: 49.15254%;
   float: left;
@@ -360,7 +356,7 @@ article header p {
   display: inline;
 }
 
-/* line 304, ../sass/screen.scss */
+/* line 300, ../sass/screen.scss */
 .game-discussion-source {
   width: 43.18182%;
   float: left;
@@ -368,7 +364,7 @@ article header p {
   display: inline;
 }
 
-/* line 308, ../sass/screen.scss */
+/* line 304, ../sass/screen.scss */
 .game-discussion-response {
   width: 43.18182%;
   float: right;
@@ -377,7 +373,7 @@ article header p {
   display: inline;
 }
 
-/* line 312, ../sass/screen.scss */
+/* line 308, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   color: #999;
@@ -386,14 +382,14 @@ article header p {
 }
 
 /* Global footer */
-/* line 320, ../sass/screen.scss */
+/* line 316, ../sass/screen.scss */
 footer[role=contentinfo] {
   overflow: hidden;
   *zoom: 1;
   border-top: 1px solid #ccc;
   padding: 4.5em 0;
 }
-/* line 325, ../sass/screen.scss */
+/* line 321, ../sass/screen.scss */
 footer[role=contentinfo] .ivanhoelink {
   display: block;
   width: 25.42373%;
@@ -401,7 +397,7 @@ footer[role=contentinfo] .ivanhoelink {
   margin-right: auto;
 }
 
-/* line 334, ../sass/screen.scss */
+/* line 330, ../sass/screen.scss */
 #pagination {
   width: 74.57627%;
   float: left;
@@ -410,18 +406,18 @@ footer[role=contentinfo] .ivanhoelink {
   margin-bottom: 50px;
 }
 
-/* line 339, ../sass/screen.scss */
+/* line 335, ../sass/screen.scss */
 .attribution {
   color: red;
   font-variant: small-caps;
 }
 
-/* line 345, ../sass/screen.scss */
+/* line 341, ../sass/screen.scss */
 .new-post > div {
   margin-bottom: 1.5em;
 }
 
-/* line 350, ../sass/screen.scss */
+/* line 346, ../sass/screen.scss */
 .wp-editor-wrap * {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -429,7 +425,7 @@ footer[role=contentinfo] .ivanhoelink {
   /* Fixes tab height issue. */
 }
 
-/* line 354, ../sass/screen.scss */
+/* line 350, ../sass/screen.scss */
 #wrap {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.9);
@@ -442,14 +438,14 @@ footer[role=contentinfo] .ivanhoelink {
   margin-left: auto;
   margin-right: auto;
 }
-/* line 38, ../../../../../../../../Users/testadm/.rvm/gems/ruby-2.0.0-p353/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+/* line 38, ../../../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 #wrap:after {
   content: "";
   display: table;
   clear: both;
 }
 
-/* line 361, ../sass/screen.scss */
+/* line 357, ../sass/screen.scss */
 .moves {
   width: 49.15254%;
   float: left;
@@ -458,7 +454,7 @@ footer[role=contentinfo] .ivanhoelink {
   clear: left;
 }
 
-/* line 366, ../sass/screen.scss */
+/* line 362, ../sass/screen.scss */
 .rationales {
   width: 49.15254%;
   float: right;
@@ -467,7 +463,7 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 370, ../sass/screen.scss */
+/* line 366, ../sass/screen.scss */
 .new-ivanhoe-meta {
   width: 32.20339%;
   float: right;
@@ -480,7 +476,7 @@ footer[role=contentinfo] .ivanhoelink {
   padding: 1px 1.5em;
 }
 
-/* line 377, ../sass/screen.scss */
+/* line 373, ../sass/screen.scss */
 .new-ivanhoe-form {
   width: 66.10169%;
   float: left;
@@ -488,7 +484,7 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 381, ../sass/screen.scss */
+/* line 377, ../sass/screen.scss */
 .author .description {
   width: 32.20339%;
   float: right;
@@ -497,17 +493,64 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 385, ../sass/screen.scss */
+/* line 381, ../sass/screen.scss */
 .author .roles {
   width: 66.10169%;
   float: left;
   margin-right: 1.69492%;
   display: inline;
 }
-/* line 388, ../sass/screen.scss */
+/* line 384, ../sass/screen.scss */
 .author .roles .wp-post-image {
   float: right;
   margin-right: 0;
   margin-left: 1.5em;
+  margin-top: 1.5em;
+}
+
+/* line 392, ../sass/screen.scss */
+.commentlist {
+  list-style: none;
+  margin-left: 0;
+  padding-left: 0;
+}
+/* line 397, ../sass/screen.scss */
+.commentlist li {
+  border: 1px dotted #ccc;
+  padding: 1.5em;
+  overflow: hidden;
+  *zoom: 1;
+}
+/* line 403, ../sass/screen.scss */
+.commentlist .comment-author {
+  width: 49.15254%;
+  float: left;
+  margin-right: 1.69492%;
+  display: inline;
+  line-height: 32px;
+}
+/* line 407, ../sass/screen.scss */
+.commentlist .comment-author img {
+  float: left;
+  margin-right: 5px;
+}
+/* line 413, ../sass/screen.scss */
+.commentlist .comment-meta {
+  text-align: right;
+  line-height: 32px;
+}
+/* line 417, ../sass/screen.scss */
+.commentlist .comment-meta:after {
+  display: table;
+  content: ' ';
+  width: 100%;
+  height: 0;
+  clear: both;
+  line-height: 0;
+  padding: 0;
+}
+/* line 427, ../sass/screen.scss */
+.commentlist .children {
+  margin-left: 8.47458%;
   margin-top: 1.5em;
 }

@@ -407,7 +407,18 @@ function ivanhoe_display_role_name ( $link )
     return $link;
 }
 
-add_filter( 'the_author_posts_link', 'ivanhoe_display_role_name', 10, 1);
+function get_author_or_role()
+{
+    $author_or_role = null;
+
+    if ($post->post_type == 'post') {
+        $author_or_role = the_author_posts_link();
+    } else {
+        $author_or_role = the_author_posts_link();
+        add_filter( 'the_author_posts_link', 'ivanhoe_display_role_name', 10, 1);
+    }
+    return $author_or_role;
+}
 
 /*
 *Displays Pagination

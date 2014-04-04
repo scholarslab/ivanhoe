@@ -282,21 +282,17 @@ article {
         }
     }
 
-    ul {
-        list-style:none;
-        margin-top: 0;
-        font-size: 90%;
-        padding-left: 0;
-    }
-
-    header .button {
-        float: right;
-        display: inline;
+    header {
         @include clearfix;
-    }
 
-    header p {
-        @include span-columns(6);
+        .button {
+            float: right;
+            display: inline;
+        }
+
+        p {
+            @include span-columns(6);
+        }
     }
 
 }
@@ -389,6 +385,47 @@ footer[role=contentinfo] {
         float:right;
         margin-right:0;
         margin-left: rhythm(1);
+        margin-top: rhythm(1);
+    }
+}
+
+.commentlist {
+    list-style:none;
+    margin-left:0;
+    padding-left:0;
+
+    li {
+        border: 1px dotted #ccc;
+        padding: rhythm(1);
+        @include clearfix;
+    }
+
+    .comment-author {
+        @include span-columns(6);
+        line-height: 32px;
+
+        img {
+            float:left;
+            margin-right: 5px;
+        }
+    }
+
+    .comment-meta {
+        text-align:right;
+        line-height: 32px;
+
+        &:after {
+            display:table;
+            content: ' ';
+            width: 100%;
+            height: 0;
+            clear:both;
+            line-height:0;
+            padding:0;
+        }
+    }
+    .children {
+        @include push(1);
         margin-top: rhythm(1);
     }
 }
