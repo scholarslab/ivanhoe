@@ -8,7 +8,6 @@
             <p class="date-published"><?php the_date(); ?></p>
             <?php
            $game_id = $post->post_parent;
-           echo $post->post_parent;
            $role = ivanhoe_user_has_role( $game_id );
 
            if ( is_user_logged_in() ) :
