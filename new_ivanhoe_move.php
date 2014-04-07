@@ -9,6 +9,7 @@ $ivanhoe_move_source = isset ( $_GET['move_source'] ) ? $_GET['move_source'] : n
 $ivanhoe_post_title = !empty ( $_POST['post_title'] ) ? $_POST['post_title'] : null;
 $ivanhoe_post_content = !empty ( $_POST['post_content'] ) ? $_POST['post_content'] : null;
 $ivanhoe_post_rationale = !empty ( $_POST['post_rationale']) ? $_POST['post_rationale'] : null;
+$ivanhoe_role_id = isset( $_GET['ivanhoe_role_id'] ) ? $_GET['ivanhoe_role_id'] : null;
 
 // Creates an empty array for error messages.
 $error_messages = array();
@@ -56,6 +57,11 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
         $new_ivanhoe_rationale_id,
         'Ivanhoe Game Source',
         $ivanhoe_game_id
+        );
+    update_post_meta(
+        $new_ivanhoe_rationale_id,
+        'Ivanhoe Role ID',
+        $ivanhoe_role_id
         );
 
     $new_ivanhoe_journal_entry = wp_insert_post( $journal_entry);

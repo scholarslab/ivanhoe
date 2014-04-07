@@ -326,10 +326,13 @@ function ivanhoe_get_move_responses( $post )
 function ivanhoe_response_form_url( $post )
 {
     $url = "";
+    $role = ivanhoe_user_has_role($post->post_parent);
+    $role_id = $role->ID;
 
     $ivanhoe_params = array(
     "parent_post" => $post->post_parent,
-    "move_source" => $post->ID
+    "move_source" => $post->ID,
+    'ivanhoe_role_id' => $role_id
     );
 
     $url = add_query_arg(
@@ -509,11 +512,16 @@ function ivanhoe_add_image( $file_handler, $parent_post_id) {
 
 function ivanhoe_get_rationales( $post )
 {
+    // $role = ivanhoe_user_has_role($post->post_parent);
+    // $role_id = $role->ID;
     $args = array(
         'post_type' => 'ivanhoe_role_journal',
         'post_per_page' => -1,
         'meta_key' => 'Ivanhoe Game Source',
         'meta_value' => $post->post_parent,
+        'meta_value_compare' => '=',
+        'meta_key' => 'Ivanhoe Role ID',
+        'meta_value' => $post->ID,
         'meta_value_compare' => '='
         );
 
