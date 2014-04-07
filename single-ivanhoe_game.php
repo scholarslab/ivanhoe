@@ -1,11 +1,12 @@
 <?php get_header(); ?>
 
-<?php 
+<?php
 
 $original_query = $wp_query;
 $ivanhoe_game_id = $post->ID;
 $ivanhoe_parent_permalink = get_permalink( $post->ID );
 $role = ivanhoe_user_has_role( $post->ID );
+$role_id = $role->ID;
 
 ?>
 
@@ -13,7 +14,7 @@ $role = ivanhoe_user_has_role( $post->ID );
 <article class="game">
     <header>
         <h1><?php the_title(); ?></h1>
-        <p><span class="citation">Playing since</span>: <span class="italic"><?php the_date(); ?></span></p> 
+        <p><span class="citation">Playing since</span>: <span class="italic"><?php the_date(); ?></span></p>
         <?php
 
         if ( is_user_logged_in() ) :
@@ -21,8 +22,10 @@ $role = ivanhoe_user_has_role( $post->ID );
             if ( $role ) :
 
                 $url = add_query_arg(
-                    "parent_post",
-                    $ivanhoe_game_id,
+                        array(
+                            'parent_post' => $ivanhoe_game_id,
+                            'ivanhoe_role_id' => $role_id
+                            ),
                     get_permalink(get_option('ivanhoe_move_page'))
                 );
             ?>
@@ -35,8 +38,8 @@ $role = ivanhoe_user_has_role( $post->ID );
             <?php endif; ?>
 
         <?php endif; ?>
-        
-    </header>   
+
+    </header>
 
     <div id="game-data">
         <?php if($role): ?>
@@ -91,13 +94,13 @@ $role = ivanhoe_user_has_role( $post->ID );
                 ?></p>
 
             </div>
-            
+
             <div class="game-discussion-source">
                 <?php ivanhoe_get_move_source( $post ); ?>
             </div>
-            
+
             <div class="game-discussion-response">
-                <?php ivanhoe_get_move_responses( $post ); ?>  
+                <?php ivanhoe_get_move_responses( $post ); ?>
             </div>
 
         </article>
