@@ -389,7 +389,7 @@ function ivanhoe_role_form_url( $post )
 {
     $url = "";
 
-    if ('post_type' == 'ivanhoe_game'){
+    if ($post->post_type == 'ivanhoe_game'){
         $ivanhoe_params = array(
             "parent_post" => $post->ID
         );
