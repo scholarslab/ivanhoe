@@ -100,9 +100,7 @@ function ivanhoe_create_post_types()
 
     add_rewrite_rule( 'games/([.*]+)/page/([0-9]+)/?$', 'index.php?ivanhoe_game=[1]&paged=$matches[2]', 'top' );
 
-}
-
-    register_post_type(
+        register_post_type(
         'ivanhoe_role_journal',
         array(
             'labels' => array(
@@ -119,6 +117,12 @@ function ivanhoe_create_post_types()
         )
     );
 
+    add_post_type_support(
+        'ivanhoe_role_journal',
+        'custom-fields'
+        );
+
+}
 
 /**
  * Generate HTML for Ivanhoe Move metabox.
@@ -161,7 +165,21 @@ function ivanhoe_move_response()
     );
 }
 
-add_action('add_meta_boxes', 'ivanhoe_move_source', 'ivanhoe_move_response');
+/**
+* Function to create metadata box for role associated with journal entries
+*/
+
+function ivanhoe_role_for_journal()
+{
+    add_meta_box(
+        'ivanhoe_role_for_journal',
+        __('Journal Entry For:'),
+        'ivanhoe_role_id_meta_box',
+        'ivanhoe_role_journal'
+    );
+}
+
+add_action('add_meta_boxes', 'ivanhoe_move_source', 'ivanhoe_move_response', 'ivanhoe_role_for_journal');
 
 function ivanhoe_make_menus() {
 
