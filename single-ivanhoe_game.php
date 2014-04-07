@@ -6,7 +6,6 @@ $original_query = $wp_query;
 $ivanhoe_game_id = $post->ID;
 $ivanhoe_parent_permalink = get_permalink( $post->ID );
 $role = ivanhoe_user_has_role( $post->ID );
-$role_id = $role->ID;
 
 ?>
 
@@ -24,7 +23,7 @@ $role_id = $role->ID;
                 $url = add_query_arg(
                         array(
                             'parent_post' => $ivanhoe_game_id,
-                            'ivanhoe_role_id' => $role_id
+                            'ivanhoe_role_id' => $role->ID
                             ),
                     get_permalink(get_option('ivanhoe_move_page'))
                 );
