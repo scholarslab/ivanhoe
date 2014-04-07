@@ -30,7 +30,9 @@ function ivanhoe_create_post_types()
                 'name' => __( 'Moves' ),
                 'singular_name' => __( 'Move'),
                 'all_items' => __( 'All Moves' ),
-                'add_new_item' => __( 'Add New Move' )
+                'add_new_item' => __( 'Add New Move' ),
+                'view_item' => __( 'View Move' ),
+                'edit_item' => __( 'Edit Move' )
                 ),
             'public' => true,
             'has_archive' => true,
@@ -48,9 +50,11 @@ function ivanhoe_create_post_types()
         array(
             'labels' => array(
                 'name' => __( 'Games' ),
-                'singular_name' => __( 'Game'),
+                'singular_name' => __( 'Game' ),
                 'all_items' => __( 'All Games' ),
-                'add_new_item' => __( 'Add New Game' )
+                'add_new_item' => __( 'Add New Game' ),
+                'view_item' => __( 'View Game' ),
+                'edit_item' => __( 'Edit Game' )
                 ),
             'public' => true,
             'has_archive' => true,
@@ -74,7 +78,9 @@ function ivanhoe_create_post_types()
                 'name' => __( 'Roles' ),
                 'singular_name' => __( 'Role'),
                 'all_items' => __( 'All Roles' ),
-                'add_new_item' => __( 'Add New Role' )
+                'add_new_item' => __( 'Add New Role' ),
+                'view_item' => __( 'View Role' ),
+                'edit_item' => __( 'Edit Role' )
                 ),
             'public' => true,
             'has_archive' => true,
@@ -96,7 +102,9 @@ function ivanhoe_create_post_types()
                 'name'          => __( 'Role Journal' ),
                 'singular_name' => __( 'Role Journal Entry' ),
                 'all_items'     => __( 'All Entries' ),
-                'add_new_item'  => __( 'Add New Entry' )
+                'add_new_item'  => __( 'Add New Entry' ),
+                'view_item' => __( 'View Entry' ),
+                'edit_item' => __( 'Edit Entry' )
             ),
             'public'        => true,
             'has_archive'   => true,
@@ -185,7 +193,7 @@ function ivanhoe_append_profile_nav_menu($items) {
             . "menu-item-object-custom menu'>"
             . "<a href='$url'>Profile</a></li>";
     }
-    
+
     $current_url = add_query_arg( $wp->query_string, '', home_url( $wp->request) );
 
     $items .= "<li class='menu-item menu-item-type-custom "
@@ -461,8 +469,8 @@ function ivanhoe_move_link ( $post )
 
     if ( $role )
     {
-        $html = '<a href="'.ivanhoe_response_form_url( $post ).'" class="button">Respond ' 
-              . '<span class="visuallyhidden">to '.$post->post_title .'</span>' 
+        $html = '<a href="'.ivanhoe_response_form_url( $post ).'" class="button">Respond '
+              . '<span class="visuallyhidden">to '.$post->post_title .'</span>'
               . '</a>';
     }
 
