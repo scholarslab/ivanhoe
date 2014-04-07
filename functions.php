@@ -19,7 +19,14 @@ function modify_admin_bar( $wp_admin_bar ) {
   $wp_admin_bar->remove_node( 'new-ivanhoe_move' );
   $wp_admin_bar->remove_node( 'new-ivanhoe_role' );
   $wp_admin_bar->remove_node( 'new-ivanhoe_role_journal' );
+
+   if( ! current_user_can( 'manage_options' ) )
+        {
+            $wp_admin_bar->remove_node( 'dashboard' );
+        }
 }
+
+
 
 function ivanhoe_create_post_types()
 {
@@ -570,7 +577,8 @@ function ivanhoe_get_rationales( $post )
 
 //Closes off dashboard to non-admin users; redirects to homepage
 
-function restrict_admin_with_redirect() {
+function restrict_admin_with_redirect()
+{
     if ( ! current_user_can( 'manage_options' ) && $_SERVER['PHP_SELF'] != '/wp-admin/admin-ajax.php' ) {
         wp_redirect( site_url() ); exit;
     }
