@@ -18,6 +18,7 @@ add_action( 'admin_bar_menu', 'modify_admin_bar', 999 );
 function modify_admin_bar( $wp_admin_bar ) {
   $wp_admin_bar->remove_node( 'new-ivanhoe_move' );
   $wp_admin_bar->remove_node( 'new-ivanhoe_role' );
+  $wp_admin_bar->remove_node( 'new-ivanhoe_role_journal' );
 }
 
 function ivanhoe_create_post_types()
