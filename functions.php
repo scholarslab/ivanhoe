@@ -364,9 +364,15 @@ function ivanhoe_role_form_url( $post )
 {
     $url = "";
 
-    $ivanhoe_params = array(
-    "parent_post" => $post->ID,
-    );
+    if ('post_type' == 'ivanhoe_game'){
+        $ivanhoe_params = array(
+            "parent_post" => $post->ID
+        );
+    } else {
+        $ivanhoe_params = array(
+            'parent_post' => $post->post_parent
+        );
+    }
 
     $url = add_query_arg(
         $ivanhoe_params,

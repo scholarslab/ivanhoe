@@ -14,7 +14,7 @@
 
             if ( $role ) : ?>
 
-           <?php echo ivanhoe_move_link( $post ); ?> 
+           <?php echo ivanhoe_move_link( $post ); ?>
 
             <?php else : ?>
 
@@ -32,7 +32,7 @@
         </div>
 	   <div class="discussion-response">
             <!-- <h2><?php echo get_the_title($post->post_parent); ?></h2> -->
-            <?php ivanhoe_get_move_responses( $post ); ?> 
+            <?php ivanhoe_get_move_responses( $post ); ?>
        </div>
         <div class="game-description">
             <h2>Game Info</h2>
@@ -45,11 +45,11 @@
 
         </div>
     </div>
- 
+
     <div id="moves">
 
     <?php the_content(); ?>
-            
+
     <a class="return-button" href="<?php echo get_permalink( $post->post_parent ); ?>">Return to game</a>
 
     </div>
