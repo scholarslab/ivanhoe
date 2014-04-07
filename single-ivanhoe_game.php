@@ -47,7 +47,7 @@ $role_id = $role->ID;
         <h3>Your Current Role</h3>
         <article class="role">
         <?php echo get_the_post_thumbnail($role->ID, 'thumbnail'); ?>
-        <?php echo $role->post_title; ?>
+        <a href="<?php echo get_permalink( $role->ID ); ?>"><?php echo $role->post_title; ?></a>
 
     </article>
 
@@ -109,13 +109,13 @@ $role_id = $role->ID;
         </article>
 
         <?php endwhile; ?>
-        
+
         <div class="pagination">
             <?php ivanhoe_paginate_links($wp_query);?>
         </div>
     </div>
 
-    
+
 
     <?php else : ?>
 
