@@ -19,9 +19,9 @@ import sys
 import tempfile
 
 
+## defaults
 BRANCH = 'develop'
 REPO   = 'git@heroku.com:ivanhoe-staging.git'
-
 
 
 def git(command, *args):
@@ -55,14 +55,23 @@ def lcd(dirname):
         os.chdir(cwd)
 
 
+@contextmanager
+def tempdir():
+    td = tempfile.mkdtemp()
+    try:
+        yield td
+    finally:
+        cleanup(td)
+
+
 def main(argv=None):
     args    = parse_args(argv if argv is not None else sys.argv[1:])
 
-    tempdir = tempfile.mkdtemp()
-    wpdir   = os.path.join(tempdir, 'wordpress')
-    ivanhoe = os.path.join(wpdir, 'wp-content', 'themes', 'ivanhoe')
-    now     = datetime.datetime.now()
-    try:
+    with tempdir() as tmp:
+        wpdir   = os.path.join(tmp, 'wordpress')
+        ivanhoe = os.path.join(wpdir, 'wp-content', 'themes', 'ivanhoe')
+        now     = datetime.datetime.now()
+
         git('clone', '--recursive', args.repo, wpdir)
         with lcd(ivanhoe):
             git('checkout', args.branch)
@@ -71,9 +80,6 @@ def main(argv=None):
             git('add', '.')
             git('commit', '-m', 'Deploy {}'.format(now.strftime('%c')))
             git('push')
-
-    finally:
-        cleanup(tempdir)
 
 
 if __name__ == '__main__':
