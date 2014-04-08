@@ -101,6 +101,39 @@ section + section {
     width: 1px;
 }
 
+#download-link {
+-moz-box-shadow:inset 0px 1px 0px 0px rgba(255,255,255,0.4);
+	-webkit-box-shadow:inset 0px 1px 0px 0px rgba(255,255,255,0.4);
+	box-shadow:inset 0px 1px 0px 0px rgba(255,255,255,0.4);
+    background-color: #393;
+    color: #fff;
+    color: rgba(255,255,255,0.8);
+    display:block;
+    max-width: 400px;
+    text-align:center;
+    padding: 20px;
+    text-decoration:none;
+    margin: 40px auto;
+    border: 1px solid #282;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    border-radius: 5px;
+    background-image: -moz-linear-gradient(top, rgba(0,0,0,0.1), rgba(255,255,255,0.1));
+    background-image: -webkit-linear-gradient(top, rgba(0,0,0,0.1), rgba(255,255,255,0.1));
+    background-image: linear-gradient(top, rgba(0,0,0,0.1), rgba(255,255,255,0.1));
+}
+
+#download-link:hover,
+#download-link:focus {
+    background-color: #4a3;
+    color: white;
+}
+
+#download-link:active {
+    position:relative;
+    top: 1px;
+}
+
 footer[role=contentinfo] {
     text-align:center;
     margin-top:3em;
