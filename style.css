@@ -39,6 +39,8 @@ img {
     margin-left: auto;
 }
 
+.screenshot {margin: 40px; background-color: #696;}
+
 header {
     text-align: center;
     margin-bottom:3em;
