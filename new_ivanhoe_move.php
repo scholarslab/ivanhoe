@@ -52,20 +52,17 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
         'post_parent' => $new_ivanhoe_post_id
         );
 
-    $new_ivanhoe_rationale_id = wp_insert_post( $journal_entry );
+    $new_ivanhoe_journal_entry = wp_insert_post( $journal_entry );
     update_post_meta(
-        $new_ivanhoe_rationale_id,
+        $new_ivanhoe_journal_entry,
         'Ivanhoe Game Source',
         $ivanhoe_game_id
         );
     update_post_meta(
-        $new_ivanhoe_rationale_id,
+        $new_ivanhoe_journal_entry,
         'Ivanhoe Role ID',
         $ivanhoe_role_id
         );
-
-    $new_ivanhoe_journal_entry = wp_insert_post( $journal_entry);
-
 
     wp_redirect( get_permalink($ivanhoe_game_id) );
     exit;
