@@ -342,11 +342,6 @@ function ivanhoe_get_move_source( $post )
         <ul><li><a href="'.get_permalink($source->ID).'">'.$source->post_title.'</a></li></ul>';
     }
 
-    else {
-        $html = '<h3>Source</h3>
-        <p>There is no source for this post.</p>';
-    }
-
    // Print out the value of $html.
     echo $html;
 }
@@ -378,9 +373,6 @@ function ivanhoe_get_move_responses( $post )
 
     <?php endwhile; ?>
     </ul>
-    <?php else : ?>
-    <h3>Responses</h3>
-    <p>There are no responses to this post.</p>
     <?php endif;
     wp_reset_postdata();
 }
