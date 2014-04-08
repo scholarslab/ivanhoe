@@ -4,6 +4,9 @@
 add_theme_support('menus');
 add_theme_support('post-thumbnails', array('ivanhoe_role'));
 
+/**
+ * Custom backgrounds.
+ */
 $ivanhoe_background_defaults = array(
 	'default-color'          => '#fff',
 	'default-image'          => get_template_directory_uri() . '/images/tile.png'
@@ -11,8 +14,10 @@ $ivanhoe_background_defaults = array(
 
 add_theme_support( 'custom-background', $ivanhoe_background_defaults );
 
-add_action( 'init', 'ivanhoe_create_post_types' );
 
+/**
+ * Modify the admin bar.
+ */
 add_action( 'admin_bar_menu', 'modify_admin_bar', 999 );
 
 function modify_admin_bar( $wp_admin_bar ) {
@@ -27,6 +32,10 @@ function modify_admin_bar( $wp_admin_bar ) {
 }
 
 
+/**
+ * Create custom post types.
+ */
+add_action( 'init', 'ivanhoe_create_post_types' );
 
 function ivanhoe_create_post_types()
 {
@@ -127,6 +136,7 @@ function ivanhoe_create_post_types()
 /**
  * Generate HTML for Ivanhoe Move metabox.
  *
+ * @param WP_Post
  * @return string The HTML for the form element.
  */
 function ivanhoe_move_meta_box($post)
@@ -140,7 +150,6 @@ function ivanhoe_move_meta_box($post)
 /**
  * Function for getting the metadata for the post(s) which respond to the current move
  */
-
 function ivanhoe_move_source()
 {
     add_meta_box(
@@ -154,7 +163,6 @@ function ivanhoe_move_source()
 /**
  * Function for getting the metadata for the post(s) to which the current move responds
  */
-
 function ivanhoe_move_response()
 {
     add_meta_box(
@@ -168,7 +176,6 @@ function ivanhoe_move_response()
 /**
 * Function to create metadata box for role associated with journal entries
 */
-
 function ivanhoe_role_for_journal()
 {
     add_meta_box(
@@ -181,6 +188,10 @@ function ivanhoe_role_for_journal()
 
 add_action('add_meta_boxes', 'ivanhoe_move_source', 'ivanhoe_move_response', 'ivanhoe_role_for_journal');
 
+
+/**
+ * Create a custom nav menu for the theme.
+ */
 function ivanhoe_make_menus() {
 
     $menu_name = 'ivanhoe_default';
@@ -208,6 +219,9 @@ function ivanhoe_register_nav_menus() {
 
 add_action( 'after_switch_theme', 'ivanhoe_register_nav_menus' );
 
+/**
+ * Append links to the main nav menu.
+ */
 function ivanhoe_append_profile_nav_menu($items) {
     global $wp;
 
@@ -230,8 +244,10 @@ function ivanhoe_append_profile_nav_menu($items) {
 
 add_filter('wp_nav_menu_items', 'ivanhoe_append_profile_nav_menu');
 
-add_action( 'switch_theme', 'ivanhoe_switch_themes');
 
+/**
+ * Things to run when users switch to a different theme.
+ */
 function ivanhoe_switch_themes()
 {
     $menu_name = 'ivanhoe_default';
@@ -249,8 +265,12 @@ function ivanhoe_switch_themes()
     }
 }
 
-add_action ( 'after_switch_theme','ivanhoe_after_switch_theme' );
+add_action( 'switch_theme', 'ivanhoe_switch_themes');
 
+
+/**
+ * Things to do when users switch to the Ivanhoe theme.
+ */
 function ivanhoe_after_switch_theme()
 {
     if (! get_option('ivanhoe_installed')) {
@@ -276,6 +296,7 @@ function ivanhoe_after_switch_theme()
     }
 }
 
+add_action ( 'after_switch_theme','ivanhoe_after_switch_theme' );
 
 
 /**
@@ -299,10 +320,12 @@ function ivanhoe_redirect_canonical( $redirect_url, $requested_url ){
 
 add_filter( 'redirect_canonical', 'ivanhoe_redirect_canonical', 10, 2 );
 
-/*
-* Calls the source metadata for each move and displays it
-*/
 
+/**
+ * Calls the source metadata for each move and displays it.
+ *
+ * @param WP_Post.
+ */
 function ivanhoe_get_move_source( $post )
 {
     // Set $html to an empty string.
@@ -328,10 +351,11 @@ function ivanhoe_get_move_source( $post )
     echo $html;
 }
 
-/*
-* Gets responses for a move and displays them
-*/
-
+/**
+ * Gets responses for a move and displays them.
+ *
+ * @param WP_Post
+ */
 function ivanhoe_get_move_responses( $post )
 {
     $args = array(
@@ -361,10 +385,11 @@ function ivanhoe_get_move_responses( $post )
     wp_reset_postdata();
 }
 
-/*
-* Respond to move helper function
-*/
-
+/**
+ * Respond to move helper function.
+ *
+ * @param WP_Post
+ */
 function ivanhoe_response_form_url( $post )
 {
     $url = "";
@@ -385,6 +410,11 @@ function ivanhoe_response_form_url( $post )
     return $url;
 }
 
+/**
+ * URL to new Ivanhoe role form.
+ *
+ * @param WP_Post
+ */
 function ivanhoe_role_form_url( $post )
 {
     $url = "";
@@ -407,10 +437,9 @@ function ivanhoe_role_form_url( $post )
     return $url;
 }
 
-/*
-* Helper for checking if user has a role
-*/
-
+/**
+ * Helper for checking if user has a role
+ */
 function ivanhoe_user_has_role($game_id, $user_id=null) {
     // WP Query to find role post type for game ID and user ID.
     $user_id = $user_id ? $user_id : get_current_user_id();
@@ -430,10 +459,9 @@ function ivanhoe_user_has_role($game_id, $user_id=null) {
     return false;
 }
 
-/*
-* Displays role name
-*/
-
+/**
+ * Display role name on the author posts link.
+ */
 function ivanhoe_display_role_name ( $link )
 {
     global $authordata, $post;
@@ -461,9 +489,11 @@ function ivanhoe_display_role_name ( $link )
 
 add_filter( 'the_author_posts_link', 'ivanhoe_display_role_name', 10, 1);
 
-/*
-*Displays Pagination
-*/
+/**
+ * Displays custom pagination links.
+ *
+ * @param $query WP_Query.
+ */
 function ivanhoe_paginate_links ( $query = null )
 {
     global $wp_query;
@@ -483,10 +513,11 @@ function ivanhoe_paginate_links ( $query = null )
 
 }
 
-/*
- * Function to display the 'respond to this move' button only when user has role
+/**
+ * Function to display the 'respond to this move' button only when user has role.
+ *
+ * @param WP_Post.
  */
-
 function ivanhoe_move_link ( $post )
 {
     $html = '';
@@ -509,6 +540,11 @@ function ivanhoe_move_link ( $post )
 
 }
 
+/**
+ * Returns the first image found in the post content.
+ *
+ * @return string HTML.
+ */
 function catch_that_image() {
     global $post, $posts;
     $first_image = '';
@@ -526,6 +562,11 @@ function catch_that_image() {
     return $first_image;
 }
 
+/**
+ * Returns the excerpt for a given post, shortened to 55 words.
+ *
+ * @return string HTML.
+ */
 function get_excerpt_by_id($post_id){
     $the_post = get_post($post_id); //Gets post ID
     $the_excerpt = $the_post->post_content; //Gets post_content to be used as a basis for the excerpt
@@ -541,6 +582,11 @@ function get_excerpt_by_id($post_id){
     return $the_excerpt;
 }
 
+/**
+ * Returns the title of a post by ID.
+ *
+ * @return string HTML.
+ */
 function get_title_by_id($post_id){
     $the_post = get_post($post_id); //Gets post ID
     $the_title = $the_post->post_title; //Gets post_content to be used as a basis for the excerpt
@@ -548,6 +594,11 @@ function get_title_by_id($post_id){
     return $the_title;
 }
 
+/**
+ * Helper to set featured images.
+ *
+ * @return int The attachment ID.
+ */
 function ivanhoe_add_image( $file_handler, $parent_post_id) {
 
     require_once(ABSPATH . 'wp-admin/includes/image.php');
@@ -561,6 +612,12 @@ function ivanhoe_add_image( $file_handler, $parent_post_id) {
     return $attach_id;
 }
 
+/**
+ * Retrieve ivanhoe_role_journal post for a given move.
+ *
+ * @param WP_Post the Ivanhoe Move post object.
+ * @return string HTML.
+ */
 function ivanhoe_get_rationales( $post )
 {
     // $role = ivanhoe_user_has_role($post->post_parent);
@@ -593,8 +650,9 @@ function ivanhoe_get_rationales( $post )
     wp_reset_postdata();
 }
 
-//Closes off dashboard to non-admin users; redirects to homepage
-
+/**
+ * Closes off dashboard to non-admin users; redirects to homepage.
+ */
 function restrict_admin_with_redirect()
 {
     if ( ! current_user_can( 'manage_options' ) && $_SERVER['PHP_SELF'] != '/wp-admin/admin-ajax.php' ) {
