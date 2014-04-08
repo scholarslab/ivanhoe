@@ -1,0 +1,61 @@
+#!/bin/bash
+
+usage=$(cat <<EOS
+usage: $0 [BRANCH [APP-REPO]]
+
+This deploys this Ivanhoe theme to Heroku.
+
+- BRANCH is optional and defaults to 'develop'.
+- APP-REPO is optional and defaults to the Ivanhoe staging app. (If APP-REPO is
+  given, BRANCH is also required).
+
+EOS
+)
+
+# Command-line parameters
+branch=${1:-develop}
+apprepo=${2:-git@heroku.com:ivanhoe-staging.git}
+
+# Help me, Obi Wan!
+if [ "$branch" == "-h" ]; then
+    echo "$usage"
+    exit 0
+fi
+
+function cleanup() {
+    rm -rf $tmpdir
+}
+
+# Stop on error and clean up
+set -e
+tmpdir=$(mktemp -d)
+trap cleanup EXIT
+
+# Settings
+wpdir="$tmpdir/wordpress"
+ivanhoe="$wpdir/wp-content/themes/ivanhoe"
+now=$(TZ='America/New_York' date -R)
+
+# Get the staging
+git clone --recursive $apprepo $wpdir
+pushd $wpdir
+
+# Get the latest updates
+pushd $ivanhoe
+git checkout $branch
+git pull
+popd
+
+# We're OK with errors from now on. Just roll with it.
+set +e
+
+# Save changes and deploy
+git add .
+git commit -m "Deploy $now"
+git push
+popd
+
+# Clean-up
+trap - EXIT
+cleanup
+
