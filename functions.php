@@ -508,6 +508,8 @@ function ivanhoe_get_move_source( $post )
  */
 function ivanhoe_get_move_responses( $post )
 {
+    $html = '';
+
     $args = array(
         'post_type' => 'ivanhoe_move',
         'post_per_page' => -1,
@@ -516,20 +518,23 @@ function ivanhoe_get_move_responses( $post )
         'meta_value_compare' => '='
         );
 
-    $source_query = new WP_Query( $args );
+    $responses = get_posts( $args );
 
-    if ($source_query->have_posts() ) : ?>
+    if ($responses) {
 
-    <h3>Responses</h3>
-    <ul>
-    <?php while( $source_query->have_posts() ) : $source_query->the_post(); ?>
+        $html = '<h3>' . __('Responses', 'ivanhoe') . '</h3>'
+              . '<ul>';
 
-    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+        foreach ( $responses as $response ) {
+            $html .= '<li><a href="' . get_permalink($response->ID) . '">' . $response->post_title . '</a></li>';
+        }
 
-    <?php endwhile; ?>
-    </ul>
-    <?php endif;
-    wp_reset_postdata();
+        $html .= '</ul>';
+
+    }
+
+    echo $html;
+
 }
 
 /**
