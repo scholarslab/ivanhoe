@@ -13,7 +13,7 @@ $role = ivanhoe_user_has_role( $post->ID );
 <article class="game">
     <header>
         <h1><?php the_title(); ?></h1>
-        <p><span class="citation">Playing since</span>: <span class="italic"><?php the_date(); ?></span></p>
+        <p>Playing since: <?php the_time(); ?></p>
         <?php
 
         if ( is_user_logged_in() ) :
@@ -80,8 +80,8 @@ $role = ivanhoe_user_has_role( $post->ID );
         <article class="move">
             <header>
                 <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-                <p><span class="citation">By:</span><span class="author-date"><?php the_author_posts_link(); ?></span>
-                · <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
+                <p><span class="byline">By <?php the_author_posts_link(); ?></span>
+            · <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
                 <?php echo ivanhoe_move_link( $post ); ?>
             </header>
 
