@@ -35,7 +35,8 @@ def cleanup(basedir):
 def parse_args(argv):
     ap = argparse.ArgumentParser(description=__doc__)
 
-    ap.add_argument('-r', '--repo', dest='repo', metavar='REPO', default=REPO,
+    ap.add_argument('-a', '--app-repo', dest='app_repo', metavar='APP_REPO',
+                    default=REPO,
                     help='The repository to deploy to. Default is ' + REPO)
     ap.add_argument('-b', '--branch', dest='branch', metavar='BRANCH',
                     default=BRANCH,
@@ -72,7 +73,7 @@ def main(argv=None):
         ivanhoe = os.path.join(wpdir, 'wp-content', 'themes', 'ivanhoe')
         now     = datetime.datetime.now()
 
-        git('clone', '--recursive', args.repo, wpdir)
+        git('clone', '--recursive', args.app_repo, wpdir)
         with lcd(ivanhoe):
             git('checkout', args.branch)
             git('pull')
