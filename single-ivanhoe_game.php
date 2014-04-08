@@ -45,10 +45,9 @@ $role = ivanhoe_user_has_role( $post->ID );
 
         <h3>Your Current Role</h3>
         <article class="role">
-        <?php echo get_the_post_thumbnail($role->ID, 'thumbnail'); ?>
-        <a href="<?php echo get_permalink( $role->ID ); ?>"><?php echo $role->post_title; ?></a>
-
-    </article>
+            <a href="<?php echo get_permalink( $role->ID); ?>" class="image-container"><?php echo get_the_post_thumbnail($role->ID, 'medium'); ?></a>
+            <a href="<?php echo get_permalink( $role->ID ); ?>"><?php echo $role->post_title; ?></a>
+        </article>
 
         <?php endif; ?>
 

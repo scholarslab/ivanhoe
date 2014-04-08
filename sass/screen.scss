@@ -218,9 +218,10 @@ main {
     padding: 1px rhythm(1);
 
     .role{
-        img{
-            width:75px;
-            height:75px;
+        .image-container {
+            float:left;
+            width: 75px;
+            margin-right: 1em;
         }
     }
 }
