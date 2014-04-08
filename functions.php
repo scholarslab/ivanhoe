@@ -162,7 +162,7 @@ function ivanhoe_move_source()
 
 /**
  * Prints the box content.
- * 
+ *
  * @param WP_Post $post The object for the current post/page.
  */
 function ivanhoe_move_source_meta_box( $post ) {
@@ -224,7 +224,7 @@ function ivanhoe_move_source_save_meta_box_data( $post_id ) {
     }
 
     /* OK, its safe for us to save the data now. */
-    
+
     // Make sure that it is set.
     if ( ! isset( $_POST['ivanhoe_move_source'] ) ) {
         return;
@@ -268,7 +268,7 @@ add_action('add_meta_boxes', 'ivanhoe_move_source', 'ivanhoe_move_response', 'iv
 
 /**
  * Prints the box content.
- * 
+ *
  * @param WP_Post $post The object for the current post/page.
  */
 function ivanhoe_role_id_meta_box( $post ) {
@@ -330,7 +330,7 @@ function ivanhoe_role_id_save_meta_box_data( $post_id ) {
     }
 
     /* OK, its safe for us to save the data now. */
-    
+
     // Make sure that it is set.
     if ( ! isset( $_POST['ivanhoe_role_id'] ) ) {
         return;
@@ -692,18 +692,16 @@ function ivanhoe_move_link ( $post )
  *
  * @return string HTML.
  */
-function catch_that_image() {
+function catch_that_properly_nested_html_media_tag_tree() {
     global $post, $posts;
     $first_image = '';
     ob_start();
     ob_end_clean();
-    $output_videos = preg_match_all('/<(img|embed|iframe|video)[^>]*>/i', $post->post_content, $matches);
+    $shortcoded = do_shortcode($post->post_content);
+    $output_videos = preg_match_all('/<(img|embed|iframe|video|audio)[^>]*>(.*?<\\/\1>)?/si', $shortcoded, $matches);
 
     if ( !empty( $matches [0] ) ) {
         $first_image = $matches [0] [0];
-        if ( strpos( $first_image, 'iframe' ) !== FALSE ) {
-            $first_image = $first_image . '</iframe>';
-        }
     }
 
     return $first_image;
