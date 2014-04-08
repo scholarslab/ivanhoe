@@ -43,7 +43,8 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
         $ivanhoe_move_source
         );
 
-
+    if ( !empty( $ivanhoe_post_rationale ) )
+    {
     $journal_entry = array(
         'post_content' => $ivanhoe_post_rationale,
         'post_title' => 'Journal Entry for ' . $ivanhoe_post_title,
@@ -63,6 +64,7 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
         'Ivanhoe Role ID',
         $ivanhoe_role_id
         );
+    }
 
     wp_redirect( get_permalink($ivanhoe_game_id) );
     exit;
