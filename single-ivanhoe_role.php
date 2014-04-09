@@ -9,11 +9,11 @@
     
     <?php the_content(); ?>	
 
-	<a href="<?php echo get_permalink( $post->post_parent ); ?>">Return to game</a>
+    <a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php _e( 'Return to game', 'ivanhoe' ); ?></a>
 
     <div class="moves">
 
-	<h2>Moves</h2>
+    <h2><?php _e( 'Moves', 'ivanhoe' ); ?></h2>
 
 	<?php 
     $args = array
@@ -45,7 +45,7 @@
 
     <div class="rationales">
 
-        <h2>Rationales</h2>
+        <h2><?php _e( 'Rationales', 'ivanhoe' ); ?></h2>
 
         <?php ivanhoe_get_rationales( $post ); ?>
 

@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <header>
-<h1>Games</h1>
+    <h1><?php _e( 'Games', 'ivanhoe' ); ?></h1>
 </header>
 
 <?php
@@ -20,7 +20,7 @@ if ( have_posts()) : ?>
 	<?php ivanhoe_paginate_links();?>
 </div>
 <?php else : ?>
-<p>There are no games yet.</p>
+<p><?php _e( 'Apologies, but no results were found.', 'ivanhoe' ); ?></p>
 <?php endif; ?>
 
 <?php get_footer(); ?>

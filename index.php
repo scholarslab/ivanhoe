@@ -21,7 +21,7 @@
 	<?php ivanhoe_paginate_links();?>
 </div>
 <?php else : ?>
-<p>No one has made a move yet in this game.  Make the first move!</p>
+<p><?php _e( 'Apologies, but no results were found.', 'ivanhoe' ); ?></p>
 <?php endif; ?>
 
 <?php get_footer(); ?>

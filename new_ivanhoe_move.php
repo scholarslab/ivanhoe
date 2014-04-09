@@ -16,13 +16,13 @@ $error_messages = array();
 
 // If there is no game ID, move content, or move title an appropriate error message will display.
 if ( !$ivanhoe_game_id ) {
-    $error_messages[''] = 'There is no game ID.';
+    $error_messages[''] = __( 'There is no game ID.', 'ivanhoe' );
 }
 if ( !$ivanhoe_post_title && !empty( $_POST ) ) {
-    $error_messages[''] = 'There is no move title.';
+    $error_messages[''] = __( 'There is no move title.', 'ivanhoe' );
 }
 if ( !$ivanhoe_post_content && !empty( $_POST ) ) {
-    $error_messages[''] = 'There is no move content.';
+    $error_messages[''] = __( 'There is no move content.', 'ivanhoe' );
 }
 
 // If we have a game ID and a post title, insert a post.
@@ -47,7 +47,7 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
     {
     $journal_entry = array(
         'post_content' => $ivanhoe_post_rationale,
-        'post_title' => 'Journal Entry for ' . $ivanhoe_post_title,
+        'post_title' =>  sprintf( __( 'Journal Entry for %s', 'ivanhoe' ), $ivanhoe_post_title ),
         'post_status' => 'publish', //TODO: Decide whether or not we want the RJ to be public
         'post_type' => 'ivanhoe_role_journal',
         'post_parent' => $new_ivanhoe_post_id
@@ -75,15 +75,19 @@ get_header();
 // Get the game post.
 $ivanhoe_game = get_post($ivanhoe_game_id);
 
-$message = 'You are making a move on the game “<a href="'.get_permalink($ivanhoe_game_id).'">'.$ivanhoe_game->post_title.'</a>”';
+$message = sprintf( __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'), get_permalink($ivanhoe_game_id), $ivanhoe_game->post_title );
 
 if ($ivanhoe_move_source) {
     $ivanhoe_source = get_post($ivanhoe_move_source);
 
-    $message .= ' in response to the move “'.$ivanhoe_source->post_title.'”';
+    $message = sprintf(
+        __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>&#8221; in response to the move &#8220;<a href="%3$s">%4$s</a>.&#8221;' , 'ivanhoe' ), 
+        get_permalink($ivanhoe_game_id),
+        $ivanhoe_game->post_title,
+        get_permalink($ivanhoe_move_source),
+        $ivanhoe_source->post_title
+    );
 }
-
-$message .= ".";
 
 ?>
 
@@ -97,20 +101,20 @@ $message .= ".";
 
 <form action="" method="post" class="new-ivanhoe-form new-ivanhoe-move">
     <div>
-    <label for="post_title">Title</label>
+    <label for="post_title"><?php _e( 'Title', 'ivanhoe' ); ?></label>
     <input type="text" name="post_title" value="<?php echo $ivanhoe_post_title; ?>" required>
     </div>
 
     <div>
-    <label for="post_content">Content</label>
+    <label for="post_content"><?php _e( 'Content', 'ivanhoe' ); ?></label>
     <?php wp_editor( '', "post_content"); ?>
     </div>
 
     <div>
-    <label for="post_title">Rationale</label>
+    <label for="post_title"><?php _e( 'Rationale', 'ivanhoe' ); ?></label>
     <?php wp_editor( '', "post_rationale"); ?>
     </div>
-	<input type="submit" value="Submit">
+    <input type="submit" value="<?php _e( 'Submit', 'ivanhoe' ); ?>">
 </form>
 
 <?php if( $error_messages ) : ?>
