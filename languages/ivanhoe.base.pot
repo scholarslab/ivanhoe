@@ -1,0 +1,16 @@
+# Translation for the Ivanhoe theme for WordPress.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: Ivanhoe\n"
+"Report-Msgid-Bugs-To: http://github.com/scholarslab/ivanhoe/issues\n"
+"POT-Creation-Date: 2014-04-09 11:00-0500\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"

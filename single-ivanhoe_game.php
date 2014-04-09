@@ -13,7 +13,7 @@ $role = ivanhoe_user_has_role( $post->ID );
 <article class="game">
     <header>
         <h1><?php the_title(); ?></h1>
-        <p><span class="citation">Playing since</span>: <span class="italic"><?php the_date(); ?></span></p>
+        <p><?php printf( __('Playing since: %s', 'ivanhoe' ), get_the_time('F j, Y') ); ?></p>
         <?php
 
         if ( is_user_logged_in() ) :
@@ -28,11 +28,11 @@ $role = ivanhoe_user_has_role( $post->ID );
                     get_permalink(get_option('ivanhoe_move_page'))
                 );
             ?>
-            <a href="<?php echo $url; ?>" class="button" id="make-a-move">Make a move</a>
+            <a href="<?php echo $url; ?>" class="button" id="make-a-move"><?php _e( 'Make a move', 'ivanhoe' ); ?></a>
 
             <?php else : ?>
 
-            <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button">Make a Role!</a>
+            <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a>
 
             <?php endif; ?>
 
@@ -43,7 +43,7 @@ $role = ivanhoe_user_has_role( $post->ID );
     <div id="game-data">
         <?php if($role): ?>
 
-        <h3>Your Current Role</h3>
+        <h3><?php _e( 'Your Current Role', 'ivanhoe' ); ?></h3>
         <article class="role">
             <a href="<?php echo get_permalink( $role->ID); ?>" class="image-container"><?php echo get_the_post_thumbnail($role->ID, 'medium'); ?></a>
             <a href="<?php echo get_permalink( $role->ID ); ?>"><?php echo $role->post_title; ?></a>
@@ -51,7 +51,7 @@ $role = ivanhoe_user_has_role( $post->ID );
 
         <?php endif; ?>
 
-        <h3>Game Description</h3>
+        <h3><?php _e( 'Game Description', 'ivanhoe' ); ?></h3>
 
         <?php the_content(); ?>
 
@@ -80,15 +80,15 @@ $role = ivanhoe_user_has_role( $post->ID );
         <article class="move">
             <header>
                 <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-                <p><span class="citation">By:</span><span class="author-date"><?php the_author_posts_link(); ?></span>
-                · <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
+                <p><span class="byline"><?php the_author_posts_link(); ?></span>
+            · <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
                 <?php echo ivanhoe_move_link( $post ); ?>
             </header>
 
             <div class="excerpt">
 
                 <?php
-                $move_image_source = catch_that_image();
+                $move_image_source = catch_that_properly_nested_html_media_tag_tree();
 
                 echo $move_image_source;
                 the_excerpt();
@@ -117,7 +117,7 @@ $role = ivanhoe_user_has_role( $post->ID );
 
     <?php else : ?>
 
-    <p>No one has made a move yet in this game.  Make the first move!</p>
+    <p><?php _e( 'There are no moves for this game.', 'ivanhoe' ); ?></p>
 
     <?php endif; ?>
 

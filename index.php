@@ -8,7 +8,7 @@
     <header>
             <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
-            <p><span class="citation">By: </span><span class="author-date"><?php the_author_posts_link(); ?></span>
+            <p><span class="byline">By <?php the_author_posts_link(); ?></span>
             · <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
     </header>
 
@@ -21,7 +21,7 @@
 	<?php ivanhoe_paginate_links();?>
 </div>
 <?php else : ?>
-<p>No one has made a move yet in this game.  Make the first move!</p>
+<p><?php _e( 'Apologies, but no results were found.', 'ivanhoe' ); ?></p>
 <?php endif; ?>
 
 <?php get_footer(); ?>

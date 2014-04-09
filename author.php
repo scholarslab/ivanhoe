@@ -9,7 +9,7 @@
 
 <?php if ($description = $curauth->user_description) : ?>
 <div class="description">
-<h2>Description</h2>
+<h2><?php _e( 'Description', 'ivanhoe' ); ?></h2>
 <?php echo wpautop($description); ?>
 </div>
 <?php endif; ?>
@@ -27,7 +27,7 @@
 	
     if ($author_role_query->have_posts()) : ?>
 
-<h2>Roles</h2>
+<h2><?php _e( 'Roles', 'ivanhoe' ); ?></h2>
 
 <div class="roles">
 
@@ -36,7 +36,7 @@
 <article class="role">
     <?php the_post_thumbnail('thumbnail'); ?>
     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
-    <p class="game"><strong>Game: </strong><a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php echo get_the_title( $post->post_parent ); ?></a></p>
+    <p class="game"><strong><?php _e( 'Game:', 'ivanhoe' ); ?> </strong><a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php echo get_the_title( $post->post_parent ); ?></a></p>
 
 <?php 
 	$args = array

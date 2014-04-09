@@ -13,13 +13,13 @@ $error_messages = array();
 
 // If there is no game ID, move content, or move title an appropriate error message will display.
 if ( !$ivanhoe_game_id ) {
-    $error_messages[''] = 'There is no game ID.';
+    $error_messages[''] = __( 'There is no game ID.', 'ivanhoe' );
 }
 if ( !$ivanhoe_post_title && !empty( $_POST ) ) {
-    $error_messages[''] = 'There is no role name.';
+    $error_messages[''] = __( 'Please enter a name for your role.', 'ivanhoe' );
 }
 if ( !$ivanhoe_post_content && !empty( $_POST ) ) {
-    $error_messages[''] = 'There is no description of this role.';
+    $error_messages[''] = __( 'Please add a description for your role.', 'ivanhoe' );
 }
 
 // If we have a game ID and a post title, insert a post.
@@ -45,8 +45,6 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
     wp_redirect( get_permalink($ivanhoe_game_id) );
     exit;
 
-} elseif ( isset($_POST['post_title']) ) {
-     $error_message = "Please enter a name for your role.";
 }
 
 get_header();
@@ -58,21 +56,21 @@ get_header();
 </header>
 
 <form action="" class="new-post" method="post" enctype="multipart/form-data">
-    <div><label for="post_title">Role Name</label>
+<div><label for="post_title"><?php _e( 'Role Name', 'ivanhoe' ); ?></label>
     <input type="text" size="50" name="post_title" required>
     </div>
 
     <div>
-    <label for="post_thumbnail">Role Thumbnail</label>
+    <label for="post_thumbnail"><?php _e( 'Role Thumbnail', 'ivanhoe' ); ?></label>
     <input type="file" name="post_thumbnail">
     </div>
 
     <div>
-    <label for="post_content">Description</label>
+    <label for="post_content"><?php _e( 'Description', 'ivanhoe' ); ?></label>
     <?php wp_editor( '', "post_content"); ?>
     </div>
 
-	<input type="submit" value="Submit">
+    <input type="submit" value="<?php _e( 'Submit', 'ivanhoe' ); ?>">
 </form>
 
 <?php if( $error_messages ) : ?>

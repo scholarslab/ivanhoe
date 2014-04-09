@@ -43,12 +43,12 @@ function ivanhoe_create_post_types()
         'ivanhoe_move',
         array(
             'labels' => array(
-                'name' => __( 'Moves' ),
-                'singular_name' => __( 'Move'),
-                'all_items' => __( 'All Moves' ),
-                'add_new_item' => __( 'Add New Move' ),
-                'view_item' => __( 'View Move' ),
-                'edit_item' => __( 'Edit Move' )
+                'name' => __( 'Moves', 'ivanhoe' ),
+                'singular_name' => __( 'Move', 'ivanhoe' ),
+                'all_items' => __( 'All Moves', 'ivanhoe' ),
+                'add_new_item' => __( 'Add New Move', 'ivanhoe' ),
+                'view_item' => __( 'View Move', 'ivanhoe' ),
+                'edit_item' => __( 'Edit Move', 'ivanhoe' )
                 ),
             'public' => true,
             'has_archive' => true,
@@ -65,12 +65,12 @@ function ivanhoe_create_post_types()
         'ivanhoe_game',
         array(
             'labels' => array(
-                'name' => __( 'Games' ),
-                'singular_name' => __( 'Game' ),
-                'all_items' => __( 'All Games' ),
-                'add_new_item' => __( 'Add New Game' ),
-                'view_item' => __( 'View Game' ),
-                'edit_item' => __( 'Edit Game' )
+                'name' => __( 'Games', 'ivanhoe' ),
+                'singular_name' => __( 'Game', 'ivanhoe' ),
+                'all_items' => __( 'All Games', 'ivanhoe' ),
+                'add_new_item' => __( 'Add New Game', 'ivanhoe' ),
+                'view_item' => __( 'View Game', 'ivanhoe' ),
+                'edit_item' => __( 'Edit Game', 'ivanhoe' )
                 ),
             'public' => true,
             'has_archive' => true,
@@ -91,12 +91,12 @@ function ivanhoe_create_post_types()
         'ivanhoe_role',
         array(
             'labels' => array(
-                'name' => __( 'Roles' ),
-                'singular_name' => __( 'Role'),
-                'all_items' => __( 'All Roles' ),
-                'add_new_item' => __( 'Add New Role' ),
-                'view_item' => __( 'View Role' ),
-                'edit_item' => __( 'Edit Role' )
+                'name' => __( 'Roles', 'ivanhoe' ),
+                'singular_name' => __( 'Role', 'ivanhoe' ),
+                'all_items' => __( 'All Roles', 'ivanhoe' ),
+                'add_new_item' => __( 'Add New Role', 'ivanhoe' ),
+                'view_item' => __( 'View Role', 'ivanhoe'),
+                'edit_item' => __( 'Edit Role', 'ivanhoe' )
                 ),
             'public' => true,
             'has_archive' => true,
@@ -113,12 +113,12 @@ function ivanhoe_create_post_types()
         'ivanhoe_role_journal',
         array(
             'labels' => array(
-                'name'          => __( 'Role Journal' ),
-                'singular_name' => __( 'Role Journal Entry' ),
-                'all_items'     => __( 'All Entries' ),
-                'add_new_item'  => __( 'Add New Entry' ),
-                'view_item' => __( 'View Entry' ),
-                'edit_item' => __( 'Edit Entry' )
+                'name'          => __( 'Role Journal', 'ivanhoe' ),
+                'singular_name' => __( 'Role Journal Entry', 'ivanhoe' ),
+                'all_items'     => __( 'All Entries', 'ivanhoe' ),
+                'add_new_item'  => __( 'Add New Entry', 'ivanhoe' ),
+                'view_item' => __( 'View Entry', 'ivanhoe' ),
+                'edit_item' => __( 'Edit Entry', 'ivanhoe' )
             ),
             'public'        => true,
             'has_archive'   => true,
@@ -141,7 +141,7 @@ function ivanhoe_create_post_types()
  */
 function ivanhoe_move_meta_box($post)
 {
-    $html = '<p><label for="post_parent">'.__('Game').'</label></p>'
+    $html = '<p><label for="post_parent">'.__('Game', 'ivanhoe' ).'</label></p>'
           . '<p><input type="text" name="post_parent" value="'. $post->post_parent.'">';
 
     return $html;
@@ -154,11 +154,89 @@ function ivanhoe_move_source()
 {
     add_meta_box(
         'ivanhoe_move_source',
-        __('Source for:'),
-        'ivanhoe_source_meta_box',
+        __('Source for:', 'ivanhoe' ),
+        'ivanhoe_move_source_meta_box',
         'ivanhoe_move'
     );
 }
+
+/**
+ * Prints the box content.
+ *
+ * @param WP_Post $post The object for the current post/page.
+ */
+function ivanhoe_move_source_meta_box( $post ) {
+
+    // Add an nonce field so we can check for it later.
+    wp_nonce_field( 'ivanhoe_move_source_meta_box', 'ivanhoe_move_source_meta_box_nonce' );
+
+    /*
+     * Use get_post_meta() to retrieve an existing value
+     * from the database and use the value for the form.
+     */
+    $value = get_post_meta( $post->ID, 'Ivanhoe Move Source', true );
+
+    echo '<label for="ivanhoe_move_source">';
+    __( 'Source for:', 'ivanhoe' );
+    echo '</label> ';
+    echo '<input type="text" id="ivanhoe_move_source" name="ivanhoe_move_source" value="' . esc_attr( $value ) . '" size="25" />';
+}
+
+/**
+ * When the post is saved, saves our custom data.
+ *
+ * @param int $post_id The ID of the post being saved.
+ */
+function ivanhoe_move_source_save_meta_box_data( $post_id ) {
+
+    /*
+     * We need to verify this came from our screen and with proper authorization,
+     * because the save_post action can be triggered at other times.
+     */
+
+    // Check if our nonce is set.
+    if ( ! isset( $_POST['ivanhoe_move_source_meta_box_nonce'] ) ) {
+        return;
+    }
+
+    // Verify that the nonce is valid.
+    if ( ! wp_verify_nonce( $_POST['ivanhoe_move_source_meta_box_nonce'], 'ivanhoe_move_source_meta_box' ) ) {
+        return;
+    }
+
+    // If this is an autosave, our form has not been submitted, so we don't want to do anything.
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+
+    // Check the user's permissions.
+    if ( isset( $_POST['post_type'] ) && 'ivanhoe_move' == $_POST['post_type'] ) {
+
+        if ( ! current_user_can( 'edit_page', $post_id ) ) {
+            return;
+        }
+
+    } else {
+
+        if ( ! current_user_can( 'edit_post', $post_id ) ) {
+            return;
+        }
+    }
+
+    /* OK, its safe for us to save the data now. */
+
+    // Make sure that it is set.
+    if ( ! isset( $_POST['ivanhoe_move_source'] ) ) {
+        return;
+    }
+
+    // Sanitize user input.
+    $my_data = sanitize_text_field( $_POST['ivanhoe_move_source'] );
+
+    // Update the meta field in the database.
+    update_post_meta( $post_id, 'Ivanhoe Role ID', $my_data );
+}
+add_action( 'save_post', 'ivanhoe_move_source_save_meta_box_data' );
 
 /**
  * Function for getting the metadata for the post(s) to which the current move responds
@@ -167,7 +245,7 @@ function ivanhoe_move_response()
 {
     add_meta_box(
         'ivanhoe_move_response',
-        __('Responds to:'),
+        __('Responds to:', 'ivanhoe' ),
         'ivanhoe_response_meta_box',
         'ivanhoe_move'
     );
@@ -180,7 +258,7 @@ function ivanhoe_role_for_journal()
 {
     add_meta_box(
         'ivanhoe_role_for_journal',
-        __('Journal Entry For:'),
+        __('Journal Entry For:', 'ivanhoe' ),
         'ivanhoe_role_id_meta_box',
         'ivanhoe_role_journal'
     );
@@ -188,6 +266,83 @@ function ivanhoe_role_for_journal()
 
 add_action('add_meta_boxes', 'ivanhoe_move_source', 'ivanhoe_move_response', 'ivanhoe_role_for_journal');
 
+/**
+ * Prints the box content.
+ *
+ * @param WP_Post $post The object for the current post/page.
+ */
+function ivanhoe_role_id_meta_box( $post ) {
+
+    // Add an nonce field so we can check for it later.
+    wp_nonce_field( 'ivanhoe_role_id_meta_box', 'ivanhoe_role_id_meta_box_nonce' );
+
+    /*
+     * Use get_post_meta() to retrieve an existing value
+     * from the database and use the value for the form.
+     */
+    $value = get_post_meta( $post->ID, 'Ivanhoe Role ID', true );
+
+    echo '<label for="ivanhoe_role_for_journal">';
+    __( 'Journal Entry For:', 'ivanhoe' );
+    echo '</label> ';
+    echo '<input type="text" id="ivanhoe_role_id" name="ivanhoe_role_id" value="' . esc_attr( $value ) . '" size="25" />';
+}
+
+/**
+ * When the post is saved, saves our custom data.
+ *
+ * @param int $post_id The ID of the post being saved.
+ */
+function ivanhoe_role_id_save_meta_box_data( $post_id ) {
+
+    /*
+     * We need to verify this came from our screen and with proper authorization,
+     * because the save_post action can be triggered at other times.
+     */
+
+    // Check if our nonce is set.
+    if ( ! isset( $_POST['ivanhoe_role_id_meta_box_nonce'] ) ) {
+        return;
+    }
+
+    // Verify that the nonce is valid.
+    if ( ! wp_verify_nonce( $_POST['ivanhoe_role_id_meta_box_nonce'], 'ivanhoe_role_id_meta_box' ) ) {
+        return;
+    }
+
+    // If this is an autosave, our form has not been submitted, so we don't want to do anything.
+    if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+        return;
+    }
+
+    // Check the user's permissions.
+    if ( isset( $_POST['post_type'] ) && 'ivanhoe_role_journal' == $_POST['post_type'] ) {
+
+        if ( ! current_user_can( 'edit_page', $post_id ) ) {
+            return;
+        }
+
+    } else {
+
+        if ( ! current_user_can( 'edit_post', $post_id ) ) {
+            return;
+        }
+    }
+
+    /* OK, its safe for us to save the data now. */
+
+    // Make sure that it is set.
+    if ( ! isset( $_POST['ivanhoe_role_id'] ) ) {
+        return;
+    }
+
+    // Sanitize user input.
+    $my_data = sanitize_text_field( $_POST['ivanhoe_role_id'] );
+
+    // Update the meta field in the database.
+    update_post_meta( $post_id, 'Ivanhoe Role ID', $my_data );
+}
+add_action( 'save_post', 'ivanhoe_role_id_save_meta_box_data' );
 
 /**
  * Create a custom nav menu for the theme.
@@ -199,14 +354,14 @@ function ivanhoe_make_menus() {
 
     // Set up default menu items
     wp_update_nav_menu_item($menu_id, 0, array(
-        'menu-item-title' =>  __('Home'),
+        'menu-item-title' =>  __('Home', 'ivanhoe' ),
         'menu-item-classes' => 'home',
         'menu-item-url' => home_url( '/' ),
         'menu-item-status' => 'publish')
     );
 
     wp_update_nav_menu_item($menu_id, 0, array(
-        'menu-item-title' =>  __('Games'),
+        'menu-item-title' =>  __('Games', 'ivanhoe' ),
         'menu-item-url' => get_post_type_archive_link('ivanhoe_game'),
         'menu-item-status' => 'publish')
     );
@@ -214,7 +369,7 @@ function ivanhoe_make_menus() {
 
 function ivanhoe_register_nav_menus() {
     ivanhoe_make_menus();
-    register_nav_menu('ivanhoe_default',__( 'Ivanhoe Default' ));
+    register_nav_menu('ivanhoe_default',__( 'Ivanhoe Default', 'ivanhoe'  ));
 }
 
 add_action( 'after_switch_theme', 'ivanhoe_register_nav_menus' );
@@ -275,8 +430,8 @@ function ivanhoe_after_switch_theme()
 {
     if (! get_option('ivanhoe_installed')) {
        $pages = array(
-            'ivanhoe_move' => 'Make a Move',
-            'ivanhoe_role' => 'Make a Role'
+            'ivanhoe_move' => __( 'Make a Move', 'ivanhoe' ),
+            'ivanhoe_role' => __( 'Make a Role', 'ivanhoe' )
             );
         $args = array(
             'post_type' => 'page',
@@ -294,6 +449,8 @@ function ivanhoe_after_switch_theme()
         }
         update_option( 'ivanhoe_installed', true );
     }
+
+    load_theme_textdomain('ivanhoe', get_template_directory() . '/languages');
 }
 
 add_action ( 'after_switch_theme','ivanhoe_after_switch_theme' );
@@ -338,8 +495,10 @@ function ivanhoe_get_move_source( $post )
     if ( $source_id && $source = get_post($source_id) ) {
 
         // Set $html to a string with a link to source post.
-        $html = '<h3>Source</h3>
-        <ul><li><a href="'.get_permalink($source->ID).'">'.$source->post_title.'</a></li></ul>';
+        $html = '<h3>' . __('Source', 'ivanhoe' ) . '</h3>'
+              . '<ul><li>'
+              . '<a href="'.get_permalink($source->ID).'">'.$source->post_title.'</a>'
+              . '</li></ul>';
     }
 
    // Print out the value of $html.
@@ -353,6 +512,8 @@ function ivanhoe_get_move_source( $post )
  */
 function ivanhoe_get_move_responses( $post )
 {
+    $html = '';
+
     $args = array(
         'post_type' => 'ivanhoe_move',
         'post_per_page' => -1,
@@ -361,20 +522,23 @@ function ivanhoe_get_move_responses( $post )
         'meta_value_compare' => '='
         );
 
-    $source_query = new WP_Query( $args );
+    $responses = get_posts( $args );
 
-    if ($source_query->have_posts() ) : ?>
+    if ($responses) {
 
-    <h3>Responses</h3>
-    <ul>
-    <?php while( $source_query->have_posts() ) : $source_query->the_post(); ?>
+        $html = '<h3>' . __('Responses', 'ivanhoe') . '</h3>'
+              . '<ul>';
 
-    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+        foreach ( $responses as $response ) {
+            $html .= '<li><a href="' . get_permalink($response->ID) . '">' . $response->post_title . '</a></li>';
+        }
 
-    <?php endwhile; ?>
-    </ul>
-    <?php endif;
-    wp_reset_postdata();
+        $html .= '</ul>';
+
+    }
+
+    echo $html;
+
 }
 
 /**
@@ -471,7 +635,7 @@ function ivanhoe_display_role_name ( $link )
         $link = sprintf(
             '<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
             esc_url( get_permalink($role->ID) ),
-            esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) ),
+            esc_attr( sprintf( __('Posts by %s', 'ivanhoe'), get_the_author() ) ),
             $role->post_title
             );
     }
@@ -521,10 +685,11 @@ function ivanhoe_move_link ( $post )
         $role = ivanhoe_user_has_role( $post->post_parent );
     }
 
-    if ( $role )
-    {
-        $html = '<a href="'.ivanhoe_response_form_url( $post ).'" class="button">Respond '
-              . '<span class="visuallyhidden">to '.$post->post_title .'</span>'
+    if ( $role ) {
+
+        $link_string = sprintf( __( 'Respond <span class="visuallyhidden post-title">to %s</span>', 'ivanhoe' ), $post->post_title );
+        $html = '<a href="'.ivanhoe_response_form_url( $post ).'" class="button">'
+              . $link_string
               . '</a>';
     }
 
@@ -537,18 +702,16 @@ function ivanhoe_move_link ( $post )
  *
  * @return string HTML.
  */
-function catch_that_image() {
+function catch_that_properly_nested_html_media_tag_tree() {
     global $post, $posts;
     $first_image = '';
     ob_start();
     ob_end_clean();
-    $output_videos = preg_match_all('/<(img|embed|iframe|video)[^>]*>/i', $post->post_content, $matches);
+    $shortcoded = do_shortcode($post->post_content);
+    $output_videos = preg_match_all('/<(img|embed|iframe|video|audio)[^>]*>(.*?<\\/\1>)?/si', $shortcoded, $matches);
 
     if ( !empty( $matches [0] ) ) {
         $first_image = $matches [0] [0];
-        if ( strpos( $first_image, 'iframe' ) !== FALSE ) {
-            $first_image = $first_image . '</iframe>';
-        }
     }
 
     return $first_image;
@@ -612,8 +775,9 @@ function ivanhoe_add_image( $file_handler, $parent_post_id) {
  */
 function ivanhoe_get_rationales( $post )
 {
-    // $role = ivanhoe_user_has_role($post->post_parent);
-    // $role_id = $role->ID;
+
+    $html = '';
+
     $args = array(
         'post_type' => 'ivanhoe_role_journal',
         'post_per_page' => -1,
@@ -625,21 +789,25 @@ function ivanhoe_get_rationales( $post )
         'meta_value_compare' => '='
         );
 
-    $game_query = new WP_Query( $args );
+    $journal_entries = get_posts( $args );
 
-    if ($game_query->have_posts() ) : ?>
+    if ($journal_entries) {
 
-    <ul>
-    <?php while( $game_query->have_posts() ) : $game_query->the_post(); ?>
+        $html = '<ul>';
 
-    <li><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></li>
+        foreach ( $journal_entries as $journal_entry ) {
+            $html .= '<li><a href="' . get_permalink($journal_entry->ID) . '">' . $journal_entry->post_title . '</a></li>';
+        }
 
-    <?php endwhile; ?>
-    </ul>
-    <?php else : ?>
-    <p>There are no journal entries.</p>
-    <?php endif;
-    wp_reset_postdata();
+        $html .= '</ul>';
+
+    } else {
+
+        $html = __( 'There are no journal entries', 'ivanhoe' );
+
+    }
+
+    echo $html;
 }
 
 /**
@@ -653,3 +821,4 @@ function restrict_admin_with_redirect()
 }
 
 add_action( 'admin_init', 'restrict_admin_with_redirect' );
+

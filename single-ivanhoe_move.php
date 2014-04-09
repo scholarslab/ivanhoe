@@ -5,7 +5,8 @@
     <header>
             <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
-            <p><span class="citation">By: </span><span class="author-date"><?php the_author_posts_link(); ?></span> · <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
+            <p><span class="byline"><?php the_author_posts_link(); ?></span>
+            · <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
             <?php
            $game_id = $post->post_parent;
            $role = ivanhoe_user_has_role( $game_id );
@@ -18,7 +19,7 @@
 
             <?php else : ?>
 
-            <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button">Make a Role!</a>
+                <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a>
 
             <?php endif; ?>
 
@@ -35,7 +36,7 @@
             <?php ivanhoe_get_move_responses( $post ); ?>
        </div>
         <div class="game-description">
-            <h2>Game Info</h2>
+            <h2><?php _e( 'Game Info', 'ivanhoe' ); ?></h2>
 			<?php global $post;
             $parent_ID = $post->post_parent;
 			$game_title = get_title_by_id( $parent_ID );
@@ -50,16 +51,12 @@
 
     <?php the_content(); ?>
 
-    <a class="return-button" href="<?php echo get_permalink( $post->post_parent ); ?>">Return to game</a>
+            <a class="return-button" href="<?php echo get_permalink( $post->post_parent ); ?>"><?php _e( 'Return to game', 'ivanhoe' ); ?></a>
 
     </div>
 
 </article>
 
-<?php endwhile; else : ?>
-<p>No one has made a move yet in this game.  Make the first move!</p>
-<?php endif; ?>
-
-
+<?php endwhile; endif; ?>
 
 <?php get_footer(); ?>
