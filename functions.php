@@ -635,7 +635,7 @@ function ivanhoe_display_role_name ( $link )
         $link = sprintf(
             '<a href="%1$s" title="%2$s" rel="author">%3$s</a>',
             esc_url( get_permalink($role->ID) ),
-            esc_attr( sprintf( __( 'Posts by %s' ), get_the_author() ) ),
+            esc_attr( sprintf( __('Posts by %s', 'ivanhoe'), get_the_author() ) ),
             $role->post_title
             );
     }
