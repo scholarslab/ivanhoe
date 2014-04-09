@@ -123,6 +123,10 @@ msgstr ""
 msgid "Journal Entry For:"
 msgstr ""
 
+#: functions.php:357
+msgid "Home"
+msgstr ""
+
 #: functions.php:372
 msgid "Ivanhoe Default"
 msgstr ""
@@ -135,8 +139,17 @@ msgstr ""
 msgid "Make a Role"
 msgstr ""
 
+#: functions.php:498
+msgid "Source"
+msgstr ""
+
 #: functions.php:529
 msgid "Responses"
+msgstr ""
+
+#: functions.php:638
+#, php-format
+msgid "Posts by %s"
 msgstr ""
 
 #: functions.php:690
