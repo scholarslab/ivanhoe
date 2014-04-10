@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<?php 
+<?php
 	$curauth = ( isset( $_GET['author_name'] ) ) ? get_user_by( 'slug', $author_name ) : get_userdata( intval( $author ) );
 ?>
 
@@ -13,18 +13,17 @@
 <?php echo wpautop($description); ?>
 </div>
 <?php endif; ?>
-<!-- What we need to do is write a custom loop that pulls all the roles that the user has, and then also displays the title of the game that role is associated with -->
 
-<?php 
+<?php
 
-	$args = array 
+	$args = array
 		(
 			'post_type' => 'ivanhoe_role',
 			'author' => $curauth->ID
 		);
 
 	$author_role_query = new WP_Query($args);
-	
+
     if ($author_role_query->have_posts()) : ?>
 
 <h2><?php _e( 'Roles', 'ivanhoe' ); ?></h2>
@@ -38,14 +37,14 @@
     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
     <p class="game"><strong><?php _e( 'Game:', 'ivanhoe' ); ?> </strong><a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php echo get_the_title( $post->post_parent ); ?></a></p>
 
-<?php 
+<?php
 	$args = array
 	(
 		'post_type' => 'ivanhoe_move',
 		'post_parent' => $post->post_parent,
 		'author' => $curauth->ID,
 		'posts_per_page' => '5'
-	);	
+	);
 
 	$moves_per_role_query = new WP_Query( $args );
 
@@ -62,14 +61,14 @@
     <?php endif; ?>
 
 <?php wp_reset_postdata(); ?>
-</article>    
+</article>
 
 <?php
 
 	endwhile;
 	endif;
 
-?>	
+?>
 </div>
 </article>
 
