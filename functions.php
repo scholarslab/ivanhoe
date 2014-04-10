@@ -450,11 +450,20 @@ function ivanhoe_after_switch_theme()
         update_option( 'ivanhoe_installed', true );
     }
 
-    load_theme_textdomain('ivanhoe', get_template_directory() . '/languages');
 }
 
 add_action ( 'after_switch_theme','ivanhoe_after_switch_theme' );
 
+/**
+ * Let WordPress know about our text domain.
+ */
+function ivanhoe_load_theme_textdomain() {
+
+    load_theme_textdomain('ivanhoe', get_template_directory() . '/languages');
+
+}
+
+add_action('after_setup_theme', 'ivanhoe_load_theme_textdomain');
 
 /**
  * Overrides WP's auto redirect on pretty URLs (e.g. /games/game-title/page/2),
