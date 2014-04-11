@@ -53,30 +53,54 @@ $role = ivanhoe_user_has_role( $post->ID );
 
 
 
-            <?php
-                $args = array(
+        <?php
+            if ( is_user_logged_in() ) : ?>
+                <h3>Other Characters</h3>
+                <article>
+                <?php $args = array(
                         'post_type' => 'ivanhoe_role',
-                         'post_parent' => $ivanhoe_game_id
+                        'post_parent' => $ivanhoe_game_id
                     );
                 $characters = new WP_Query ( $args );
                 if ( $characters->have_posts() ) : while ( $characters->have_posts() ) : $characters->the_post();
                 ?>
                 <?php if ($post->ID !== $role->ID): ?>
-                    <article>
-                        <h3>Other Characters</h3>
                         <ul>
                             <li>
-                                 <a href="<?php echo get_permalink( $post->ID); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
+                                 <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
                                  <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
                             </li>
                         </ul>
-                    </article>
-                <?php endif ?>
+                <?php endif; ?>
 
             <?php
                 endwhile; endif;
-                wp_reset_postdata();
-            ?>
+                wp_reset_postdata(); ?>
+
+            </article>
+            
+            <?php else : ?>
+                <h3>Characters</h3>
+                <article>
+                <?php $args = array(
+                    'post_type' => 'ivanhoe_role',
+                    'post_parent' => $ivanhoe_game_id
+                    );
+                $characters = new WP_Query ( $args );
+                if ( $characters->have_posts() ) : while ( $characters->have_posts() ) : $characters->the_post(); ?>
+                        <ul>
+                            <li>
+                                 <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
+                                 <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
+                            </li>
+                        </ul>
+                <?php 
+                    endwhile; endif;
+                    wp_reset_postdata(); ?>
+                </article>
+                <?php endif; ?>
+
+
 
         <h3><?php _e( 'Game Description', 'ivanhoe' ); ?></h3>
 
