@@ -49,6 +49,12 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
 
 get_header();
 
+// Get the game post.
+$ivanhoe_game = get_post($ivanhoe_game_id);
+
+$message = sprintf( __( 'You are making a new role on the game &#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'), get_permalink($ivanhoe_game_id), $ivanhoe_game->post_title );
+
+echo $message;
 ?>
 
 <header>
