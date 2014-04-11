@@ -139,7 +139,12 @@ $role = ivanhoe_user_has_role( $post->ID );
             <div class="excerpt">
 
                 <?php
-                $move_image_source = catch_that_properly_nested_html_media_tag_tree();
+
+                if ( empty(the_excerpt() ) ) {
+                    $move_image_source = catch_that_properly_nested_html_media_tag_tree() . ' ... <a class="view-more" href="'. get_permalink( get_the_ID() ) . '">' . __('View More', 'your-text-domain') . '</a>';
+                } else {
+                    $move_image_source = catch_that_properly_nested_html_media_tag_tree();
+                }
 
                 echo $move_image_source;
                 the_excerpt();
