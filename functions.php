@@ -407,11 +407,13 @@ function ivanhoe_switch_themes()
 {
     $menu_name = 'ivanhoe_default';
 
-    wp_delete_post( get_option('ivanhoe_move_page'), true);
-    wp_delete_post( get_option('ivanhoe_role_page'), true);
+    wp_delete_post( get_option( 'ivanhoe_move_page' ), true );
+    wp_delete_post( get_option( 'ivanhoe_role_page' ), true );
+    wp_delete_post( get_option( 'ivanhoe_game_page' ), true );
     delete_option( 'ivanhoe_installed' );
     delete_option( 'ivanhoe_move_page' );
     delete_option( 'ivanhoe_role_page' );
+    delete_option( 'ivanhoe_game_page' );
 
     $nav_menu = wp_get_nav_menu_object( $menu_name );
 
@@ -431,7 +433,8 @@ function ivanhoe_after_switch_theme()
     if (! get_option('ivanhoe_installed')) {
        $pages = array(
             'ivanhoe_move' => __( 'Make a Move', 'ivanhoe' ),
-            'ivanhoe_role' => __( 'Make a Role', 'ivanhoe' )
+            'ivanhoe_role' => __( 'Make a Role', 'ivanhoe' ),
+            'ivanhoe_game' => __( 'Make a Game', 'ivanhoe' )
             );
         $args = array(
             'post_type' => 'page',
