@@ -5,7 +5,6 @@
     <?php if ( is_user_logged_in() ) :
     	$url = get_permalink(get_option('ivanhoe_game_page')); ?>
     	<a href="<?php echo $url; ?>" class="button" id="make-a-game"><?php _e( 'Make a Game', 'ivanhoe' ); ?></a>
-    	<?php echo $url; ?>
 	<?php endif; ?>
 </header>
 
