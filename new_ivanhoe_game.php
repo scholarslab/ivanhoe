@@ -3,6 +3,16 @@
 Template Name: Ivanhoe Game Form
 */
 
+$ivanhoe_post_title = !empty ( $_POST['post_title'] ) ? $_POST['post_title'] : null;
+
+// Creates an empty array for error messages.
+$error_messages = array();
+
+// If there is no game ID, move content, or move title an appropriate error message will display.
+if ( !$ivanhoe_post_title && !empty( $_POST ) ) {
+    $error_messages[''] = __( 'Please enter a name for your role.', 'ivanhoe' );
+}
+
 // If we have a game ID and a post title, insert a post.
 if ( !empty( $_POST ) ) {
 
@@ -44,6 +54,13 @@ get_header();
     <input type="submit" value="<?php _e( 'Submit', 'ivanhoe' ); ?>">
 </form>
 
+<?php if( $error_messages ) : ?>
+    <ul>
+        <?php foreach($error_messages as $message) : ?>
+        <li><?php echo $message; ?></li>
+    <?php endforeach; ?>
+    </ul>
+<?php endif; ?>
 
 <?php 
 
