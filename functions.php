@@ -713,17 +713,21 @@ function ivanhoe_move_link ( $post )
  */
 function catch_that_properly_nested_html_media_tag_tree() {
     global $post, $posts;
-    $first_image = '';
     ob_start();
     ob_end_clean();
     $shortcoded = do_shortcode($post->post_content);
     $output_videos = preg_match_all('/<(img|embed|iframe|video|audio)[^>]*>(.*?<\\/\1>)?/si', $shortcoded, $matches);
+    return( $matches );
+}
+
+function display_first_media_file( $matches ) {
+    $first_media_file = '';
 
     if ( !empty( $matches [0] ) ) {
-        $first_image = $matches [0] [0];
+        $first_media_file = $matches [0] [0];
     }
 
-    return $first_image;
+    return $first_media_file;
 }
 
 /**

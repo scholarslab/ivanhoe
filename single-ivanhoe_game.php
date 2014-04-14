@@ -139,11 +139,14 @@ $role = ivanhoe_user_has_role( $post->ID );
             <div class="excerpt">
 
                 <?php
+                $the_excerpt = get_the_excerpt();
+                $move_image_source = '';
+                $matches = catch_that_properly_nested_html_media_tag_tree();
 
-                if ( empty(the_excerpt() ) ) {
-                    $move_image_source = catch_that_properly_nested_html_media_tag_tree() . ' ... <a class="view-more" href="'. get_permalink( get_the_ID() ) . '">' . __('View More', 'your-text-domain') . '</a>';
+                if ( empty( $the_excerpt ) ) {
+                    $move_image_source = display_first_media_file( $matches ) . ' ... <a class="view-more" href="'. get_permalink( get_the_ID() ) . '">' . __('View More', 'your-text-domain') . '</a>';
                 } else {
-                    $move_image_source = catch_that_properly_nested_html_media_tag_tree();
+                    $move_image_source = display_first_media_file( $matches );
                 }
 
                 echo $move_image_source;
