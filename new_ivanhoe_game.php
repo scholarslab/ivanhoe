@@ -4,7 +4,7 @@ Template Name: Ivanhoe Game Form
 */
 
 // If we have a game ID and a post title, insert a post.
-// if ( empty ( $error_messages ) ) {
+if ( !empty( $_POST ) ) {
 
     $ivanhoe_post_title = $_POST['post_title'];
     $ivanhoe_post_content = $_POST['post_content'];
@@ -21,7 +21,7 @@ Template Name: Ivanhoe Game Form
     wp_redirect( get_post_type_archive_link('ivanhoe_game') );
     exit;
 
-// }
+}
 
 get_header();
 
