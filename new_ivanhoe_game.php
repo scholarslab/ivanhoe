@@ -28,6 +28,10 @@ if ( !empty( $_POST ) ) {
 
     $new_ivanhoe_post_id = wp_insert_post( $game );
 
+    if ($_FILES['post_thumbnail']) {
+        ivanhoe_add_image('post_thumbnail', $new_ivanhoe_post_id);
+    }
+
     wp_redirect( get_post_type_archive_link('ivanhoe_game') );
     exit;
 
@@ -44,6 +48,11 @@ get_header();
 <form action="" class="new-post" method="post" enctype="multipart/form-data">
 <div><label for="post_title"><?php _e( 'Game Title', 'ivanhoe' ); ?></label>
     <input type="text" size="50" name="post_title" required>
+    </div>
+
+    <div>
+    <label for="post_thumbnail"><?php _e( 'Game Thumbnail', 'ivanhoe' ); ?></label>
+    <input type="file" name="post_thumbnail">
     </div>
 
     <div>

@@ -2,7 +2,7 @@
 
 // Add theme support for WP features.
 add_theme_support('menus');
-add_theme_support('post-thumbnails', array('ivanhoe_role'));
+add_theme_support('post-thumbnails', array('ivanhoe_role', 'ivanhoe_game'));
 
 /**
  * Custom backgrounds.
@@ -87,6 +87,8 @@ function ivanhoe_create_post_types()
             )
         );
 
+    add_post_type_support( 'ivanhoe_game', 'thumbnail' );
+
     register_post_type(
         'ivanhoe_role',
         array(
@@ -103,7 +105,6 @@ function ivanhoe_create_post_types()
             'rewrite' => array('slug' => 'roles'),
             )
         );
-
 
     add_post_type_support( 'ivanhoe_role', 'thumbnail' );
 

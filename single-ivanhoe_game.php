@@ -104,6 +104,8 @@ $role = ivanhoe_user_has_role( $post->ID );
 
         <h3><?php _e( 'Game Description', 'ivanhoe' ); ?></h3>
 
+        <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+
         <?php the_content(); ?>
 
     </div>
