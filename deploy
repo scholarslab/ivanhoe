@@ -28,13 +28,13 @@ function cleanup() {
 
 # Stop on error and clean up
 set -e
-tmpdir=$(mktemp -d)
+tmpdir=$(mktemp -d -t ivanhoe)
 trap cleanup EXIT
 
 # Settings
 wpdir="$tmpdir/wordpress"
 ivanhoe="$wpdir/wp-content/themes/ivanhoe"
-now=$(TZ='America/New_York' date -R)
+now=$(TZ='America/New_York' date)
 
 # Get the staging
 git clone --recursive $apprepo $wpdir
