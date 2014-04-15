@@ -26,7 +26,15 @@
 <p><?php echo $description ?></p>
 <?php endif; ?>
 
-<?php wp_nav_menu(array('theme_location' => 'ivanhoe_default', 'menu' => 'ivanhoe_default', 'container'=>'nav')); ?>
+<?php
+
+	$make_a_game = get_page_by_title( 'Make a Game' );
+	$make_a_move = get_page_by_title( 'Make a Move' );
+	$make_a_role = get_page_by_title( 'Make a Role' );
+    
+    $ids = "{$make_a_game->ID},{$make_a_move->ID},{$make_a_role->ID}";
+    wp_nav_menu( array( 'fallback_cb' => 'ivanhoe_page_menu', 'theme_location' => 'header', 'exclude' => $ids, 'container' => 'nav' ) ); 
+// wp_nav_menu(array('theme_location' => 'ivanhoe_default', 'menu' => 'ivanhoe_default', 'container'=>'nav')); ?>
 
 </header>
 
