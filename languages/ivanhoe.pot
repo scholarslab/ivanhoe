@@ -19,20 +19,40 @@ msgstr ""
 msgid "Games"
 msgstr ""
 
-#: archive-ivanhoe_game.php:23 index.php:24
+#: archive-ivanhoe_game.php:7 functions.php:437
+msgid "Make a Game"
+msgstr ""
+
+#: archive-ivanhoe_game.php:27 index.php:24
 msgid "Apologies, but no results were found."
 msgstr ""
 
-#: author.php:12 new_ivanhoe_role.php:69
+#: author.php:12 new_ivanhoe_role.php:75
 msgid "Description"
 msgstr ""
 
-#: author.php:30 functions.php:94
+#: author.php:29 functions.php:94
 msgid "Roles"
 msgstr ""
 
-#: author.php:39
+#: author.php:38
 msgid "Game:"
+msgstr ""
+
+#: comments.php:37
+msgid "Comment navigation"
+msgstr ""
+
+#: comments.php:38
+msgid "&larr; Older Comments"
+msgstr ""
+
+#: comments.php:39
+msgid "Newer Comments &rarr;"
+msgstr ""
+
+#: comments.php:44
+msgid "Comments are closed."
 msgstr ""
 
 #: functions.php:46 single-ivanhoe_role.php:16
@@ -143,34 +163,54 @@ msgstr ""
 msgid "Ivanhoe Default"
 msgstr ""
 
-#: functions.php:433
+#: functions.php:435
 msgid "Make a Move"
 msgstr ""
 
-#: functions.php:434
+#: functions.php:436
 msgid "Make a Role"
 msgstr ""
 
-#: functions.php:507
+#: functions.php:510
 msgid "Source"
 msgstr ""
 
-#: functions.php:538
+#: functions.php:541
 msgid "Responses"
 msgstr ""
 
-#: functions.php:647
+#: functions.php:650
 #, php-format
 msgid "Posts by %s"
 msgstr ""
 
-#: functions.php:699
+#: functions.php:702
 #, php-format
 msgid "Respond <span class=\"visuallyhidden post-title\">to %s</span>"
 msgstr ""
 
-#: functions.php:815
+#: functions.php:822
 msgid "There are no journal entries"
+msgstr ""
+
+#: functions.php:846 single-ivanhoe_game.php:147
+msgid "View More"
+msgstr ""
+
+#: new_ivanhoe_game.php:13 new_ivanhoe_role.php:19
+msgid "Please enter a name for your role."
+msgstr ""
+
+#: new_ivanhoe_game.php:45
+msgid "Game Title"
+msgstr ""
+
+#: new_ivanhoe_game.php:50 single-ivanhoe_game.php:105
+msgid "Game Description"
+msgstr ""
+
+#: new_ivanhoe_game.php:54 new_ivanhoe_move.php:117 new_ivanhoe_role.php:79
+msgid "Submit"
 msgstr ""
 
 #: new_ivanhoe_move.php:19 new_ivanhoe_role.php:16
@@ -215,23 +255,22 @@ msgstr ""
 msgid "Rationale"
 msgstr ""
 
-#: new_ivanhoe_move.php:117 new_ivanhoe_role.php:73
-msgid "Submit"
-msgstr ""
-
-#: new_ivanhoe_role.php:19
-msgid "Please enter a name for your role."
-msgstr ""
-
 #: new_ivanhoe_role.php:22
 msgid "Please add a description for your role."
 msgstr ""
 
-#: new_ivanhoe_role.php:59
+#: new_ivanhoe_role.php:55
+#, php-format
+msgid ""
+"You are making a new role on the game &#8220;<a href=\"%1$s\">%2$s</a>."
+"&#8221;"
+msgstr ""
+
+#: new_ivanhoe_role.php:65
 msgid "Role Name"
 msgstr ""
 
-#: new_ivanhoe_role.php:64
+#: new_ivanhoe_role.php:70
 msgid "Role Thumbnail"
 msgstr ""
 
@@ -252,11 +291,7 @@ msgstr ""
 msgid "Your Current Role"
 msgstr ""
 
-#: single-ivanhoe_game.php:54
-msgid "Game Description"
-msgstr ""
-
-#: single-ivanhoe_game.php:120
+#: single-ivanhoe_game.php:179
 msgid "There are no moves for this game."
 msgstr ""
 
