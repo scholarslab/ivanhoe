@@ -345,61 +345,122 @@ function ivanhoe_role_id_save_meta_box_data( $post_id ) {
 }
 add_action( 'save_post', 'ivanhoe_role_id_save_meta_box_data' );
 
-/**
- * Create a custom nav menu for the theme.
- */
-function ivanhoe_make_menus() {
+function ivanhoe_page_menu( $args = array() ) {
 
-    $menu_name = 'ivanhoe_default';
-    $menu_id = wp_create_nav_menu($menu_name);
+    $defaults = array('sort_column' => 'menu_order, post_title', 'menu_class' => 'menu', 'echo' => true, 'link_before' => '', 'link_after' => '');
+    $args = wp_parse_args( $args, $defaults );
 
-    // Set up default menu items
-    wp_update_nav_menu_item($menu_id, 0, array(
-        'menu-item-title' =>  __('Home', 'ivanhoe' ),
-        'menu-item-classes' => 'home',
-        'menu-item-url' => home_url( '/' ),
-        'menu-item-status' => 'publish')
-    );
+    /**
+     * Filter the arguments used to generate a page-based menu.
+     *
+     * @since 2.7.0
+     *
+     * @see wp_page_menu()
+     *
+     * @param array $args An array of page menu arguments.
+     */
+    $args = apply_filters( 'wp_page_menu_args', $args );
 
-    wp_update_nav_menu_item($menu_id, 0, array(
-        'menu-item-title' =>  __('Games', 'ivanhoe' ),
-        'menu-item-url' => get_post_type_archive_link('ivanhoe_game'),
-        'menu-item-status' => 'publish')
-    );
+    $menu = '';
+
+    $list_args = $args;
+
+    // Show Home in the menu
+    if ( ! empty($args['show_home']) ) {
+        if ( true === $args['show_home'] || '1' === $args['show_home'] || 1 === $args['show_home'] )
+            $text = __('Home');
+        else
+            $text = $args['show_home'];
+        $class = '';
+        if ( is_front_page() && !is_paged() )
+            $class = 'class="current_page_item"';
+        $menu .= '<li ' . $class . '><a href="' . home_url( '/' ) . '">' . $args['link_before'] . $text . $args['link_after'] . '</a></li>';
+        // If the front page is a page, add it to the exclude list
+        if (get_option('show_on_front') == 'page') {
+            if ( !empty( $list_args['exclude'] ) ) {
+                $list_args['exclude'] .= ',';
+            } else {
+                $list_args['exclude'] = '';
+            }
+            $list_args['exclude'] .= get_option('page_on_front');
+        }
+    }
+
+    $list_args['echo'] = false;
+    $list_args['title_li'] = '';
+    $menu .= str_replace( array( "\r", "\n", "\t" ), '', wp_list_pages($list_args) );
+    $menu .= ivanhoe_nav_menu_items();
+
+    if ( $menu )
+        $menu = '<ul>' . $menu . '</ul>';
+
+    $menu = '<nav class="' . esc_attr($args['menu_class']) . '">' . $menu . "</nav>\n";
+
+    /**
+     * Filter the HTML output of a page-based menu.
+     *
+     * @since 2.7.0
+     *
+     * @see wp_page_menu()
+     *
+     * @param string $menu The HTML output.
+     * @param array  $args An array of arguments.
+     */
+    $menu = apply_filters( 'wp_page_menu', $menu, $args );
+    if ( $args['echo'] )
+        echo $menu;
+    else
+        return $menu;
 }
-
-function ivanhoe_register_nav_menus() {
-    ivanhoe_make_menus();
-    register_nav_menu('ivanhoe_default',__( 'Ivanhoe Default', 'ivanhoe'  ));
-}
-
-add_action( 'after_switch_theme', 'ivanhoe_register_nav_menus' );
 
 /**
  * Append links to the main nav menu.
  */
-function ivanhoe_append_profile_nav_menu($items) {
+function ivanhoe_nav_menu_items() {
     global $wp;
+    $items = '';
+
+    $games_url = get_post_type_archive_link('ivanhoe_game');
+    $games_label = __('Games', 'ivanhoe');
+
+    $items .= "<li class='menu-item menu-item-type-custom "
+        . "menu-item-object-custom menu'>"
+        . "<a href='$games_url'>$games_label</a></li>";
 
     if (is_user_logged_in()) {
-        $user   = wp_get_current_user();
-        $url    = get_author_posts_url($user->ID);
+        $user        = wp_get_current_user();
+        $profile_url = get_author_posts_url($user->ID);
+        $profile_label = __('Profile', 'ivanhoe');
         $items .= "<li class='menu-item menu-item-type-custom "
             . "menu-item-object-custom menu'>"
-            . "<a href='$url'>Profile</a></li>";
+            . "<a href='$profile_url'>$profile_label</a></li>";
     }
 
-    $current_url = add_query_arg( $wp->query_string, '', home_url( $wp->request) );
+    $current_url = add_query_arg( $wp->query_string, '', home_url( $wp->request ) );
 
     $items .= "<li class='menu-item menu-item-type-custom "
             . "menu-item-object-custom menu'>"
             . wp_loginout( $current_url, false )  . "</li>";
 
+    if (!is_user_logged_in() && get_option('users_can_register')) {
+        $registration_url = wp_registration_url();
+        $registration_label = __('Register', 'ivanhoe');
+        $items .= "<li class='menu-item menu-item-type-custom "
+            . "menu-item-object-custom menu'>"
+            . "<a href='$registration_url'>$registration_label</a></li>";
+    }
+
     return $items;
 }
 
-add_filter('wp_nav_menu_items', 'ivanhoe_append_profile_nav_menu');
+function ivanhoe_append_nav_menu_items( $items ) {
+    $items .= ivanhoe_nav_menu_items();
 
+    return $items;
+}
+
+add_filter('wp_nav_menu_items', 'ivanhoe_append_nav_menu_items', 10, 2 );
+register_nav_menu('header', 'header nav' );
 
 /**
  * Things to run when users switch to a different theme.
