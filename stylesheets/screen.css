@@ -460,6 +460,7 @@ article header p {
 /* Global footer */
 /* line 349, ../sass/screen.scss */
 footer[role=contentinfo] {
+  clear: both;
   border-top: 1px solid #ccc;
   padding: 4.5em 0;
 }
@@ -477,7 +478,7 @@ footer[role=contentinfo]:after {
 footer[role=contentinfo], .ie footer[role=contentinfo] {
   *zoom: 1;
 }
-/* line 354, ../sass/screen.scss */
+/* line 355, ../sass/screen.scss */
 footer[role=contentinfo] .ivanhoelink {
   display: block;
   width: 25.42373%;
@@ -485,15 +486,15 @@ footer[role=contentinfo] .ivanhoelink {
   margin-right: auto;
 }
 
-/* line 363, ../sass/screen.scss */
+/* line 364, ../sass/screen.scss */
 .pagination {
   margin-bottom: 50px;
 }
-/* line 365, ../sass/screen.scss */
+/* line 366, ../sass/screen.scss */
 .pagination a {
   text-decoration: none;
 }
-/* line 368, ../sass/screen.scss */
+/* line 369, ../sass/screen.scss */
 .pagination .page-numbers {
   border: 1px solid #004D05;
   border-radius: 15px;
@@ -507,31 +508,31 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline-block;
   border-radius: 10em;
 }
-/* line 380, ../sass/screen.scss */
+/* line 381, ../sass/screen.scss */
 .pagination .page-numbers.current {
   border-color: #004D05;
   background-color: #004D05;
   color: white;
 }
-/* line 385, ../sass/screen.scss */
+/* line 386, ../sass/screen.scss */
 .pagination .page-numbers:hover {
   border-color: #004D05;
   background-color: rgba(0, 77, 5, 0.2);
   color: black;
 }
 
-/* line 393, ../sass/screen.scss */
+/* line 394, ../sass/screen.scss */
 .attribution {
   color: red;
   font-variant: small-caps;
 }
 
-/* line 399, ../sass/screen.scss */
+/* line 400, ../sass/screen.scss */
 .new-post > div {
   margin-bottom: 1.5em;
 }
 
-/* line 404, ../sass/screen.scss */
+/* line 405, ../sass/screen.scss */
 .wp-editor-wrap * {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -539,7 +540,7 @@ footer[role=contentinfo] .ivanhoelink {
   /* Fixes tab height issue. */
 }
 
-/* line 408, ../sass/screen.scss */
+/* line 409, ../sass/screen.scss */
 #wrap {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.9);
@@ -559,7 +560,7 @@ footer[role=contentinfo] .ivanhoelink {
   clear: both;
 }
 
-/* line 415, ../sass/screen.scss */
+/* line 416, ../sass/screen.scss */
 .moves {
   width: 49.15254%;
   float: left;
@@ -568,7 +569,7 @@ footer[role=contentinfo] .ivanhoelink {
   clear: left;
 }
 
-/* line 420, ../sass/screen.scss */
+/* line 421, ../sass/screen.scss */
 .rationales {
   width: 49.15254%;
   float: right;
@@ -577,7 +578,7 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 424, ../sass/screen.scss */
+/* line 425, ../sass/screen.scss */
 .new-ivanhoe-meta {
   width: 32.20339%;
   float: right;
@@ -590,7 +591,7 @@ footer[role=contentinfo] .ivanhoelink {
   padding: 1px 1.5em;
 }
 
-/* line 431, ../sass/screen.scss */
+/* line 432, ../sass/screen.scss */
 .new-ivanhoe-form {
   width: 66.10169%;
   float: left;
@@ -598,7 +599,7 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 435, ../sass/screen.scss */
+/* line 436, ../sass/screen.scss */
 .author .description {
   width: 32.20339%;
   float: right;
@@ -607,14 +608,14 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 439, ../sass/screen.scss */
+/* line 440, ../sass/screen.scss */
 .author .roles {
   width: 66.10169%;
   float: left;
   margin-right: 1.69492%;
   display: inline;
 }
-/* line 442, ../sass/screen.scss */
+/* line 443, ../sass/screen.scss */
 .author .roles .wp-post-image {
   float: right;
   margin-right: 0;
@@ -622,13 +623,13 @@ footer[role=contentinfo] .ivanhoelink {
   margin-top: 1.5em;
 }
 
-/* line 450, ../sass/screen.scss */
+/* line 451, ../sass/screen.scss */
 .commentlist {
   list-style: none;
   margin-left: 0;
   padding-left: 0;
 }
-/* line 455, ../sass/screen.scss */
+/* line 456, ../sass/screen.scss */
 .commentlist li {
   border: 1px dotted #ccc;
   padding: 1.5em;
@@ -647,7 +648,7 @@ footer[role=contentinfo] .ivanhoelink {
 .commentlist li, .ie .commentlist li {
   *zoom: 1;
 }
-/* line 461, ../sass/screen.scss */
+/* line 462, ../sass/screen.scss */
 .commentlist .comment-author {
   width: 49.15254%;
   float: left;
@@ -655,17 +656,17 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
   line-height: 32px;
 }
-/* line 465, ../sass/screen.scss */
+/* line 466, ../sass/screen.scss */
 .commentlist .comment-author img {
   float: left;
   margin-right: 5px;
 }
-/* line 471, ../sass/screen.scss */
+/* line 472, ../sass/screen.scss */
 .commentlist .comment-meta {
   text-align: right;
   line-height: 32px;
 }
-/* line 475, ../sass/screen.scss */
+/* line 476, ../sass/screen.scss */
 .commentlist .comment-meta:after {
   display: table;
   content: ' ';
@@ -675,13 +676,13 @@ footer[role=contentinfo] .ivanhoelink {
   line-height: 0;
   padding: 0;
 }
-/* line 485, ../sass/screen.scss */
+/* line 486, ../sass/screen.scss */
 .commentlist .children {
   margin-left: 8.47458%;
   margin-top: 1.5em;
 }
 
-/* line 493, ../sass/screen.scss */
+/* line 494, ../sass/screen.scss */
 #commentform input[type=text],
 #commentform textarea {
   max-width: 400px;
