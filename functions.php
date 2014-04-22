@@ -900,18 +900,6 @@ function ivanhoe_get_rationales( $post )
 }
 
 /**
- * Closes off dashboard to non-admin users; redirects to homepage.
- */
-function restrict_admin_with_redirect()
-{
-    if ( ! current_user_can( 'manage_options' ) && $_SERVER['PHP_SELF'] != '/wp-admin/admin-ajax.php' ) {
-        wp_redirect( site_url() ); exit;
-    }
-}
-
-add_action( 'admin_init', 'restrict_admin_with_redirect' );
-
-/**
  * Creates a "Read More" link to post at the end of the_excerpt.
  */
 
