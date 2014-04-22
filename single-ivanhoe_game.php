@@ -109,9 +109,14 @@ $role = ivanhoe_user_has_role( $post->ID );
         <?php the_content(); ?>
 
         <div>
+        <form action='<?php echo get_permalink(get_option('ivanhoe_move_page')); ?>' method='post'>
+        <input type='hidden' name='parent_post' value='<?php echo $ivanhoe_game_id; ?>'>
+        <input type='hidden' name='ivanhoe_role_id' value='<?php echo $role->ID; ?>'>
             <h3>Responding to these moves</h3>
             <ul class="basic_element_of_semantically_incoherent_metaphor">
             </ul>
+        <input type='submit' value='Respond to these moves'>
+        </form>
         </div>
     </div>
 
@@ -200,7 +205,7 @@ $role = ivanhoe_user_has_role( $post->ID );
 <script type="text/javascript">
     $('.new_source').click(function(){
         $('.basic_element_of_semantically_incoherent_metaphor').append
-        ("<li onclick=\"$(this).remove();\">" + $(this).data('title') + "</li>");
+        ("<li onclick=\"$(this).remove();\"><input type='hidden' value='" + $(this).data('value') + "' name='move_source[]'>" + $(this).data('title') + "</li>");
     });
 
 </script>

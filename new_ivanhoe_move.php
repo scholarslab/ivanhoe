@@ -4,13 +4,16 @@ Template Name: Ivanhoe Move Form
 */
 
 // If parent_post is set as a query variable, use it, otherwise set to null.
-$ivanhoe_game_id = isset( $_GET['parent_post'] ) ? $_GET['parent_post'] : null;
-$ivanhoe_move_source = isset ( $_GET['move_source'] ) ? $_GET['move_source'] : null;
+$ivanhoe_game_id = isset( $_POST['parent_post'] ) ? $_POST['parent_post'] : null;
+$ivanhoe_move_sources = isset ( $_POST['move_source'] ) ? $_POST['move_source'] : null;
 $ivanhoe_post_title = !empty ( $_POST['post_title'] ) ? $_POST['post_title'] : null;
 $ivanhoe_post_content = !empty ( $_POST['post_content'] ) ? $_POST['post_content'] : null;
 $ivanhoe_post_rationale = !empty ( $_POST['post_rationale']) ? $_POST['post_rationale'] : null;
-$ivanhoe_role_id = isset( $_GET['ivanhoe_role_id'] ) ? $_GET['ivanhoe_role_id'] : null;
+$ivanhoe_role_id = isset( $_POST['ivanhoe_role_id'] ) ? $_POST['ivanhoe_role_id'] : null;
 
+print_r($ivanhoe_game_id);
+print_r($ivanhoe_move_sources); 
+print_r($ivanhoe_role_id);
 // Creates an empty array for error messages.
 $error_messages = array();
 
@@ -40,7 +43,7 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
     update_post_meta(
         $new_ivanhoe_post_id,
         'Ivanhoe Move Source',
-        $ivanhoe_move_source
+        $ivanhoe_move_sources
         );
 
     if ( !empty( $ivanhoe_post_rationale ) )
@@ -74,20 +77,27 @@ get_header();
 
 // Get the game post.
 $ivanhoe_game = get_post($ivanhoe_game_id);
+$message = sprintf(
+        __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>&#8221;.' , 'ivanhoe'), get_permalink($ivanhoe_game_id), $ivanhoe_game->post_title );
 
-$message = sprintf( __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'), get_permalink($ivanhoe_game_id), $ivanhoe_game->post_title );
-
-if ($ivanhoe_move_source) {
-    $ivanhoe_source = get_post($ivanhoe_move_source);
-
-    $message = sprintf(
-        __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>&#8221; in response to the move &#8220;<a href="%3$s">%4$s</a>.&#8221;' , 'ivanhoe' ), 
-        get_permalink($ivanhoe_game_id),
-        $ivanhoe_game->post_title,
-        get_permalink($ivanhoe_move_source),
-        $ivanhoe_source->post_title
-    );
+if ($ivanhoe_move_sources) {
+    $message = $message
+             . ' '
+             . __( 'You are responding to the following moves:', 'ivanhoe' )
+             . '<ul>';
+        foreach($ivanhoe_move_sources as $ivanhoe_move_source) {
+            $ivanhoe_source = get_post($ivanhoe_move_source);
+            $message .= '<li>'
+                      . '<a href="'
+                      . get_permalink($ivanhoe_move_source)
+                      . '">'
+                      . $ivanhoe_source->post_title
+                      . '</a></li>';
+        }
+    $message .= '<ul>';
 }
+// } else {
+//     $message = sprintf( __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'), get_permalink($ivanhoe_game_id), $ivanhoe_game->post_title );}
 
 ?>
 
