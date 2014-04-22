@@ -180,7 +180,7 @@ img {
   display: block;
   text-align: center;
   position: relative;
-  background: #a8a8a8;
+  background: #34612D;
   margin-top: 10px;
   /*Background Gradients */
   background-image: -webkit-gradient(linear, 50% 100%, 50% 0%, color-stop(0%, #34612d), color-stop(100%, #217d0f), color-stop(100%, #b5d1b2));
@@ -193,7 +193,7 @@ img {
   -ms-border-radius: 10px;
   -o-border-radius: 10px;
   border-radius: 10px;
-  border: 1px solid #368DBE;
+  border: 1px solid #217D0F;
   border-top: 1px solid #C3D6DF;
 }
 /* line 150, ../sass/screen.scss */
