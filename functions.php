@@ -925,11 +925,11 @@ add_filter( 'excerpt_more', 'new_excerpt_more' );
  */
 function ivanhoe_enqueue_scripts() {
 
-    // registers modernizr script, stylesheet local path, no dependency, no version, loads in header
-    wp_register_script('ivanhoe_modernizr', get_stylesheet_directory_uri() . '/javascripts/modernizr.custom.min.js', array('jquery'), false, false);
+    wp_register_script('ivanhoe_modernizr', get_stylesheet_directory_uri() . '/javascripts/modernizr.custom.min.js', array(), false, false);
+    wp_register_script('ivanhoe_respond', get_stylesheet_directory_uri() . '/javascripts/respond.min.js', array(), false, false);
 
     // enqueue the scripts for use in theme
-    wp_enqueue_script ('ivanhoe_modernizr');
+    wp_enqueue_script (array('ivanhoe_modernizr', 'ivanhoe_respond'));
 
 }
 
