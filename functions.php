@@ -908,3 +908,19 @@ function new_excerpt_more( $more ) {
     return ' ... <a class="view-more" href="'. get_permalink( get_the_ID() ) . '">' . __('View More', 'your-text-domain') . '</a>';
 }
 add_filter( 'excerpt_more', 'new_excerpt_more' );
+
+/**
+ * Registers our theme's javascripts.
+ */
+function ivanhoe_enqueue_scripts() {
+
+    // registers modernizr script, stylesheet local path, no dependency, no version, loads in header
+    wp_register_script('ivanhoe_modernizr', get_stylesheet_directory_uri() . '/javascripts/modernizr.custom.min.js', array('jquery'), false, false);
+
+    // enqueue the scripts for use in theme
+    wp_enqueue_script ('ivanhoe_modernizr');
+
+}
+
+add_action('wp_enqueue_scripts', 'ivanhoe_enqueue_scripts');
+
