@@ -10,9 +10,7 @@
 
 <?php
 if ( have_posts()) : ?>
-	<div class="pagination">
-        <?php ivanhoe_paginate_links($wp_query);?>
-    </div> 
+    <?php ivanhoe_paginate_links($wp_query);?>
     <?php while(have_posts()) : the_post(); ?>
 <article class="game">
     <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
@@ -21,9 +19,7 @@ if ( have_posts()) : ?>
 </article>
 
 <?php endwhile; ?>
-<div class="pagination">
-	<?php ivanhoe_paginate_links();?>
-</div>
+<?php ivanhoe_paginate_links();?>
 <?php else : ?>
 <p><?php _e( 'Apologies, but no results were found.', 'ivanhoe' ); ?></p>
 <?php endif; ?>

@@ -124,9 +124,7 @@ $role = ivanhoe_user_has_role( $post->ID );
     if ( $wp_query->have_posts()) : ?>
 
     <div id="moves">
-        <div class="pagination">
-            <?php ivanhoe_paginate_links($wp_query);?>
-        </div>
+        <?php ivanhoe_paginate_links($wp_query);?>
 
         <?php
         while($wp_query->have_posts()) : $wp_query->the_post(); ?>
@@ -169,9 +167,7 @@ $role = ivanhoe_user_has_role( $post->ID );
 
         <?php endwhile; ?>
 
-        <div class="pagination">
-            <?php ivanhoe_paginate_links($wp_query);?>
-        </div>
+        <?php ivanhoe_paginate_links($wp_query);?>
     </div>
 
 

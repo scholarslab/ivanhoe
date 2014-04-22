@@ -17,9 +17,7 @@
 </article>
 
 <?php endwhile; ?>
-<div class="pagination">
-	<?php ivanhoe_paginate_links();?>
-</div>
+<?php ivanhoe_paginate_links();?>
 <?php else : ?>
 <p><?php _e( 'Apologies, but no results were found.', 'ivanhoe' ); ?></p>
 <?php endif; ?>
