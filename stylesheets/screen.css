@@ -680,3 +680,9 @@ footer[role=contentinfo] .ivanhoelink {
   margin-left: 8.47458%;
   margin-top: 1.5em;
 }
+
+/* line 493, ../sass/screen.scss */
+#commentform input[type=text],
+#commentform textarea {
+  max-width: 400px;
+}

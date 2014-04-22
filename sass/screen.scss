@@ -488,3 +488,11 @@ footer[role=contentinfo] {
     }
 }
 
+#commentform {
+    input[type=text],
+    textarea {
+        max-width: 400px;
+    }
+}
+
+
