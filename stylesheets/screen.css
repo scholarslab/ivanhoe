@@ -85,19 +85,24 @@ h1 a, h2 a {
   text-decoration: none;
 }
 
+/* line 60, ../sass/screen.scss */
+a, img {
+  border: 0;
+}
+
 /* Forms */
-/* line 61, ../sass/screen.scss */
+/* line 65, ../sass/screen.scss */
 input[type=text], label, textarea {
   display: block;
 }
 
-/* line 63, ../sass/screen.scss */
+/* line 67, ../sass/screen.scss */
 label {
   font-size: 20px;
   font-weight: bold;
 }
 
-/* line 68, ../sass/screen.scss */
+/* line 72, ../sass/screen.scss */
 input[type=text], textarea {
   width: 100%;
   border-radius: 3px;
@@ -105,13 +110,13 @@ input[type=text], textarea {
   border: 1px solid rgba(0, 0, 0, 0.2);
 }
 
-/* line 75, ../sass/screen.scss */
+/* line 79, ../sass/screen.scss */
 textarea {
   display: block;
 }
 
 /* Images */
-/* line 80, ../sass/screen.scss */
+/* line 84, ../sass/screen.scss */
 img {
   max-width: 100%;
   max-height: 100%;
@@ -119,13 +124,13 @@ img {
 }
 
 /* WordPress Generated Classes */
-/* line 87, ../sass/screen.scss */
+/* line 91, ../sass/screen.scss */
 .alignright {
   float: right;
   padding-left: .5em;
 }
 
-/* line 92, ../sass/screen.scss */
+/* line 96, ../sass/screen.scss */
 .aligncenter {
   margin-left: auto;
   margin-right: auto;
@@ -133,25 +138,25 @@ img {
   padding-right: .5em;
 }
 
-/* line 99, ../sass/screen.scss */
+/* line 103, ../sass/screen.scss */
 .alignleft {
   float: left;
   padding-right: .5em;
 }
 
-/* line 104, ../sass/screen.scss */
+/* line 108, ../sass/screen.scss */
 .wp-caption-text {
   font-size: 75%;
   text-align: center;
 }
 
 /* Custom Utility Classes */
-/* line 110, ../sass/screen.scss */
+/* line 114, ../sass/screen.scss */
 .citation {
   font-variant: small-caps;
 }
 
-/* line 114, ../sass/screen.scss */
+/* line 118, ../sass/screen.scss */
 .eyebrow {
   margin: 0;
   color: #777;
@@ -159,12 +164,12 @@ img {
   font-weight: bold;
 }
 
-/* line 121, ../sass/screen.scss */
+/* line 125, ../sass/screen.scss */
 .eyebrow + * {
   margin-top: 0 !important;
 }
 
-/* line 125, ../sass/screen.scss */
+/* line 129, ../sass/screen.scss */
 .button {
   width: 200px;
   height: 30px;
@@ -191,17 +196,17 @@ img {
   border: 1px solid #368DBE;
   border-top: 1px solid #C3D6DF;
 }
-/* line 146, ../sass/screen.scss */
+/* line 150, ../sass/screen.scss */
 .button:link, .button:visited {
   color: white;
   color: rgba(255, 255, 255, 0.85);
 }
-/* line 151, ../sass/screen.scss */
+/* line 155, ../sass/screen.scss */
 .button:hover, .button:active {
   color: white;
 }
 
-/* line 157, ../sass/screen.scss */
+/* line 161, ../sass/screen.scss */
 .return-button {
   margin-top: 20px;
   text-align: right;
@@ -209,7 +214,7 @@ img {
 }
 
 /* Banner */
-/* line 165, ../sass/screen.scss */
+/* line 169, ../sass/screen.scss */
 header[role=banner] {
   border-bottom: 1px solid #ccc;
 }
@@ -227,35 +232,35 @@ header[role=banner]:after {
 header[role=banner], .ie header[role=banner] {
   *zoom: 1;
 }
-/* line 169, ../sass/screen.scss */
+/* line 173, ../sass/screen.scss */
 header[role=banner] h1 {
   font-size: 2.25em;
   line-height: 1.33333em;
 }
 
 /* Main Navigation */
-/* line 176, ../sass/screen.scss */
+/* line 180, ../sass/screen.scss */
 nav {
   display: block;
   float: right;
   text-align: right;
   width: 60%;
 }
-/* line 182, ../sass/screen.scss */
+/* line 186, ../sass/screen.scss */
 nav a {
   text-decoration: none;
   color: #777;
 }
-/* line 187, ../sass/screen.scss */
+/* line 191, ../sass/screen.scss */
 nav ul {
   list-style: none;
   padding-left: 0;
 }
-/* line 192, ../sass/screen.scss */
+/* line 196, ../sass/screen.scss */
 nav li {
   display: inline-block;
 }
-/* line 195, ../sass/screen.scss */
+/* line 199, ../sass/screen.scss */
 nav li + li:before {
   display: inline-block;
   margin: 0 .25em;
@@ -264,7 +269,7 @@ nav li + li:before {
 }
 
 /* Main Content Container */
-/* line 205, ../sass/screen.scss */
+/* line 209, ../sass/screen.scss */
 main {
   clear: both;
   overflow: hidden;
@@ -274,7 +279,7 @@ main {
   padding-bottom: 20px;
 }
 
-/* line 214, ../sass/screen.scss */
+/* line 218, ../sass/screen.scss */
 #game-data, .source-response-container {
   width: 32.20339%;
   float: right;
@@ -287,14 +292,14 @@ main {
   border: dotted 1px #ccc;
   padding: 1px 1.5em;
 }
-/* line 223, ../sass/screen.scss */
+/* line 227, ../sass/screen.scss */
 #game-data .role .image-container, .source-response-container .role .image-container {
   float: left;
   width: 75px;
   margin-right: 1em;
 }
 
-/* line 231, ../sass/screen.scss */
+/* line 235, ../sass/screen.scss */
 #moves {
   width: 66.10169%;
   float: left;
@@ -303,17 +308,17 @@ main {
   text-align: justify;
 }
 
-/* line 236, ../sass/screen.scss */
+/* line 240, ../sass/screen.scss */
 .discussion-source {
   border-bottom: 1px dotted gray;
 }
 
-/* line 240, ../sass/screen.scss */
+/* line 244, ../sass/screen.scss */
 .discussion-response {
   border-bottom: 1px dotted gray;
 }
 
-/* line 244, ../sass/screen.scss */
+/* line 248, ../sass/screen.scss */
 .options {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -324,7 +329,7 @@ main {
   text-align: center;
 }
 
-/* line 251, ../sass/screen.scss */
+/* line 255, ../sass/screen.scss */
 article {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.9);
@@ -341,7 +346,7 @@ article {
 
     /* Articles with a class of game. */
 }
-/* line 260, ../sass/screen.scss */
+/* line 264, ../sass/screen.scss */
 .single main > article, .author main > article {
   padding: 0;
   background: none;
@@ -361,23 +366,23 @@ article:after {
 article, .ie article {
   *zoom: 1;
 }
-/* line 270, ../sass/screen.scss */
+/* line 274, ../sass/screen.scss */
 article.role {
   width: 100%;
   float: left;
   margin-right: 1.69492%;
   display: inline;
 }
-/* line 273, ../sass/screen.scss */
+/* line 277, ../sass/screen.scss */
 article.role .wp-post-image {
   float: left;
   margin-right: 1.5em;
 }
-/* line 287, ../sass/screen.scss */
+/* line 291, ../sass/screen.scss */
 article.game article {
   padding: 1.5em;
 }
-/* line 291, ../sass/screen.scss */
+/* line 295, ../sass/screen.scss */
 article.game header {
   width: 100%;
   float: left;
@@ -387,14 +392,14 @@ article.game header {
   margin-bottom: 1.5em;
   padding: 0;
 }
-/* line 298, ../sass/screen.scss */
+/* line 302, ../sass/screen.scss */
 article.game h1 {
   font-size: 400%;
   font-variant: small-caps;
   margin-bottom: 5px;
   margin-top: 5px;
 }
-/* line 306, ../sass/screen.scss */
+/* line 310, ../sass/screen.scss */
 article.game .move h1 {
   font-size: 200%;
   margin-bottom: 5px;
@@ -414,12 +419,12 @@ article header:after {
 article header, .ie article header {
   *zoom: 1;
 }
-/* line 317, ../sass/screen.scss */
+/* line 321, ../sass/screen.scss */
 article header .button {
   float: right;
   display: inline;
 }
-/* line 322, ../sass/screen.scss */
+/* line 326, ../sass/screen.scss */
 article header p {
   width: 49.15254%;
   float: left;
@@ -427,7 +432,7 @@ article header p {
   display: inline;
 }
 
-/* line 329, ../sass/screen.scss */
+/* line 333, ../sass/screen.scss */
 .game-discussion-source {
   width: 43.18182%;
   float: left;
@@ -435,7 +440,7 @@ article header p {
   display: inline;
 }
 
-/* line 333, ../sass/screen.scss */
+/* line 337, ../sass/screen.scss */
 .game-discussion-response {
   width: 43.18182%;
   float: right;
@@ -444,7 +449,7 @@ article header p {
   display: inline;
 }
 
-/* line 337, ../sass/screen.scss */
+/* line 341, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   color: #999;
@@ -453,7 +458,7 @@ article header p {
 }
 
 /* Global footer */
-/* line 345, ../sass/screen.scss */
+/* line 349, ../sass/screen.scss */
 footer[role=contentinfo] {
   border-top: 1px solid #ccc;
   padding: 4.5em 0;
@@ -472,7 +477,7 @@ footer[role=contentinfo]:after {
 footer[role=contentinfo], .ie footer[role=contentinfo] {
   *zoom: 1;
 }
-/* line 350, ../sass/screen.scss */
+/* line 354, ../sass/screen.scss */
 footer[role=contentinfo] .ivanhoelink {
   display: block;
   width: 25.42373%;
@@ -480,15 +485,15 @@ footer[role=contentinfo] .ivanhoelink {
   margin-right: auto;
 }
 
-/* line 359, ../sass/screen.scss */
+/* line 363, ../sass/screen.scss */
 .pagination {
   margin-bottom: 50px;
 }
-/* line 361, ../sass/screen.scss */
+/* line 365, ../sass/screen.scss */
 .pagination a {
   text-decoration: none;
 }
-/* line 364, ../sass/screen.scss */
+/* line 368, ../sass/screen.scss */
 .pagination .page-numbers {
   border: 1px solid #004D05;
   border-radius: 15px;
@@ -502,31 +507,31 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline-block;
   border-radius: 10em;
 }
-/* line 376, ../sass/screen.scss */
+/* line 380, ../sass/screen.scss */
 .pagination .page-numbers.current {
   border-color: #004D05;
   background-color: #004D05;
   color: white;
 }
-/* line 381, ../sass/screen.scss */
+/* line 385, ../sass/screen.scss */
 .pagination .page-numbers:hover {
   border-color: #004D05;
   background-color: rgba(0, 77, 5, 0.2);
   color: black;
 }
 
-/* line 389, ../sass/screen.scss */
+/* line 393, ../sass/screen.scss */
 .attribution {
   color: red;
   font-variant: small-caps;
 }
 
-/* line 395, ../sass/screen.scss */
+/* line 399, ../sass/screen.scss */
 .new-post > div {
   margin-bottom: 1.5em;
 }
 
-/* line 400, ../sass/screen.scss */
+/* line 404, ../sass/screen.scss */
 .wp-editor-wrap * {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -534,7 +539,7 @@ footer[role=contentinfo] .ivanhoelink {
   /* Fixes tab height issue. */
 }
 
-/* line 404, ../sass/screen.scss */
+/* line 408, ../sass/screen.scss */
 #wrap {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.9);
@@ -554,7 +559,7 @@ footer[role=contentinfo] .ivanhoelink {
   clear: both;
 }
 
-/* line 411, ../sass/screen.scss */
+/* line 415, ../sass/screen.scss */
 .moves {
   width: 49.15254%;
   float: left;
@@ -563,7 +568,7 @@ footer[role=contentinfo] .ivanhoelink {
   clear: left;
 }
 
-/* line 416, ../sass/screen.scss */
+/* line 420, ../sass/screen.scss */
 .rationales {
   width: 49.15254%;
   float: right;
@@ -572,7 +577,7 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 420, ../sass/screen.scss */
+/* line 424, ../sass/screen.scss */
 .new-ivanhoe-meta {
   width: 32.20339%;
   float: right;
@@ -585,7 +590,7 @@ footer[role=contentinfo] .ivanhoelink {
   padding: 1px 1.5em;
 }
 
-/* line 427, ../sass/screen.scss */
+/* line 431, ../sass/screen.scss */
 .new-ivanhoe-form {
   width: 66.10169%;
   float: left;
@@ -593,7 +598,7 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 431, ../sass/screen.scss */
+/* line 435, ../sass/screen.scss */
 .author .description {
   width: 32.20339%;
   float: right;
@@ -602,14 +607,14 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 435, ../sass/screen.scss */
+/* line 439, ../sass/screen.scss */
 .author .roles {
   width: 66.10169%;
   float: left;
   margin-right: 1.69492%;
   display: inline;
 }
-/* line 438, ../sass/screen.scss */
+/* line 442, ../sass/screen.scss */
 .author .roles .wp-post-image {
   float: right;
   margin-right: 0;
@@ -617,13 +622,13 @@ footer[role=contentinfo] .ivanhoelink {
   margin-top: 1.5em;
 }
 
-/* line 446, ../sass/screen.scss */
+/* line 450, ../sass/screen.scss */
 .commentlist {
   list-style: none;
   margin-left: 0;
   padding-left: 0;
 }
-/* line 451, ../sass/screen.scss */
+/* line 455, ../sass/screen.scss */
 .commentlist li {
   border: 1px dotted #ccc;
   padding: 1.5em;
@@ -642,7 +647,7 @@ footer[role=contentinfo] .ivanhoelink {
 .commentlist li, .ie .commentlist li {
   *zoom: 1;
 }
-/* line 457, ../sass/screen.scss */
+/* line 461, ../sass/screen.scss */
 .commentlist .comment-author {
   width: 49.15254%;
   float: left;
@@ -650,17 +655,17 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
   line-height: 32px;
 }
-/* line 461, ../sass/screen.scss */
+/* line 465, ../sass/screen.scss */
 .commentlist .comment-author img {
   float: left;
   margin-right: 5px;
 }
-/* line 467, ../sass/screen.scss */
+/* line 471, ../sass/screen.scss */
 .commentlist .comment-meta {
   text-align: right;
   line-height: 32px;
 }
-/* line 471, ../sass/screen.scss */
+/* line 475, ../sass/screen.scss */
 .commentlist .comment-meta:after {
   display: table;
   content: ' ';
@@ -670,7 +675,7 @@ footer[role=contentinfo] .ivanhoelink {
   line-height: 0;
   padding: 0;
 }
-/* line 481, ../sass/screen.scss */
+/* line 485, ../sass/screen.scss */
 .commentlist .children {
   margin-left: 8.47458%;
   margin-top: 1.5em;

@@ -57,6 +57,10 @@ a {
     }
 }
 
+a, img {
+    border:0;
+}
+
 /* Forms */
 input[type=text], label, textarea{display: block;}
 
