@@ -420,6 +420,7 @@ footer[role=contentinfo] {
 
 .rationales{
     @include span-columns(6 omega);
+    clear:right;
 }
 
 .new-ivanhoe-meta {

@@ -576,9 +576,10 @@ footer[role=contentinfo] .ivanhoelink {
   margin-right: 0;
   *margin-left: -20px;
   display: inline;
+  clear: right;
 }
 
-/* line 425, ../sass/screen.scss */
+/* line 426, ../sass/screen.scss */
 .new-ivanhoe-meta {
   width: 32.20339%;
   float: right;
@@ -591,7 +592,7 @@ footer[role=contentinfo] .ivanhoelink {
   padding: 1px 1.5em;
 }
 
-/* line 432, ../sass/screen.scss */
+/* line 433, ../sass/screen.scss */
 .new-ivanhoe-form {
   width: 66.10169%;
   float: left;
@@ -599,7 +600,7 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 436, ../sass/screen.scss */
+/* line 437, ../sass/screen.scss */
 .author .description {
   width: 32.20339%;
   float: right;
@@ -608,14 +609,14 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
 }
 
-/* line 440, ../sass/screen.scss */
+/* line 441, ../sass/screen.scss */
 .author .roles {
   width: 66.10169%;
   float: left;
   margin-right: 1.69492%;
   display: inline;
 }
-/* line 443, ../sass/screen.scss */
+/* line 444, ../sass/screen.scss */
 .author .roles .wp-post-image {
   float: right;
   margin-right: 0;
@@ -623,13 +624,13 @@ footer[role=contentinfo] .ivanhoelink {
   margin-top: 1.5em;
 }
 
-/* line 451, ../sass/screen.scss */
+/* line 452, ../sass/screen.scss */
 .commentlist {
   list-style: none;
   margin-left: 0;
   padding-left: 0;
 }
-/* line 456, ../sass/screen.scss */
+/* line 457, ../sass/screen.scss */
 .commentlist li {
   border: 1px dotted #ccc;
   padding: 1.5em;
@@ -648,7 +649,7 @@ footer[role=contentinfo] .ivanhoelink {
 .commentlist li, .ie .commentlist li {
   *zoom: 1;
 }
-/* line 462, ../sass/screen.scss */
+/* line 463, ../sass/screen.scss */
 .commentlist .comment-author {
   width: 49.15254%;
   float: left;
@@ -656,17 +657,17 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline;
   line-height: 32px;
 }
-/* line 466, ../sass/screen.scss */
+/* line 467, ../sass/screen.scss */
 .commentlist .comment-author img {
   float: left;
   margin-right: 5px;
 }
-/* line 472, ../sass/screen.scss */
+/* line 473, ../sass/screen.scss */
 .commentlist .comment-meta {
   text-align: right;
   line-height: 32px;
 }
-/* line 476, ../sass/screen.scss */
+/* line 477, ../sass/screen.scss */
 .commentlist .comment-meta:after {
   display: table;
   content: ' ';
@@ -676,13 +677,13 @@ footer[role=contentinfo] .ivanhoelink {
   line-height: 0;
   padding: 0;
 }
-/* line 486, ../sass/screen.scss */
+/* line 487, ../sass/screen.scss */
 .commentlist .children {
   margin-left: 8.47458%;
   margin-top: 1.5em;
 }
 
-/* line 494, ../sass/screen.scss */
+/* line 495, ../sass/screen.scss */
 #commentform input[type=text],
 #commentform textarea {
   max-width: 400px;
