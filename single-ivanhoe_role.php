@@ -9,7 +9,7 @@
     
     <?php the_content(); ?>	
 
-    <p><a class="return-button" href="<?php echo get_permalink( $post->post_parent ); ?>"><?php _e( 'Return to game', 'ivanhoe' ); ?></a></p>
+    <p class="return-button"><a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php _e( 'Return to game', 'ivanhoe' ); ?></a></p>
 
     <div class="moves">
 
