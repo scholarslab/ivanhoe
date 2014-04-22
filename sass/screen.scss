@@ -190,9 +190,11 @@ nav {
     }
 
     li {
-        display:inline;
+        display:inline-block;
 
         & + li:before {
+            display:inline-block;
+            margin: 0 .25em;
             content: " · ";
             color: #ccc;
         }
