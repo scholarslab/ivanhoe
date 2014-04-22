@@ -108,6 +108,11 @@ $role = ivanhoe_user_has_role( $post->ID );
 
         <?php the_content(); ?>
 
+        <div>
+            <h3>Responding to these moves</h3>
+            <ul class="basic_element_of_semantically_incoherent_metaphor">
+            </ul>
+        </div>
     </div>
 
     <?php
@@ -135,7 +140,9 @@ $role = ivanhoe_user_has_role( $post->ID );
                 <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
                 <p><span class="byline"><?php the_author_posts_link(); ?></span>
             · <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
-                <?php echo ivanhoe_move_link( $post ); ?>
+                <?php // echo ivanhoe_move_link( $post );
+                $ivanhoe_post_id=$post->ID; ?>
+                    <span class="new_source" data-title="<?php echo get_the_title($ivanhoe_post_id); ?>" data-value="<?php echo $ivanhoe_post_id; ?>">Add to Moves</span>
             </header>
 
             <div class="excerpt">
@@ -189,3 +196,11 @@ $role = ivanhoe_user_has_role( $post->ID );
 <?php endwhile; endif; ?>
 
 <?php get_footer(); ?>
+
+<script type="text/javascript">
+    $('.new_source').click(function(){
+        $('.basic_element_of_semantically_incoherent_metaphor').append
+        ("<li onclick=\"$(this).remove();\">" + $(this).data('title') + "</li>");
+    });
+
+</script>
