@@ -6,7 +6,7 @@
 
 html {
     margin:0;
-    padding:40px;
+    padding:10px;
 }
 
 body {
@@ -18,7 +18,7 @@ body {
 
 h1 {
     font-weight: 200;
-    @include adjust-font-size-to(40px);
+    @include adjust-font-size-to(30px);
 }
 
 h2 {
@@ -166,20 +166,14 @@ img {
 /* Banner */
 header[role=banner] {
     @include clearfix;
-    border-bottom: 1px solid #ccc;
-
-    h1 {
-        @include adjust-font-size-to(36px);
-    }
-
 }
 
 /* Main Navigation */
 nav {
     display:block;
-    float:right;
-    text-align:right;
-    width: 60%;
+    text-align:center;
+    border: 1px solid #ccc;
+    border-width: 1px 0;
 
     a {
         text-decoration:none;
@@ -214,7 +208,6 @@ main {
 }
 
 #game-data, .source-response-container {
-    @include span-columns(4 omega);
     background: #eee;
     background: rgba(black, 0.05);
     clear: both;
@@ -228,11 +221,6 @@ main {
             margin-right: 1em;
         }
     }
-}
-
-#moves{
-    @include span-columns(8);
-    text-align: justify;
 }
 
 .discussion-source {
@@ -317,23 +305,11 @@ article {
         @include clearfix;
 
         .button {
-            float: right;
-            display: inline;
+            margin-bottom:1em;
         }
 
-        p {
-            @include span-columns(6);
-        }
     }
 
-}
-
-.game-discussion-source {
-    @include span-columns(4,9);
-}
-
-.game-discussion-response {
-    @include span-columns(4 omega,9);
 }
 
 .move .meta {
@@ -352,7 +328,7 @@ footer[role=contentinfo] {
 
     .ivanhoelink {
         display:block;
-        width: space(3);
+        width: space(8);
         margin-left:auto;
         margin-right:auto;
     }
@@ -409,35 +385,21 @@ footer[role=contentinfo] {
     background-color: rgba(white, 0.9);
     border: 1px solid #ccc;
     @include container;
-}
-
-.moves{
-    @include span-columns(6);
-    clear: left;
-}
-
-.rationales{
-    @include span-columns(6 omega);
-    clear:right;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .new-ivanhoe-meta {
-    @include span-columns(4 omega);
     background: #eee;
     background: rgba(black, 0.05);
     border:1px solid #ccc;
     padding: 1px rhythm(1);
 }
-.new-ivanhoe-form {
-    @include span-columns(8);
-}
 
 .author .description {
-    @include span-columns(4 omega);
 }
 
 .author .roles {
-    @include span-columns(8);
 
     .wp-post-image {
         float:right;
@@ -459,7 +421,6 @@ footer[role=contentinfo] {
     }
 
     .comment-author {
-        @include span-columns(6);
         line-height: 32px;
 
         img {
@@ -495,4 +456,98 @@ footer[role=contentinfo] {
     }
 }
 
+
+/* Styles for viewports greater than 700px wide. */
+@media (min-width: 700px) {
+
+html {
+    padding:40px;
+}
+
+h1 {
+    @include adjust-font-size-to(40px);
+}
+
+#wrap {
+    @include container;
+}
+
+nav {
+    text-align:right;
+    border-width: 0 0 1px;
+}
+
+#game-data, .source-response-container {
+    @include span-columns(4 omega);
+}
+
+#moves{
+    @include span-columns(8);
+}
+
+article {
+    header {
+        .button {
+            float: right;
+            display: inline;
+        }
+
+        p {
+            @include span-columns(6);
+        }
+    }
+
+}
+
+.new-ivanhoe-meta {
+    @include span-columns(4 omega);
+}
+
+.new-ivanhoe-form {
+    @include span-columns(8);
+}
+
+.author .description {
+    @include span-columns(4 omega);
+}
+
+.author .roles {
+    @include span-columns(8);
+
+    .wp-post-image {
+        float:right;
+        margin-right:0;
+        margin-left: rhythm(1);
+        margin-top: rhythm(1);
+    }
+}
+
+.game-discussion-source {
+    @include span-columns(4,9);
+}
+
+.game-discussion-response {
+    @include span-columns(4 omega,9);
+}
+
+.moves{
+    @include span-columns(6);
+    clear: left;
+}
+
+.rationales{
+    @include span-columns(6 omega);
+    clear:right;
+}
+
+.commentlist .commentauthor {
+    @include span-columns(6);
+}
+
+footer[role=contentinfo] .ivanhoelink {
+    width: space(3);
+}
+
+
+}
 

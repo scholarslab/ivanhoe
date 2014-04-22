@@ -9,7 +9,7 @@
 /* line 7, ../sass/screen.scss */
 html {
   margin: 0;
-  padding: 40px;
+  padding: 10px;
 }
 
 /* line 12, ../sass/screen.scss */
@@ -23,8 +23,8 @@ body {
 /* line 19, ../sass/screen.scss */
 h1 {
   font-weight: 200;
-  font-size: 2.5em;
-  line-height: 1.2em;
+  font-size: 1.875em;
+  line-height: 1.6em;
 }
 
 /* line 24, ../sass/screen.scss */
@@ -212,10 +212,6 @@ img {
 }
 
 /* Banner */
-/* line 167, ../sass/screen.scss */
-header[role=banner] {
-  border-bottom: 1px solid #ccc;
-}
 /* line 3, ../sass/_mixins.scss */
 header[role=banner]:before, header[role=banner]:after {
   content: "";
@@ -230,35 +226,30 @@ header[role=banner]:after {
 header[role=banner], .ie header[role=banner] {
   *zoom: 1;
 }
-/* line 171, ../sass/screen.scss */
-header[role=banner] h1 {
-  font-size: 2.25em;
-  line-height: 1.33333em;
-}
 
 /* Main Navigation */
-/* line 178, ../sass/screen.scss */
+/* line 172, ../sass/screen.scss */
 nav {
   display: block;
-  float: right;
-  text-align: right;
-  width: 60%;
+  text-align: center;
+  border: 1px solid #ccc;
+  border-width: 1px 0;
 }
-/* line 184, ../sass/screen.scss */
+/* line 178, ../sass/screen.scss */
 nav a {
   text-decoration: none;
   color: #777;
 }
-/* line 189, ../sass/screen.scss */
+/* line 183, ../sass/screen.scss */
 nav ul {
   list-style: none;
   padding-left: 0;
 }
-/* line 194, ../sass/screen.scss */
+/* line 188, ../sass/screen.scss */
 nav li {
   display: inline-block;
 }
-/* line 197, ../sass/screen.scss */
+/* line 191, ../sass/screen.scss */
 nav li + li:before {
   display: inline-block;
   margin: 0 .25em;
@@ -267,7 +258,7 @@ nav li + li:before {
 }
 
 /* Main Content Container */
-/* line 207, ../sass/screen.scss */
+/* line 201, ../sass/screen.scss */
 main {
   clear: both;
   overflow: hidden;
@@ -277,46 +268,32 @@ main {
   padding-bottom: 20px;
 }
 
-/* line 216, ../sass/screen.scss */
+/* line 210, ../sass/screen.scss */
 #game-data, .source-response-container {
-  width: 32.20339%;
-  float: right;
-  margin-right: 0;
-  *margin-left: -20px;
-  display: inline;
   background: #eee;
   background: rgba(0, 0, 0, 0.05);
   clear: both;
   border: dotted 1px #ccc;
   padding: 1px 1.5em;
 }
-/* line 225, ../sass/screen.scss */
+/* line 218, ../sass/screen.scss */
 #game-data .role .image-container, .source-response-container .role .image-container {
   float: left;
   width: 75px;
   margin-right: 1em;
 }
 
-/* line 233, ../sass/screen.scss */
-#moves {
-  width: 66.10169%;
-  float: left;
-  margin-right: 1.69492%;
-  display: inline;
-  text-align: justify;
-}
-
-/* line 238, ../sass/screen.scss */
+/* line 226, ../sass/screen.scss */
 .discussion-source {
   border-bottom: 1px dotted gray;
 }
 
-/* line 242, ../sass/screen.scss */
+/* line 230, ../sass/screen.scss */
 .discussion-response {
   border-bottom: 1px dotted gray;
 }
 
-/* line 246, ../sass/screen.scss */
+/* line 234, ../sass/screen.scss */
 .options {
   margin-top: 20px;
   margin-bottom: 20px;
@@ -327,7 +304,7 @@ main {
   text-align: center;
 }
 
-/* line 253, ../sass/screen.scss */
+/* line 241, ../sass/screen.scss */
 article {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.9);
@@ -344,7 +321,7 @@ article {
 
     /* Articles with a class of game. */
 }
-/* line 262, ../sass/screen.scss */
+/* line 250, ../sass/screen.scss */
 .single main > article, .author main > article {
   padding: 0;
   background: none;
@@ -364,23 +341,23 @@ article:after {
 article, .ie article {
   *zoom: 1;
 }
-/* line 272, ../sass/screen.scss */
+/* line 260, ../sass/screen.scss */
 article.role {
   width: 100%;
   float: left;
   margin-right: 1.69492%;
   display: inline;
 }
-/* line 275, ../sass/screen.scss */
+/* line 263, ../sass/screen.scss */
 article.role .wp-post-image {
   float: left;
   margin-right: 1.5em;
 }
-/* line 289, ../sass/screen.scss */
+/* line 277, ../sass/screen.scss */
 article.game article {
   padding: 1.5em;
 }
-/* line 293, ../sass/screen.scss */
+/* line 281, ../sass/screen.scss */
 article.game header {
   width: 100%;
   float: left;
@@ -390,14 +367,14 @@ article.game header {
   margin-bottom: 1.5em;
   padding: 0;
 }
-/* line 300, ../sass/screen.scss */
+/* line 288, ../sass/screen.scss */
 article.game h1 {
   font-size: 400%;
   font-variant: small-caps;
   margin-bottom: 5px;
   margin-top: 5px;
 }
-/* line 308, ../sass/screen.scss */
+/* line 296, ../sass/screen.scss */
 article.game .move h1 {
   font-size: 200%;
   margin-bottom: 5px;
@@ -417,37 +394,12 @@ article header:after {
 article header, .ie article header {
   *zoom: 1;
 }
-/* line 319, ../sass/screen.scss */
+/* line 307, ../sass/screen.scss */
 article header .button {
-  float: right;
-  display: inline;
-}
-/* line 324, ../sass/screen.scss */
-article header p {
-  width: 49.15254%;
-  float: left;
-  margin-right: 1.69492%;
-  display: inline;
+  margin-bottom: 1em;
 }
 
-/* line 331, ../sass/screen.scss */
-.game-discussion-source {
-  width: 43.18182%;
-  float: left;
-  margin-right: 2.27273%;
-  display: inline;
-}
-
-/* line 335, ../sass/screen.scss */
-.game-discussion-response {
-  width: 43.18182%;
-  float: right;
-  margin-right: 0;
-  *margin-left: -20px;
-  display: inline;
-}
-
-/* line 339, ../sass/screen.scss */
+/* line 315, ../sass/screen.scss */
 .move .meta {
   font-size: 90%;
   color: #999;
@@ -456,7 +408,7 @@ article header p {
 }
 
 /* Global footer */
-/* line 347, ../sass/screen.scss */
+/* line 323, ../sass/screen.scss */
 footer[role=contentinfo] {
   clear: both;
   border-top: 1px solid #ccc;
@@ -476,23 +428,23 @@ footer[role=contentinfo]:after {
 footer[role=contentinfo], .ie footer[role=contentinfo] {
   *zoom: 1;
 }
-/* line 353, ../sass/screen.scss */
+/* line 329, ../sass/screen.scss */
 footer[role=contentinfo] .ivanhoelink {
   display: block;
-  width: 25.42373%;
+  width: 67.79661%;
   margin-left: auto;
   margin-right: auto;
 }
 
-/* line 362, ../sass/screen.scss */
+/* line 338, ../sass/screen.scss */
 .pagination {
   margin-bottom: 50px;
 }
-/* line 364, ../sass/screen.scss */
+/* line 340, ../sass/screen.scss */
 .pagination a {
   text-decoration: none;
 }
-/* line 367, ../sass/screen.scss */
+/* line 343, ../sass/screen.scss */
 .pagination .page-numbers {
   border: 1px solid #004D05;
   border-radius: 15px;
@@ -506,31 +458,31 @@ footer[role=contentinfo] .ivanhoelink {
   display: inline-block;
   border-radius: 10em;
 }
-/* line 379, ../sass/screen.scss */
+/* line 355, ../sass/screen.scss */
 .pagination .page-numbers.current {
   border-color: #004D05;
   background-color: #004D05;
   color: white;
 }
-/* line 384, ../sass/screen.scss */
+/* line 360, ../sass/screen.scss */
 .pagination .page-numbers:hover {
   border-color: #004D05;
   background-color: rgba(0, 77, 5, 0.2);
   color: black;
 }
 
-/* line 392, ../sass/screen.scss */
+/* line 368, ../sass/screen.scss */
 .attribution {
   color: red;
   font-variant: small-caps;
 }
 
-/* line 398, ../sass/screen.scss */
+/* line 374, ../sass/screen.scss */
 .new-post > div {
   margin-bottom: 1.5em;
 }
 
-/* line 403, ../sass/screen.scss */
+/* line 379, ../sass/screen.scss */
 .wp-editor-wrap * {
   -webkit-box-sizing: content-box;
   -moz-box-sizing: content-box;
@@ -538,7 +490,7 @@ footer[role=contentinfo] .ivanhoelink {
   /* Fixes tab height issue. */
 }
 
-/* line 407, ../sass/screen.scss */
+/* line 383, ../sass/screen.scss */
 #wrap {
   background-color: white;
   background-color: rgba(255, 255, 255, 0.9);
@@ -550,6 +502,8 @@ footer[role=contentinfo] .ivanhoelink {
   padding-right: 20px;
   margin-left: auto;
   margin-right: auto;
+  padding-left: 10px;
+  padding-right: 10px;
 }
 /* line 38, ../../../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
 #wrap:after {
@@ -558,63 +512,15 @@ footer[role=contentinfo] .ivanhoelink {
   clear: both;
 }
 
-/* line 414, ../sass/screen.scss */
-.moves {
-  width: 49.15254%;
-  float: left;
-  margin-right: 1.69492%;
-  display: inline;
-  clear: left;
-}
-
-/* line 419, ../sass/screen.scss */
-.rationales {
-  width: 49.15254%;
-  float: right;
-  margin-right: 0;
-  *margin-left: -20px;
-  display: inline;
-  clear: right;
-}
-
-/* line 424, ../sass/screen.scss */
+/* line 392, ../sass/screen.scss */
 .new-ivanhoe-meta {
-  width: 32.20339%;
-  float: right;
-  margin-right: 0;
-  *margin-left: -20px;
-  display: inline;
   background: #eee;
   background: rgba(0, 0, 0, 0.05);
   border: 1px solid #ccc;
   padding: 1px 1.5em;
 }
 
-/* line 431, ../sass/screen.scss */
-.new-ivanhoe-form {
-  width: 66.10169%;
-  float: left;
-  margin-right: 1.69492%;
-  display: inline;
-}
-
-/* line 435, ../sass/screen.scss */
-.author .description {
-  width: 32.20339%;
-  float: right;
-  margin-right: 0;
-  *margin-left: -20px;
-  display: inline;
-}
-
-/* line 439, ../sass/screen.scss */
-.author .roles {
-  width: 66.10169%;
-  float: left;
-  margin-right: 1.69492%;
-  display: inline;
-}
-/* line 442, ../sass/screen.scss */
+/* line 404, ../sass/screen.scss */
 .author .roles .wp-post-image {
   float: right;
   margin-right: 0;
@@ -622,13 +528,13 @@ footer[role=contentinfo] .ivanhoelink {
   margin-top: 1.5em;
 }
 
-/* line 450, ../sass/screen.scss */
+/* line 412, ../sass/screen.scss */
 .commentlist {
   list-style: none;
   margin-left: 0;
   padding-left: 0;
 }
-/* line 455, ../sass/screen.scss */
+/* line 417, ../sass/screen.scss */
 .commentlist li {
   border: 1px dotted #ccc;
   padding: 1.5em;
@@ -647,25 +553,21 @@ footer[role=contentinfo] .ivanhoelink {
 .commentlist li, .ie .commentlist li {
   *zoom: 1;
 }
-/* line 461, ../sass/screen.scss */
+/* line 423, ../sass/screen.scss */
 .commentlist .comment-author {
-  width: 49.15254%;
-  float: left;
-  margin-right: 1.69492%;
-  display: inline;
   line-height: 32px;
 }
-/* line 465, ../sass/screen.scss */
+/* line 426, ../sass/screen.scss */
 .commentlist .comment-author img {
   float: left;
   margin-right: 5px;
 }
-/* line 471, ../sass/screen.scss */
+/* line 432, ../sass/screen.scss */
 .commentlist .comment-meta {
   text-align: right;
   line-height: 32px;
 }
-/* line 475, ../sass/screen.scss */
+/* line 436, ../sass/screen.scss */
 .commentlist .comment-meta:after {
   display: table;
   content: ' ';
@@ -675,14 +577,171 @@ footer[role=contentinfo] .ivanhoelink {
   line-height: 0;
   padding: 0;
 }
-/* line 485, ../sass/screen.scss */
+/* line 446, ../sass/screen.scss */
 .commentlist .children {
   margin-left: 8.47458%;
   margin-top: 1.5em;
 }
 
-/* line 493, ../sass/screen.scss */
+/* line 454, ../sass/screen.scss */
 #commentform input[type=text],
 #commentform textarea {
   max-width: 400px;
+}
+
+/* Styles for viewports greater than 700px wide. */
+@media (min-width: 700px) {
+  /* line 463, ../sass/screen.scss */
+  html {
+    padding: 40px;
+  }
+
+  /* line 467, ../sass/screen.scss */
+  h1 {
+    font-size: 2.5em;
+    line-height: 1.2em;
+  }
+
+  /* line 471, ../sass/screen.scss */
+  #wrap {
+    *zoom: 1;
+    max-width: 1180px;
+    _width: 1180px;
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  /* line 38, ../../../../../../.rvm/gems/ruby-2.1.0/gems/compass-0.12.2/frameworks/compass/stylesheets/compass/utilities/general/_clearfix.scss */
+  #wrap:after {
+    content: "";
+    display: table;
+    clear: both;
+  }
+
+  /* line 475, ../sass/screen.scss */
+  nav {
+    text-align: right;
+    border-width: 0 0 1px;
+  }
+
+  /* line 480, ../sass/screen.scss */
+  #game-data, .source-response-container {
+    width: 32.20339%;
+    float: right;
+    margin-right: 0;
+    *margin-left: -20px;
+    display: inline;
+  }
+
+  /* line 484, ../sass/screen.scss */
+  #moves {
+    width: 66.10169%;
+    float: left;
+    margin-right: 1.69492%;
+    display: inline;
+  }
+
+  /* line 490, ../sass/screen.scss */
+  article header .button {
+    float: right;
+    display: inline;
+  }
+  /* line 495, ../sass/screen.scss */
+  article header p {
+    width: 49.15254%;
+    float: left;
+    margin-right: 1.69492%;
+    display: inline;
+  }
+
+  /* line 502, ../sass/screen.scss */
+  .new-ivanhoe-meta {
+    width: 32.20339%;
+    float: right;
+    margin-right: 0;
+    *margin-left: -20px;
+    display: inline;
+  }
+
+  /* line 506, ../sass/screen.scss */
+  .new-ivanhoe-form {
+    width: 66.10169%;
+    float: left;
+    margin-right: 1.69492%;
+    display: inline;
+  }
+
+  /* line 510, ../sass/screen.scss */
+  .author .description {
+    width: 32.20339%;
+    float: right;
+    margin-right: 0;
+    *margin-left: -20px;
+    display: inline;
+  }
+
+  /* line 514, ../sass/screen.scss */
+  .author .roles {
+    width: 66.10169%;
+    float: left;
+    margin-right: 1.69492%;
+    display: inline;
+  }
+  /* line 517, ../sass/screen.scss */
+  .author .roles .wp-post-image {
+    float: right;
+    margin-right: 0;
+    margin-left: 1.5em;
+    margin-top: 1.5em;
+  }
+
+  /* line 525, ../sass/screen.scss */
+  .game-discussion-source {
+    width: 43.18182%;
+    float: left;
+    margin-right: 2.27273%;
+    display: inline;
+  }
+
+  /* line 529, ../sass/screen.scss */
+  .game-discussion-response {
+    width: 43.18182%;
+    float: right;
+    margin-right: 0;
+    *margin-left: -20px;
+    display: inline;
+  }
+
+  /* line 533, ../sass/screen.scss */
+  .moves {
+    width: 49.15254%;
+    float: left;
+    margin-right: 1.69492%;
+    display: inline;
+    clear: left;
+  }
+
+  /* line 538, ../sass/screen.scss */
+  .rationales {
+    width: 49.15254%;
+    float: right;
+    margin-right: 0;
+    *margin-left: -20px;
+    display: inline;
+    clear: right;
+  }
+
+  /* line 543, ../sass/screen.scss */
+  .commentlist .commentauthor {
+    width: 49.15254%;
+    float: left;
+    margin-right: 1.69492%;
+    display: inline;
+  }
+
+  /* line 547, ../sass/screen.scss */
+  footer[role=contentinfo] .ivanhoelink {
+    width: 25.42373%;
+  }
 }
