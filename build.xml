@@ -38,7 +38,7 @@
       <fileset dir="." includes="**/*.php, screenshot.png, style.css" excludes="**/tests/" />
     </copy>
 
-    <copy todir="${build.dir}/${theme.name}" failonerror="false">
+    <copy todir="${build.dir}/${theme.name}/images" failonerror="false">
       <fileset dir="images/"/>
     </copy>
 
