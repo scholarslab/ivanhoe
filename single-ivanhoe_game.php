@@ -22,10 +22,11 @@ $role = ivanhoe_user_has_role( $post->ID );
 
                 $url = add_query_arg(
                         array(
+                            'ivanhoe' => 'ivanhoe_move',
                             'parent_post' => $ivanhoe_game_id,
-                            'ivanhoe_role_id' => $role->ID
+                            'ivanhoe_role_id' => $role->ID,
                             ),
-                    get_permalink(get_option('ivanhoe_move_page'))
+                    home_url()
                 );
             ?>
             <a href="<?php echo $url; ?>" class="button" id="make-a-move"><?php _e( 'Make a move', 'ivanhoe' ); ?></a>

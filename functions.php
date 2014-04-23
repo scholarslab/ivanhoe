@@ -606,6 +606,7 @@ function ivanhoe_response_form_url( $post )
     $role_id = $role->ID;
 
     $ivanhoe_params = array(
+    'ivanhoe' => 'ivanhoe_move',
     "parent_post" => $post->post_parent,
     "move_source" => $post->ID,
     'ivanhoe_role_id' => $role_id
@@ -613,7 +614,7 @@ function ivanhoe_response_form_url( $post )
 
     $url = add_query_arg(
         $ivanhoe_params,
-        get_permalink(get_option('ivanhoe_move_page'))
+        home_url()
     );
 
     return $url;
@@ -626,22 +627,18 @@ function ivanhoe_response_form_url( $post )
  */
 function ivanhoe_role_form_url( $post )
 {
-    $url = "";
+ 
+    $args = array(
+        'ivanhoe' => 'ivanhoe_role'
+    );
 
     if ($post->post_type == 'ivanhoe_game'){
-        $ivanhoe_params = array(
-            "parent_post" => $post->ID
-        );
+        $args['parent_post'] = $post->ID;
     } else {
-        $ivanhoe_params = array(
-            'parent_post' => $post->post_parent
-        );
+        $args['parent_post'] = $post->post_parent;
     }
 
-    $url = add_query_arg(
-        $ivanhoe_params,
-        get_permalink(get_option('ivanhoe_role_page'))
-    );
+    $url = add_query_arg( $args, home_url() );
 
     return $url;
 }
@@ -950,3 +947,9 @@ function ivanhoe_public_template() {
 }
 
 add_filter( 'template_redirect', 'ivanhoe_public_template' );
+
+function ivanhoe_ajax_upload_attachment() {
+    error_log(print_r($_REQUEST, true));
+}
+
+add_action('add_attachment', 'ivanhoe_ajax_upload_attachment');
