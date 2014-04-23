@@ -93,6 +93,7 @@
         <filter token="TEXT_DOMAIN" value="${theme.text_domain}" />
         <filter token="DOMAIN_PATH" value="${theme.domain_path}" />
         <filter token="VERSION" value="${theme.version}" />
+        <filter token="TAGS" value="${theme.tags}" />
       </filterset>
     </copy>
   </target>

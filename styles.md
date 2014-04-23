@@ -9,4 +9,5 @@ License: @LICENSE@
 License URI: @LICENSE_URI@
 Text Domain: @TEXT_DOMAIN@
 Domain Path: @DOMAIN_PATH@
+tags: @TAGS@
 */
