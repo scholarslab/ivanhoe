@@ -3,7 +3,7 @@
 <header>
     <h1><?php _e( 'Games', 'ivanhoe' ); ?></h1>
     <?php if ( is_user_logged_in() ) :
-    	$url = get_permalink(get_option('ivanhoe_game_page')); ?>
+    	$url = add_query_arg(array('ivanhoe' => 'ivanhoe_game'), home_url()); ?>
     	<a href="<?php echo $url; ?>" class="button" id="make-a-game"><?php _e( 'Make a Game', 'ivanhoe' ); ?></a>
 	<?php endif; ?>
 </header>
