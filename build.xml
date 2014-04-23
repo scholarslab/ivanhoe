@@ -39,9 +39,33 @@
     </apply>
   </target>
 
+  <target name="phpcs" depends="setup" description="Generate a PHP_CodeSniffer report for coding standards">
+    <!--
+      PHP_CodeSniffer detects violations of coding standards. See 
+      https://github.com/scholarslab/ivanhoe/wiki/Code-Standards for setup
+    -->
+    <exec executable="phpcs" output="/dev/null">
+       <arg line="--report=checkstyle
+                  --extensions=php
+                  --ignore=*/tests/*
+                  --report-file=${build.dir}/logs/checkstyle.xml
+                  --standard=WordPress
+                  ${basedir}" />
+    </exec>
+  </target>
+
+  <target name="phpcb" depends="phpcs" description="Generates a broweable representation of the PHP code and violations">
+    <exec executable="phpcb">
+      <arg line="--log ${build.dir}/logs
+                 --source ${basedir}
+                 --output ${build.dir}/code-browser" />
+    </exec>
+  </target>
+
   <target name="setup" depends="clean">
     <echo message="Creating 'build' and 'dist' directories" level="info"/>
     <mkdir dir="${build.dir}" />
+    <mkdir dir="${build.dir}/logs" />
     <mkdir dir="${build.dir}/${theme.name}" />
     <mkdir dir="${dist.dir}" />
   </target>
@@ -72,7 +96,7 @@
   <target name="package" depends="build" description="Package files for distribution">
     <fail unless="theme.version" />
     <echo message="Packaging ${theme.name} for distribution" level="info" />
-    <zip destfile="${dist.dir}/${theme.name}-${theme.version}.zip" basedir="${build.dir}" />
+    <zip destfile="${dist.dir}/${theme.name}-${theme.version}.zip" basedir="${build.dir}" excludes="**/logs,**/code-browser" />
   </target>
 
   <target name="build_css">
