@@ -80,7 +80,7 @@
 
     <copy todir="${build.dir}/${theme.name}">
       <fileset dir="." />
-      <globmapper from="styles.md" to="styles.css" />
+      <globmapper from="styles.md" to="style.css" />
 
       <filterset>
         <filter token="NAME" value="${capitalize}" />
