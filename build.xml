@@ -1,14 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="ivanhoe-theme" basedir=".">
 
-  <property name="theme.name" value="ivanhoe-theme"/>
-  <property name="theme.version" value="1.0.0-rc.1"/>
+  <!-- include config file -->
+  <loadproperties srcFile="build.properties" />
 
   <property name="src.dir" location="."/>
   <property name="build.dir" location="build"/>
   <property name="dist.dir" location="dist"/>
 
   <fail unless="theme.name" />
+  <fail unless="theme.version" />
+
+  <scriptdef language="javascript" name="capitalize">
+    <attribute name="string" />
+    <attribute name="to" />
+
+    var s = new String( attributes.get( "string" ) );
+    project.setProperty( attributes.get( "to" ),
+            s.toLowerCase().replace( /^.|\s\S/g,
+            function(a) { return a.toUpperCase(); }) );
+  </scriptdef>
+
+  <capitalize string="${theme.name}" to="capitalize" />
 
   <target name="clean">
     <delete dir="${build.dir}" />
@@ -33,9 +46,9 @@
     <mkdir dir="${dist.dir}" />
   </target>
 
-  <target name="build" depends="setup" description="Copy files to the build directory">
+  <target name="build" depends="setup,build_css" description="Copy files to the build directory">
     <copy todir="${build.dir}/${theme.name}" failonerror="false">
-      <fileset dir="." includes="**/*.php, screenshot.png, style.css" excludes="**/tests/" />
+      <fileset dir="." includes="**/*.php, screenshot.png" excludes="**/tests/" />
     </copy>
 
     <copy todir="${build.dir}/${theme.name}/images" failonerror="false">
@@ -62,7 +75,27 @@
     <zip destfile="${dist.dir}/${theme.name}-${theme.version}.zip" basedir="${build.dir}" />
   </target>
 
+  <target name="build_css">
+    <echo message="Generating style.css for WordPress..." description="Generates styles.css for wordpress compatibility"/>
 
+    <copy todir="${build.dir}/${theme.name}">
+      <fileset dir="." />
+      <globmapper from="styles.md" to="styles.css" />
+
+      <filterset>
+        <filter token="NAME" value="${capitalize}" />
+        <filter token="URI" value="${theme.uri}" />
+        <filter token="AUTHOR" value="${theme.author}" />
+        <filter token="AUTHOR_URI" value="${theme.author_uri}" />
+        <filter token="DESCRIPTION" value="${theme.description}" />
+        <filter token="LICENSE" value="${theme.license}" />
+        <filter token="LICENSE_URI" value="${theme.license_uri}" />
+        <filter token="TEXT_DOMAIN" value="${theme.text_domain}" />
+        <filter token="DOMAIN_PATH" value="${theme.domain_path}" />
+        <filter token="VERSION" value="${theme.version}" />
+      </filterset>
+    </copy>
+  </target>
 
   <property name="lang.dir" location="languages" />
   <target name="update-pot" description="Update the translation template.">
