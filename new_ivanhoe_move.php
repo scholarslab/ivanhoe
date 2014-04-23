@@ -12,7 +12,7 @@ $ivanhoe_post_rationale = !empty ( $_POST['post_rationale']) ? $_POST['post_rati
 $ivanhoe_role_id = isset( $_POST['ivanhoe_role_id'] ) ? $_POST['ivanhoe_role_id'] : null;
 
 print_r($ivanhoe_game_id);
-print_r($ivanhoe_move_sources); 
+print_r($ivanhoe_move_sources);
 print_r($ivanhoe_role_id);
 // Creates an empty array for error messages.
 $error_messages = array();
@@ -40,11 +40,14 @@ if ( empty ( $error_messages ) && !empty( $_POST ) ) {
     );
 
     $new_ivanhoe_post_id = wp_insert_post( $move );
-    update_post_meta(
-        $new_ivanhoe_post_id,
-        'Ivanhoe Move Source',
-        $ivanhoe_move_sources
-        );
+    // foreach ($ivanhoe_move_sources as $ivanhoe_move_source) {
+            update_post_meta(
+                $new_ivanhoe_post_id,
+                'Ivanhoe Move Source',
+                $ivanhoe_move_source
+            );
+    // }
+
 
     if ( !empty( $ivanhoe_post_rationale ) )
     {
@@ -124,6 +127,14 @@ if ($ivanhoe_move_sources) {
     <label for="post_title"><?php _e( 'Rationale', 'ivanhoe' ); ?></label>
     <?php wp_editor( '', "post_rationale"); ?>
     </div>
+
+    <input type='hidden' name='parent_post' value='<?php echo $ivanhoe_game_id; ?>'>
+    <input type='hidden' name='ivanhoe_role_id' value='<?php echo $ivanhoe_role_id; ?>'>
+    <?php foreach ($ivanhoe_move_sources as $ivanhoe_move_source): ?>
+        <?php settype($ivanhoe_move_source, "integer"); ?>
+        <input type='hidden' name='move_source' value='<?php echo $ivanhoe_move_source; ?>' >
+    <?php endforeach; ?>
+
     <input type="submit" value="<?php _e( 'Submit', 'ivanhoe' ); ?>">
 </form>
 
