@@ -129,11 +129,7 @@ get_header();
 </header>
 
 <?php if( $error_messages ) : ?>
-    <ul>
-        <?php foreach($error_messages as $message) : ?>
-        <li><?php echo $message; ?></li>
-    <?php endforeach; ?>
-    </ul>
+  <?php echo print_errors($error_messages); ?>
 <?php endif; ?>
 
 <form action="" class="new-ivanhoe-form" method="post" enctype="multipart/form-data">
