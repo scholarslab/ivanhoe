@@ -1,5 +1,8 @@
 <?php
-//var_dump($_REQUEST); exit;
+if(!is_user_logged_in()) {
+    wp_redirect(get_home_url()); // ensure user is logged in
+}
+
 require_once( ABSPATH .'wp-admin/includes/post.php' );
 
 // Get our post type.
@@ -51,7 +54,7 @@ $post_rationale = !empty ( $_POST['post_rationale']) ? $_POST['post_rationale'] 
 $error_messages = array();
 
 // If we have a game ID and a post title, insert a post.
-if ( !empty( $_POST ) ) {
+if ( !empty( $_POST )) {
 
     $newpost_data = array(
         'ID' => $newpost->ID,
