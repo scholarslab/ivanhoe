@@ -144,8 +144,9 @@ function ivanhoe_create_post_types()
  * @param WP_Post
  * @return string The HTML for the form element.
  */
-function ivanhoe_move_meta_box($post)
+function ivanhoe_move_meta_box($post=null)
 {
+    $post = (is_null($post)) ? get_post() : $post;
     $html = '<p><label for="post_parent">' . __('Game', 'ivanhoe' )
         . '</label></p>'
         . '<p><input type="text" name="post_parent" value="'
@@ -173,7 +174,8 @@ function ivanhoe_move_source()
  *
  * @param WP_Post $post The object for the current post/page.
  */
-function ivanhoe_move_source_meta_box( $post ) {
+function ivanhoe_move_source_meta_box($post=null) {
+    $post = (is_null($post)) ? get_post() : $post;
 
     // Add an nonce field so we can check for it later.
     wp_nonce_field(
@@ -200,7 +202,8 @@ function ivanhoe_move_source_meta_box( $post ) {
  *
  * @param int $post_id The ID of the post being saved.
  */
-function ivanhoe_move_source_save_meta_box_data( $post_id ) {
+function ivanhoe_move_source_save_meta_box_data($post_id=null) {
+    $post_id = (is_null($post_id)) ? get_post()->ID : $post_id;
 
     /*
      * We need to verify this came from our screen and with proper
@@ -294,7 +297,8 @@ add_action(
  *
  * @param WP_Post $post The object for the current post/page.
  */
-function ivanhoe_role_id_meta_box( $post ) {
+function ivanhoe_role_id_meta_box($post=null) {
+    $post = (is_null($post)) ? get_post() : $post;
 
     // Add an nonce field so we can check for it later.
     wp_nonce_field(
@@ -321,7 +325,8 @@ function ivanhoe_role_id_meta_box( $post ) {
  *
  * @param int $post_id The ID of the post being saved.
  */
-function ivanhoe_role_id_save_meta_box_data( $post_id ) {
+function ivanhoe_role_id_save_meta_box_data($post_id=null) {
+    $post_id = (is_null($post_id)) ? get_post()->ID : $post_id;
 
     /*
      * We need to verify this came from our screen and with proper
@@ -586,9 +591,9 @@ add_filter( 'redirect_canonical', 'ivanhoe_redirect_canonical', 10, 2 );
  *
  * @param WP_Post.
  */
-function ivanhoe_get_move_source( $post )
+function ivanhoe_get_move_source($post=null)
 {
-    // Set $html to an empty string.
+    $post = (is_null($post)) ? get_post() : $post;
     $html = '';
 
     // Get the Move Source ID from custom post metadata.
@@ -614,8 +619,9 @@ function ivanhoe_get_move_source( $post )
  *
  * @param WP_Post
  */
-function ivanhoe_get_move_responses( $post )
+function ivanhoe_get_move_responses($post=null)
 {
+    $post = (is_null($post)) ? get_post() : $post;
     $html = '';
 
     $args = array(
@@ -651,8 +657,9 @@ function ivanhoe_get_move_responses( $post )
  *
  * @param WP_Post
  */
-function ivanhoe_response_form_url( $post )
+function ivanhoe_response_form_url($post=null)
 {
+    $post    = (is_null($post)) ? get_post() : $post;
     $url     = "";
     $role    = ivanhoe_user_has_role($post->post_parent);
     $role_id = $role->ID;
@@ -677,8 +684,9 @@ function ivanhoe_response_form_url( $post )
  *
  * @param WP_Post
  */
-function ivanhoe_role_form_url( $post )
+function ivanhoe_role_form_url($post=null)
 {
+    $post = (is_null($post)) ? get_post() : $post;
 
     $args = array(
         'ivanhoe' => 'ivanhoe_role'
@@ -795,8 +803,9 @@ function ivanhoe_paginate_links ( $query = null )
  *
  * @param WP_Post.
  */
-function ivanhoe_move_link ( $post )
+function ivanhoe_move_link ($post=null)
 {
+    $post = (is_null($post)) ? get_post() : $post;
     $html = '';
     $post_type = get_post_type($post );
     $role = false;
@@ -856,8 +865,14 @@ function display_first_media_file( $matches ) {
  *
  * @return string HTML.
  */
-function get_excerpt_by_id($post_id){
-    $the_post       = get_post($post_id);
+function get_excerpt_by_id($post_id=null) {
+    if (is_null($post_id)) {
+        $the_post = get_post();
+        $post_id  = $the_post->ID;
+    } else {
+        $the_post = get_post($post_id);
+    }
+
     $the_excerpt    = $the_post->post_content;
     $excerpt_length = 55;
     $the_excerpt    = strip_tags(strip_shortcodes($the_excerpt));
@@ -878,8 +893,14 @@ function get_excerpt_by_id($post_id){
  *
  * @return string HTML.
  */
-function get_title_by_id($post_id){
-    $the_post  = get_post($post_id);
+function get_title_by_id($post_id=null) {
+    if (is_null($post_id)) {
+        $the_post = get_post();
+        $post_id  = $the_post->ID;
+    } else {
+        $the_post = get_post($post_id);
+    }
+
     $the_title = $the_post->post_title;
     $the_title = '<h3>' . $the_title . '</h3>';
     return $the_title;
@@ -909,9 +930,9 @@ function ivanhoe_add_image( $file_handler, $parent_post_id) {
  * @param WP_Post the Ivanhoe Move post object.
  * @return string HTML.
  */
-function ivanhoe_get_rationales( $post )
+function ivanhoe_get_rationales($post=null)
 {
-
+    $post = (is_null($post)) ? get_post() : $post;
     $html = '';
 
     $args = array(
