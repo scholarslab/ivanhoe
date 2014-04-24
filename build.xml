@@ -72,7 +72,7 @@
 
   <target name="build" depends="setup,build_css" description="Copy files to the build directory">
     <copy todir="${build.dir}/${theme.name}" failonerror="false">
-      <fileset dir="." includes="**/*.php, screenshot.png" excludes="**/tests/" />
+      <fileset dir="." includes="**/*.php, *.png" excludes="**/tests/" />
     </copy>
 
     <copy todir="${build.dir}/${theme.name}/images" failonerror="false">
