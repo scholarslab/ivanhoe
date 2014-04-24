@@ -368,7 +368,7 @@ function ivanhoe_page_menu( $args = array() ) {
     // Show Home in the menu
     if ( ! empty($args['show_home']) ) {
         if ( true === $args['show_home'] || '1' === $args['show_home'] || 1 === $args['show_home'] )
-            $text = __('Home');
+            $text = __('Home', 'ivanhoe');
         else
             $text = $args['show_home'];
         $class = '';
@@ -819,7 +819,7 @@ function get_excerpt_by_id($post_id){
     $words = explode(' ', $the_excerpt, $excerpt_length + 1);
     if(count($words) > $excerpt_length) :
         array_pop($words);
-        array_push($words, '…');
+        array_push($words, '&hellip;');
     $the_excerpt = implode(' ', $words);
     endif;
     $the_excerpt = '<p>' . $the_excerpt . '</p>';

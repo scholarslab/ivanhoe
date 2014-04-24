@@ -1,50 +1,174 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project name="SimplePages" basedir=".">
-    <property name="lang.dir" location="languages" />
-    <target name="update-pot" description="Update the translation template.">
-        <property name="pot.file" location="${lang.dir}/ivanhoe.pot"/>
-        <property name="pot.base" location="${lang.dir}/ivanhoe.base.pot"/>
-        <tempfile property="pot.temp" suffix=".pot"/>
-        <tempfile property="pot.duplicates" suffix="-duplicates.pot" />
-        <copy file="${pot.base}" tofile="${pot.temp}"/>
-        <apply executable="xgettext" relative="true" parallel="true" verbose="true">
-            <arg value="--language=php"/>
-            <arg value="--from-code=utf-8"/>
-            <arg value="--keyword=__"/>
-            <arg value="--keyword=_e"/>
-            <arg value="--keyword=_x"/>
-            <arg value="--flag=__:1:pass-php-format"/>
-            <arg value="--add-comments=/"/>
-            <arg value="--omit-header"/>
-            <arg value="--join-existing"/>
-            <arg value="-o"/>
-            <arg file="${pot.temp}"/>
-            <fileset dir="." includes="**/*.php"/>
-        </apply>
-        <exec executable="msgcomm">
-            <arg value="--omit-header" />
-            <arg value="-o" />
-            <arg file="${pot.duplicates}" />
-            <arg file="${pot.temp}" />
-        </exec>
-        <exec executable="msgcomm">
-            <arg value="--unique" />
-            <arg value="-o" />
-            <arg file="${pot.temp}" />
-            <arg file="${pot.temp}" />
-            <arg file="${pot.duplicates}" />
-        </exec>
-        <move file="${pot.temp}" tofile="${pot.file}"/>
-        <delete file="${pot.duplicates}" quiet="true" />
-    </target>
+<project name="ivanhoe-theme" basedir=".">
 
-    <target name="build-mo" description="Build the MO translation files.">
-        <apply executable="msgfmt" dest="${lang.dir}" verbose="true">
-            <arg value="-o"/>
-            <targetfile />
-            <srcfile />
-            <fileset dir="${lang.dir}" includes="*.po"/>
-            <mapper type="glob" from="*.po" to="*.mo"/>
-        </apply>
-    </target>
+  <!-- include config file -->
+  <loadproperties srcFile="build.properties" />
+
+  <property name="src.dir" location="."/>
+  <property name="build.dir" location="build"/>
+  <property name="dist.dir" location="dist"/>
+
+  <fail unless="theme.name" />
+  <fail unless="theme.version" />
+
+  <scriptdef language="javascript" name="capitalize">
+    <attribute name="string" />
+    <attribute name="to" />
+
+    var s = new String( attributes.get( "string" ) );
+    project.setProperty( attributes.get( "to" ),
+            s.toLowerCase().replace( /^.|\s\S/g,
+            function(a) { return a.toUpperCase(); }) );
+  </scriptdef>
+
+  <capitalize string="${theme.name}" to="capitalize" />
+
+  <target name="clean">
+    <delete dir="${build.dir}" />
+    <delete dir="${dist.dir}" />
+  </target>
+
+  <target name="lint">
+    <apply executable="php" failonerror="true">
+      <arg value="-l" />
+
+      <fileset dir="${basedir}">
+        <include name="**/*.php"/>
+        <modified/>
+      </fileset>
+    </apply>
+  </target>
+
+  <target name="phpcs" depends="setup" description="Generate a PHP_CodeSniffer report for coding standards">
+    <!--
+      PHP_CodeSniffer detects violations of coding standards. See 
+      https://github.com/scholarslab/ivanhoe/wiki/Code-Standards for setup
+    -->
+    <exec executable="phpcs" output="/dev/null">
+       <arg line="--report=checkstyle
+                  --extensions=php
+                  --ignore=*/tests/*
+                  --report-file=${build.dir}/logs/checkstyle.xml
+                  --standard=WordPress
+                  ${basedir}" />
+    </exec>
+  </target>
+
+  <target name="phpcb" depends="phpcs" description="Generates a broweable representation of the PHP code and violations">
+    <exec executable="phpcb">
+      <arg line="--log ${build.dir}/logs
+                 --source ${basedir}
+                 --output ${build.dir}/code-browser" />
+    </exec>
+  </target>
+
+  <target name="setup" depends="clean">
+    <echo message="Creating 'build' and 'dist' directories" level="info"/>
+    <mkdir dir="${build.dir}" />
+    <mkdir dir="${build.dir}/logs" />
+    <mkdir dir="${build.dir}/${theme.name}" />
+    <mkdir dir="${dist.dir}" />
+  </target>
+
+  <target name="build" depends="setup,build_css" description="Copy files to the build directory">
+    <copy todir="${build.dir}/${theme.name}" failonerror="false">
+      <fileset dir="." includes="**/*.php, *.png" excludes="**/tests/" />
+    </copy>
+
+    <copy todir="${build.dir}/${theme.name}/images" failonerror="false">
+      <fileset dir="images/"/>
+    </copy>
+
+    <copy todir="${build.dir}/${theme.name}/javascripts" failonerror="false">
+      <fileset dir="javascripts/"/>
+    </copy>
+
+    <copy todir="${build.dir}/${theme.name}/languages" failonerror="false">
+      <fileset dir="languages/"/>
+    </copy>
+
+    <copy todir="${build.dir}/${theme.name}/stylesheets" failonerror="false">
+      <fileset dir="stylesheets/"/>
+    </copy>
+
+  </target>
+
+  <target name="package" depends="build" description="Package files for distribution">
+    <fail unless="theme.version" />
+    <echo message="Packaging ${theme.name} for distribution" level="info" />
+    <zip destfile="${dist.dir}/${theme.name}-${theme.version}.zip" basedir="${build.dir}" excludes="**/logs,**/code-browser" />
+  </target>
+
+  <target name="build_css">
+    <echo message="Generating style.css for WordPress..." description="Generates styles.css for wordpress compatibility"/>
+
+    <copy todir="${build.dir}/${theme.name}">
+      <fileset dir="." />
+      <globmapper from="styles.md" to="style.css" />
+
+      <filterset>
+        <filter token="NAME" value="${capitalize}" />
+        <filter token="URI" value="${theme.uri}" />
+        <filter token="AUTHOR" value="${theme.author}" />
+        <filter token="AUTHOR_URI" value="${theme.author_uri}" />
+        <filter token="DESCRIPTION" value="${theme.description}" />
+        <filter token="LICENSE" value="${theme.license}" />
+        <filter token="LICENSE_URI" value="${theme.license_uri}" />
+        <filter token="TEXT_DOMAIN" value="${theme.text_domain}" />
+        <filter token="DOMAIN_PATH" value="${theme.domain_path}" />
+        <filter token="VERSION" value="${theme.version}" />
+        <filter token="TAGS" value="${theme.tags}" />
+      </filterset>
+    </copy>
+  </target>
+
+  <property name="lang.dir" location="languages" />
+  <target name="update-pot" description="Update the translation template.">
+    <property name="pot.file" location="${lang.dir}/ivanhoe.pot"/>
+    <property name="pot.base" location="${lang.dir}/ivanhoe.base.pot"/>
+    <tempfile property="pot.temp" suffix=".pot"/>
+    <tempfile property="pot.duplicates" suffix="-duplicates.pot" />
+    <copy file="${pot.base}" tofile="${pot.temp}"/>
+    <apply executable="xgettext" relative="true" parallel="true" verbose="true">
+      <arg value="--language=php"/>
+      <arg value="--from-code=utf-8"/>
+      <arg value="--keyword=__"/>
+      <arg value="--keyword=_e"/>
+      <arg value="--keyword=_x"/>
+      <arg value="--flag=__:1:pass-php-format"/>
+      <arg value="--add-comments=/"/>
+      <arg value="--omit-header"/>
+      <arg value="--join-existing"/>
+      <arg value="-o"/>
+      <arg file="${pot.temp}"/>
+      <fileset dir="." includes="**/*.php"/>
+    </apply>
+    <exec executable="msgcomm">
+      <arg value="--omit-header" />
+      <arg value="-o" />
+      <arg file="${pot.duplicates}" />
+      <arg file="${pot.temp}" />
+    </exec>
+    <exec executable="msgcomm">
+      <arg value="--unique" />
+      <arg value="-o" />
+      <arg file="${pot.temp}" />
+      <arg file="${pot.temp}" />
+      <arg file="${pot.duplicates}" />
+    </exec>
+    <move file="${pot.temp}" tofile="${pot.file}"/>
+    <delete file="${pot.duplicates}" quiet="true" />
+  </target>
+
+  <target name="build-mo" description="Build the MO translation files.">
+    <apply executable="msgfmt" dest="${lang.dir}" verbose="true">
+      <arg value="-o"/>
+      <targetfile />
+      <srcfile />
+      <fileset dir="${lang.dir}" includes="*.po"/>
+      <mapper type="glob" from="*.po" to="*.mo"/>
+    </apply>
+  </target>
+
+
 </project>
