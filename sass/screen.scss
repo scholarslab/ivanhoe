@@ -551,3 +551,44 @@ footer[role=contentinfo] .ivanhoelink {
 
 }
 
+
+.bs-callout {
+  margin: 20px 0;
+  padding: 20px;
+  border-left: 3px solid #eee;
+
+  h4 {
+    margin-top: 0;
+    margin-bottom: 5px;
+    font-size: 18px;
+    font-weight: 500;
+    font-height: 1.1;
+  }
+
+  p {
+    mrgin: 0 0 10px;
+
+    &:last-child { margin-bottom: 0;}
+  }
+}
+
+.bs-callout-danger {
+  background-color: #fdf7f7;
+  border-color: #d9534f;
+
+  h4 {
+    color: #d9534f;
+  }
+
+}
+
+.bs-callout-warning {
+  background-color: #fcf8f2;
+  border-color: #f0ad4e;
+}
+
+.bs-callout-info {
+  background-color: #f4f8fa;
+  border-color: #5bc0de;
+}
+
