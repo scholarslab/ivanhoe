@@ -34,13 +34,13 @@ switch ($post_type) {
     break;
 
     default: // If there's no valid value passed to the ivanhoe var.
-        $form_title = 'ERROR';
+      die;
     break;
 
 }
 
 
-// Global form fields. All post types have these.
+// Form fields. All post types have these.
 $post_title = !empty ( $_POST['post_title'] ) ? $_POST['post_title'] : null;
 $post_content = !empty ( $_POST['post_content'] ) ? $_POST['post_content'] : null;
 
@@ -62,11 +62,24 @@ if ( !empty( $_POST )) {
         'post_title' => $post_title,
         'post_status' => 'publish',
         'post_type' => $post_type,
-    );
+      );
+
+    // check post types
+    if(empty($post_title)) {
+      $error_messages[] = __('A title is required', 'ivanhoe');
+    }
+
+    if(empty($post_content)) {
+      $error_messages[] = __('Some content is required', 'ivanhoe');
+    }
 
     // Set the post_parent if one is passed to the form, regardless of post type.
     if ($parent_post) {
         $newpost_data['post_parent'] = $parent_post;
+    }
+
+    if(!empty($error_messages)) {
+      GOTO fail; // if we ever catch you doing this, we will hunt you down
     }
 
     $newpost = wp_insert_post( $newpost_data );
@@ -122,6 +135,9 @@ if ( !empty( $_POST )) {
 
 }
 
+fail:
+  // keep on truckin'
+
 // Get theme header.
 get_header();
 
@@ -156,4 +172,5 @@ get_header();
 
 </form>
 
-<?php get_footer(); ?>
+<?php get_footer();
+
