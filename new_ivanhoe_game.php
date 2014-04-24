@@ -10,7 +10,7 @@ $error_messages = array();
 
 // If there is no game ID, move content, or move title an appropriate error message will display.
 if ( !$ivanhoe_post_title && !empty( $_POST ) ) {
-    $error_messages[''] = __( 'Please enter a name for your role.', 'ivanhoe' );
+    $error_messages[''] = __( 'Please enter a name for your game.', 'ivanhoe' );
 }
 
 // If we have a game ID and a post title, insert a post.
@@ -45,6 +45,10 @@ get_header();
 <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 </header>
 
+<?php if( $error_messages ) : ?>
+  <?php echo print_errors($error_messages); ?>
+<?php endif; ?>
+
 <form action="" class="new-post" method="post" enctype="multipart/form-data">
 <div><label for="post_title"><?php _e( 'Game Title', 'ivanhoe' ); ?></label>
     <input type="text" size="50" name="post_title" required>
@@ -63,13 +67,7 @@ get_header();
     <input type="submit" value="<?php _e( 'Submit', 'ivanhoe' ); ?>">
 </form>
 
-<?php if( $error_messages ) : ?>
-    <ul>
-        <?php foreach($error_messages as $message) : ?>
-        <li><?php echo $message; ?></li>
-    <?php endforeach; ?>
-    </ul>
-<?php endif; ?>
+
 
 <?php 
 

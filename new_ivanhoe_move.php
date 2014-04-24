@@ -99,6 +99,10 @@ if ($ivanhoe_move_source) {
     <p><strong><?php echo $message; ?></strong></p>
 </div>
 
+<?php if( $error_messages ) : ?>
+    <?php echo print_errors($error_messages); ?>
+<?php endif; ?>
+
 <form action="" method="post" class="new-ivanhoe-form new-ivanhoe-move">
     <div>
     <label for="post_title"><?php _e( 'Title', 'ivanhoe' ); ?></label>
@@ -117,13 +121,7 @@ if ($ivanhoe_move_source) {
     <input type="submit" value="<?php _e( 'Submit', 'ivanhoe' ); ?>">
 </form>
 
-<?php if( $error_messages ) : ?>
-    <ul>
-        <?php foreach($error_messages as $message) : ?>
-        <li><?php echo $message; ?></li>
-    <?php endforeach; ?>
-    </ul>
-<?php endif; ?>
+
 
 <?php
 

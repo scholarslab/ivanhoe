@@ -53,13 +53,19 @@ get_header();
 $ivanhoe_game = get_post($ivanhoe_game_id);
 
 $message = sprintf( __( 'You are making a new role on the game &#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'), get_permalink($ivanhoe_game_id), $ivanhoe_game->post_title );
-
-echo $message;
 ?>
 
 <header>
 <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 </header>
+<div class="bs-callout bs-callout-warning">
+  <?php echo $message; ?>
+</div>
+
+<?php if( $error_messages ) : ?>
+<?php echo print_errors($error_messages); ?>
+<?php endif; ?>
+
 
 <form action="" class="new-post" method="post" enctype="multipart/form-data">
 <div><label for="post_title"><?php _e( 'Role Name', 'ivanhoe' ); ?></label>
@@ -79,17 +85,10 @@ echo $message;
     <input type="submit" value="<?php _e( 'Submit', 'ivanhoe' ); ?>">
 </form>
 
-<?php if( $error_messages ) : ?>
-    <ul>
-        <?php foreach($error_messages as $message) : ?>
-        <li><?php echo $message; ?></li>
-    <?php endforeach; ?>
-    </ul>
-<?php endif; ?>
 
-<?php 
+<?php
 
-    get_footer(); 
+    get_footer();
 
 ?>
 
