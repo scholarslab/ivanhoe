@@ -482,42 +482,21 @@ function ivanhoe_switch_themes()
     if ($nav_menu) {
         wp_delete_nav_menu($nav_menu->term_id);
     }
+
+    ivanhoe_flush_rewrite_rules();
 }
 
 add_action( 'switch_theme', 'ivanhoe_switch_themes');
 
 
 /**
- * Things to do when users switch to the Ivanhoe theme.
+ * When switching to the Ivanhoe theme.
  */
-function ivanhoe_after_switch_theme()
-{
-    if (! get_option('ivanhoe_installed')) {
-       $pages = array(
-            'ivanhoe_move' => __( 'Make a Move', 'ivanhoe' ),
-            'ivanhoe_role' => __( 'Make a Role', 'ivanhoe' ),
-            'ivanhoe_game' => __( 'Make a Game', 'ivanhoe' )
-            );
-        $args = array(
-            'post_type' => 'page',
-            'post_author' => '1',
-            'post_status' => 'publish',
-            );
-        foreach ($pages as $page => $title) {
-            $args['post_title'] = $title;
-            $ivanhoe_page = wp_insert_post($args);
-
-            if ($ivanhoe_page && !is_wp_error($ivanhoe_page)) {
-                update_post_meta( $ivanhoe_page, '_wp_page_template', 'new_' . $page. '.php' );
-                update_option( $page . '_page', $ivanhoe_page );
-            }
-        }
-        update_option( 'ivanhoe_installed', true );
-    }
-
+function ivanhoe_after_switch_theme() {
+    ivanhoe_flush_rewrite_rules();
 }
 
-add_action ( 'after_switch_theme','ivanhoe_after_switch_theme' );
+add_action( 'after_switch_theme', 'ivanhoe_after_switch_theme' );
 
 /**
  * Let WordPress know about our text domain.
@@ -627,6 +606,7 @@ function ivanhoe_response_form_url( $post )
     $role_id = $role->ID;
 
     $ivanhoe_params = array(
+    'ivanhoe' => 'ivanhoe_move',
     "parent_post" => $post->post_parent,
     "move_source" => $post->ID,
     'ivanhoe_role_id' => $role_id
@@ -634,7 +614,7 @@ function ivanhoe_response_form_url( $post )
 
     $url = add_query_arg(
         $ivanhoe_params,
-        get_permalink(get_option('ivanhoe_move_page'))
+        home_url()
     );
 
     return $url;
@@ -647,22 +627,18 @@ function ivanhoe_response_form_url( $post )
  */
 function ivanhoe_role_form_url( $post )
 {
-    $url = "";
+ 
+    $args = array(
+        'ivanhoe' => 'ivanhoe_role'
+    );
 
     if ($post->post_type == 'ivanhoe_game'){
-        $ivanhoe_params = array(
-            "parent_post" => $post->ID
-        );
+        $args['parent_post'] = $post->ID;
     } else {
-        $ivanhoe_params = array(
-            'parent_post' => $post->post_parent
-        );
+        $args['parent_post'] = $post->post_parent;
     }
 
-    $url = add_query_arg(
-        $ivanhoe_params,
-        get_permalink(get_option('ivanhoe_role_page'))
-    );
+    $url = add_query_arg( $args, home_url() );
 
     return $url;
 }
@@ -923,3 +899,57 @@ function ivanhoe_enqueue_scripts() {
 
 add_action('wp_enqueue_scripts', 'ivanhoe_enqueue_scripts');
 
+/**
+ * Function to flush WP's rewrite rules.
+ */
+function ivanhoe_flush_rewrite_rules() {
+    global $wp_rewrite;
+    $wp_rewrite->flush_rules();
+}
+
+/**
+ * Adds some rewrite rules for our forms.
+ */
+function ivanhoe_rewrite_rules_array($rules) {
+    $newrules = array();
+    $newrules['ivanhoe/(.+)'] = 'index.php?ivanhoe=$matches[1]';
+    return $newrules + $rules;
+}
+
+add_action( 'rewrite_rules_array', 'ivanhoe_rewrite_rules_array' );
+
+/**
+ * Adds query variables for our form pages.
+ */
+function ivanhoe_query_vars($vars) {
+    array_push($vars, 'ivanhoe');
+    return $vars;
+}
+
+add_filter( 'query_vars', 'ivanhoe_query_vars' );
+
+/**
+ * Display the proper form template depending on the URL/query.
+ */
+function ivanhoe_public_template() {
+
+    global $wp_query;
+
+    $ivanhoe = isset($wp_query->query_vars['ivanhoe']);
+
+    if(!empty($ivanhoe)) {
+
+        $template = dirname( __FILE__ ) . '/ivanhoe-post-form.php';
+        include($template);
+        exit;
+
+    }
+}
+
+add_filter( 'template_redirect', 'ivanhoe_public_template' );
+
+function ivanhoe_ajax_upload_attachment() {
+    error_log(print_r($_REQUEST, true));
+}
+
+add_action('add_attachment', 'ivanhoe_ajax_upload_attachment');
