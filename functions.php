@@ -984,6 +984,25 @@ function ivanhoe_enqueue_scripts() {
 
 add_action('wp_enqueue_scripts', 'ivanhoe_enqueue_scripts');
 
+
+/************
+ * Error handling
+ ************/
+
+function print_errors($errors) {
+    $html = <<<ERROR
+      <div class="bs-callout bs-callout-danger">
+        <h4>Errors</h4>
+ERROR;
+    foreach($errors as $message) {
+      $html .= "<p>" . $message . "</p>";
+    }
+
+    $html .= "</div>";
+
+    return $html;
+}
+
 /**
  * Function to flush WP's rewrite rules.
  */
