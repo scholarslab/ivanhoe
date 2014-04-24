@@ -39,7 +39,7 @@ switch ($post_type) {
 
 // Global form fields. All post types have these.
 $post_title = !empty ( $_POST['post_title'] ) ? $_POST['post_title'] : null;
-$post_content = !empty ( $_POST['post_title'] ) ? $_POST['post_title'] : null;
+$post_content = !empty ( $_POST['post_content'] ) ? $_POST['post_content'] : null;
 
 // Move variables.
 $parent_post = isset( $_GET['parent_post'] ) ? $_GET['parent_post'] : null;
