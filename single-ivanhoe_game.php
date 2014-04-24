@@ -132,7 +132,7 @@ $role = ivanhoe_user_has_role( $post->ID );
             <header>
                 <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
                 <p><span class="byline"><?php the_author_posts_link(); ?></span>
-            · <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
+            &middot; <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
                 <?php echo ivanhoe_move_link( $post ); ?>
             </header>
 

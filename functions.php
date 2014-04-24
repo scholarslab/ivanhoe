@@ -819,7 +819,7 @@ function get_excerpt_by_id($post_id){
     $words = explode(' ', $the_excerpt, $excerpt_length + 1);
     if(count($words) > $excerpt_length) :
         array_pop($words);
-        array_push($words, '…');
+        array_push($words, '&hellip;');
     $the_excerpt = implode(' ', $words);
     endif;
     $the_excerpt = '<p>' . $the_excerpt . '</p>';
