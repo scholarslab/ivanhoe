@@ -2,10 +2,10 @@
 
 <?php
 
-$original_query = $wp_query;
-$ivanhoe_game_id = $post->ID;
+$original_query           = $wp_query;
+$ivanhoe_game_id          = $post->ID;
 $ivanhoe_parent_permalink = get_permalink( $post->ID );
-$role = ivanhoe_user_has_role( $post->ID );
+$role                     = ivanhoe_user_has_role( $post->ID );
 
 ?>
 
@@ -22,10 +22,11 @@ $role = ivanhoe_user_has_role( $post->ID );
 
                 $url = add_query_arg(
                         array(
+                            'ivanhoe' => 'ivanhoe_move',
                             'parent_post' => $ivanhoe_game_id,
-                            'ivanhoe_role_id' => $role->ID
+                            'ivanhoe_role_id' => $role->ID,
                             ),
-                    get_permalink(get_option('ivanhoe_move_page'))
+                    home_url()
                 );
             ?>
             <a href="<?php echo $url; ?>" class="button" id="make-a-move"><?php _e( 'Make a move', 'ivanhoe' ); ?></a>
@@ -114,10 +115,10 @@ $role = ivanhoe_user_has_role( $post->ID );
 
     $paged = get_query_var('paged') ? get_query_var('paged') : 1;
     $args = array (
-        'post_type' => 'ivanhoe_move',
+        'post_type'   => 'ivanhoe_move',
         'post_parent' => $post->ID,
-        'paged' => $paged,
-        'posts_per_page' => 10);
+        'paged'       => $paged
+    );
     $wp_query = new WP_Query( $args );
 
 
