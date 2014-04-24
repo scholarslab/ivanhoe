@@ -24,4 +24,5 @@ if ( have_posts()) : ?>
 <p><?php _e( 'Apologies, but no results were found.', 'ivanhoe' ); ?></p>
 <?php endif; ?>
 
-<?php get_footer(); ?>
+<?php get_footer();
+

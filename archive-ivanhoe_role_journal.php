@@ -15,4 +15,4 @@ if ( have_posts()) : while(have_posts()) : the_post(); ?>
 <p>OMG NO POSTS!!!!!</p>
 <?php endif; ?>
 
-<?php get_footer(); ?>
+<?php get_footer();

@@ -185,4 +185,4 @@ $role                     = ivanhoe_user_has_role( $post->ID );
 
 <?php endwhile; endif; ?>
 
-<?php get_footer(); ?>
+<?php get_footer();
