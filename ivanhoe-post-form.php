@@ -160,13 +160,13 @@ get_header();
     <input type="text" size="50" name="post_title" value="<?php echo $post_title; ?>" required>
 </div>
 
-<?php if( $post_type !== 'ivanhoe_move' ) { ?>
+<?php if( $post_type !== 'ivanhoe_move' ):  ?>
 <div>
     <label for="post_thumbnail"><?php echo $post_thumbnail_label; ?></label>
     <input type="file" name="post_thumbnail">
 </div>
 
-<?php } ?>
+<?php endif; ?>
 
 <div>
     <label for="post_content"><?php echo $post_content_label; ?></label>
