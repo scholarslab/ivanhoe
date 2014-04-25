@@ -61,7 +61,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
             );
             $characters = new WP_Query ( $args );
 
-            $character_posts = $query->get_posts();
+            $character_posts = $characters->get_posts();
 
             if ( !empty( $character_posts ) ) :
             if ( is_user_logged_in() && $role ) : ?>
