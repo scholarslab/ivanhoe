@@ -111,7 +111,7 @@ if ( !empty( $_POST )) {
             'post_parent' => $newpost
           );
 
-        $journal_entry = wp_insert_post( $journal_entry );
+        $journal_entry = wp_insert_post( $journal_entry_data );
 
         update_post_meta(
             $journal_entry,
