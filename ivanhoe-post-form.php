@@ -165,7 +165,7 @@ get_header();
 
 <div>
     <label for="post_content"><?php $post_content_label; ?></label>
-    <?php wp_editor( '', "post_content"); ?>
+    <?php wp_editor( $post_content, "post_content"); ?>
 </div>
 
 <input type="submit" value="<?php _e( 'Submit', 'ivanhoe' ); ?>">
