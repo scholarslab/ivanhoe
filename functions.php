@@ -799,7 +799,7 @@ function ivanhoe_paginate_links ( $query = null )
 }
 
 /**
- * Function to display the 'respond to this move' button only when user has role.
+ * Function to display the 'respond to this move' btn only when user has role.
  *
  * @param WP_Post.
  */
@@ -823,7 +823,7 @@ function ivanhoe_move_link ($post=null)
         );
         $link_string = sprintf( $respond, $post->post_title );
         $html = '<a href="' . ivanhoe_response_form_url( $post )
-            . '" class="button">'
+            . '" class="btn">'
             . $link_string
             . '</a>';
     }

@@ -29,11 +29,11 @@ $role                     = ivanhoe_user_has_role( $post->ID );
                     home_url()
                 );
             ?>
-            <a href="<?php echo $url; ?>" class="button" id="make-a-move"><?php _e( 'Make a move', 'ivanhoe' ); ?></a>
+            <a href="<?php echo $url; ?>" class="btn" id="make-a-move"><?php _e( 'Make a move', 'ivanhoe' ); ?></a>
 
             <?php else : ?>
 
-            <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a>
+            <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="btn"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a>
 
             <?php endif; ?>
 

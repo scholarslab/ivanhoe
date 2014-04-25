@@ -6,16 +6,16 @@
     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
     <?php the_post_thumbnail('medium'); ?>
-    
-    <?php the_content(); ?>	
 
-    <p class="return-button"><a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php _e( 'Return to game', 'ivanhoe' ); ?></a></p>
+    <?php the_content(); ?>
+
+    <p class="return-btn"><a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php _e( 'Return to game', 'ivanhoe' ); ?></a></p>
 
     <div class="moves">
 
     <h2><?php _e( 'Moves', 'ivanhoe' ); ?></h2>
 
-	<?php 
+	<?php
     $args = array
     (
         'post_type' => "ivanhoe_move",

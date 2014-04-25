@@ -174,11 +174,11 @@ get_header();
 <?php if($post_type == 'ivanhoe_move'): ?>
   <div>
     <label for="post_rational"><?php echo $post_rationale_label; ?></label>
-    <?php wp_editor( $post_rationale, 'post_rationale', array('media_buttons' => false)); ?>
+    <?php wp_editor( $post_rationale, 'post_rationale', array('media_btns' => false)); ?>
   </div>
 <?php endif; ?>
 
-<input type="submit" class="button" value="<?php _e( 'Save', 'ivanhoe' ); ?>">
+<input type="submit" class="btn" value="<?php _e( 'Save', 'ivanhoe' ); ?>">
 
 </form>
 

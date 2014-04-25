@@ -19,7 +19,7 @@
 
             <?php else : ?>
 
-                <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="button"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a>
+                <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="btn"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a>
 
             <?php endif; ?>
 
@@ -51,7 +51,7 @@
 
     <?php the_content(); ?>
 
-            <p class="return-button"><a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php _e( 'Return to game', 'ivanhoe' ); ?></a></p>
+            <p class="return-btn"><a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php _e( 'Return to game', 'ivanhoe' ); ?></a></p>
 
     </div>
 
