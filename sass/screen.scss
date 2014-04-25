@@ -314,6 +314,11 @@ article {
 
     }
 
+/* Articles with a class of character_list. */
+    ul.character_list{
+    list-style-type: none;
+    }
+
 }
 
 .move .meta {

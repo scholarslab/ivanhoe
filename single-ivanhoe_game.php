@@ -69,7 +69,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
                 <article>
                 <?php if ( $characters->have_posts() ) : while ( $characters->have_posts() ) : $characters->the_post();
                     if ($post->ID !== $role->ID): ?>
-                        <ul>
+                        <ul class='character_list'>
                             <li>
                                  <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
                                  <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
@@ -92,7 +92,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
                     );
                 $characters = new WP_Query ( $args );
                 if ( $characters->have_posts() ) : while ( $characters->have_posts() ) : $characters->the_post(); ?>
-                        <ul>
+                        <ul class='character_list'>
                             <li>
                                  <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
                                  <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
