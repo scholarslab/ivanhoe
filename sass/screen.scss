@@ -207,6 +207,8 @@ main {
     border-radius: 5px;
     padding-top: $gutter-width;
     padding-bottom: $gutter-width;
+
+    header { margin-bottom: 10px;}
 }
 
 #game-data, .source-response-container {
