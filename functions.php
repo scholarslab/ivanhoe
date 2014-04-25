@@ -936,18 +936,14 @@ function ivanhoe_get_rationales($post=null)
     $html = '';
 
     $args = array(
-        'post_type'          => 'ivanhoe_role_journal',
-        'post_per_page'      => -1,
-        'meta_key'           => 'Ivanhoe Game Source',
-        'meta_value'         => $post->post_parent,
-        'meta_value_compare' => '=',
-        'meta_key'           => 'Ivanhoe Role ID',
-        'meta_value'         => $post->ID,
-        'meta_value_compare' => '='
+        'post_type'     => 'ivanhoe_role_journal',
+        'post_per_page' => -1,
+        'author'        => $post->post_author,
+        'meta_key'      => 'Ivanhoe Game Source',
+        'meta_value'    => $post->post_parent
     );
 
     $journal_entries = get_posts( $args );
-
     if ($journal_entries) {
 
         $html = '<ul>';
