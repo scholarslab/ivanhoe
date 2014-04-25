@@ -155,7 +155,7 @@ get_header();
 
 <div>
     <label for="post_title"><?php echo $post_title_label; ?></label>
-    <input type="text" size="50" name="post_title" required>
+    <input type="text" size="50" name="post_title" value="<?php echo $post_title; ?>" required>
 </div>
 
 <div>
@@ -165,7 +165,7 @@ get_header();
 
 <div>
     <label for="post_content"><?php $post_content_label; ?></label>
-    <?php wp_editor( '', "post_content"); ?>
+    <?php wp_editor( $post_content, "post_content"); ?>
 </div>
 
 <input type="submit" value="<?php _e( 'Submit', 'ivanhoe' ); ?>">
