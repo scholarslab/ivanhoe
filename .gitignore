@@ -1,6 +1,7 @@
 cache.properties
 build/
 dist/
+.env
 .sass-cache/
 .DS_Store
 .bundle/
