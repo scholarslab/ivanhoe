@@ -155,7 +155,7 @@ get_header();
 
 <div>
     <label for="post_title"><?php echo $post_title_label; ?></label>
-    <input type="text" size="50" name="post_title" required>
+    <input type="text" size="50" name="post_title" value="<?php echo $post_title; ?>" required>
 </div>
 
 <div>
