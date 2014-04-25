@@ -28,7 +28,7 @@
 
 <?php
 
-    wp_nav_menu( array( 'fallback_cb' => 'ivanhoe_page_menu', 'theme_location' => 'header', 'container' => 'nav' ) ); 
+    wp_nav_menu( array( 'fallback_cb' => 'ivanhoe_page_menu', 'theme_location' => 'header', 'container' => 'nav' ) );
 
 ?>
 

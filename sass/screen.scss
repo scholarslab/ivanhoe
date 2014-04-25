@@ -128,7 +128,7 @@ img {
     margin-top:0 !important;
 }
 
-.button {
+.btn {
     width: 200px;
     min-height: 30px;
     line-height: 30px;
@@ -308,7 +308,7 @@ article {
     header {
         @include clearfix;
 
-        .button {
+        .btn {
             margin-bottom:1em;
         }
 
@@ -492,7 +492,7 @@ nav {
 
 article {
     header {
-        .button {
+        .btn {
             float: right;
             display: inline;
         }

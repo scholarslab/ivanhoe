@@ -79,7 +79,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
                 wp_reset_postdata(); ?>
 
             </article>
-            
+
             <?php else : ?>
                 <h3>Characters</h3>
                 <article>
@@ -95,7 +95,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
                                  <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
                             </li>
                         </ul>
-                <?php 
+                <?php
                     endwhile; endif;
                     wp_reset_postdata(); ?>
                 </article>
