@@ -55,17 +55,20 @@ $role                     = ivanhoe_user_has_role( $post->ID );
 
 
         <?php
-            if ( is_user_logged_in() ) : ?>
+            $args = array(
+            'post_type' => 'ivanhoe_role',
+            'post_parent' => $ivanhoe_game_id
+            );
+            $characters = new WP_Query ( $args );
+
+            $character_posts = $query->get_posts();
+
+            if ( !empty( $character_posts ) ) :
+            if ( is_user_logged_in() && $role ) : ?>
                 <h3>Other Characters</h3>
                 <article>
-                <?php $args = array(
-                        'post_type' => 'ivanhoe_role',
-                        'post_parent' => $ivanhoe_game_id
-                    );
-                $characters = new WP_Query ( $args );
-                if ( $characters->have_posts() ) : while ( $characters->have_posts() ) : $characters->the_post();
-                ?>
-                <?php if ($post->ID !== $role->ID): ?>
+                <?php if ( $characters->have_posts() ) : while ( $characters->have_posts() ) : $characters->the_post();
+                    if ($post->ID !== $role->ID): ?>
                         <ul>
                             <li>
                                  <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
@@ -78,7 +81,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
                 endwhile; endif;
                 wp_reset_postdata(); ?>
 
-            </article>
+                </article>
 
             <?php else : ?>
                 <h3>Characters</h3>
@@ -99,7 +102,8 @@ $role                     = ivanhoe_user_has_role( $post->ID );
                     endwhile; endif;
                     wp_reset_postdata(); ?>
                 </article>
-                <?php endif; ?>
+                <?php endif;
+            endif; ?>
 
 
 
