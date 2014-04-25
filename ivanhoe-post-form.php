@@ -3,7 +3,7 @@ if(!is_user_logged_in()) {
     wp_redirect(get_home_url()); // ensure user is logged in
 }
 
-require_once( ABSPATH .'wp-admin/includes/post.php' );
+require_once ABSPATH . 'wp-admin/includes/post.php' ;
 
 // Get our post type.
 $post_type = $_GET['ivanhoe'];
@@ -23,22 +23,20 @@ switch ($post_type) {
         $form_title = __( 'Make a Move', 'ivanhoe' );
         $post_title_label = __( 'Title', 'ivanhoe' );
         $post_thumbnail_label = __( 'Game Thumbnail', 'ivanhoe' );
-        $post_content_label = __( 'Game Description', 'ivanhoe' );
-    break;
+        $post_content_label = __( 'Move Description', 'ivanhoe' );
+        $post_rationale_label = __( 'Rationale', 'ivanhoe' );
+        break;
 
     case 'ivanhoe_role':
         $form_title = __( 'Make a Role', 'ivanhoe' );
         $post_title_label = __( 'Role Name', 'ivanhoe' );
         $post_thumbnail_label = __( 'Thumbnail', 'ivanhoe' );
         $post_content_label = __( 'Description', 'ivanhoe' );
-    break;
+        break;
 
     default: // If there's no valid value passed to the ivanhoe var.
       die;
-    break;
-
 }
-
 
 // Form fields. All post types have these.
 $post_title = !empty ( $_POST['post_title'] ) ? $_POST['post_title'] : null;
@@ -49,6 +47,11 @@ $parent_post = isset( $_GET['parent_post'] ) ? $_GET['parent_post'] : null;
 $move_source = isset ( $_GET['move_source'] ) ? $_GET['move_source'] : null;
 $role_id = isset( $_GET['ivanhoe_role_id'] ) ? $_GET['ivanhoe_role_id'] : null;
 $post_rationale = !empty ( $_POST['post_rationale']) ? $_POST['post_rationale'] : null;
+
+// special fields
+$rationale_title = "";
+$rationale_content = "";
+
 
 // Creates an empty array for error messages.
 $error_messages = array();
@@ -70,7 +73,7 @@ if ( !empty( $_POST )) {
     }
 
     if(empty($post_content)) {
-      $error_messages[] = __('Some content is required', 'ivanhoe');
+      $error_messages[] = __('A description is required', 'ivanhoe');
     }
 
     // Set the post_parent if one is passed to the form, regardless of post type.
@@ -106,9 +109,9 @@ if ( !empty( $_POST )) {
             'post_status' => 'publish', //TODO: Decide whether or not we want the RJ to be public
             'post_type' => 'ivanhoe_role_journal',
             'post_parent' => $newpost
-        );
+          );
 
-        $journal_entry = wp_insert_post( $journal_entry );
+        $journal_entry = wp_insert_post( $journal_entry_data );
 
         update_post_meta(
             $journal_entry,
@@ -164,11 +167,18 @@ get_header();
 </div>
 
 <div>
-    <label for="post_content"><?php $post_content_label; ?></label>
+    <label for="post_content"><?php echo $post_content_label; ?></label>
     <?php wp_editor( $post_content, "post_content"); ?>
 </div>
 
-<input type="submit" value="<?php _e( 'Submit', 'ivanhoe' ); ?>">
+<?php if($post_type == 'ivanhoe_move'): ?>
+  <div>
+    <label for="post_rational"><?php echo $post_rationale_label; ?></label>
+    <?php wp_editor( $post_rationale, 'post_rationale', array('media_buttons' => false)); ?>
+  </div>
+<?php endif; ?>
+
+<input type="submit" class="button" value="<?php _e( 'Save', 'ivanhoe' ); ?>">
 
 </form>
 

@@ -1,28 +1,28 @@
 @import "base";
 
 * {
-  @include box-sizing(border-box);
+    @include box-sizing(border-box);
 }
 
 html {
-  margin:0;
-  padding:10px;
+    margin:0;
+    padding:10px;
 }
 
 body {
-  font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
-  color: #444;
-  margin:0;
-  padding:0;
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
+    color: #444;
+    margin:0;
+    padding:0;
 }
 
 h1 {
-  font-weight: 200;
-  @include adjust-font-size-to(30px);
+    font-weight: 200;
+    @include adjust-font-size-to(30px);
 }
 
 h2 {
-  font-weight: 700;
+    font-weight: 700;
 }
 
 .excerpt {
@@ -34,315 +34,318 @@ h2 {
  */
 
 .visuallyhidden {
-  border: 0;
-  clip: rect(0 0 0 0);
-  height: 1px;
-  margin: -1px;
-  overflow: hidden;
-  padding: 0;
-  position: absolute;
-  width: 1px;
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
 
 /* Links */
 a {
-  &:link {color: #004D05;}
-  &:visited {color: #004D05;}
-  &:hover {color: #8c3; text-decoration:none;}
-  &:active {color: #8a3;}
+    &:link {color: #004D05;}
+    &:visited {color: #004D05;}
+    &:hover {color: #8c3; text-decoration:none;}
+    &:active {color: #8a3;}
 
-  h1 &,
-  h2 & {
-    text-decoration:none;
-  }
+    h1 &,
+    h2 & {
+        text-decoration:none;
+    }
 }
 
 a, img {
-  border:0;
+    border:0;
 }
 
 /* Forms */
 input[type=text], label, textarea{display: block;}
 
 label {
-  font-size: 20px;
-  font-weight: bold;
+    font-size: 20px;
+    font-weight: bold;
+    padding-top: 10px;
+    padding-bottom: 5px;
 }
 
 input[type=text], textarea {
-  width: 100%;
-  border-radius: 3px;
-  padding: 5px;
-  border: 1px solid #ccc;
+    width: 100%;
+    border-radius: 3px;
+    padding: 5px;
+    border: 1px solid #ccc;
 }
 
 textarea {
-  display: block;
+    display: block;
 }
 
 /* Images */
 img {
-  max-width: 100%;
-  max-height:100%;
-  height:auto;
+    max-width: 100%;
+    max-height:100%;
+    height:auto;
 }
 
 /* WordPress Generated Classes */
 .alignright {
-  float: right;
-  padding-left: .5em;
+    float: right;
+    padding-left: .5em;
 }
 
 .aligncenter {
-  margin-left: auto;
-  margin-right:auto;
-  padding-left: .5em;
-  padding-right: .5em;
+    margin-left: auto;
+    margin-right:auto;
+    padding-left: .5em;
+    padding-right: .5em;
 }
 
 .alignleft {
-  float: left;
-  padding-right: .5em;
+    float: left;
+    padding-right: .5em;
 }
 
 .wp-caption-text {
-  font-size: 75%;
-  text-align: center;
+    font-size: 75%;
+    text-align: center;
 }
 
 /* Custom Utility Classes */
 .citation {
-  font-variant: small-caps;
+    font-variant: small-caps;
 }
 
 .eyebrow {
-  margin:0;
-  color: #777;
-  font-size: 90%;
-  font-weight:bold;
+    margin:0;
+    color: #777;
+    font-size: 90%;
+    font-weight:bold;
 }
 
 .eyebrow + * {
-  margin-top:0 !important;
+    margin-top:0 !important;
 }
 
 .button {
-  width: 200px;
-  height: 30px;
-  line-height: 30px;
-  color: white;
-  text-decoration: none;
-  font-size: 18px;
-  display: block;
-  text-align: center;
-  position: relative;
-  background: #34612D;
-  margin-top: 10px;
-
-  /*Background Gradients */
-  @include background-image(linear-gradient(bottom, #34612D 0%, #217D0F 100%, #B5D1B2 100%));
-  @include border-radius(10px);
-
-  border: 1px solid #217D0F;
-  border-top: 1px solid #C3D6DF;
-
-  &:link,
-  &:visited {
+    width: 200px;
+    min-height: 30px;
+    line-height: 30px;
     color: white;
-    color: rgba(255, 255, 255, 0.85);
-  }
-  &:hover,
-  &:active {
-    color: white;
-  }
+    text-decoration: none;
+    font-size: 18px;
+    display: block;
+    text-align: center;
+    position: relative;
+    background: #34612D;
+    margin-top: 10px;
+
+    /*Background Gradients */
+    @include background-image(linear-gradient(bottom, #34612D 0%, #217D0F 100%, #B5D1B2 100%));
+    @include border-radius(10px);
+
+    border: 1px solid #217D0F;
+    border-top: 1px solid #C3D6DF;
+
+    &:link,
+    &:visited {
+        color: white;
+        color: rgba(255, 255, 255, 0.85);
+    }
+    &:hover,
+    &:active {
+        color: white;
+    }
 
 }
 
 .return-button{
-  text-align: right;
+    text-align: right;
 }
 
 
 /* Banner */
 header[role=banner] {
-  @include clearfix;
+    @include clearfix;
 }
 
 /* Main Navigation */
 nav {
-  display:block;
-  text-align:center;
-  border: 1px solid #ccc;
-  border-width: 1px 0;
+    display:block;
+    text-align:center;
+    border: 1px solid #ccc;
+    border-width: 1px 0;
 
-  a {
-    text-decoration:none;
-    color: #777;
-  }
-
-  ul {
-    list-style:none;
-    padding-left:0;
-  }
-
-  li {
-    display:inline-block;
-
-    & + li:before {
-      display:inline-block;
-      margin: 0 .25em;
-      content: " · ";
-      color: #ccc;
+    a {
+        text-decoration:none;
+        color: #777;
     }
-  }
+
+    ul {
+        list-style:none;
+        padding-left:0;
+    }
+
+    li {
+        display:inline-block;
+
+        & + li:before {
+            display:inline-block;
+            margin: 0 .25em;
+            content: " · ";
+            color: #ccc;
+        }
+    }
 }
 
 /* Main Content Container */
 main {
-  clear:both;
-  overflow:hidden;
-  zoom:1;
-  border-radius: 5px;
-  padding-top: $gutter-width;
-  padding-bottom: $gutter-width;
+    clear:both;
+    overflow:hidden;
+    zoom:1;
+    border-radius: 5px;
+    padding-top: $gutter-width;
+    padding-bottom: $gutter-width;
+
+    header { margin-bottom: 10px;}
 }
 
 #game-data, .source-response-container {
-  background: #eee;
-  background: rgba(black, 0.05);
-  clear: both;
-  border: dotted 1px #ccc;
-  padding: 1px rhythm(1);
+    background: #eee;
+    background: rgba(black, 0.05);
+    clear: both;
+    border: dotted 1px #ccc;
+    padding: 1px rhythm(1);
 
-  .role{
-    .image-container {
-      float:left;
-      width: 75px;
-      margin-right: 1em;
+    .role{
+        .image-container {
+            float:left;
+            width: 75px;
+            margin-right: 1em;
+        }
     }
-  }
 }
 
 .discussion-source {
-  border-bottom: $border;
+    border-bottom: $border;
 }
 
 .discussion-response {
-  border-bottom: $border;
+    border-bottom: $border;
 }
 
 .options {
-  margin-top: 20px;
-  margin-bottom: 20px;
-  @include span-columns(12);
-  text-align: center;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    @include span-columns(12);
+    text-align: center;
 }
 
 article {
-  background-color: white;
-  background-color: rgba(white, 0.9);
-  border: dotted 1px #ccc;
-  margin-bottom: rhythm(1);
-  padding: 1px rhythm(1);
+    background-color: white;
+    background-color: rgba(white, 0.9);
+    border: dotted 1px #ccc;
+    margin-bottom: rhythm(1);
+    padding: 1px rhythm(1);
 
-  /* Removes padding, background, and border on the first article on blog posts and author pages. */
-  .single main > &,
-  .author main > & {
-    padding:0;
-    background:none;
-    border:none;
-  }
-
-  @include clearfix;
-
-
-  /* Articles with a class of role. */
-  &.role{
-    @include span-columns(12);
-
-    .wp-post-image{
-      float: left;
-      margin-right: rhythm(1);
+    /* Removes padding, background, and border on the first article on blog posts and author pages. */
+    .single main > &,
+    .author main > & {
+        padding:0;
+        background:none;
+        border:none;
     }
-  }
 
-  /* Articles with a class of move.
-  &.move {
-    margin-bottom: rhythm(3);
     @include clearfix;
-  }
 
-  /* Articles with a class of game. */
-  &.game {
-    article {
-      padding: rhythm(1);
+
+    /* Articles with a class of role. */
+    &.role{
+        @include span-columns(12);
+
+        .wp-post-image{
+            float: left;
+            margin-right: rhythm(1);
+        }
+    }
+
+    /* Articles with a class of move.
+    &.move {
+        margin-bottom: rhythm(3);
+        @include clearfix;
+    }
+
+    /* Articles with a class of game. */
+    &.game {
+        article {
+            padding: rhythm(1);
+        }
+
+        header {
+            @include span-columns(12);
+            margin-top: 0;
+            margin-bottom: rhythm(1);
+            padding: 0;
+        }
+
+        h1 {
+        font-size: 400%;
+        font-variant: small-caps;
+        margin-bottom: 5px;
+        margin-top: 5px;
+        }
+
+        .move {
+            h1 {
+                font-size: 200%;
+                margin-bottom: 5px;
+                margin-top: 5px;
+            }
+        }
     }
 
     header {
-      @include span-columns(12);
-      margin-top: 0;
-      margin-bottom: rhythm(1);
-      padding: 0;
+        @include clearfix;
+
+        .button {
+            margin-bottom:1em;
+        }
+
     }
-
-    h1 {
-      font-size: 400%;
-      font-variant: small-caps;
-      margin-bottom: 5px;
-      margin-top: 5px;
-    }
-
-    .move {
-      h1 {
-        font-size: 200%;
-        margin-bottom: 5px;
-        margin-top: 5px;
-      }
-    }
-  }
-
-  header {
-    @include clearfix;
-
-    .button {
-      margin-bottom:1em;
-    }
-
-  }
 
 }
 
 .move .meta {
-  font-size: 90%;
-  color: #999;
-  margin-top:0;
-  margin-bottom: 4em;
+    font-size: 90%;
+    color: #999;
+    margin-top:0;
+    margin-bottom: 4em;
 }
 
 /* Global footer */
 footer[role=contentinfo] {
-  clear:both;
-  @include clearfix;
-  border-top: 1px solid #ccc;
-  padding: rhythm(3) 0;
+    clear:both;
+    @include clearfix;
+    border-top: 1px solid #ccc;
+    padding: rhythm(3) 0;
 
-  .ivanhoelink {
-    display:block;
-    width: space(8);
-    margin-left:auto;
-    margin-right:auto;
-  }
+    .ivanhoelink {
+        display:block;
+        width: space(8);
+        margin-left:auto;
+        margin-right:auto;
+    }
 }
 
 
 .pagination {
-  margin-top: 20px;
-  margin-bottom: 50px;
-
-  a {
-    text-decoration: none;
-  }
-  .page-numbers {
+    margin-bottom: 50px;
+    margin-top: 20px;
+    a {
+      text-decoration: none;
+    }
+    .page-numbers {
     border: 1px solid #004D05;
     border-radius: 15px;
     min-width: 30px;
@@ -364,38 +367,38 @@ footer[role=contentinfo] {
       background-color: rgba(#004D05, 0.2);
       color: black;
     }
-  }
+    }
 }
 
 .attribution {
-  color: red;
-  font-variant: small-caps;
+    color: red;
+    font-variant: small-caps;
 }
 
 .new-post {
-  & > div {
-    @include trailer(1);
-  }
+    & > div {
+        @include trailer(1);
+    }
 }
 
 .wp-editor-wrap * {
-  @include box-sizing(content-box); /* Fixes tab height issue. */
+    @include box-sizing(content-box); /* Fixes tab height issue. */
 }
 
 #wrap {
-  background-color: white;
-  background-color: rgba(white, 0.9);
-  border: 1px solid #ccc;
-  @include container;
-  padding-left: 10px;
-  padding-right: 10px;
+    background-color: white;
+    background-color: rgba(white, 0.9);
+    border: 1px solid #ccc;
+    @include container;
+    padding-left: 10px;
+    padding-right: 10px;
 }
 
 .new-ivanhoe-meta {
-  background: #eee;
-  background: rgba(black, 0.05);
-  border:1px solid #ccc;
-  padding: 1px rhythm(1);
+    background: #eee;
+    background: rgba(black, 0.05);
+    border:1px solid #ccc;
+    padding: 1px rhythm(1);
 }
 
 .author .description {
@@ -403,152 +406,152 @@ footer[role=contentinfo] {
 
 .author .roles {
 
-  .wp-post-image {
-    float:right;
-    margin-right:0;
-    margin-left: rhythm(1);
-    margin-top: rhythm(1);
-  }
+    .wp-post-image {
+        float:right;
+        margin-right:0;
+        margin-left: rhythm(1);
+        margin-top: rhythm(1);
+    }
 }
 
 .commentlist {
-  list-style:none;
-  margin-left:0;
-  padding-left:0;
+    list-style:none;
+    margin-left:0;
+    padding-left:0;
 
-  li {
-    border: 1px dotted #ccc;
-    padding: rhythm(1);
-    @include clearfix;
-  }
-
-  .comment-author {
-    line-height: 32px;
-
-    img {
-      float:left;
-      margin-right: 5px;
+    li {
+        border: 1px dotted #ccc;
+        padding: rhythm(1);
+        @include clearfix;
     }
-  }
 
-  .comment-meta {
-    text-align:right;
-    line-height: 32px;
+    .comment-author {
+        line-height: 32px;
 
-    &:after {
-      display:table;
-      content: ' ';
-      width: 100%;
-      height: 0;
-      clear:both;
-      line-height:0;
-      padding:0;
+        img {
+            float:left;
+            margin-right: 5px;
+        }
     }
-  }
-  .children {
-    @include push(1);
-    margin-top: rhythm(1);
-  }
+
+    .comment-meta {
+        text-align:right;
+        line-height: 32px;
+
+        &:after {
+            display:table;
+            content: ' ';
+            width: 100%;
+            height: 0;
+            clear:both;
+            line-height:0;
+            padding:0;
+        }
+    }
+    .children {
+        @include push(1);
+        margin-top: rhythm(1);
+    }
 }
 
 #commentform {
-  input[type=text],
-  textarea {
-    max-width: 400px;
-  }
+    input[type=text],
+    textarea {
+        max-width: 400px;
+    }
 }
 
 
 /* Styles for viewports greater than 700px wide. */
 @media (min-width: 700px) {
 
-  html {
+html {
     padding:40px;
-  }
+}
 
-  h1 {
+h1 {
     @include adjust-font-size-to(40px);
-  }
+}
 
-  #wrap {
+#wrap {
     @include container;
-  }
+}
 
-  nav {
+nav {
     text-align:right;
     border-width: 0 0 1px;
-  }
+}
 
-  #game-data, .source-response-container {
+#game-data, .source-response-container {
     @include span-columns(4 omega);
-  }
+}
 
-  #moves{
+#moves{
     @include span-columns(8);
-  }
+}
 
-  article {
+article {
     header {
-      .button {
-        float: right;
-        display: inline;
-      }
+        .button {
+            float: right;
+            display: inline;
+        }
 
-      p {
-        @include span-columns(6);
-      }
+        p {
+            @include span-columns(6);
+        }
     }
 
-  }
+}
 
-  .new-ivanhoe-meta {
+.new-ivanhoe-meta {
     @include span-columns(4 omega);
-  }
+}
 
-  .new-ivanhoe-form {
+.new-ivanhoe-form {
     @include span-columns(8);
-  }
+}
 
-  .author .description {
+.author .description {
     @include span-columns(4 omega);
-  }
+}
 
-  .author .roles {
+.author .roles {
     @include span-columns(8);
 
     .wp-post-image {
-      float:right;
-      margin-right:0;
-      margin-left: rhythm(1);
-      margin-top: rhythm(1);
+        float:right;
+        margin-right:0;
+        margin-left: rhythm(1);
+        margin-top: rhythm(1);
     }
-  }
+}
 
-  .game-discussion-source {
+.game-discussion-source {
     @include span-columns(4,9);
-  }
+}
 
-  .game-discussion-response {
+.game-discussion-response {
     @include span-columns(4 omega,9);
-  }
+}
 
-  .moves{
+.moves{
     @include span-columns(6);
     clear: left;
-  }
+}
 
-  .rationales{
+.rationales{
     @include span-columns(6 omega);
     clear:right;
-  }
+}
 
-  .commentlist .commentauthor {
+.commentlist .commentauthor {
     @include span-columns(6);
-  }
+}
 
-  footer[role=contentinfo] .ivanhoelink {
+footer[role=contentinfo] .ivanhoelink {
     width: space(3);
-  }
+}
 
 
 }
