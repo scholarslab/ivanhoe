@@ -24,7 +24,7 @@ switch ($post_type) {
         $post_title_label = __( 'Title', 'ivanhoe' );
         $post_thumbnail_label = __( 'Game Thumbnail', 'ivanhoe' );
         $post_content_label = __( 'Move Description', 'ivanhoe' );
-        $rationale_content_label = __( 'Rationale', 'ivanhoe' );
+        $post_rationale_label = __( 'Rationale', 'ivanhoe' );
         break;
 
     case 'ivanhoe_role':
@@ -109,7 +109,7 @@ if ( !empty( $_POST )) {
             'post_status' => 'publish', //TODO: Decide whether or not we want the RJ to be public
             'post_type' => 'ivanhoe_role_journal',
             'post_parent' => $newpost
-        );
+          );
 
         $journal_entry = wp_insert_post( $journal_entry );
 
@@ -173,8 +173,8 @@ get_header();
 
 <?php if($post_type == 'ivanhoe_move'): ?>
   <div>
-    <label for="post_rational"><?php echo $rationale_content_label; ?></label>
-    <?php wp_editor( '', 'post_rationale', array('media_buttons' => false)); ?>
+    <label for="post_rational"><?php echo $post_rationale_label; ?></label>
+    <?php wp_editor( $post_rationale, 'post_rationale', array('media_buttons' => false)); ?>
   </div>
 <?php endif; ?>
 
