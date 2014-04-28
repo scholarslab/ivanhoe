@@ -316,7 +316,14 @@ article {
 
 /* Articles with a class of character_list. */
     ul.character_list{
-    list-style-type: none;
+        list-style-type: none;
+        padding-left: 0;
+        margin-left: 0;
+        li {
+            clear: both;
+            @include clearfix;
+            margin-bottom: rhythm(1);
+        }
     }
 
 }
@@ -324,7 +331,7 @@ article {
 .move .meta {
     font-size: 90%;
     color: #999;
-    margin-top:0;
+    margin-top: 0;
     margin-bottom: 4em;
 }
 
