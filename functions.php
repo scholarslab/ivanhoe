@@ -677,7 +677,7 @@ function ivanhoe_response_form_url($post=null)
         home_url()
     );
 
-    return $url;
+    return esc_url( $url );
 }
 
 /**
@@ -701,7 +701,7 @@ function ivanhoe_role_form_url($post=null)
 
     $url = add_query_arg( $args, home_url() );
 
-    return $url;
+    return esc_url( $url );
 }
 
 /**
