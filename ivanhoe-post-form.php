@@ -143,6 +143,25 @@ fail:
 // Get theme header.
 get_header();
 
+// Get the game post.
+$ivanhoe_game = get_post($parent_post);
+
+if ( $post_type == 'ivanhoe_move' ) {
+
+$message = sprintf( __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'), get_permalink($parent_post), $ivanhoe_game->post_title );
+
+if ($move_source) {
+    $ivanhoe_source = get_post($move_source);
+
+    $message = sprintf(
+        __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>&#8221; in response to the move &#8220;<a href="%3$s">%4$s</a>.&#8221;' , 'ivanhoe' ), 
+        get_permalink($parent_post),
+        $ivanhoe_game->post_title,
+        get_permalink($move_source),
+        $ivanhoe_source->post_title
+    );
+    }
+}
 ?>
 
 <header>
@@ -152,6 +171,10 @@ get_header();
 <?php if( $error_messages ) : ?>
   <?php echo print_errors($error_messages); ?>
 <?php endif; ?>
+
+<div class="new-ivanhoe-meta new-ivanhoe-move-meta">
+    <p><strong><?php echo $message; ?></strong></p>
+</div>
 
 <form action="" class="new-ivanhoe-form" method="post" enctype="multipart/form-data">
 
