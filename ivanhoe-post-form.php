@@ -146,10 +146,14 @@ get_header();
 // Create a game info message.
 $message = '';
 
-if ( $post_type == 'ivanhoe_move' ) {
+if ( $post_type == 'ivanhoe_move' || $post_type == 'ivanhoe_role' ) {
 
 $ivanhoe_game = get_post($parent_post);
-$message = sprintf( __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'), get_permalink($parent_post), $ivanhoe_game->post_title );
+if ( $post_type == 'ivanhoe_move' ) {
+    $message = sprintf( __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'), get_permalink($parent_post), $ivanhoe_game->post_title );
+} else {
+    $message = sprintf( __( 'You are making a role on the game &#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'), get_permalink($parent_post), $ivanhoe_game->post_title );
+}
 
 if ($move_source) {
     $ivanhoe_source = get_post($move_source);
