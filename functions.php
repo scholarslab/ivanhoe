@@ -677,7 +677,7 @@ function ivanhoe_response_form_url($post=null)
         home_url()
     );
 
-    return $url;
+    return esc_url( $url );
 }
 
 /**
@@ -701,7 +701,7 @@ function ivanhoe_role_form_url($post=null)
 
     $url = add_query_arg( $args, home_url() );
 
-    return $url;
+    return esc_url( $url );
 }
 
 /**
@@ -971,7 +971,7 @@ function ivanhoe_get_rationales($post=null)
 
 function new_excerpt_more( $more ) {
     return ' ... <a class="view-more" href="' . get_permalink( get_the_ID() )
-        . '">' . __('View More', 'your-text-domain') . '</a>';
+        . '">' . __('View More', 'ivanhoe') . '</a>';
 }
 add_filter( 'excerpt_more', 'new_excerpt_more' );
 

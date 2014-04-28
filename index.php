@@ -1,14 +1,12 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : ?>
-<div class="pagination">
-	<?php ivanhoe_paginate_links();?>
-</div>
+<?php ivanhoe_paginate_links();?>
 <?php while(have_posts()) : the_post(); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <header>
             <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
-            <p><span class="byline">By <?php the_author_posts_link(); ?></span>
+            <p><span class="byline"><?php the_author_posts_link(); ?></span>
             &middot; <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
     </header>
 
