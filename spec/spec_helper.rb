@@ -1,9 +1,12 @@
 require 'dotenv'
 require 'fileutils'
+require 'ffaker'
 
 require 'capybara/rspec'
 require 'capybara-webkit'
 #require 'capybara-screenshot/rspec'
+#
+require 'helpers/media_files'
 
 Dotenv.load
 

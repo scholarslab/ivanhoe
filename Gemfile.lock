@@ -29,6 +29,7 @@ GEM
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
     dotenv-deployment (0.0.2)
+    ffaker (1.24.0)
     ffi (1.9.3)
     formatador (0.2.4)
     fssm (0.2.10)
@@ -94,6 +95,7 @@ DEPENDENCIES
   capybara-screenshot
   capybara-webkit
   dotenv
+  ffaker
   guard-rspec
   mysql2
   pg

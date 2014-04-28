@@ -5,7 +5,9 @@ describe "An Ivanhoe move", :type => :feature, :js => true do
   before :each do
     visit URL_BASE
     click_link('Games')
-    find('article.game').first(:link).click
+     first('.game-title > a').click
+
+    #find('article.game').first(:link).click
     first('.move h1 > a').click
   end
 

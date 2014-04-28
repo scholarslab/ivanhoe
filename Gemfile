@@ -13,5 +13,6 @@ group :test do
   gem 'pg'
   gem 'mysql2'
   gem 'guard-rspec'
+  gem 'ffaker'
 end
 

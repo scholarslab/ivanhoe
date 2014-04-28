@@ -6,7 +6,6 @@ describe "Game Views", :type => :feature, :js => true  do
     visit(URL_BASE)
     click_link('Games')
     first('.game-title > a').click
-    #first('.game-link').click
   end
 
   describe "archive-ivanhoe_game layout" do
@@ -21,7 +20,7 @@ describe "Game Views", :type => :feature, :js => true  do
 
     #TODO this is conditional
     #it "has a list of moves" do
-      #within('#moves') { expect(page).to have_selector('article.move') }
+    #within('#moves') { expect(page).to have_selector('article.move') }
     #end
 
     it "has a link to an individual move" do
@@ -35,27 +34,27 @@ describe "Game Views", :type => :feature, :js => true  do
       end
 
       #it "has a header" do
-        #expect(page).to have_selector('header h1')
+      #expect(page).to have_selector('header h1')
       #end
 
       #it "has a byline" do
-        #expect(page).to have_selector('header .byline')
+      #expect(page).to have_selector('header .byline')
       #end
 
       #it "has a date" do
-        #expect(page).to have_selector('header time')
+      #expect(page).to have_selector('header time')
       #end
 
       #it "has an excerpt" do
-        #expect(page).to have_selector('div.excerpt')
+      #expect(page).to have_selector('div.excerpt')
       #end
 
       #it "has discussion source" do
-        #expect(page).to have_selector('div.game-discussion-source')
+      #expect(page).to have_selector('div.game-discussion-source')
       #end
 
       #it "has discussion response" do
-        #expect(page).to have_selector('div.game-discussion-response')
+      #expect(page).to have_selector('div.game-discussion-response')
       #end
 
     end
@@ -64,22 +63,22 @@ describe "Game Views", :type => :feature, :js => true  do
 
       # TODO need to conditionally test this stuff if it exists from moves
       #it "has a character header" do
-        #expect(page).to have_content('Characters')
+      #expect(page).to have_content('Characters')
       #end
 
       #it "has a list of chacters playing the game" do
-        #within('#game-data') { expect(page).to have_selector('ul.character_list') }
+      #within('#game-data') { expect(page).to have_selector('ul.character_list') }
       #end
 
       ## TODO: once the fixtures are in place, test conditional inclusion of the data
 
       #it "has a game description header" do
-        #expect(page).to have_content('Game Description')
+      #expect(page).to have_content('Game Description')
       #end
 
       #it "has a game description" do
-        #description = page.find('#game-data p')
-        #expect(description).to have_content
+      #description = page.find('#game-data p')
+      #expect(description).to have_content
       #end
 
     end
@@ -143,6 +142,14 @@ describe "Game Views", :type => :feature, :js => true  do
         it "can create a valid game" do
           fill_in 'post_title', :with => valid_game[:game_title]
           tiny_mce_fill_in('post_content', :with => valid_game[:game_description])
+          click_button('Save')
+        end
+
+        it "has a link to create a role" do
+          click_link("Games")
+          first('.game-title > a').click
+
+          expect(page).to have_content('Make a Role!')
         end
       end
 
@@ -152,3 +159,4 @@ describe "Game Views", :type => :feature, :js => true  do
   end
 
 end
+
