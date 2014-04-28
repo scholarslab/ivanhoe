@@ -1,6 +1,8 @@
 require 'dotenv'
 require 'fileutils'
 
+require 'mysql2'
+
 require 'capybara/rspec'
 require 'capybara-webkit'
 #require 'capybara-screenshot/rspec'
@@ -51,42 +53,23 @@ RSpec.configure do |config|
     FileUtils.cp('./tmp/wp-config.php', WP_CONFIG)
   end
 
-  #config.before(:suite) do |ex|
+  # Load and tear down database fixtures.
+  config.before(:suite) do |ex|
+    cxn = Mysql2::Client.new(:host => DB_HOST,
+                             :username => DB_USER,
+                             :password => DB_PASSWORD)
+    cxn.query("CREATE DATABASE #{DB_NAME}")
+    puts "Creating database..."
+    system("mysql -h#{DB_HOST} -u#{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME} < #{DB_DUMP}")
+    cxn.close
+  end
 
-    #if(ADAPTER == 'pg')
+  config.after(:suite) do |ex|
+    cxn = Mysql2::Client.new(:host => DB_HOST,
+                             :username => DB_USER,
+                             :password => DB_PASSWORD)
 
-      #cxn = PG.connect(:host => DB_HOST,
-                       #:user => DB_USER, :password => DB_PASSWORD)
-      #cxn.exec("CREATE DATABASE #{DB_NAME};")
-      #cxn.close
-
-      #system("psql -h#{DB_HOST} -U#{DB_USER} -d#{DB_NAME} -w < #{DB_DUMP}")
-    #else
-      #cxn = Mysql2::Client.new(:host => DB_HOST,
-                               #:username => DB_USER,
-                               #:password => DB_PASSWORD)
-      #cxn.query("CREATE DATABASE #{DB_NAME}")
-      #puts "Creating database..."
-      #system("mysql -h#{DB_HOST} -u#{DB_USER} --password#{DB_PASSWORD} #{DB_NAME} < #{DB_DUMP}")
-      #cxn.close
-    #end
-
-  #end
-
-  #config.after(:suite) do |ex|
-    #if(ADAPTER == 'pg')
-      #cxn = PG.connect(:host => DB_HOST,
-                       #:user => DB_USER, :password => DB_PASSWORD)
-      #cxn.exec("DROP DATABASE #{DB_NAME} IF EXISTS;")
-      #cxn.close
-    #else
-       #cxn = Mysql2::Client.new(:host => DB_HOST,
-                               #:username => DB_USER,
-                               #:password => DB_PASSWORD)
-
-       #cxn.query("DROP DATABASE IF EXISTS #{DB_NAME};")
-       #cxn.close
-    #end
-  #end
-
+    cxn.query("DROP DATABASE IF EXISTS #{DB_NAME};")
+    cxn.close
+  end
 end
