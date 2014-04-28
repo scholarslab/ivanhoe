@@ -36,7 +36,7 @@
             <?php ivanhoe_get_move_responses( $post ); ?>
        </div>
         <div class="game-description">
-            <h2><?php _e( 'Game Info', 'ivanhoe' ); ?></h2>
+            <h2><?php _e( 'Game Description', 'ivanhoe' ); ?></h2>
 			<?php global $post;
             $parent_ID = $post->post_parent;
 			$game_title = get_title_by_id( $parent_ID );
