@@ -31,7 +31,7 @@ msgstr ""
 msgid "Roles"
 msgstr ""
 
-#: author.php:12 ivanhoe-post-form.php:33
+#: author.php:12
 msgid "Description"
 msgstr ""
 
@@ -202,6 +202,7 @@ msgid "Game Thumbnail"
 msgstr ""
 
 #: ivanhoe-post-form.php:19 single-ivanhoe_game.php:110
+#: single-ivanhoe_move.php:39
 msgid "Game Description"
 msgstr ""
 
@@ -210,11 +211,11 @@ msgid "Make a Move"
 msgstr ""
 
 #: ivanhoe-post-form.php:24
-msgid "Title"
+msgid "Move Title"
 msgstr ""
 
 #: ivanhoe-post-form.php:25
-msgid "Move Description"
+msgid "Move Content"
 msgstr ""
 
 #: ivanhoe-post-form.php:26
@@ -230,7 +231,11 @@ msgid "Role Name"
 msgstr ""
 
 #: ivanhoe-post-form.php:32
-msgid "Thumbnail"
+msgid "Role Thumbnail"
+msgstr ""
+
+#: ivanhoe-post-form.php:33
+msgid "Role Description"
 msgstr ""
 
 #: ivanhoe-post-form.php:71
@@ -296,10 +301,6 @@ msgstr ""
 
 #: single-ivanhoe_game.php:182
 msgid "There are no moves for this game."
-msgstr ""
-
-#: single-ivanhoe_move.php:39
-msgid "Game Info"
 msgstr ""
 
 #: single-ivanhoe_move.php:54 single-ivanhoe_role.php:12
