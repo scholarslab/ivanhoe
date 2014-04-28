@@ -3,6 +3,7 @@
 // Add theme support for WP features.
 add_theme_support('menus');
 add_theme_support('post-thumbnails', array('ivanhoe_role', 'ivanhoe_game'));
+add_theme_support( 'automatic-feed-links' );
 
 /**
  * Custom backgrounds.
