@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <header>
-<h1>Roles</h1>
+    <h1><?php _e( 'Roles', 'ivanhoe' ); ?></h1>
 </header>
 
 <?php
@@ -11,8 +11,6 @@ if ( have_posts()) : while(have_posts()) : the_post(); ?>
     <?php the_excerpt(); ?>
 </article>
 
-<?php endwhile; else : ?>
-<p>OMG NO POSTS!!!!!</p>
-<?php endif; ?>
+<?php endwhile; endif; ?>
 
 <?php get_footer();
