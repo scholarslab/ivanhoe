@@ -133,7 +133,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
 
         <?php
         while($wp_query->have_posts()) : $wp_query->the_post(); ?>
-        <article class="move">
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <header>
                 <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
                 <p><span class="byline"><?php the_author_posts_link(); ?></span>
