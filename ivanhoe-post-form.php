@@ -205,7 +205,7 @@ if ($move_source) {
 
 <?php if($post_type == 'ivanhoe_move'): ?>
   <div>
-    <label for="post_rational"><?php echo $post_rationale_label; ?></label>
+    <label for="post_rationale"><?php echo $post_rationale_label; ?></label>
     <?php wp_editor( $post_rationale, 'post_rationale', array('media_btns' => false)); ?>
   </div>
 <?php endif; ?>
