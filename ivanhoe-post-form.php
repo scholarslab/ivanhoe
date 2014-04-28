@@ -21,16 +21,16 @@ switch ($post_type) {
 
     case 'ivanhoe_move':
         $form_title = __( 'Make a Move', 'ivanhoe' );
-        $post_title_label = __( 'Title', 'ivanhoe' );
-        $post_content_label = __( 'Move Description', 'ivanhoe' );
+        $post_title_label = __( 'Move Title', 'ivanhoe' );
+        $post_content_label = __( 'Move Content', 'ivanhoe' );
         $post_rationale_label = __( 'Rationale', 'ivanhoe' );
         break;
 
     case 'ivanhoe_role':
         $form_title = __( 'Make a Role', 'ivanhoe' );
         $post_title_label = __( 'Role Name', 'ivanhoe' );
-        $post_thumbnail_label = __( 'Thumbnail', 'ivanhoe' );
-        $post_content_label = __( 'Description', 'ivanhoe' );
+        $post_thumbnail_label = __( 'Role Thumbnail', 'ivanhoe' );
+        $post_content_label = __( 'Role Description', 'ivanhoe' );
         break;
 
     default: // If there's no valid value passed to the ivanhoe var.
