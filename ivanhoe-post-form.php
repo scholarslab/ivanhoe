@@ -21,16 +21,16 @@ switch ($post_type) {
 
     case 'ivanhoe_move':
         $form_title = __( 'Make a Move', 'ivanhoe' );
-        $post_title_label = __( 'Title', 'ivanhoe' );
-        $post_content_label = __( 'Move Description', 'ivanhoe' );
+        $post_title_label = __( 'Move Title', 'ivanhoe' );
+        $post_content_label = __( 'Move Content', 'ivanhoe' );
         $post_rationale_label = __( 'Rationale', 'ivanhoe' );
         break;
 
     case 'ivanhoe_role':
         $form_title = __( 'Make a Role', 'ivanhoe' );
         $post_title_label = __( 'Role Name', 'ivanhoe' );
-        $post_thumbnail_label = __( 'Thumbnail', 'ivanhoe' );
-        $post_content_label = __( 'Description', 'ivanhoe' );
+        $post_thumbnail_label = __( 'Role Thumbnail', 'ivanhoe' );
+        $post_content_label = __( 'Role Description', 'ivanhoe' );
         break;
 
     default: // If there's no valid value passed to the ivanhoe var.
@@ -143,6 +143,30 @@ fail:
 // Get theme header.
 get_header();
 
+// Create a game info message.
+$message = '';
+
+if ( $post_type == 'ivanhoe_move' || $post_type == 'ivanhoe_role' ) {
+
+$ivanhoe_game = get_post($parent_post);
+if ( $post_type == 'ivanhoe_move' ) {
+    $message = sprintf( __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'), get_permalink($parent_post), $ivanhoe_game->post_title );
+} else {
+    $message = sprintf( __( 'You are making a role on the game &#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'), get_permalink($parent_post), $ivanhoe_game->post_title );
+}
+
+if ($move_source) {
+    $ivanhoe_source = get_post($move_source);
+
+    $message = sprintf(
+        __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>&#8221; in response to the move &#8220;<a href="%3$s">%4$s</a>.&#8221;' , 'ivanhoe' ), 
+        get_permalink($parent_post),
+        $ivanhoe_game->post_title,
+        get_permalink($move_source),
+        $ivanhoe_source->post_title
+    );
+    }
+}
 ?>
 
 <header>
@@ -151,6 +175,12 @@ get_header();
 
 <?php if( $error_messages ) : ?>
   <?php echo print_errors($error_messages); ?>
+<?php endif; ?>
+
+<?php if ( $message ) : ?>
+<div class="new-ivanhoe-meta new-ivanhoe-move-meta">
+    <p><strong><?php echo $message; ?></strong></p>
+</div>
 <?php endif; ?>
 
 <form action="" class="new-ivanhoe-form" method="post" enctype="multipart/form-data">
@@ -175,7 +205,7 @@ get_header();
 
 <?php if($post_type == 'ivanhoe_move'): ?>
   <div>
-    <label for="post_rational"><?php echo $post_rationale_label; ?></label>
+    <label for="post_rationale"><?php echo $post_rationale_label; ?></label>
     <?php wp_editor( $post_rationale, 'post_rationale', array('media_btns' => false)); ?>
   </div>
 <?php endif; ?>

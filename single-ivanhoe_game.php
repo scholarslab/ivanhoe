@@ -65,43 +65,43 @@ $role                     = ivanhoe_user_has_role( $post->ID );
 
             if ( !empty( $character_posts ) ) :
             if ( is_user_logged_in() && $role ) : ?>
-                <h3>Other Characters</h3>
+                <h3><?php _e( 'Other Characters', 'ivanhoe' ); ?></h3>
                 <article>
-                <?php if ( $characters->have_posts() ) : while ( $characters->have_posts() ) : $characters->the_post();
-                    if ($post->ID !== $role->ID): ?>
-                        <ul class='character_list'>
-                            <li>
-                                 <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
-                                 <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
-                            </li>
-                        </ul>
+                <?php if ( $characters->have_posts() ) : ?>
+                    <ul class='character_list'>
+                <?php while ( $characters->have_posts() ) : $characters->the_post();
+                    if ($post->ID == $role->ID) continue; ?>
+                        <li class='role'>
+                            <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
+                            <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
+                        </li>
+
+                <?php endwhile; ?>
+                    </ul>
                 <?php endif; ?>
-
-            <?php
-                endwhile; endif;
-                wp_reset_postdata(); ?>
-
                 </article>
+                <?php wp_reset_postdata(); ?>
 
             <?php else : ?>
-                <h3>Characters</h3>
+                <h3><?php _e( 'Characters', 'ivanhoe' ); ?></h3>
                 <article>
                 <?php $args = array(
                     'post_type' => 'ivanhoe_role',
                     'post_parent' => $ivanhoe_game_id
                     );
                 $characters = new WP_Query ( $args );
-                if ( $characters->have_posts() ) : while ( $characters->have_posts() ) : $characters->the_post(); ?>
-                        <ul class='character_list'>
-                            <li>
-                                 <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
-                                 <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
-                            </li>
-                        </ul>
-                <?php
-                    endwhile; endif;
-                    wp_reset_postdata(); ?>
+                if ( $characters->have_posts() ) : ?>
+                    <ul class='character_list'>
+                <?php while ( $characters->have_posts() ) : $characters->the_post(); ?>
+                    <li class='role'>
+                        <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
+                        <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
+                    </li>
+                <?php endwhile; ?>
+                    </ul>
+                <?php endif; ?>
                 </article>
+                <?php wp_reset_postdata(); ?>
                 <?php endif;
             endif; ?>
 
@@ -133,7 +133,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
 
         <?php
         while($wp_query->have_posts()) : $wp_query->the_post(); ?>
-        <article class="move">
+        <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <header>
                 <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
                 <p><span class="byline"><?php the_author_posts_link(); ?></span>
@@ -149,7 +149,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
                 $matches = catch_that_properly_nested_html_media_tag_tree();
 
                 if ( empty( $the_excerpt ) ) {
-                    $move_image_source = display_first_media_file( $matches ) . ' ... <a class="view-more" href="'. get_permalink( get_the_ID() ) . '">' . __('View More', 'your-text-domain') . '</a>';
+                    $move_image_source = display_first_media_file( $matches ) . ' ... <a class="view-more" href="'. get_permalink( get_the_ID() ) . '">' . __('View More', 'ivanhoe') . '</a>';
                 } else {
                     $move_image_source = display_first_media_file( $matches );
                 }

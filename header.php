@@ -10,6 +10,10 @@
    <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() . '/stylesheets/screen.css'; ?>">
 
+<?php
+if ( is_singular() && get_option( 'thread_comments' ) )
+	wp_enqueue_script( 'comment-reply' );
+?>
 
 <?php wp_head(); ?>
 
