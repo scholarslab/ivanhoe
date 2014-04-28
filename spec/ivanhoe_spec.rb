@@ -1,7 +1,5 @@
 require 'spec_helper'
 
-#URL_BASE = "http://localhosd:8888/ivanhoe"
-
 describe 'The Ivanhoe theme', :type => :feature, :js => true do
 
   before :each do
@@ -19,10 +17,6 @@ describe 'The Ivanhoe theme', :type => :feature, :js => true do
 
   it "has a link to 'Games'" do
     expect(page).to have_link('Games')
-  end
-
-  it "has a link to 'Log in'" do
-    expect(page).to have_link('Log in')
   end
 
   it "has a list of games" do
