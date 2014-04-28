@@ -1,8 +1,6 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : ?>
-<div class="pagination">
-	<?php ivanhoe_paginate_links();?>
-</div>
+<?php ivanhoe_paginate_links();?>
 <?php while(have_posts()) : the_post(); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <header>
