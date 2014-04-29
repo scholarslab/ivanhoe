@@ -5,3 +5,5 @@ dist/
 .sass-cache/
 .DS_Store
 .bundle/
+
+tmp/
