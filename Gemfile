@@ -14,5 +14,7 @@ group :test do
   gem 'mysql2'
   gem 'guard-rspec'
   gem 'ffaker'
+  gem 'sequel'
+  gem 'database_cleaner'
 end
 

@@ -21,7 +21,7 @@ describe 'The Ivanhoe theme', :type => :feature, :js => true do
 
   it "has a list of games" do
     click_link('Games')
-    expect(page).to have_css('article.game')
+    expect(page).to have_css('article.ivanhoe_game')
   end
 
   describe "authenticated use" do

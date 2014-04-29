@@ -6,7 +6,12 @@ require 'capybara/rspec'
 require 'capybara-webkit'
 #require 'capybara-screenshot/rspec'
 #
+
 require 'helpers/media_files'
+
+require 'database_cleaner'
+require "sequel"
+
 
 Dotenv.load
 
@@ -23,15 +28,41 @@ DB_HOST     = ENV.fetch('DB_HOST',     'localhost')
 DB_USER     = ENV.fetch('DB_USER',     'ivanhoe')
 DB_PASSWORD = ENV.fetch('DB_PASSWORD', 'ivanhoe')
 DB_NAME     = ENV.fetch('DB_NAME',     'test_ivanhoe')
+DB_PORT     = ENV.fetch('DB_PORT',     '3306')
 URL_BASE    = ENV.fetch('URL_BASE',    'http://localhost:8888/ivanhoe')
 
 DB_DUMP     = "./spec/dumps/ivanhoe-#{ENV.fetch('ADAPTER', 'mysql2')}.sql"
-
 
 Capybara.default_driver    = :webkit
 Capybara.javascript_driver = :webkit
 
 RSpec.configure do |config|
+
+  config.before(:suite) do
+    DatabaseCleaner[
+      :sequel, {
+        :connection => Sequel.connect(
+          :adapter => ADAPTER,
+          :host => DB_HOST,
+          :user => DB_USER,
+          :password => DB_PASSWORD,
+          :port => DB_PORT,
+          :database => DB_NAME
+        )
+      }
+    ]
+
+    DatabaseCleaner.strategy = :transaction
+    DatabaseCleaner.clean_with(:truncation)
+  end
+
+  config.before(:each) do
+    DatabaseCleaner.start
+  end
+
+  config.after(:each) do
+    DatabaseCleaner.clean
+  end
 
   #config.before(:suite) do |ex|
   #Dir.mkdir('./tmp') unless Dir.exists?('./tmp')
@@ -61,40 +92,40 @@ RSpec.configure do |config|
 
   #config.before(:suite) do |ex|
 
-    #if(ADAPTER == 'pg')
+  #if(ADAPTER == 'pg')
 
-      #cxn = PG.connect(:host => DB_HOST,
-                       #:user => DB_USER, :password => DB_PASSWORD)
-      #cxn.exec("CREATE DATABASE #{DB_NAME};")
-      #cxn.close
+  #cxn = PG.connect(:host => DB_HOST,
+  #:user => DB_USER, :password => DB_PASSWORD)
+  #cxn.exec("CREATE DATABASE #{DB_NAME};")
+  #cxn.close
 
-      #system("psql -h#{DB_HOST} -U#{DB_USER} -d#{DB_NAME} -w < #{DB_DUMP}")
-    #else
-      #cxn = Mysql2::Client.new(:host => DB_HOST,
-                               #:username => DB_USER,
-                               #:password => DB_PASSWORD)
-      #cxn.query("CREATE DATABASE #{DB_NAME}")
-      #puts "Creating database..."
-      #system("mysql -h#{DB_HOST} -u#{DB_USER} --password#{DB_PASSWORD} #{DB_NAME} < #{DB_DUMP}")
-      #cxn.close
-    #end
+  #system("psql -h#{DB_HOST} -U#{DB_USER} -d#{DB_NAME} -w < #{DB_DUMP}")
+  #else
+  #cxn = Mysql2::Client.new(:host => DB_HOST,
+  #:username => DB_USER,
+  #:password => DB_PASSWORD)
+  #cxn.query("CREATE DATABASE #{DB_NAME}")
+  #puts "Creating database..."
+  #system("mysql -h#{DB_HOST} -u#{DB_USER} --password#{DB_PASSWORD} #{DB_NAME} < #{DB_DUMP}")
+  #cxn.close
+  #end
 
   #end
 
   #config.after(:suite) do |ex|
-    #if(ADAPTER == 'pg')
-      #cxn = PG.connect(:host => DB_HOST,
-                       #:user => DB_USER, :password => DB_PASSWORD)
-      #cxn.exec("DROP DATABASE #{DB_NAME} IF EXISTS;")
-      #cxn.close
-    #else
-       #cxn = Mysql2::Client.new(:host => DB_HOST,
-                               #:username => DB_USER,
-                               #:password => DB_PASSWORD)
+  #if(ADAPTER == 'pg')
+  #cxn = PG.connect(:host => DB_HOST,
+  #:user => DB_USER, :password => DB_PASSWORD)
+  #cxn.exec("DROP DATABASE #{DB_NAME} IF EXISTS;")
+  #cxn.close
+  #else
+  #cxn = Mysql2::Client.new(:host => DB_HOST,
+  #:username => DB_USER,
+  #:password => DB_PASSWORD)
 
-       #cxn.query("DROP DATABASE IF EXISTS #{DB_NAME};")
-       #cxn.close
-    #end
+  #cxn.query("DROP DATABASE IF EXISTS #{DB_NAME};")
+  #cxn.close
+  #end
   #end
 
 end

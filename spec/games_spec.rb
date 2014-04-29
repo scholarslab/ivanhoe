@@ -140,8 +140,8 @@ describe "Game Views", :type => :feature, :js => true  do
         end
 
         it "can create a valid game" do
-          fill_in 'post_title', :with => valid_game[:game_title]
-          tiny_mce_fill_in('post_content', :with => valid_game[:game_description])
+          fill_in 'post_title', :with => @valid_game[:game_title]
+          tiny_mce_fill_in('post_content', :with => @valid_game[:game_description])
           click_button('Save')
         end
 
