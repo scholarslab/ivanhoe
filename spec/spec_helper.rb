@@ -33,15 +33,32 @@ DB_DUMP     = "./spec/dumps/ivanhoe.sql"
 Capybara.default_driver    = :webkit
 Capybara.javascript_driver = :webkit
 
+def db_setup
+  cxn = Mysql2::Client.new(:host => DB_HOST,
+                             :username => DB_USER,
+                             :password => DB_PASSWORD,
+                             :port => DB_PORT
+                            )
+  puts "Creating database..."
+
+    cxn.query("CREATE DATABASE IF NOT EXISTS #{DB_NAME};")
+
+    puts "importing data"
+    system("mysql -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME} < #{DB_DUMP}")
+    cxn.close
+end
+
 RSpec.configure do |config|
 
   config.before(:suite) do |ex|
 
+    db_setup
+    
     # use DatabaseCleaner for transactions
     DatabaseCleaner[
       :sequel, {
         :connection => Sequel.connect(
-          :adapter => ADAPTER,
+          :adapter => 'mysql2',
           :host => DB_HOST,
           :user => DB_USER,
           :password => DB_PASSWORD,
@@ -56,11 +73,11 @@ RSpec.configure do |config|
   end
 
   config.before(:each) do
-    DatabaseCleaner.start
+    #DatabaseCleaner.start
   end
 
   config.after(:each) do
-    DatabaseCleaner.clean
+    #DatabaseCleaner.clean
   end
 
 
@@ -88,25 +105,14 @@ RSpec.configure do |config|
     FileUtils.cp('./tmp/wp-config.php', WP_CONFIG)
   end
 
-  # Load and tear down database fixtures.
-  config.before(:suite) do |ex|
-    cxn = Mysql2::Client.new(:host => DB_HOST,
-                             :username => DB_USER,
-                             :password => DB_PASSWORD)
-    cxn.query("CREATE DATABASE #{DB_NAME}")
-    puts "Creating database..."
-    system("mysql -h#{DB_HOST} -u#{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME} < #{DB_DUMP}")
-    cxn.close
-  end
+  #config.after(:suite) do |ex|
+    #cxn = Mysql2::Client.new(:host => DB_HOST,
+                             #:username => DB_USER,
+                             #:password => DB_PASSWORD)
 
-  config.after(:suite) do |ex|
-    cxn = Mysql2::Client.new(:host => DB_HOST,
-                             :username => DB_USER,
-                             :password => DB_PASSWORD)
-
-    cxn.query("DROP DATABASE IF EXISTS #{DB_NAME};")
-    cxn.close
-  end
+    ##cxn.query("DROP DATABASE IF EXISTS #{DB_NAME};")
+    #cxn.close
+  #end
 
 end
 
