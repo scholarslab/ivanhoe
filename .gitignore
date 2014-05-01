@@ -5,3 +5,8 @@ dist/
 .sass-cache/
 .DS_Store
 .bundle/
+package.json
+node_modules/
+ivanhoe.sublime-workspace
+ivanhoe.sublime-project
+Gruntfile.js
