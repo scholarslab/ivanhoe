@@ -14,31 +14,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
     <header>
         <h1><?php the_title(); ?></h1>
         <p><?php printf( __('Playing since: %s', 'ivanhoe' ), get_the_time('F j, Y') ); ?></p>
-        <?php
-
-        if ( is_user_logged_in() ) :
-
-            if ( $role ) :
-
-                $url = add_query_arg(
-                        array(
-                            'ivanhoe' => 'ivanhoe_move',
-                            'parent_post' => $ivanhoe_game_id,
-                            'ivanhoe_role_id' => $role->ID,
-                            ),
-                    home_url()
-                );
-            ?>
-            <a href="<?php echo $url; ?>" class="btn" id="make-a-move"><?php _e( 'Make a move', 'ivanhoe' ); ?></a>
-
-            <?php else : ?>
-
-            <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="btn"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a>
-
-            <?php endif; ?>
-
-        <?php endif; ?>
-
+       
     </header>
 
     <div id="game-data">
@@ -114,14 +90,37 @@ $role                     = ivanhoe_user_has_role( $post->ID );
         <?php the_content(); ?>
 
         <div>
-        <form action='<?php echo get_permalink(get_option('ivanhoe_move_page')); ?>' method='post'>
-        <input type='hidden' name='parent_post' value='<?php echo $ivanhoe_game_id; ?>'>
-        <input type='hidden' name='ivanhoe_role_id' value='<?php echo $role->ID; ?>'>
-            <h3>Responding to these moves</h3>
-            <ul class="basic_element_of_semantically_incoherent_metaphor">
-            </ul>
-        <input type='submit' value='Respond to these moves'>
-        </form>
+            <?php if ( is_user_logged_in() ) :
+
+                if ( $role ) :
+
+                    $url = add_query_arg(
+                            array(
+                                'ivanhoe' => 'ivanhoe_move',
+                                ),
+                        home_url()
+                    );
+                ?>
+
+                <form action='<?php echo $url; ?>' method='post'>
+                    <input type='hidden' name='parent_post' value='<?php echo $ivanhoe_game_id; ?>'>
+                    <input type='hidden' name='ivanhoe_role_id' value='<?php echo $role->ID; ?>'>
+                    <h3>Responding to these moves</h3>
+                    <ul class="basic_element_of_semantically_incoherent_metaphor">
+                    </ul>
+                </form>
+
+                <a href="<?php echo $url; ?>" class="btn" id="respond-to-move"><?php _e( 'Make a Move', 'ivanhoe' ); ?></a>
+
+                <?php else : ?>
+
+                <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="btn"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a>                
+
+                <?php endif; ?>
+
+            <?php endif; ?>
+
+        
         </div>
     </div>
 
@@ -148,9 +147,8 @@ $role                     = ivanhoe_user_has_role( $post->ID );
                 <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
                 <p><span class="byline"><?php the_author_posts_link(); ?></span>
             &middot; <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
-                <?php echo ivanhoe_move_link( $post ); ?>
                 <?php $ivanhoe_post_id=$post->ID; ?>
-                    <span class="new_source" data-title="<?php echo get_the_title($ivanhoe_post_id); ?>" data-value="<?php echo $ivanhoe_post_id; ?>">Add to Moves</span>
+                    <span class="new_source btn" data-title="<?php echo get_the_title($ivanhoe_post_id); ?>" data-value="<?php echo $ivanhoe_post_id; ?>">Add to Moves</span>
             </header>
 
             <div class="excerpt">
@@ -204,9 +202,25 @@ $role                     = ivanhoe_user_has_role( $post->ID );
 <?php get_footer(); ?>
 
 <script type="text/javascript">
+    function update_button(){
+        var li = $('.basic_element_of_semantically_incoherent_metaphor li');
+        var button = $('#respond-to-move');
+        if (li.length === 0) {
+            button.text ('Make a Move');
+        } else {
+            button.text ('Respond');
+        }
+    }
     $('.new_source').click(function(){
+        
         $('.basic_element_of_semantically_incoherent_metaphor').append
-        ("<li onclick=\"$(this).remove();\"><input type='hidden' value='" + $(this).data('value') + "' name='move_source[]'>" + $(this).data('title') + "</li>");
+        ("<li><input type='hidden' value='" + $(this).data('value') + "' name='move_source[]'>" + $(this).data('title') + "</li>").click
+        (function() {
+            $(this).remove();
+            update_button();
+        });
+        update_button();
+
     });
 
 </script>
