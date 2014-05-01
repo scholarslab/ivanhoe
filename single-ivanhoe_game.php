@@ -202,6 +202,8 @@ $role                     = ivanhoe_user_has_role( $post->ID );
 <?php get_footer(); ?>
 
 <script type="text/javascript">
+    var ivanhoe_selected_moves = {};
+
     function update_button(){
         var li = $('.basic_element_of_semantically_incoherent_metaphor li');
         var button = $('#respond-to-move');
@@ -216,16 +218,20 @@ $role                     = ivanhoe_user_has_role( $post->ID );
     }
 
     $('.new_source').click(function(){
-        
-        $('.basic_element_of_semantically_incoherent_metaphor').append
-        ("<li><input type='hidden' value='" + $(this).data('value') + "' name='move_source[]'>" + $(this).data('title') + "</li>").click
-        (function( event ) {
-            $(event.target).remove();
+        var $this = $(this);
+        var value = $this.data('value');
+        if (ivanhoe_selected_moves[value] == null) {
+            $('.basic_element_of_semantically_incoherent_metaphor').append
+            ("<li><input type='hidden' value='" + value + "' name='move_source[]'>" + $this.data('title') + "</li>").click
+            (function( event ) {
+                $(event.target).remove();
+                update_button();
+                delete ivanhoe_selected_moves[value];
+            });
+            
             update_button();
-        });
-        
-        update_button();
-
+        ivanhoe_selected_moves[value] = true;
+        }
     });
 
     update_button();
