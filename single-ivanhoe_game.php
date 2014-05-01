@@ -102,13 +102,13 @@ $role                     = ivanhoe_user_has_role( $post->ID );
                     );
                 ?>
 
-                <form action='<?php echo $url; ?>' method='post'>
-                    <input type='hidden' name='parent_post' value='<?php echo $ivanhoe_game_id; ?>'>
-                    <input type='hidden' name='ivanhoe_role_id' value='<?php echo $role->ID; ?>'>
-                    <h3>Responding to these moves</h3>
-                    <ul class="basic_element_of_semantically_incoherent_metaphor">
-                    </ul>
-                </form>
+                    <form action='<?php echo $url; ?>' method='post'>
+                        <input type='hidden' name='parent_post' value='<?php echo $ivanhoe_game_id; ?>'>
+                        <input type='hidden' name='ivanhoe_role_id' value='<?php echo $role->ID; ?>'>
+                        <h3 id='multi_source_list_of_doom_header'>Responding to the following</h3>
+                        <ul class="basic_element_of_semantically_incoherent_metaphor">
+                        </ul>
+                    </form>
 
                 <a href="<?php echo $url; ?>" class="btn" id="respond-to-move"><?php _e( 'Make a Move', 'ivanhoe' ); ?></a>
 
@@ -205,22 +205,29 @@ $role                     = ivanhoe_user_has_role( $post->ID );
     function update_button(){
         var li = $('.basic_element_of_semantically_incoherent_metaphor li');
         var button = $('#respond-to-move');
+        var header = $('#multi_source_list_of_doom_header');
         if (li.length === 0) {
             button.text ('Make a Move');
+            header.hide ();
         } else {
             button.text ('Respond');
+            header.show ();
         }
     }
+
     $('.new_source').click(function(){
         
         $('.basic_element_of_semantically_incoherent_metaphor').append
         ("<li><input type='hidden' value='" + $(this).data('value') + "' name='move_source[]'>" + $(this).data('title') + "</li>").click
-        (function() {
-            $(this).remove();
+        (function( event ) {
+            $(event.target).remove();
             update_button();
         });
+        
         update_button();
 
     });
+
+    update_button();
 
 </script>
