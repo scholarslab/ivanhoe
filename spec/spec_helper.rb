@@ -7,16 +7,13 @@ require 'mysql2'
 require 'capybara/rspec'
 require 'capybara-webkit'
 #require 'capybara-screenshot/rspec'
-#
 
 require 'helpers/media_files'
 
 require 'database_cleaner'
 require "sequel"
 
-
 Dotenv.load
-
 
 # You need to set up this database in mysql.
 WP_CONFIG   = ENV.fetch('WP_CONFIG',   '../../../wp-config.php')
@@ -34,18 +31,20 @@ Capybara.default_driver    = :webkit
 Capybara.javascript_driver = :webkit
 
 def db_setup
-  cxn = Mysql2::Client.new(:host => DB_HOST,
-                             :username => DB_USER,
-                             :password => DB_PASSWORD,
-                             :port => DB_PORT
-                            )
+  cxn = Mysql2::Client.new(
+    :host => DB_HOST,
+    :username => DB_USER,
+    :password => DB_PASSWORD,
+    :port => DB_PORT
+  )
   puts "Creating database..."
 
-    cxn.query("CREATE DATABASE IF NOT EXISTS #{DB_NAME};")
+  cxn.query("CREATE DATABASE IF NOT EXISTS #{DB_NAME};")
 
-    puts "importing data"
-    system("mysql -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME} < #{DB_DUMP}")
-    cxn.close
+  puts "importing data"
+
+  system "mysql -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME} < #{DB_DUMP} "
+  cxn.close
 end
 
 RSpec.configure do |config|
@@ -53,7 +52,7 @@ RSpec.configure do |config|
   config.before(:suite) do |ex|
 
     db_setup
-    
+
     # use DatabaseCleaner for transactions
     DatabaseCleaner[
       :sequel, {
@@ -69,17 +68,15 @@ RSpec.configure do |config|
     ]
 
     DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
   end
 
   config.before(:each) do
-    #DatabaseCleaner.start
+    DatabaseCleaner.start
   end
 
   config.after(:each) do
-    #DatabaseCleaner.clean
+    DatabaseCleaner.clean
   end
-
 
   # Patch wp config for testing.
   Dir.mkdir('./tmp') unless Dir.exists?('./tmp')
@@ -105,14 +102,16 @@ RSpec.configure do |config|
     FileUtils.cp('./tmp/wp-config.php', WP_CONFIG)
   end
 
-  #config.after(:suite) do |ex|
-    #cxn = Mysql2::Client.new(:host => DB_HOST,
-                             #:username => DB_USER,
-                             #:password => DB_PASSWORD)
+  config.after(:suite) do |ex|
+    #cxn = Mysql2::Client.new(
+      #:host => DB_HOST,
+      #:username => DB_USER,
+      #:password => DB_PASSWORD
+    #)
 
-    ##cxn.query("DROP DATABASE IF EXISTS #{DB_NAME};")
+    #cxn.query("DROP DATABASE IF EXISTS #{DB_NAME};")
     #cxn.close
-  #end
+  end
 
 end
 

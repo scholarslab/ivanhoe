@@ -19,9 +19,10 @@ describe 'The Ivanhoe theme', :type => :feature, :js => true do
     expect(page).to have_link('Games')
   end
 
-  it "has a list of games" do
+  it "has a has no games" do
     click_link('Games')
-    expect(page).to have_css('article.ivanhoe_game')
+    expect(page).to have_content('Apologies, but no results were found.')
+    #expect(page).to have_css('article.ivanhoe_game')
   end
 
   describe "authenticated use" do
@@ -38,15 +39,15 @@ describe 'The Ivanhoe theme', :type => :feature, :js => true do
     end
 
     it "should be able to log in" do
-      fill_in 'Username', with: ENV['VALID_USER']
-      fill_in 'Password', with: ENV['VALID_PASSWORD']
+      fill_in 'Username', with: 'admin'
+      fill_in 'Password', with: 'admin'
       click_button 'Log In'
       expect(page).to have_link('Log out')
     end
 
     it "should redirect to to main page" do
-      fill_in 'Username', with: ENV['VALID_USER']
-      fill_in 'Password', with: ENV['VALID_PASSWORD']
+      fill_in 'Username', with: 'admin'
+      fill_in 'Password', with: 'admin'
       click_button 'Log In'
       expect(page).to_not have_link('Make a Game')
     end
