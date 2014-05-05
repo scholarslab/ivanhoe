@@ -51,7 +51,6 @@ $post_rationale = !empty ( $_POST['post_rationale']) ? $_POST['post_rationale'] 
 $rationale_title = "";
 $rationale_content = "";
 
-
 // Creates an empty array for error messages.
 $error_messages = array();
 
@@ -92,11 +91,14 @@ if ( !empty( $_POST )) {
 
     // If there's a move source, save it as post meta.
     if ($move_source) {
-        update_post_meta(
+        foreach ($move_source as $move) {
+            add_post_meta(
             $newpost,
             'Ivanhoe Move Source',
-            $move_source
-        );
+            $move
+            );
+        }
+        
     }
 
     // If there is a post_rationale.
@@ -159,13 +161,17 @@ if ($move_source) {
     $ivanhoe_source = get_post($move_source);
 
     $message = sprintf(
-        __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>&#8221; in response to the move &#8220;<a href="%3$s">%4$s</a>.&#8221;' , 'ivanhoe' ), 
+        __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>&#8221; in response to the move: <ul>' , 'ivanhoe' ), 
         get_permalink($parent_post),
-        $ivanhoe_game->post_title,
-        get_permalink($move_source),
-        $ivanhoe_source->post_title
+        $ivanhoe_game->post_title
     );
-    }
+    foreach ($move_source as $single_source) {
+        $source_link = get_permalink($single_source);
+        $source_title = get_the_title($single_source);
+        $message .= "<a href='$source_link'><li>$source_title</li></a>";
+    };
+    $message .= "</ul>";
+    } 
 }
 ?>
 
@@ -215,4 +221,3 @@ if ($move_source) {
 </form>
 
 <?php get_footer();
-
