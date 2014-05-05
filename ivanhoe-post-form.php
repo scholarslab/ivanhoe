@@ -91,11 +91,14 @@ if ( !empty( $_POST )) {
 
     // If there's a move source, save it as post meta.
     if ($move_source) {
-        update_post_meta(
+        foreach ($move_source as $move) {
+            add_post_meta(
             $newpost,
             'Ivanhoe Move Source',
-            $move_source
-        );
+            $move
+            );
+        }
+        
     }
 
     // If there is a post_rationale.

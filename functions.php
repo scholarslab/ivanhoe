@@ -598,17 +598,21 @@ function ivanhoe_get_move_source($post=null)
     $html = '';
 
     // Get the Move Source ID from custom post metadata.
-    $source_id = get_post_meta($post->ID, 'Ivanhoe Move Source', true);
+    $source_id = get_post_meta($post->ID, 'Ivanhoe Move Source', false);
 
     // Check if $source_id isn't 0 and if we can get another post with its value.
-    if ( $source_id && $source = get_post($source_id) ) {
+    if ( $source_id ) {
 
         // Set $html to a string with a link to source post.
         $html = '<h3>' . __('Source', 'ivanhoe' ) . '</h3>'
-            . '<ul><li>'
-            . '<a href="' . get_permalink($source->ID) . '">'
-            . $source->post_title . '</a>'
-            . '</li></ul>';
+            . '<ul>';
+        foreach ($source_id as $source ) {
+            $source_link = get_permalink($source);
+            $source_title = get_the_title($source);
+            $html .= "<a href='$source_link'><li>$source_title</li></a>";
+        }    
+        $html .= "</ul>";
+
     }
 
     // Print out the value of $html.
