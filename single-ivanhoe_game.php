@@ -96,14 +96,14 @@ $role                     = ivanhoe_user_has_role( $post->ID );
 
                 ?>
 
-                    <form action='<?php echo home_url(); ?>' method='get'>
+                    <form name="move_info" action='<?php echo home_url(); ?>' method='get'>
                         <input type="hidden" name="ivanhoe" value="ivanhoe_move">
                         <input type='hidden' name='parent_post' value='<?php echo $ivanhoe_game_id; ?>'>
                         <input type='hidden' name='ivanhoe_role_id' value='<?php echo $role->ID; ?>'>
                         <h3 id='multi_source_list_of_doom_header'>Responding to the following</h3>
                         <ul class="basic_element_of_semantically_incoherent_metaphor">
                         </ul>
-                        <input type="submit" value="<?php _e( 'Make a Move', 'ivanhoe' ); ?>" class="btn" id="respond-to-move">
+                        <input type="submit" name="movesubmit" value="<?php _e( 'Make a Move', 'ivanhoe' ); ?>" class="btn" id="respond-to-move">
                     </form>
 
                 
@@ -202,13 +202,14 @@ $role                     = ivanhoe_user_has_role( $post->ID );
 
     function update_button(){
         var li = $('.basic_element_of_semantically_incoherent_metaphor li');
-        var button = $('#respond-to-move');
         var header = $('#multi_source_list_of_doom_header');
         if (li.length === 0) {
-            button.text ('Make a Move');
+            document.move_info.
+            movesubmit.value="Make a Move";
             header.hide ();
         } else {
-            button.text ('Respond');
+            document.move_info.
+            movesubmit.value="Respond";
             header.show ();
         }
     }
