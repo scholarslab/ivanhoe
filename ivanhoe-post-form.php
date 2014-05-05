@@ -161,7 +161,7 @@ if ($move_source) {
     $ivanhoe_source = get_post($move_source);
 
     $message = sprintf(
-        __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>&#8221; in response to the move: <ul>' , 'ivanhoe' ), 
+        __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>&#8221; in response to the following: <ul>' , 'ivanhoe' ), 
         get_permalink($parent_post),
         $ivanhoe_game->post_title
     );
