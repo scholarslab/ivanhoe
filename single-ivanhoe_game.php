@@ -94,27 +94,23 @@ $role                     = ivanhoe_user_has_role( $post->ID );
 
                 if ( $role ) :
 
-                    $url = add_query_arg(
-                            array(
-                                'ivanhoe' => 'ivanhoe_move',
-                                ),
-                        home_url()
-                    );
                 ?>
 
-                    <form action='<?php echo $url; ?>' method='post'>
+                    <form action='<?php echo home_url(); ?>' method='get'>
+                        <input type="hidden" name="ivanhoe" value="ivanhoe_move">
                         <input type='hidden' name='parent_post' value='<?php echo $ivanhoe_game_id; ?>'>
                         <input type='hidden' name='ivanhoe_role_id' value='<?php echo $role->ID; ?>'>
                         <h3 id='multi_source_list_of_doom_header'>Responding to the following</h3>
                         <ul class="basic_element_of_semantically_incoherent_metaphor">
                         </ul>
+                        <input type="submit" value="<?php _e( 'Make a Move', 'ivanhoe' ); ?>" class="btn" id="respond-to-move">
                     </form>
 
-                <a href="<?php echo $url; ?>" class="btn" id="respond-to-move"><?php _e( 'Make a Move', 'ivanhoe' ); ?></a>
+                
 
                 <?php else : ?>
 
-                <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="btn"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a>                
+                <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="btn"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a> 
 
                 <?php endif; ?>
 

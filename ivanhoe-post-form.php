@@ -42,16 +42,24 @@ $post_title = !empty ( $_POST['post_title'] ) ? $_POST['post_title'] : null;
 $post_content = !empty ( $_POST['post_content'] ) ? $_POST['post_content'] : null;
 
 // Move variables.
-$parent_post = isset( $_POST['parent_post'] ) ? $_POST['parent_post'] : null;
-$move_source = isset ( $_POST['move_source'] ) ? $_POST['move_source'] : null;
-$role_id = isset( $_POST['ivanhoe_role_id'] ) ? $_POST['ivanhoe_role_id'] : null;
+$parent_post = isset( $_GET['parent_post'] ) ? $_GET['parent_post'] : null;
+$move_source = isset ( $_GET['move_source'] ) ? $_GET['move_source'] : null;
+$role_id = isset( $_GET['ivanhoe_role_id'] ) ? $_GET['ivanhoe_role_id'] : null;
 $post_rationale = !empty ( $_POST['post_rationale']) ? $_POST['post_rationale'] : null;
 
 // special fields
 $rationale_title = "";
 $rationale_content = "";
-
+echo "<pre><code>";
+echo "move source:";
 print_r($move_source);
+echo "parent post";
+print_r($parent_post);
+echo "post";
+print_r($_POST);
+echo "</code></pre>";
+
+
 
 
 // Creates an empty array for error messages.
