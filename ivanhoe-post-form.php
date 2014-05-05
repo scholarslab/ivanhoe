@@ -50,17 +50,6 @@ $post_rationale = !empty ( $_POST['post_rationale']) ? $_POST['post_rationale'] 
 // special fields
 $rationale_title = "";
 $rationale_content = "";
-echo "<pre><code>";
-echo "move source:";
-print_r($move_source);
-echo "parent post";
-print_r($parent_post);
-echo "post";
-print_r($_POST);
-echo "</code></pre>";
-
-
-
 
 // Creates an empty array for error messages.
 $error_messages = array();
@@ -169,13 +158,17 @@ if ($move_source) {
     $ivanhoe_source = get_post($move_source);
 
     $message = sprintf(
-        __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>&#8221; in response to the move &#8220;<a href="%3$s">%4$s</a>.&#8221;' , 'ivanhoe' ), 
+        __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>&#8221; in response to the move: <ul>' , 'ivanhoe' ), 
         get_permalink($parent_post),
-        $ivanhoe_game->post_title,
-        get_permalink($move_source),
-        $ivanhoe_source->post_title
+        $ivanhoe_game->post_title
     );
-    }
+    foreach ($move_source as $single_source) {
+        $source_link = get_permalink($single_source);
+        $source_title = get_the_title($single_source);
+        $message .= "<a href='$source_link'><li>$source_title</li></a>";
+    };
+    $message .= "</ul>";
+    } 
 }
 ?>
 
@@ -225,4 +218,3 @@ if ($move_source) {
 </form>
 
 <?php get_footer();
-
