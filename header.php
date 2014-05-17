@@ -17,6 +17,8 @@ if ( is_singular() && get_option( 'thread_comments' ) )
 
 <?php wp_head(); ?>
 
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+
 </head>
 
 <body <?php echo body_class(); ?>>
