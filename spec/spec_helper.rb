@@ -13,6 +13,10 @@ require 'helpers/media_files'
 require 'database_cleaner'
 require "sequel"
 
+# Requires supporting files with macros, etc. Rails style;
+
+Dir['./spec/support/**/*.rb'].each { |f| require f }
+
 Dotenv.load
 
 # You need to set up this database in mysql.
