@@ -16,7 +16,7 @@ require "sequel"
 Dotenv.load
 
 # You need to set up this database in mysql.
-WP_CONFIG      = ENV.fetch('WP_CONFIG',      '../../../wp-config.php')
+WP_CONFIG      = ENV.fetch('WP_CONFIG', '../../../wp-config.php')
 
 DB_HOST        = ENV.fetch('DB_HOST', 'localhost')
 DB_USER        = ENV.fetch('DB_USER', 'ivanhoe')
@@ -92,7 +92,7 @@ RSpec.configure do |config|
       elsif line.start_with?("define('DB_PASSWORD'")
         line = "define('DB_PASSWORD', '#{WP_DB_PASSWORD}');\n# #{line}"
       elsif line.start_with?("define('DB_HOST'")
-        line = "define('DB_HOST',     '#{DB_HOST}');\n# #{line}"
+        line = "define('DB_HOST',     '#{DB_HOST}:#{DB_PORT}');\n# #{line}"
       end
 
       f.write(line)
