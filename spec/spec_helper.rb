@@ -20,16 +20,17 @@ Dir['./spec/support/**/*.rb'].each { |f| require f }
 Dotenv.load
 
 # You need to set up this database in mysql.
-WP_CONFIG   = ENV.fetch('WP_CONFIG',   '../../../wp-config.php')
+WP_CONFIG      = ENV.fetch('WP_CONFIG', '../../../wp-config.php')
 
-DB_HOST     = ENV.fetch('DB_HOST',     'localhost')
-DB_USER     = ENV.fetch('DB_USER',     'ivanhoe')
-DB_PASSWORD = ENV.fetch('DB_PASSWORD', 'ivanhoe')
-DB_NAME     = ENV.fetch('DB_NAME',     'test_ivanhoe')
-DB_PORT     = ENV.fetch('DB_PORT',     '3306')
-URL_BASE    = ENV.fetch('URL_BASE',    'http://localhost:8888/ivanhoe')
+DB_HOST        = ENV.fetch('DB_HOST', 'localhost')
+DB_USER        = ENV.fetch('DB_USER', 'ivanhoe')
+DB_PASSWORD    = ENV.fetch('DB_PASSWORD', 'ivanhoe')
+WP_DB_PASSWORD = ENV.fetch('WP_DB_PASSWORD', DB_PASSWORD)
+DB_NAME        = ENV.fetch('DB_NAME', 'test_ivanhoe')
+DB_PORT        = ENV.fetch('DB_PORT', '3306')
+URL_BASE       = ENV.fetch('URL_BASE', 'http://localhost:8888/ivanhoe')
 
-DB_DUMP     = "./spec/dumps/ivanhoe.sql"
+DB_DUMP        = "./spec/dumps/ivanhoe.sql"
 
 Capybara.default_driver    = :webkit
 Capybara.javascript_driver = :webkit
@@ -93,9 +94,9 @@ RSpec.configure do |config|
       elsif line.start_with?("define('DB_USER'")
         line = "define('DB_USER',     '#{DB_USER}');\n# #{line}"
       elsif line.start_with?("define('DB_PASSWORD'")
-        line = "define('DB_PASSWORD', '#{DB_PASSWORD}');\n# #{line}"
+        line = "define('DB_PASSWORD', '#{WP_DB_PASSWORD}');\n# #{line}"
       elsif line.start_with?("define('DB_HOST'")
-        line = "define('DB_HOST',     '#{DB_HOST}');\n# #{line}"
+        line = "define('DB_HOST',     '#{DB_HOST}:#{DB_PORT}');\n# #{line}"
       end
 
       f.write(line)
