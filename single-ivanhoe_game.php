@@ -183,7 +183,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
 
     <?php endif; ?>
 
-<?php $wp_query = $original_query; ?>
+<?php wp_reset_query(); ?>
 
 </article>
 

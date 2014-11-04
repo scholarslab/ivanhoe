@@ -1075,3 +1075,118 @@ function ivanhoe_ajax_upload_attachment() {
 }
 
 add_action('add_attachment', 'ivanhoe_ajax_upload_attachment');
+
+function ivanhoe_add_feed() {
+    $template = get_template_directory() . '/feed-ivanhoe.php';
+    $post_type = get_query_var( 'post_type' );
+    if( ($post_type == 'ivanhoe_game' || $post_type = 'ivanhoe_move') and file_exists( $template ) ) {
+        load_template( $template );
+    }
+}
+
+add_action('do_feed_ivanhoe', 'ivanhoe_add_feed', 10, 1);
+
+/**
+ * Enqueue d3js
+ */
+function ivanhoe_enqueue_d3js() {
+    global $post_type;
+    if ($post_type == 'ivanhoe_game') {
+        wp_enqueue_script( 'd3js', get_template_directory_uri() . '/javascripts/d3.min.js', array(), null, false );
+    }
+}
+
+add_action( 'wp_enqueue_scripts', 'ivanhoe_enqueue_d3js' );
+
+function ivanhoe_echo_d3js_graph() {
+    global $post, $post_type;
+
+    $html = '';
+
+    if ($post_type == 'ivanhoe_game') {
+        $html = '
+<script type="text/javascript">
+var width = 500, height = 500;
+
+var force = d3.layout.force()
+    .charge(-120)
+    .linkDistance(50)
+    .size([width, height]);
+
+var svg = d3.select("#game-data").append("svg")
+    .attr("id", "playgraph")
+    .attr("viewBox", "0 0 " + width + " " + height )
+    .attr("preserveAspectRatio", "xMidYMid meet");
+
+d3.json("'. add_query_arg('feed', 'ivanhoe', get_permalink($post->ID)) . '", function(error, graph) {
+    force
+      .nodes(graph.nodes)
+      .links(graph.links)
+      .start();
+
+    var link = svg.selectAll(".link")
+        .data(graph.links)
+        .enter().append("line")
+        .attr("class", "link");
+
+    var node = svg.selectAll(".node")
+        .data(graph.nodes)
+        .enter().append("circle")
+        .attr("class", "node")
+        .attr("r", 10)
+        .call(force.drag);
+
+    force.on("tick", function() {
+        link.attr("x1", function(d) { return d.source.x; })
+            .attr("y1", function(d) { return d.source.y; })
+            .attr("x2", function(d) { return d.target.x; })
+            .attr("y2", function(d) { return d.target.y; });
+
+        node.attr("cx", function(d) { return d.x; })
+            .attr("cy", function(d) { return d.y; });
+    });
+});
+</script>';
+
+
+    }
+
+    echo $html;
+}
+
+add_action('wp_footer', 'ivanhoe_echo_d3js_graph');
+
+function ivanhoe_echo_d3js_styles() {
+    global $post, $post_type;
+
+    $html = 'foobar';
+
+    if ($post_type == 'ivanhoe_game') {
+
+        $html = '
+<style type="text/css" media="all">
+svg {
+    background: white;
+    border: 1px solid red;
+    width: 100%;
+    height: 300px;
+}
+
+.node {
+    stroke: #fff;
+  stroke-width: 2px;
+  fill: rgba(255,200, 0, 1);
+}
+
+.link {
+  stroke: rgba(0,0,0,0.25);
+  stroke-width:1px;
+}
+</style>';
+
+    }
+
+    echo $html;
+}
+
+add_action('wp_head', 'ivanhoe_echo_d3js_styles');
