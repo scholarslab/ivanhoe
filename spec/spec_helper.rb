@@ -49,7 +49,7 @@ def db_setup
 
   puts "importing data"
 
-  system "mysql -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME} < #{DB_DUMP} "
+  system "cat #{DB_DUMP} | sed 's,URL_BASE,#{URL_BASE},g' | mysql -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME}"
   cxn.close
 end
 
