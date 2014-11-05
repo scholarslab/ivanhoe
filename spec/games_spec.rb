@@ -54,10 +54,11 @@ describe "Game Views", :type => :feature, :js => true  do
 
     describe "archive-ivanhoe_game layout with no moves" do
 
-      it "has a game info" do
-        #within('.ivanhoe_game:first-child') { expect(page).to have_selector('h2') }
-        #within('.ivanhoe_game:first-child') { expect(page).to have_selector('p') }
-      end
+      # it "has a game info" do
+      #   pending ("something to be done")
+      #   #within('.ivanhoe_game:first-child') { expect(page).to have_selector('h2') }
+      #   #within('.ivanhoe_game:first-child') { expect(page).to have_selector('p') }
+      # end
 
       #it "has a 'Playing since' line" do
       #expect(page).to have_content('Playing since:')

@@ -11,7 +11,7 @@ module IvanhoeMacros
 
   def self.login_as_admin
     vist URL_BASE
-    click_link('Log in')
+    click_link('Log In')
     fill_in 'Username', with: ENV['VALID_PASSWORD']
     fill_in 'Password', with: ENV['VALID_PASSWORD']
     click_button 'Log In'
@@ -24,5 +24,5 @@ module IvanhoeMacros
     tiny_mce_fill_in 'post_content', :with => @valid_game[:game_description]
   end
 
-  
+
 end

@@ -6,7 +6,8 @@ require 'mysql2'
 
 require 'capybara/rspec'
 require 'capybara-webkit'
-#require 'capybara-screenshot/rspec'
+require 'capybara-screenshot'
+require 'capybara-screenshot/rspec'
 
 require 'helpers/media_files'
 
@@ -27,7 +28,7 @@ DB_USER        = ENV.fetch('DB_USER', 'ivanhoe')
 DB_PASSWORD    = ENV.fetch('DB_PASSWORD', 'ivanhoe')
 WP_DB_PASSWORD = ENV.fetch('WP_DB_PASSWORD', DB_PASSWORD)
 DB_NAME        = ENV.fetch('DB_NAME', 'test_ivanhoe')
-DB_PORT        = ENV.fetch('DB_PORT', '3306')
+DB_PORT        = ENV.fetch('DB_PORT', '8889')
 URL_BASE       = ENV.fetch('URL_BASE', 'http://localhost:8888/ivanhoe')
 
 DB_DUMP        = "./spec/dumps/ivanhoe.sql"
