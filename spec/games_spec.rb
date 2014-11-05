@@ -4,6 +4,28 @@ def tiny_mce_fill_in(name, args)
   page.execute_script("tinymce.editors[0].setContent('#{args[:with]}')")
 end
 
+describe "Transactions", :type => :feature, :js => true  do
+      before do
+        visit(URL_BASE)
+        click_link('Log in')
+        fill_in 'Username', with: 'admin'
+        fill_in 'Password', with: 'admin'
+        click_button 'Log In'
+      end
+
+      def make_game
+        click_link 'Make a Game'
+        fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
+        tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+        click_button 'Save'
+      end
+
+      it "has a game info" do
+        click_link 'Games'
+        make_game
+        within('.ivanhoe_game') { expect(page).to have_selector('h2') }
+      end
+end
 
 describe "Game Views", :type => :feature, :js => true  do
 

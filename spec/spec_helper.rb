@@ -11,9 +11,6 @@ require 'capybara-screenshot/rspec'
 
 require 'helpers/media_files'
 
-require 'database_cleaner'
-require "sequel"
-
 # Requires supporting files with macros, etc. Rails style;
 
 Dir['./spec/support/**/*.rb'].each { |f| require f }
@@ -48,10 +45,15 @@ def db_setup
   cxn.query("CREATE DATABASE IF NOT EXISTS #{DB_NAME};")
 
   puts "importing data"
+  reset_db
 
-  system "cat #{DB_DUMP} | sed 's,URL_BASE,#{URL_BASE},g' | mysql -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME}"
   cxn.close
 end
+
+def reset_db
+   system "cat #{DB_DUMP} | sed 's,URL_BASE,#{URL_BASE},g' | mysql -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME} 2> /dev/null"
+end
+
 
 RSpec.configure do |config|
 
@@ -59,29 +61,10 @@ RSpec.configure do |config|
 
     db_setup
 
-    # use DatabaseCleaner for transactions
-    DatabaseCleaner[
-      :sequel, {
-        :connection => Sequel.connect(
-          :adapter => 'mysql2',
-          :host => DB_HOST,
-          :user => DB_USER,
-          :password => DB_PASSWORD,
-          :port => DB_PORT,
-          :database => DB_NAME
-        )
-      }
-    ]
-
-    DatabaseCleaner.strategy = :transaction
   end
 
   config.before(:each) do
-    DatabaseCleaner.start
-  end
-
-  config.after(:each) do
-    DatabaseCleaner.clean
+    reset_db
   end
 
   # Patch wp config for testing.
