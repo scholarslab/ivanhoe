@@ -173,8 +173,16 @@ describe "Game Views", :type => :feature, :js => true  do
               make_a_move
             end
 
+            it "has a move" do
+              expect(page).to have_selector('article.ivanhoe_move')
+            end
+
             it "has the title of a move" do
               expect(page).to have_selector('.ivanhoe_move')
+            end
+
+            it "has a link to the individual move page" do
+              expect(page).to have_selector('.ivanhoe_move h1 a')
             end
 
             it "has a link to your role within the move block" do
@@ -183,6 +191,10 @@ describe "Game Views", :type => :feature, :js => true  do
 
             it "has the Respond to move button" do
               expect(page).to have_link('Respond')
+            end
+
+            it "has the move excerpt" do
+              expect(page).to have_selector('.excerpt')
             end
 
         end
