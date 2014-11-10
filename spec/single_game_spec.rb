@@ -4,29 +4,6 @@ def tiny_mce_fill_in(name, args)
   page.execute_script("tinymce.editors[0].setContent('#{args[:with]}')")
 end
 
-describe "Transactions", :type => :feature, :js => true  do
-      before do
-        visit(URL_BASE)
-        click_link('Log in')
-        fill_in 'Username', with: 'admin'
-        fill_in 'Password', with: 'admin'
-        click_button 'Log In'
-      end
-
-      def make_game
-        click_link 'Make a Game'
-        fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
-        tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-        click_button 'Save'
-      end
-
-      it "has a game info" do
-        click_link 'Games'
-        make_game
-        within('.ivanhoe_game') { expect(page).to have_selector('h2') }
-      end
-end
-
 describe "Game Views", :type => :feature, :js => true  do
 
   @valid_game = {
@@ -74,22 +51,99 @@ describe "Game Views", :type => :feature, :js => true  do
       rand(2..5).times { make_game }
     end
 
-    describe "the Games page" do
+    describe "An individual game page" do
 
-      it "has a game title" do
-        within('.ivanhoe_game', match: :first) { expect(page).to have_selector('h2') }
+      before do
+        find('.ivanhoe_game h2 a', match: :first).click
       end
 
-      it "has a game description" do
-        within('.ivanhoe_game', match: :first) { expect(page).to have_selector('p') }
-      end
+      describe "with no moves" do
 
-      it 'has a Profile link' do
-        expect(page).to have_link('Profile')
-      end
+        it "has a game detail block" do
+          within('.game') {expect(page).to have_selector('#game-data')}
+        end
 
-      it 'has a Log out link' do
-        expect(page).to have_link('Log out')
+        it "has a 'Playing since' line" do
+          expect(page).to have_content('Playing since:')
+        end
+
+        it "has a line saying there are no moves" do
+          expect(page).to have_content('There are no moves for this game.')
+        end
+
+        describe "and no role" do
+
+          it "has a Make a Role! button" do
+            expect(page).to have_link('Make a Role!')
+          end
+
+        end
+
+        describe "with a role" do
+
+          before do
+            click_link('Make a Role!')
+            fill_in 'post_title', :with => Faker::Lorem.words(rand(2..4)).join(' ')
+            tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+            click_button 'Save'
+          end
+
+          it "identifies your current role" do
+            expect(page).to have_content("Your Current Role")
+          end
+
+          it "has a link to your role" do
+            expect(page).to have_selector('.role a')
+          end
+
+          it "lists other characters" do
+            expect(page).to have_selector(".character_list")
+          end
+
+          it "has the Make a move button" do
+            expect(page).to have_selector('#make-a-move')
+          end
+
+          describe "with moves" do
+
+            def make_a_move
+              click_link 'Make a move'
+              fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
+              tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+              tiny_mce_fill_in('post_rationale', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+              click_button 'Save'
+            end
+
+            before do
+              make_a_move
+            end
+
+            it "has a move" do
+              expect(page).to have_selector('article.ivanhoe_move')
+            end
+
+            it "has the title of a move" do
+              expect(page).to have_selector('.ivanhoe_move')
+            end
+
+            it "has a link to the individual move page" do
+              expect(page).to have_selector('.ivanhoe_move h1 a')
+            end
+
+            it "has a link to your role within the move block" do
+              expect(page).to have_selector(".byline a")
+            end
+
+            it "has the Respond to move button" do
+              expect(page).to have_link('Respond')
+            end
+
+            it "has the move excerpt" do
+              expect(page).to have_selector('.excerpt')
+            end
+
+        end
+
       end
 
     end
@@ -235,7 +289,8 @@ describe "Game Views", :type => :feature, :js => true  do
 
     #end
 
-end
+  end
 
+end
 
 
