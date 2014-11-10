@@ -81,6 +81,8 @@ RSpec.configure do |config|
         line = "define('DB_PASSWORD', '#{WP_DB_PASSWORD}');\n# #{line}"
       elsif line.start_with?("define('DB_HOST'")
         line = "define('DB_HOST',     '#{DB_HOST}:#{DB_PORT}');\n# #{line}"
+      elsif line.start_with?("$table_prefix")
+        line = "$table_prefix = 'wp_';\n# #{line}"
       end
 
       f.write(line)
