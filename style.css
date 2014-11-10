@@ -139,7 +139,7 @@ section + section {
 footer[role=contentinfo] {
     text-align:center;
     margin-top:3em;
-    
+
 }
 
 
@@ -154,7 +154,7 @@ footer[role=contentinfo] {
 
 html {
     padding: 40px;
-    background-image: url('tile2.png');
+    background-image: url('images/tile2.png');
     background-position: -5% 0;
     background-attachment: fixed;
     background-size: 300px;
