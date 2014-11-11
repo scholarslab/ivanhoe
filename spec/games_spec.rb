@@ -27,7 +27,7 @@ describe "Transactions", :type => :feature, :js => true  do
       end
 end
 
-describe "Game Views", :type => :feature, :js => true  do
+describe "Games View", :type => :feature, :js => true  do
 
   @valid_game = {
     :game_title => Faker::Lorem.words(rand(2..8)),
@@ -37,15 +37,18 @@ describe "Game Views", :type => :feature, :js => true  do
   before(:each) do
     visit(URL_BASE)
     click_link('Games')
-    #first('.game-title > a').click
   end
 
   describe "authenticated users can do stuff" do
-    before do
+    def login
       click_link('Log in')
       fill_in 'Username', with: 'admin'
       fill_in 'Password', with: 'admin'
       click_button 'Log In'
+    end
+
+    before do
+      login
     end
 
     it "should have a link to create a game" do

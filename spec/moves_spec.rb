@@ -17,7 +17,7 @@ describe "An Ivanhoe move", :type => :feature, :js => true do
   end
 
   it "has a link for moves" do
-    save_and_open_page
+    # save_and_open_page
   end
 
   # TODO need to construct a game before these tests will pass

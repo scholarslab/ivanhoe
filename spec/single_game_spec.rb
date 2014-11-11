@@ -4,144 +4,130 @@ def tiny_mce_fill_in(name, args)
   page.execute_script("tinymce.editors[0].setContent('#{args[:with]}')")
 end
 
-describe "Game Views", :type => :feature, :js => true  do
+describe "Game View", :type => :feature, :js => true  do
 
   @valid_game = {
     :game_title => Faker::Lorem.words(rand(2..8)),
     :game_description => Faker::Lorem.paragraphs(rand(1..3))
   }
 
+  def login
+    click_link('Log in')
+    fill_in 'Username', with: 'admin'
+    fill_in 'Password', with: 'admin'
+    click_button 'Log In'
+  end
+
+  def make_game
+    click_link 'Make a Game'
+    fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
+    tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+    click_button 'Save'
+  end
+
+  def make_role
+    click_link('Make a Role!')
+    fill_in 'post_title', :with => Faker::Lorem.words(rand(2..4)).join(' ')
+    tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+    click_button 'Save'
+  end
+
+  def make_a_move
+    click_link 'Make a move'
+    fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
+    tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+    tiny_mce_fill_in('post_rationale', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+    click_button 'Save'
+  end
+
   before(:each) do
     visit(URL_BASE)
-    click_link('Games')
-    #first('.game-title > a').click
+    click_link 'Games'
+    login
+    rand(2..5).times { make_game }
   end
 
-  describe "authenticated users can do stuff" do
-    before do
-      click_link('Log in')
-      fill_in 'Username', with: 'admin'
-      fill_in 'Password', with: 'admin'
-      click_button 'Log In'
-    end
-
-    it "should have a link to create a game" do
-      expect(page).to have_link('Make a Game')
-    end
-  end
-
-  describe "In Ivanhoe with a game" do
+  describe "An individual game page" do
 
     before do
-      click_link('Log in')
-      fill_in 'Username', with: 'admin'
-      fill_in 'Password', with: 'admin'
-      click_button 'Log In'
+      first('.game-title a').click
     end
 
-    def make_game
-      click_link 'Make a Game'
-      fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
-      tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-      click_button 'Save'
-    end
+    describe "with no moves" do
 
-    before do
-      click_link 'Games'
-      rand(2..5).times { make_game }
-    end
-
-    describe "An individual game page" do
-
-      before do
-        find('.ivanhoe_game h2 a', match: :first).click
+      it "has a game detail block" do
+        within('.game') {expect(page).to have_selector('#game-data')}
       end
 
-      describe "with no moves" do
+      it "has a 'Playing since' line" do
+        expect(page).to have_content('Playing since:')
+      end
 
-        it "has a game detail block" do
-          within('.game') {expect(page).to have_selector('#game-data')}
+      it "has a line saying there are no moves" do
+        expect(page).to have_content('There are no moves for this game.')
+      end
+
+      describe "and no role" do
+
+        it "has a Make a Role! button" do
+          expect(page).to have_link('Make a Role!')
         end
 
-        it "has a 'Playing since' line" do
-          expect(page).to have_content('Playing since:')
+      end
+
+      describe "with a role" do
+
+        before do
+          make_role
         end
 
-        it "has a line saying there are no moves" do
-          expect(page).to have_content('There are no moves for this game.')
+        it "identifies your current role" do
+          expect(page).to have_content("Your Current Role")
         end
 
-        describe "and no role" do
-
-          it "has a Make a Role! button" do
-            expect(page).to have_link('Make a Role!')
-          end
-
+        it "has a link to your role" do
+          expect(page).to have_selector('.role a')
         end
 
-        describe "with a role" do
+        it "lists other characters" do
+          expect(page).to have_selector(".character_list")
+        end
 
-          before do
-            click_link('Make a Role!')
-            fill_in 'post_title', :with => Faker::Lorem.words(rand(2..4)).join(' ')
-            tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-            click_button 'Save'
-          end
+        it "has the Make a move button" do
+          expect(page).to have_selector('#make-a-move')
+        end
 
-          it "identifies your current role" do
-            expect(page).to have_content("Your Current Role")
-          end
+      end
 
-          it "has a link to your role" do
-            expect(page).to have_selector('.role a')
-          end
+      describe "with moves" do
 
-          it "lists other characters" do
-            expect(page).to have_selector(".character_list")
-          end
+        before do
+          make_role
+          make_a_move
+        end
 
-          it "has the Make a move button" do
-            expect(page).to have_selector('#make-a-move')
-          end
+        it "has a move" do
+          expect(page).to have_selector('article.ivanhoe_move')
+        end
 
-          describe "with moves" do
+        it "has the title of a move" do
+          expect(page).to have_selector('.ivanhoe_move')
+        end
 
-            def make_a_move
-              click_link 'Make a move'
-              fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
-              tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-              tiny_mce_fill_in('post_rationale', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-              click_button 'Save'
-            end
+        it "has a link to the individual move page" do
+          expect(page).to have_selector('.ivanhoe_move h1 a')
+        end
 
-            before do
-              make_a_move
-            end
+        it "has a link to your role within the move block" do
+          expect(page).to have_selector(".byline a")
+        end
 
-            it "has a move" do
-              expect(page).to have_selector('article.ivanhoe_move')
-            end
+        it "has the Respond to move button" do
+          expect(page).to have_link('Respond')
+        end
 
-            it "has the title of a move" do
-              expect(page).to have_selector('.ivanhoe_move')
-            end
-
-            it "has a link to the individual move page" do
-              expect(page).to have_selector('.ivanhoe_move h1 a')
-            end
-
-            it "has a link to your role within the move block" do
-              expect(page).to have_selector(".byline a")
-            end
-
-            it "has the Respond to move button" do
-              expect(page).to have_link('Respond')
-            end
-
-            it "has the move excerpt" do
-              expect(page).to have_selector('.excerpt')
-            end
-
+        it "has the move excerpt" do
+          expect(page).to have_selector('.excerpt')
         end
 
       end
@@ -290,7 +276,5 @@ describe "Game Views", :type => :feature, :js => true  do
     #end
 
   end
-
-end
 
 
