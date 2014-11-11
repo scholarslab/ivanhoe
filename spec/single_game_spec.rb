@@ -40,6 +40,14 @@ describe "Game View", :type => :feature, :js => true  do
     click_button 'Save'
   end
 
+  def respond_to_move
+    click_link('Respond')
+    fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
+    tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+    tiny_mce_fill_in('post_rationale', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+    click_button 'Save'
+  end
+
   before(:each) do
     visit(URL_BASE)
     click_link 'Games'
@@ -99,42 +107,97 @@ describe "Game View", :type => :feature, :js => true  do
 
       end
 
-      describe "with moves" do
+    end
+
+    describe "with moves" do
+
+      before do
+        make_role
+        make_a_move
+      end
+
+      it 'has a moves section' do
+        expect(page).to have_selector('#moves')
+      end
+
+      it "has an individual move" do
+        expect(page).to have_selector('article.ivanhoe_move')
+      end
+
+      it "has the title of a move" do
+        expect(page).to have_selector('.ivanhoe_move h1')
+      end
+
+      it "has a link to the individual move page" do
+        expect(page).to have_selector('.ivanhoe_move h1 a')
+      end
+
+      it "has a link to your role within the move block" do
+        expect(page).to have_selector(".byline a")
+      end
+
+      it "has the Respond to move button" do
+        expect(page).to have_link('Respond')
+      end
+
+      it "has the move excerpt" do
+        expect(page).to have_selector('.excerpt')
+      end
+
+      describe "and with a response to a move" do
 
         before do
-          make_role
-          make_a_move
+          respond_to_move
         end
 
-        it "has a move" do
-          expect(page).to have_selector('article.ivanhoe_move')
+        it 'has a move source block with Source header' do
+          expect(page).to have_selector('.game-discussion-source h3')
         end
 
-        it "has the title of a move" do
-          expect(page).to have_selector('.ivanhoe_move')
+        it 'has a list of source moves' do
+          expect(page).to have_selector('.game-discussion-source ul li')
         end
 
-        it "has a link to the individual move page" do
-          expect(page).to have_selector('.ivanhoe_move h1 a')
+        it 'has a source move that is linked to an individual move page' do
+          expect(page).to have_selector('.game-discussion-source ul li a')
         end
 
-        it "has a link to your role within the move block" do
-          expect(page).to have_selector(".byline a")
+        it 'has a move responses block with Response header' do
+          expect(page).to have_selector('.game-discussion-response h3')
         end
 
-        it "has the Respond to move button" do
-          expect(page).to have_link('Respond')
+        it 'has a list of response moves' do
+          expect(page).to have_selector('.game-discussion-response ul li')
         end
 
-        it "has the move excerpt" do
-          expect(page).to have_selector('.excerpt')
+        it 'has a response move that is linked to an individual move page' do
+          expect(page).to have_selector('.game-discussion-response ul li a')
         end
 
       end
 
     end
 
+    describe "with over 10 moves" do
+
+      before do
+        make_role
+        11.times { make_a_move }
+      end
+
+      it 'has pagination' do
+        expect(page).to have_selector('.pagination')
+      end
+
+      it 'indicates the current page in pagination' do
+        expect(page).to have_selector('span.page-numbers.current')
+      end
+
+    end
+
   end
+
+end
 
       ##TODO this is conditional
       ##it "has a list of moves" do
@@ -275,6 +338,6 @@ describe "Game View", :type => :feature, :js => true  do
 
     #end
 
-  end
+
 
 
