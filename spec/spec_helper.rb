@@ -17,6 +17,21 @@ Dir['./spec/support/**/*.rb'].each { |f| require f }
 
 Dotenv.load
 
+# Wordpress Tables
+TABLE_NAMES = %w{
+    wp_commentmeta
+    wp_comments
+    wp_links
+    wp_options
+    wp_postmeta
+    wp_posts
+    wp_terms
+    wp_term_relationships
+    wp_term_taxonomy
+    wp_usermeta
+    wp_users
+  }
+
 # You need to set up this database in mysql.
 WP_CONFIG      = ENV.fetch('WP_CONFIG', '../../../wp-config.php')
 
@@ -45,13 +60,27 @@ def db_setup
   cxn.query("CREATE DATABASE IF NOT EXISTS #{DB_NAME};")
 
   puts "importing data"
-  reset_db
+
+  system "cat #{DB_DUMP} | sed 's,URL_BASE,#{URL_BASE},g' | mysql -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME} 2> /dev/null"
 
   cxn.close
 end
 
 def reset_db
-   system "cat #{DB_DUMP} | sed 's,URL_BASE,#{URL_BASE},g' | mysql -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME} 2> /dev/null"
+  cxn = Mysql2::Client.new(
+    :database => DB_NAME,
+    :host => DB_HOST,
+    :username => DB_USER,
+    :password => DB_PASSWORD,
+    :port => DB_PORT
+  )
+
+  TABLE_NAMES.each do |name|
+    cxn.query("DELETE FROM `#{name}`;")
+    cxn.query("INSERT INTO `#{name}` SELECT * FROM `#{name}_copy`;")
+  end
+
+  cxn.close
 end
 
 
