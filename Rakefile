@@ -31,7 +31,7 @@ namespace :db do
     desc "dump database"
     task :dump do
 
-           system "mysql dump -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME}  > #{DB_DUMP}"
+           system "mysqldump -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME}  > #{DB_DUMP}"
 
     end
 
