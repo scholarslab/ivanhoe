@@ -136,6 +136,12 @@ describe "Game View", :type => :feature, :js => true  do
         expect(page).to have_selector(".byline a")
       end
 
+      it 'has a date for the move' do
+        within('.ivanhoe_move') do
+          expect(page).to have_selector('time')
+        end
+      end
+
       it "has the Respond to move button" do
         expect(page).to have_link('Respond')
       end
@@ -190,7 +196,10 @@ describe "Game View", :type => :feature, :js => true  do
       end
 
       it 'indicates the current page in pagination' do
-        expect(page).to have_selector('span.page-numbers.current')
+        # expect(page).to have_selector('span.page-numbers .current')
+        within('.pagination', match: :first) do
+          expect(page).to have_selector('.current')
+        end
       end
 
     end
@@ -199,14 +208,7 @@ describe "Game View", :type => :feature, :js => true  do
 
 end
 
-      ##TODO this is conditional
-      ##it "has a list of moves" do
-      ##within('#moves') { expect(page).to have_selector('article.move') }
-      ##end
 
-      #it "has a link to an individual move" do
-      #pending
-      #end
 
       #describe "individual move" do
       ## TODO refactor to show
