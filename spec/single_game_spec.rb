@@ -98,7 +98,9 @@ describe "Game View", :type => :feature, :js => true  do
         end
 
         it "lists other characters" do
-          expect(page).to have_selector(".character_list")
+          within('#game-data') do
+            expect(page).to have_selector(".character_list")
+          end
         end
 
         it "has the Make a move button" do
@@ -196,7 +198,6 @@ describe "Game View", :type => :feature, :js => true  do
       end
 
       it 'indicates the current page in pagination' do
-        # expect(page).to have_selector('span.page-numbers .current')
         within('.pagination', match: :first) do
           expect(page).to have_selector('.current')
         end
@@ -210,35 +211,6 @@ end
 
 
 
-      #describe "individual move" do
-      ## TODO refactor to show
-      #before(:each) do
-      #page.find('#moves article:first-child')
-      #end
-
-      #it "has a header" do
-      #expect(page).to have_selector('header h1')
-      #end
-
-      #it "has a byline" do
-      #expect(page).to have_selector('header .byline')
-      #end
-
-      #it "has a date" do
-      #expect(page).to have_selector('header time')
-      #end
-
-      #it "has an excerpt" do
-      #expect(page).to have_selector('div.excerpt')
-      #end
-
-      #it "has discussion source" do
-      #expect(page).to have_selector('div.game-discussion-source')
-      #end
-
-      #it "has discussion response" do
-      #expect(page).to have_selector('div.game-discussion-response')
-      #end
 
 
     #describe "addtional game data" do
@@ -246,10 +218,6 @@ end
     # TODO need to conditionally test this stuff if it exists from moves
     #it "has a character header" do
     #expect(page).to have_content('Characters')
-    #end
-
-    #it "has a list of chacters playing the game" do
-    #within('#game-data') { expect(page).to have_selector('ul.character_list') }
     #end
 
     ## TODO: once the fixtures are in place, test conditional inclusion of the data
