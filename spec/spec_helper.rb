@@ -90,7 +90,7 @@ RSpec.configure do |config|
   end
 
   config.after(:suite) do |ex|
-    FileUtils.cp('./tmp/wp-config.php', WP_CONFIG)
+      #FileUtils.cp('./tmp/wp-config.php', WP_CONFIG)
   end
 
   config.after(:suite) do |ex|
