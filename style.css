@@ -85,6 +85,13 @@ a:active {
     color: #333;
 }
 
+section {
+    padding-left:100px;
+}
+
+section h1 {
+    margin-left: -100px;
+}
 section + section {
     margin-top: 3em;
 }
