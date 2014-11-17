@@ -1,7 +1,7 @@
 CREATE TABLE IF NOT EXISTS `copy_wp_commentmeta` LIKE `wp_commentmeta`;
 
 DELETE FROM `copy_wp_commentmeta`;
-=
+
 INSERT INTO `copy_wp_commentmeta` SELECT * FROM `wp_commentmeta`;
 
 CREATE TABLE IF NOT EXISTS `copy_wp_comments` LIKE `wp_comments`;
