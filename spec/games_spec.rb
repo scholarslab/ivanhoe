@@ -25,6 +25,7 @@ describe "Transactions", :type => :feature, :js => true  do
         make_game
         within('.ivanhoe_game') { expect(page).to have_selector('h2') }
       end
+
 end
 
 describe "Games View", :type => :feature, :js => true  do

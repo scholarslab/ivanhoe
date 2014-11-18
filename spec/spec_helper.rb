@@ -17,6 +17,26 @@ Dir['./spec/support/**/*.rb'].each { |f| require f }
 
 Dotenv.load
 
+# Wordpress Tables
+TABLE_NAMES = %w{
+    wp_commentmeta
+    wp_comments
+    wp_links
+    wp_options
+    wp_postmeta
+    wp_posts
+    wp_terms
+    wp_term_relationships
+    wp_term_taxonomy
+    wp_usermeta
+    wp_users
+  }
+
+CHANGING_TABLES = %w{
+    wp_postmeta
+    wp_posts
+  }
+
 # You need to set up this database in mysql.
 WP_CONFIG      = ENV.fetch('WP_CONFIG', '../../../wp-config.php')
 
@@ -45,26 +65,50 @@ def db_setup
   cxn.query("CREATE DATABASE IF NOT EXISTS #{DB_NAME};")
 
   puts "importing data"
-  reset_db
+
+  system "cat #{DB_DUMP} | sed 's,URL_BASE,#{URL_BASE},g' | mysql -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME} 2> /dev/null"
+
+  cxn.query("USE #{DB_NAME};")
+
+  TABLE_NAMES.each do |name|
+    cxn.query("DELETE FROM `#{name}`;")
+    cxn.query("INSERT INTO `#{name}` SELECT * FROM `copy_#{name}`;")
+  end
 
   cxn.close
-end
 
-def reset_db
-   system "cat #{DB_DUMP} | sed 's,URL_BASE,#{URL_BASE},g' | mysql -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME} 2> /dev/null"
 end
-
 
 RSpec.configure do |config|
 
-  config.before(:suite) do |ex|
+  config.before(:all) do |ex|
 
     db_setup
+    @cxn = "random string"
+
+    @cxn = Mysql2::Client.new(
+      :database => DB_NAME,
+      :host => DB_HOST,
+      :username => DB_USER,
+      :password => DB_PASSWORD,
+      :port => DB_PORT
+      )
+
+  end
+
+  config.after(:all) do
+
+    @cxn.close
 
   end
 
   config.before(:each) do
-    reset_db
+
+    CHANGING_TABLES.each do |name|
+      @cxn.query("DELETE FROM `#{name}`;")
+      @cxn.query("INSERT INTO `#{name}` SELECT * FROM `copy_#{name}`;")
+    end
+
   end
 
   # Patch wp config for testing.
@@ -90,7 +134,9 @@ RSpec.configure do |config|
   end
 
   config.after(:suite) do |ex|
-      #FileUtils.cp('./tmp/wp-config.php', WP_CONFIG)
+
+    #FileUtils.cp('./tmp/wp-config.php', WP_CONFIG)
+
   end
 
   config.after(:suite) do |ex|
