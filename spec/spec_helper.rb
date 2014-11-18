@@ -32,6 +32,11 @@ TABLE_NAMES = %w{
     wp_users
   }
 
+CHANGING_TABLES = %w{
+    wp_postmeta
+    wp_posts
+  }
+
 # You need to set up this database in mysql.
 WP_CONFIG      = ENV.fetch('WP_CONFIG', '../../../wp-config.php')
 
@@ -62,20 +67,8 @@ def db_setup
   puts "importing data"
 
   system "cat #{DB_DUMP} | sed 's,URL_BASE,#{URL_BASE},g' | mysql -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME} 2> /dev/null"
-    # system "cat #{DB_DUMP} | mysql -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME} 2> /dev/null"
 
-  cxn.close
-
-end
-
-def reset_db
-  cxn = Mysql2::Client.new(
-    :database => DB_NAME,
-    :host => DB_HOST,
-    :username => DB_USER,
-    :password => DB_PASSWORD,
-    :port => DB_PORT
-  )
+  cxn.query("USE #{DB_NAME};")
 
   TABLE_NAMES.each do |name|
     cxn.query("DELETE FROM `#{name}`;")
@@ -83,19 +76,39 @@ def reset_db
   end
 
   cxn.close
-end
 
+end
 
 RSpec.configure do |config|
 
-  config.before(:suite) do |ex|
+  config.before(:all) do |ex|
 
     db_setup
+    @cxn = "random string"
+
+    @cxn = Mysql2::Client.new(
+      :database => DB_NAME,
+      :host => DB_HOST,
+      :username => DB_USER,
+      :password => DB_PASSWORD,
+      :port => DB_PORT
+      )
+
+  end
+
+  config.after(:all) do
+
+    @cxn.close
 
   end
 
   config.before(:each) do
-    reset_db
+
+    CHANGING_TABLES.each do |name|
+      @cxn.query("DELETE FROM `#{name}`;")
+      @cxn.query("INSERT INTO `#{name}` SELECT * FROM `copy_#{name}`;")
+    end
+
   end
 
   # Patch wp config for testing.
