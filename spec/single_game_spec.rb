@@ -67,6 +67,14 @@ describe "Game View", :type => :feature, :js => true  do
         within('.game') {expect(page).to have_selector('#game-data')}
       end
 
+      it "has a game description header" do
+        expect(page).to have_content('Game Description')
+      end
+
+      it "has a game description" do
+        expect(page).to have_selector('#game-data p')
+      end
+
       it "has a 'Playing since' line" do
         expect(page).to have_content('Playing since:')
       end
@@ -221,10 +229,6 @@ end
     #end
 
     ## TODO: once the fixtures are in place, test conditional inclusion of the data
-
-    #it "has a game description header" do
-    #expect(page).to have_content('Game Description')
-    #end
 
     #it "has a game description" do
     #description = page.find('#game-data p')
