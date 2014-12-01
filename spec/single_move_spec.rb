@@ -70,6 +70,40 @@ describe 'Single Move View', :type => :feature, :js => true do
           expect(page).to have_selector('.single-move')
         end
 
+        it "has a linked move title" do
+            within('.single-move') do
+                expect(page).to have_selector('h1 a')
+            end
+        end
+
+        it 'has the linked role name of the author' do
+            within('.single-move') do
+                expect(page).to have_selector('.byline a')
+            end
+        end
+
+        it 'has the date of the move' do
+            within('.single-move') do
+                expect(page).to have_selector('time')
+            end
+        end
+
+        it 'has the move content' do
+            within('.single-move') do
+                expect(page).to have_selector('#moves')
+            end
+        end
+
+        it 'has a return to game link' do
+            within('.single-move') do
+                expect(page).to have_link('Return to game')
+            end
+        end
+
+        it 'has the game description block' do
+            expect(page).to have_selector('.game-description')
+        end
+
     end
 
 
