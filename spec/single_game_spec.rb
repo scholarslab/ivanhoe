@@ -230,12 +230,6 @@ end
 
     ## TODO: once the fixtures are in place, test conditional inclusion of the data
 
-    #it "has a game description" do
-    #description = page.find('#game-data p')
-    #expect(description).to have_content
-    #end
-
-    #end
 
     #describe "authenticated views" do
     #before :each do
@@ -252,62 +246,6 @@ end
 
     #it  "has a 'Make a Game' link" do
     #expect(page).to have_link('Make a Game')
-    #end
-
-    #describe "making a new game" do
-
-    #valid_game = {
-    #:game_title => 'Rosetti\'s "Jenny"',
-    #:game_description => "A reproduction of an Ivanhoe Game played in 2003 with Dante Gabriel Rossetti’s poem, “Jenny.” Players included Jerome McGann (“Leonardo”), Bethany Nowviskie (“ISP Industries”) and Andrea Laue (“quiotl”).  The game was later published by Romantic Circles and Literature Compass."
-    #}
-
-    #before :each do
-    #click_link("Make a Game")
-    #end
-
-    #def tiny_mce_fill_in(name, args)
-    #page.execute_script("tinymce.editors[0].setContent('#{args[:with]}')")
-    #end
-
-    #it "has a 'Save' button" do
-    #expect(page).to have_button('Save')
-    #end
-
-    #it "has a required 'Game Title'" do
-    #expect(page).to have_field('post_title')
-    #click_button 'Save'
-    #expect(page).to have_content('A title is required')
-    #end
-
-    #it "has an optional 'Game Thumbnail'" do
-    #expect(page).to have_field('post_thumbnail')
-    #end
-
-    #it "has a required 'Game Description'" do
-    #expect(page).to have_css('#wp-post_content-wrap')
-    #click_button 'Save'
-    #expect(page).to have_content('A description is required')
-    #end
-
-    #it "has the ability to 'Add Media'" do
-    #expect(page).to have_link('Add Media')
-    #end
-
-    #it "can create a valid game" do
-    #fill_in 'post_title', :with => valid_game[:game_title]
-    #tiny_mce_fill_in('post_content', :with => valid_game[:game_description])
-    #click_button('Save')
-    #end
-
-    #it "has a link to create a role" do
-    #click_link("Games")
-    #first('.game-title > a').click
-
-    #expect(page).to have_content('Make a Role!')
-    #end
-    #end
-
-
     #end
 
     #end
