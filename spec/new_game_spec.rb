@@ -58,8 +58,10 @@ describe 'Make a Game View', :type => :feature, :js => true do
       expect(page).to have_content('Game Title')
     end
 
-    it 'has a game title field' do
+    it 'has a required game title field' do
       expect(page).to have_field('post_title', :type => 'text')
+      click_button 'Save'
+      expect(page).to have_content('A title is required')
     end
 
     it 'has a game thumbnail label' do
@@ -78,9 +80,11 @@ describe 'Make a Game View', :type => :feature, :js => true do
       expect(page).to have_selector('#insert-media-button')
     end
 
-    it 'has a game description input' do
+    it 'has a required game description input' do
       expect(page).to have_selector('#wp-post_content-wrap')
       # not sure if this is the best selector for this
+      click_button 'Save'
+      expect(page).to have_content('A description is required')
     end
 
     it 'has a save button' do
