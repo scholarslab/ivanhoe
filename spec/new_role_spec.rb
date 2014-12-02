@@ -60,8 +60,10 @@ describe 'Make a Role View', :type => :feature, :js => true do
       expect(page).to have_content('Role Name')
     end
 
-    it 'has a role name field' do
+    it 'has a required role name field' do
       expect(page).to have_field('post_title', :type => 'text')
+      click_button 'Save'
+      expect(page).to have_content('A title is required')
     end
 
     it 'has a role thumbnail label' do
@@ -80,9 +82,11 @@ describe 'Make a Role View', :type => :feature, :js => true do
       expect(page).to have_selector('#insert-media-button')
     end
 
-    it 'has a role description input' do
+    it 'has a required role description input' do
       expect(page).to have_selector('#wp-post_content-wrap')
       # not sure if this is the best selector for this
+      click_button 'Save'
+      expect(page).to have_content('A description is required')
     end
 
     it 'has a save button' do
