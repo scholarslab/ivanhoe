@@ -103,4 +103,33 @@ describe 'Make a Role View', :type => :feature, :js => true do
       end
     end
 
+    describe 'with role thumbnail' do
+
+      before do
+
+        attach_file('post_thumbnail', 'spec/dumps/puppy.jpg')
+        fill_in 'post_title', :with => Faker::Lorem.words(rand(2..4)).join(' ')
+        tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+        click_button 'Save'
+
+      end
+
+      it 'has a role picture' do
+        within('#game-data .role') do
+          expect(page).to have_selector('img')
+        end
+      end
+
+    end
+
+    describe 'with media upload in description' do
+
+      before do
+        fill_in 'post_title', :with => Faker::Lorem.words(rand(2..4)).join(' ')
+        tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+        attach_file
+      end
+
+    end
+
 end
