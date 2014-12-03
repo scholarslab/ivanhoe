@@ -133,6 +133,7 @@ describe 'Single Move View', :type => :feature, :js => true do
             it 'has source label' do
                 within('.discussion-source') do
                     expect(page).to have_selector('h3')
+                    expect(page).to have_content('Source')
                 end
             end
 
@@ -165,6 +166,7 @@ describe 'Single Move View', :type => :feature, :js => true do
             it 'has responses label' do
                 within('.discussion-response') do
                     expect(page).to have_selector('h3')
+                    expect(page).to have_content('Responses')
                 end
             end
 
@@ -179,6 +181,64 @@ describe 'Single Move View', :type => :feature, :js => true do
                   expect(page).to have_selector('ul li a')
               end
             end
+
+        end
+
+        describe 'a move with both source and response' do
+
+            before do
+                first('#moves a').click
+                respond_to_move
+                moves = page.all('#moves article')
+                second_move_title = moves[1].find('h1 a', match: :first)
+                second_move_title.click
+            end
+
+            it 'has move source section' do
+                expect(page).to have_selector('.discussion-source')
+            end
+
+            it 'has source label' do
+                within('.discussion-source') do
+                    expect(page).to have_selector('h3')
+                    expect(page).to have_content('Source')
+                end
+            end
+
+            it 'has list of source moves' do
+                within('.discussion-source') do
+                    expect(page).to have_selector('ul')
+                end
+            end
+
+            it 'has a linked move title for the source' do
+              within('.discussion-source') do
+                  expect(page).to have_selector('ul li a')
+              end
+          end
+
+          it 'has move response section' do
+              expect(page).to have_selector('.discussion-response')
+          end
+
+          it 'has responses label' do
+              within('.discussion-response') do
+                  expect(page).to have_selector('h3')
+                  expect(page).to have_content('Responses')
+              end
+          end
+
+          it 'has list of response moves' do
+              within('.discussion-response') do
+                  expect(page).to have_selector('ul')
+              end
+          end
+
+          it 'has a linked move title for the response' do
+            within('.discussion-response') do
+                expect(page).to have_selector('ul li a')
+            end
+          end
 
         end
 
