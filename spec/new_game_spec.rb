@@ -50,6 +50,10 @@ describe 'Make a Game View', :type => :feature, :js => true do
         click_link('Make a Game')
     end
 
+    it 'has the WP Editor' do
+      expect(page).to have_selector('.wp-editor-container')
+    end
+
     it 'has the Make a Game header' do
       expect(page).to have_content('Make a Game')
     end
