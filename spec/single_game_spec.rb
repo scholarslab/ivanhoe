@@ -18,6 +18,13 @@ describe "Game View", :type => :feature, :js => true  do
     click_button 'Log In'
   end
 
+  def login_editor
+    click_link('Log in')
+    fill_in 'Username', with: 'editor'
+    fill_in 'Password', with: 'editor'
+    click_button 'Log In'
+  end
+
   def make_game
     click_link 'Make a Game'
     fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
@@ -29,6 +36,7 @@ describe "Game View", :type => :feature, :js => true  do
     click_link('Make a Role!')
     fill_in 'post_title', :with => Faker::Lorem.words(rand(2..4)).join(' ')
     tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+    attach_file('post_thumbnail', 'spec/dumps/puppy.jpg')
     click_button 'Save'
   end
 
@@ -113,6 +121,23 @@ describe "Game View", :type => :feature, :js => true  do
 
         it "has the Make a move button" do
           expect(page).to have_selector('#make-a-move')
+        end
+
+      end
+
+      describe "with multiple roles" do
+
+        before do
+          make_role
+          click_link 'Log out'
+          login_editor
+          make_role
+        end
+
+        it 'has a populated list of other characters' do
+          within('.character_list') do
+            expect(page).to have_selector('li.role')
+          end
         end
 
       end
@@ -217,39 +242,12 @@ describe "Game View", :type => :feature, :js => true  do
 
 end
 
+    # describe 'with other characters' do
 
+    #   #logout
+    #   #login with different credentials
+    #   #make role
+    #   #check for others character section and list within section
 
-
-
-    #describe "addtional game data" do
-
-    # TODO need to conditionally test this stuff if it exists from moves
-    #it "has a character header" do
-    #expect(page).to have_content('Characters')
-    #end
-
-    ## TODO: once the fixtures are in place, test conditional inclusion of the data
-
-
-    #describe "authenticated views" do
-    #before :each do
-    #click_link('Games')
-    #click_link('Log in')
-    #fill_in 'Username', with: ENV['VALID_USER']
-    #fill_in 'Password', with: ENV['VALID_PASSWORD']
-    #click_button 'Log In'
-    #end
-
-    #it "redirects to games listing when you log in" do
-    #expect(page).to have_content('Games')
-    #end
-
-    #it  "has a 'Make a Game' link" do
-    #expect(page).to have_link('Make a Game')
-    #end
-
-    #end
-
-
-
+    # end
 
