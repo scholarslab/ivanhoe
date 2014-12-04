@@ -122,14 +122,4 @@ describe 'Make a Role View', :type => :feature, :js => true do
 
     end
 
-    describe 'with media upload in description' do
-
-      before do
-        fill_in 'post_title', :with => Faker::Lorem.words(rand(2..4)).join(' ')
-        tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-        attach_file
-      end
-
-    end
-
 end
