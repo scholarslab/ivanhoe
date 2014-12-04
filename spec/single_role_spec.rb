@@ -46,7 +46,7 @@ def respond_to_move
     click_button 'Save'
 end
 
-describe 'Make a Role View', :type => :feature, :js => true do
+describe 'Single Role View', :type => :feature, :js => true do
 
     before(:each) do
         visit(URL_BASE)
