@@ -276,7 +276,7 @@ function ivanhoe_add_image( $file_handler, $parent_post_id) {
  * Retrieve ivanhoe_role_journal post for a given move.
  *
  * @param WP_Post the Ivanhoe Move post object.
- * @return string HTML.
+ * @return WP_Query object - list of rationales
  */
 function ivanhoe_get_rationales($post=null)
 {
@@ -292,6 +292,16 @@ function ivanhoe_get_rationales($post=null)
     );
 
     $journal_entries = get_posts( $args );
+    return $journal_entries;
+}
+
+/**
+ * Retrieve ivanhoe_role_journal post for a given move.
+ *
+ * @param WP_Query object of post rationales
+ * @return string html
+ */
+ function ivanhoe_display_rationales($journal_entries) {
     if ($journal_entries) {
 
         $html = '<ul>';
