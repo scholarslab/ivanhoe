@@ -47,12 +47,7 @@
 
         <h2><?php _e( 'Rationales', 'ivanhoe' ); ?></h2>
 
-        <?php
-
-            $journal_entries = ivanhoe_get_rationales( $post );
-            ivanhoe_display_rationales($journal_entries);
-
-        ?>
+        <?php echo ivanhoe_display_rationales($post); ?>
 
     </div>
 

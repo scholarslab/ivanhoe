@@ -281,7 +281,6 @@ function ivanhoe_add_image( $file_handler, $parent_post_id) {
 function ivanhoe_get_rationales($post=null)
 {
     $post = (is_null($post)) ? get_post() : $post;
-    $html = '';
 
     $args = array(
         'post_type'     => 'ivanhoe_role_journal',
@@ -296,12 +295,19 @@ function ivanhoe_get_rationales($post=null)
 }
 
 /**
- * Retrieve ivanhoe_role_journal post for a given move.
+ * Display list of journal entries for a post
  *
- * @param WP_Query object of post rationales
+ * @param WP_Post the Ivanhoe Move post object.
  * @return string html
  */
- function ivanhoe_display_rationales($journal_entries) {
+ function ivanhoe_display_rationales($post=null)
+  {
+    // Does this line need to be repeated from the above function?
+    // $post = (is_null($post)) ? get_post() : $post;
+    $html = '';
+
+    $journal_entries = ivanhoe_get_rationales($post);
+
     if ($journal_entries) {
 
         $html = '<ul>';
@@ -319,7 +325,7 @@ function ivanhoe_get_rationales($post=null)
 
     }
 
-    echo $html;
+    return $html;
 }
 
 
