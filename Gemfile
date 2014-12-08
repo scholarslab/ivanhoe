@@ -11,5 +11,8 @@ group :test do
   gem 'capybara-webkit'
   gem 'capybara-screenshot'
   gem 'pg'
+  gem 'mysql2'
+  gem 'guard-rspec'
+  gem 'ffaker'
 end
 
