@@ -2,6 +2,8 @@ require 'spec_helper'
 
 describe 'The Ivanhoe theme', :type => :feature, :js => true do
 
+    include ApplicationHelper
+
   before :each do
     visit URL_BASE
   end
