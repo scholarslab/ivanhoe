@@ -19,6 +19,13 @@ module ApplicationHelper
     click_button 'Log In'
   end
 
+  def login_editor
+    click_link('Log in')
+    fill_in 'Username', with: 'editor'
+    fill_in 'Password', with: 'editor'
+    click_button 'Log In'
+  end
+
   def make_game
     click_link 'Make a Game'
     fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')

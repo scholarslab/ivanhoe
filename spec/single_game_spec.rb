@@ -73,7 +73,7 @@ describe "Single Game View", :type => :feature, :js => true  do
         end
 
         it "has the Make a move button" do
-          expect(page).to have_selector('#make-a-move')
+          expect(page).to have_selector('#respond-to-move')
         end
 
       end
@@ -131,7 +131,8 @@ describe "Single Game View", :type => :feature, :js => true  do
       end
 
       it "has the Respond to move button" do
-        expect(page).to have_link('Respond')
+        first('.new_source').click
+        expect(page).to have_selector('#respond-to-move')
       end
 
       it "has the move excerpt" do
