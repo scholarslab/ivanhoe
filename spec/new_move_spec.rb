@@ -16,7 +16,7 @@ describe 'Make a Move View', :type => :feature, :js => true do
     describe 'for a move with no source' do
 
       before (:each) do
-        click_link('Make a move')
+        click_button('Make a Move')
       end
 
       it 'has the Make a Move header' do
@@ -78,7 +78,8 @@ describe 'Make a Move View', :type => :feature, :js => true do
 
       before do
         make_a_move
-        click_link('Respond ')
+        first('.new_source').click
+        click_button 'Respond'
       end
 
       it 'has the move meta box' do
@@ -99,7 +100,7 @@ describe 'Make a Move View', :type => :feature, :js => true do
           # links = page.all('a')
           # game_link = links[0]
           # move_link = links[1]
-          expect(page).to have_content('in response to the move')
+          expect(page).to have_content('in response to the following')
           expect(page).to have_selector('a')
         end
       end
