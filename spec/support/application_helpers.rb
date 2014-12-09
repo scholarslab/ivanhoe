@@ -57,5 +57,13 @@ module ApplicationHelper
     click_button 'Save'
   end
 
+  def main_page_respond_to_move
+    first('.new_source').click
+    click_button('Respond')
+    fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
+    tiny_mce_fill_in_post_content('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+    tiny_mce_fill_in_post_rationale('post_rationale', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+    click_button 'Save'
+  end
 
 end
