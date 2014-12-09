@@ -35,7 +35,7 @@ module ApplicationHelper
   end
 
   def make_a_move
-    click_link 'Make a move'
+    click_button 'Make a Move'
     fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
     tiny_mce_fill_in_post_content('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
     tiny_mce_fill_in_post_rationale('post_rationale', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
