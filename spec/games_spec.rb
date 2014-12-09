@@ -1,9 +1,5 @@
 require 'spec_helper'
 
-def tiny_mce_fill_in(name, args)
-  page.execute_script("tinymce.editors[0].setContent('#{args[:with]}')")
-end
-
 describe "Transactions", :type => :feature, :js => true  do
 
   include ApplicationHelper
