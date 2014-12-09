@@ -14,7 +14,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
     <header>
         <h1><?php the_title(); ?></h1>
         <p><?php printf( __('Playing since: %s', 'ivanhoe' ), get_the_time('F j, Y') ); ?></p>
-       
+
     </header>
 
     <div id="game-data">
@@ -106,17 +106,17 @@ $role                     = ivanhoe_user_has_role( $post->ID );
                         <input type="submit" name="movesubmit" value="<?php _e( 'Make a Move', 'ivanhoe' ); ?>" class="btn" id="respond-to-move">
                     </form>
 
-                
+
 
                 <?php else : ?>
 
-                <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="btn"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a> 
+                <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="btn"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a>
 
                 <?php endif; ?>
 
             <?php endif; ?>
 
-        
+
         </div>
     </div>
 
@@ -134,7 +134,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
     if ( $wp_query->have_posts()) : ?>
 
     <div id="moves">
-        <?php ivanhoe_paginate_links($wp_query);?>
+        <?php echo ivanhoe_paginate_links($wp_query);?>
 
         <?php
         while($wp_query->have_posts()) : $wp_query->the_post(); ?>
@@ -180,7 +180,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
 
         <?php endwhile; ?>
 
-        <?php ivanhoe_paginate_links($wp_query);?>
+        <?php echo ivanhoe_paginate_links($wp_query);?>
     </div>
 
 
@@ -227,7 +227,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
                 update_button();
                 delete ivanhoe_selected_moves[value];
             });
-            
+
             update_button();
         ivanhoe_selected_moves[value] = true;
         }

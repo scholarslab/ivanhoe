@@ -142,7 +142,7 @@ function ivanhoe_paginate_links ( $query = null )
             . '</div>';
     }
 
-    echo $html;
+    return $html;
 
 }
 

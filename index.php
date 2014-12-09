@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : ?>
-<?php ivanhoe_paginate_links();?>
+<?php echo ivanhoe_paginate_links();?>
 <?php while(have_posts()) : the_post(); ?>
 <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
     <header>
@@ -15,7 +15,7 @@
 </article>
 
 <?php endwhile; ?>
-<?php ivanhoe_paginate_links();?>
+<?php echo ivanhoe_paginate_links();?>
 <?php else : ?>
 <p><?php _e( 'Apologies, but no results were found.', 'ivanhoe' ); ?></p>
 <?php endif; ?>

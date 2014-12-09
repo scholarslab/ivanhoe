@@ -315,7 +315,8 @@ add_filter( 'query_vars', 'ivanhoe_query_vars' );
 /**
  * Display the proper form template depending on the URL/query.
  */
-function ivanhoe_public_template() {
+function ivanhoe_public_template()
+{
 
     global $wp_query;
 
@@ -323,7 +324,7 @@ function ivanhoe_public_template() {
 
     if(!empty($ivanhoe)) {
 
-        $template = dirname( __FILE__ ) . '/ivanhoe-post-form.php';
+        $template = dirname( dirname(__FILE__ )) . '/ivanhoe-post-form.php';
         include($template);
         exit;
 
