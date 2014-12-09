@@ -155,7 +155,6 @@ describe "Single Game View", :type => :feature, :js => true  do
 
         it 'has a source move that is linked to an individual move page' do
           expect(page).to have_selector('.game-discussion-source ul a li')
-          save_and_open_page
         end
 
         it 'has a move responses block with Response header' do
