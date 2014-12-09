@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe 'Make a Role View', :type => :feature, :js => true do
+describe 'Make a Move View', :type => :feature, :js => true do
 
     include ApplicationHelper
 

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Game View", :type => :feature, :js => true  do
+describe "Single Game View", :type => :feature, :js => true  do
 
   include ApplicationHelper
 
