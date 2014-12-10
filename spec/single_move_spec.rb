@@ -106,7 +106,7 @@ describe 'Single Move View', :type => :feature, :js => true do
 
         it 'has a linked move title for the source' do
           within('.discussion-source') do
-            expect(page).to have_selector('ul li a')
+            expect(page).to have_selector('ul a li')
           end
         end
 
@@ -174,7 +174,7 @@ describe 'Single Move View', :type => :feature, :js => true do
 
         it 'has a linked move title for the source' do
           within('.discussion-source') do
-            expect(page).to have_selector('ul li a')
+            expect(page).to have_selector('ul a li')
           end
         end
 
