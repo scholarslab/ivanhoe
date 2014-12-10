@@ -35,17 +35,16 @@
             <!-- <h2><?php echo get_the_title($post->post_parent); ?></h2> -->
             <?php ivanhoe_get_move_responses( $post ); ?>
        </div>
-        <div class="game-description">
+       <div class="game-description">
             <h2><?php _e( 'Game Description', 'ivanhoe' ); ?></h2>
-			<?php global $post;
+            <?php global $post;
             $parent_ID = $post->post_parent;
-			$game_title = get_title_by_id( $parent_ID );
+            $game_title = get_title_by_id( $parent_ID );
             $game_excerpt = get_excerpt_by_id( $parent_ID );
-            echo $game_title;
-			echo $game_excerpt; ?>
-
+            echo('<h3>' . $game_title . '</h3>');
+            echo $game_excerpt; ?>
         </div>
-    </div>
+</div>
 
     <div id="moves">
 

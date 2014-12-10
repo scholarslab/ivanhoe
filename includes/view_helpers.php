@@ -1,7 +1,7 @@
 <?php
 
 /**
- * Respond to move helper function.
+ * Move response form URL builder - passes post metadata to form.
  *
  * @param WP_Post
  */
@@ -28,7 +28,7 @@ function ivanhoe_response_form_url($post=null)
 }
 
 /**
- * URL to new Ivanhoe role form.
+ * Role form URL builder
  *
  * @param WP_Post
  */
@@ -54,7 +54,8 @@ function ivanhoe_role_form_url($post=null)
 /**
  * Helper for checking if user has a role
  */
-function ivanhoe_user_has_role($game_id, $user_id=null) {
+function ivanhoe_user_has_role($game_id, $user_id=null)
+{
     // WP Query to find role post type for game ID and user ID.
     $user_id = $user_id ? $user_id : get_current_user_id();
     if ($user_id) {
@@ -185,7 +186,8 @@ function ivanhoe_move_link ($post=null)
  *
  * @return string HTML.
  */
-function catch_that_properly_nested_html_media_tag_tree() {
+function catch_that_properly_nested_html_media_tag_tree()
+{
     global $post, $posts;
     ob_start();
     ob_end_clean();
@@ -198,7 +200,8 @@ function catch_that_properly_nested_html_media_tag_tree() {
     return( $matches );
 }
 
-function display_first_media_file( $matches ) {
+function display_first_media_file( $matches )
+{
     $first_media_file = '';
 
     if ( !empty( $matches [0] ) ) {
@@ -213,7 +216,8 @@ function display_first_media_file( $matches ) {
  *
  * @return string HTML.
  */
-function get_excerpt_by_id($post_id=null) {
+function get_excerpt_by_id($post_id=null)
+{
     if (is_null($post_id)) {
         $the_post = get_post();
         $post_id  = $the_post->ID;
@@ -241,7 +245,8 @@ function get_excerpt_by_id($post_id=null) {
  *
  * @return string HTML.
  */
-function get_title_by_id($post_id=null) {
+function get_title_by_id($post_id=null)
+{
     if (is_null($post_id)) {
         $the_post = get_post();
         $post_id  = $the_post->ID;
@@ -250,7 +255,6 @@ function get_title_by_id($post_id=null) {
     }
 
     $the_title = $the_post->post_title;
-    $the_title = '<h3>' . $the_title . '</h3>';
     return $the_title;
 }
 
@@ -259,7 +263,8 @@ function get_title_by_id($post_id=null) {
  *
  * @return int The attachment ID.
  */
-function ivanhoe_add_image( $file_handler, $parent_post_id) {
+function ivanhoe_add_image( $file_handler, $parent_post_id)
+{
 
     require_once(ABSPATH . 'wp-admin/includes/image.php');
     require_once(ABSPATH . 'wp-admin/includes/file.php');
@@ -333,7 +338,9 @@ function ivanhoe_get_rationales($post=null)
  * Creates a "Read More" link to post at the end of the_excerpt.
  */
 
-function new_excerpt_more( $more ) {
+function new_excerpt_more( $more )
+{
+    // Why is the parameter passed here?
     return ' ... <a class="view-more" href="' . get_permalink( get_the_ID() )
         . '">' . __('View More', 'ivanhoe') . '</a>';
 }
