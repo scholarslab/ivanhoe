@@ -85,20 +85,28 @@ if ( !empty( $_POST )) {
 
     $newpost = wp_insert_post( $newpost_data );
 
-    if ($_FILES['post_thumbnail']) {
+    if (isset($_FILES['post_thumbnail'])) {
         ivanhoe_add_image('post_thumbnail', $newpost);
     }
 
     // If there's a move source, save it as post meta.
     if ($move_source) {
-        foreach ($move_source as $move) {
+        if (is_array($move_source)) {
+            foreach ($move_source as $move) {
+                add_post_meta(
+                $newpost,
+                'Ivanhoe Move Source',
+                $move
+                );
+            }
+        } else {
             add_post_meta(
-            $newpost,
-            'Ivanhoe Move Source',
-            $move
-            );
+                $newpost,
+                'Ivanhoe Move Source',
+                $move_source
+                );
         }
-        
+
     }
 
     // If there is a post_rationale.
@@ -158,20 +166,27 @@ if ( $post_type == 'ivanhoe_move' ) {
 }
 
 if ($move_source) {
-    $ivanhoe_source = get_post($move_source);
+    // $ivanhoe_source = get_post($move_source);
 
     $message = sprintf(
-        __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>&#8221; in response to the following: <ul>' , 'ivanhoe' ), 
+        __( 'You are making a move on the game &#8220;<a href="%1$s">%2$s</a>&#8221; in response to the following: <ul>' , 'ivanhoe' ),
         get_permalink($parent_post),
         $ivanhoe_game->post_title
     );
-    foreach ($move_source as $single_source) {
-        $source_link = get_permalink($single_source);
-        $source_title = get_the_title($single_source);
+    if (is_array($move_source)) {
+        foreach ($move_source as $single_source) {
+            $source_link = get_permalink($single_source);
+            $source_title = get_the_title($single_source);
+            $message .= "<a href='$source_link'><li>$source_title</li></a>";
+        };
+    } else {
+        $source_link = get_permalink($move_source);
+        $source_title = get_the_title($move_source);
         $message .= "<a href='$source_link'><li>$source_title</li></a>";
-    };
+    }
+
     $message .= "</ul>";
-    } 
+    }
 }
 ?>
 
