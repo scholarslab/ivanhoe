@@ -170,7 +170,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
                 <?php ivanhoe_get_move_source( $post ); ?>
             </div>
 
-            <?php print_r($source_id); ?>
+<!--             <?php //print_r($source_id); ?> -->
 
             <div class="game-discussion-response">
                 <?php ivanhoe_get_move_responses( $post ); ?>
