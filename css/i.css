@@ -1,0 +1,74 @@
+body {
+    font-family: 'Crimson Text', Georgia, serif;
+    color: black;
+}
+
+#logo {
+    margin: auto;
+    text-align: center;
+    padding-top: 12%;
+}
+
+.titleLetter {
+    display: inline-block;
+    width: 1em;
+    font-size: 100px;
+    font-weight: bold;
+}
+
+#subtitle {
+    font-size: 1.25em;
+    letter-spacing: .3em;
+    text-align: center;
+    display: block;
+    margin: auto;
+    padding-top: 20px;
+    text-transform: uppercase;
+}
+
+#homeNav{
+    text-align: center;
+}
+
+#homeNav a{
+    text-decoration: none;
+    color: black;
+}
+
+#homeNav a:hover {
+	color: #bbbbbb;
+}
+
+#homeNav ul{
+	list-style-type:none;
+	padding-top: 3%;
+	font-size: 1em;
+	font-family: Tahoma;
+	letter-spacing: .2em;
+    margin-left: -20px;
+}
+
+#homeNav li {
+	display: inline-block;
+	width: 15em;	
+	height: 2.5em;
+	margin: 3em;
+	padding-top: 1em;
+}
+
+#homeNav li:hover {
+	color: #bbbbbb;
+	font-family: Georgia;
+}
+
+#dl{
+	border-top: 1px black solid;
+	border-bottom: 1px black solid;
+}
+
+
+#homeRule {
+    width: 150px;
+    display: block;
+    margin-top: 5%;
+}

@@ -1,0 +1,70 @@
+body{
+    background-color: black;
+    color: #66ff33;
+    font-family: 'VT323','Courier New', Courier, monospace;
+}
+
+#logo {
+    margin: auto;
+    text-align: center;
+    padding-top: 12%;
+}
+
+.titleLetter {
+    display: inline-block;
+    font-size: 100px;
+    text-transform: lowercase;
+	}
+
+#subtitle {
+	font-size: 1.25em;
+	letter-spacing: .3em;
+	text-align: center;
+	display: block;
+	margin: auto;
+	padding-top: 20px;
+    text-transform: uppercase;
+}
+
+#homeNav{
+    text-align: center;
+}
+
+#homeNav a{
+	text-decoration: none;
+    color: #66ff33;
+}
+
+#homeNav a:hover {
+	color: #cc33ff;
+}
+
+#homeNav ul{
+	list-style-type:none;
+	padding-top: 3%;
+	font-size: 1em;
+	letter-spacing: .2em;
+    margin-left: -20px;
+}
+
+#homeNav li {
+	display: inline-block;
+	width: 15em;	
+	height: 2.5em;
+	margin: 3em;
+	padding-top: 1em;
+}
+
+#homeNav li:hover {
+
+}
+
+#dl{
+	border-top: 1px black solid;
+	border-bottom: 1px black solid;
+}
+
+
+.hide{
+    display: none;
+}
