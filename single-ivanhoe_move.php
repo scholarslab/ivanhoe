@@ -29,11 +29,11 @@
     <div class="source-response-container">
 
         <div class="discussion-source">
-            <?php echo ivanhoe_get_move_source( $post ); ?>
+            <?php echo ivanhoe_display_move_source( $post ); ?>
         </div>
 	   <div class="discussion-response">
             <!-- <h2><?php echo get_the_title($post->post_parent); ?></h2> -->
-            <?php echo ivanhoe_get_move_responses( $post ); ?>
+            <?php echo ivanhoe_display_move_responses( $post ); ?>
        </div>
        <div class="game-description">
             <h2><?php _e( 'Game Description', 'ivanhoe' ); ?></h2>

@@ -249,17 +249,29 @@ function ivanhoe_role_id_save_meta_box_data($post_id=null)
 add_action( 'save_post', 'ivanhoe_role_id_save_meta_box_data' );
 
 /**
- * Calls the source metadata for each move and displays it.
+ * Calls the source metadata for each move
  *
  * @param WP_Post.
  */
 function ivanhoe_get_move_source($post=null)
 {
     $post = (is_null($post)) ? get_post() : $post;
-    $html = '';
 
     // Get the Move Source ID from custom post metadata.
     $source_id = get_post_meta($post->ID, 'Ivanhoe Move Source', false);
+
+    return $source_id;
+}
+
+/**
+ * Displays source metadata for a move
+ *
+ * @param WP_Post.
+ */
+function ivanhoe_display_move_source($post=null)
+{
+    $html = '0';
+    $source_id = ivanhoe_get_move_source($post);
 
     // Check if $source_id isn't 0 and if we can get another post with its value.
     if ( $source_id ) {
@@ -281,14 +293,13 @@ function ivanhoe_get_move_source($post=null)
 }
 
 /**
- * Gets responses for a move and displays them.
+ * Gets responses for a move
  *
  * @param WP_Post
  */
 function ivanhoe_get_move_responses($post=null)
 {
     $post = (is_null($post)) ? get_post() : $post;
-    $html = '';
 
     $args = array(
         'post_type'          => 'ivanhoe_move',
@@ -299,6 +310,18 @@ function ivanhoe_get_move_responses($post=null)
     );
 
     $responses = get_posts( $args );
+    return $responses;
+}
+
+/**
+ * Displays move responses
+ *
+ * @param WP_Post
+ */
+function ivanhoe_display_move_responses($post=null)
+{
+    $html = '';
+    $responses = ivanhoe_get_move_responses($post);
 
     if ($responses) {
 
