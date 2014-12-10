@@ -20,7 +20,8 @@ add_theme_support( 'custom-background', $ivanhoe_background_defaults );
  */
 add_action( 'admin_bar_menu', 'modify_admin_bar', 999 );
 
-function modify_admin_bar( $wp_admin_bar ) {
+function modify_admin_bar( $wp_admin_bar )
+{
     $wp_admin_bar->remove_node( 'new-ivanhoe_move' );
     $wp_admin_bar->remove_node( 'new-ivanhoe_role' );
     $wp_admin_bar->remove_node( 'new-ivanhoe_role_journal' );
@@ -31,7 +32,8 @@ function modify_admin_bar( $wp_admin_bar ) {
     }
 }
 
-function ivanhoe_page_menu( $args = array() ) {
+function ivanhoe_page_menu( $args = array() )
+{
 
     $defaults = array(
         'sort_column' => 'menu_order, post_title',
@@ -117,7 +119,8 @@ function ivanhoe_page_menu( $args = array() ) {
 /**
  * Append links to the main nav menu.
  */
-function ivanhoe_nav_menu_items() {
+function ivanhoe_nav_menu_items()
+{
     global $wp;
     $items = '';
 
@@ -158,7 +161,8 @@ function ivanhoe_nav_menu_items() {
     return $items;
 }
 
-function ivanhoe_append_nav_menu_items( $items ) {
+function ivanhoe_append_nav_menu_items( $items )
+{
     $items .= ivanhoe_nav_menu_items();
 
     return $items;
@@ -198,7 +202,8 @@ add_action( 'switch_theme', 'ivanhoe_switch_themes');
 /**
  * When switching to the Ivanhoe theme.
  */
-function ivanhoe_after_switch_theme() {
+function ivanhoe_after_switch_theme()
+{
     ivanhoe_flush_rewrite_rules();
 }
 
@@ -207,7 +212,8 @@ add_action( 'after_switch_theme', 'ivanhoe_after_switch_theme' );
 /**
  * Let WordPress know about our text domain.
  */
-function ivanhoe_load_theme_textdomain() {
+function ivanhoe_load_theme_textdomain()
+{
 
     load_theme_textdomain('ivanhoe', get_template_directory() . '/languages');
 
@@ -223,7 +229,8 @@ add_action('after_setup_theme', 'ivanhoe_load_theme_textdomain');
  * Checks to see if the current page is a single Ivanhoe game, and returns the
  * requested URL instead of the redirect URL.
  */
-function ivanhoe_redirect_canonical( $redirect_url, $requested_url ){
+function ivanhoe_redirect_canonical( $redirect_url, $requested_url )
+{
 
     if ( is_singular( 'ivanhoe_game' ) ) {
 
@@ -240,7 +247,8 @@ add_filter( 'redirect_canonical', 'ivanhoe_redirect_canonical', 10, 2 );
 /**
  * Registers our theme's javascripts.
  */
-function ivanhoe_enqueue_scripts() {
+function ivanhoe_enqueue_scripts()
+{
 
     wp_register_script(
         'ivanhoe_modernizr',
@@ -268,7 +276,8 @@ add_action('wp_enqueue_scripts', 'ivanhoe_enqueue_scripts');
  * Error handling
  ************/
 
-function print_errors($errors) {
+function print_errors($errors)
+{
     $html = <<<ERROR
       <div class="bs-callout bs-callout-danger">
         <h4>Errors</h4>
@@ -285,7 +294,8 @@ ERROR;
 /**
  * Function to flush WP's rewrite rules.
  */
-function ivanhoe_flush_rewrite_rules() {
+function ivanhoe_flush_rewrite_rules()
+{
     global $wp_rewrite;
     $wp_rewrite->flush_rules();
 }
@@ -293,7 +303,8 @@ function ivanhoe_flush_rewrite_rules() {
 /**
  * Adds some rewrite rules for our forms.
  */
-function ivanhoe_rewrite_rules_array($rules) {
+function ivanhoe_rewrite_rules_array($rules)
+{
     $newrules = array();
     $newrules['ivanhoe/(.+)'] = 'index.php?ivanhoe=$matches[1]';
     return $newrules + $rules;
@@ -304,7 +315,8 @@ add_action( 'rewrite_rules_array', 'ivanhoe_rewrite_rules_array' );
 /**
  * Adds query variables for our form pages.
  */
-function ivanhoe_query_vars($vars) {
+function ivanhoe_query_vars($vars)
+{
     array_push($vars, 'ivanhoe');
     return $vars;
 }
@@ -334,7 +346,8 @@ function ivanhoe_public_template()
 add_filter( 'template_redirect', 'ivanhoe_public_template' );
 
 
-function ivanhoe_ajax_upload_attachment() {
+function ivanhoe_ajax_upload_attachment()
+{
     error_log(print_r($_REQUEST, true));
 }
 
