@@ -36,7 +36,8 @@ function ivanhoe_move_source()
  *
  * @param WP_Post $post The object for the current post/page.
  */
-function ivanhoe_move_source_meta_box($post=null) {
+function ivanhoe_move_source_meta_box($post=null)
+{
     $post = (is_null($post)) ? get_post() : $post;
 
     // Add an nonce field so we can check for it later.
@@ -64,7 +65,8 @@ function ivanhoe_move_source_meta_box($post=null) {
  *
  * @param int $post_id The ID of the post being saved.
  */
-function ivanhoe_move_source_save_meta_box_data($post_id=null) {
+function ivanhoe_move_source_save_meta_box_data($post_id=null)
+{
     $post_id = (is_null($post_id)) ? get_post()->ID : $post_id;
 
     /*
@@ -122,8 +124,7 @@ function ivanhoe_move_source_save_meta_box_data($post_id=null) {
 add_action( 'save_post', 'ivanhoe_move_source_save_meta_box_data' );
 
 /**
- * Function for getting the metadata for the post(s) to which the current move
- * responds
+ * Function to create metabox for the move to which the current move responds
  */
 function ivanhoe_move_response()
 {
@@ -160,7 +161,8 @@ add_action(
  *
  * @param WP_Post $post The object for the current post/page.
  */
-function ivanhoe_role_id_meta_box($post=null) {
+function ivanhoe_role_id_meta_box($post=null)
+{
     $post = (is_null($post)) ? get_post() : $post;
 
     // Add an nonce field so we can check for it later.
@@ -188,7 +190,8 @@ function ivanhoe_role_id_meta_box($post=null) {
  *
  * @param int $post_id The ID of the post being saved.
  */
-function ivanhoe_role_id_save_meta_box_data($post_id=null) {
+function ivanhoe_role_id_save_meta_box_data($post_id=null)
+{
     $post_id = (is_null($post_id)) ? get_post()->ID : $post_id;
 
     /*
@@ -242,6 +245,7 @@ function ivanhoe_role_id_save_meta_box_data($post_id=null) {
     // Update the meta field in the database.
     update_post_meta( $post_id, 'Ivanhoe Role ID', $my_data );
 }
+
 add_action( 'save_post', 'ivanhoe_role_id_save_meta_box_data' );
 
 /**
@@ -272,8 +276,8 @@ function ivanhoe_get_move_source($post=null)
 
     }
 
-    // Print out the value of $html.
-    echo $html;
+    // Return the value of $html.
+    return $html;
 }
 
 /**
@@ -310,7 +314,7 @@ function ivanhoe_get_move_responses($post=null)
 
     }
 
-    echo $html;
+    return $html;
 
 }
 
