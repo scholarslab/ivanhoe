@@ -1,11 +1,12 @@
 body {
     font-family: 'Crimson Text', Georgia, serif;
     color: black;
+    text-align: center;
 }
+
 
 #logo {
     margin: auto;
-    text-align: center;
     padding-top: 12%;
 }
 
@@ -16,10 +17,13 @@ body {
     font-weight: bold;
 }
 
+#semicolon{
+    width: .3em;
+}
+
 #subtitle {
     font-size: 1.25em;
     letter-spacing: .3em;
-    text-align: center;
     display: block;
     margin: auto;
     padding-top: 20px;
@@ -27,7 +31,6 @@ body {
 }
 
 #homeNav{
-    text-align: center;
     width: 100%;
 }
 
@@ -44,16 +47,15 @@ body {
 	list-style-type:none;
 	padding-top: 3%;
 	font-size: 1em;
-	font-family: Tahoma;
+	font-family: Tahoma, sans-serif;
 	letter-spacing: .2em;
+    padding: 5% 0;
+    margin: 0;
 }
 
 #homeNav li {
 	display: inline-block;
-	width: 15em;	
-	height: 2.5em;
-	margin: 3em;
-	padding-top: 1em;
+    width: 14em;
 }
 
 #homeNav li:hover {
@@ -61,18 +63,17 @@ body {
 	font-family: Georgia;
 }
 
-#dl{
-	border-top: 1px black solid;
-	border-bottom: 1px black solid;
-}
-
 
 #homeRule {
-    width: 150px;
+    width: 10%;
     display: block;
     margin-top: 5%;
 }
 
 #catCredit {
     display: none;
+}
+
+#preload{ 
+    background: url("../img/bookcat.jpg") no-repeat -9999px -9999px;
 }
