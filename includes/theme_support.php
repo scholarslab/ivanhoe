@@ -16,7 +16,8 @@ $ivanhoe_background_defaults = array(
 add_theme_support( 'custom-background', $ivanhoe_background_defaults );
 
 /**
- * Modify the admin bar.
+ * Modify the admin bar to remove nodes, preventing people from making
+ * moves, roles, or role journal entires without proper metadata
  */
 add_action( 'admin_bar_menu', 'modify_admin_bar', 999 );
 
