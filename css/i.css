@@ -28,6 +28,7 @@ body {
 
 #homeNav{
     text-align: center;
+    width: 100%;
 }
 
 #homeNav a{
@@ -45,7 +46,6 @@ body {
 	font-size: 1em;
 	font-family: Tahoma;
 	letter-spacing: .2em;
-    margin-left: -20px;
 }
 
 #homeNav li {
@@ -71,4 +71,8 @@ body {
     width: 150px;
     display: block;
     margin-top: 5%;
+}
+
+#catCredit {
+    display: none;
 }

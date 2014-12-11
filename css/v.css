@@ -28,6 +28,7 @@ body{
 
 #homeNav{
     text-align: center;
+    width: 100%;
 }
 
 #homeNav a{
@@ -66,5 +67,10 @@ body{
 
 
 .hide{
+    display: none;
+}
+
+
+#catCredit {
     display: none;
 }

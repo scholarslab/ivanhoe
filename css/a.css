@@ -1,0 +1,92 @@
+html{
+    min-height: 100%;
+}
+
+body{
+    font-family: Impact,Haettenschweiler,"Franklin Gothic Bold",Charcoal,"Helvetica Inserat","Bitstream Vera Sans Bold","Arial Black","sans serif";
+    font-weight: bold;
+    color: white;
+    background-image: url("../img/bookcat.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    min-height: 100%;
+    background-color: black;
+    text-transform: uppercase; 
+}
+
+#logo {
+    margin: auto;
+    text-align: center;
+}
+    
+.titleLetter {
+    display: inline-block;
+    font-size: 120px;
+    -webkit-text-stroke-width: 3px;
+   -webkit-text-stroke-color: black;
+}
+
+#subtitle {
+	font-size: 100px;
+	text-align: center;
+    width: 100%;
+	display: block;
+	margin: auto;
+    position: absolute;
+    bottom: 0;
+    -webkit-text-stroke-width: 3px;
+   -webkit-text-stroke-color: black;
+   z-index: -1;
+}
+
+#homeNav{
+    text-align: center;
+    font-size: 40px; 
+    width: 100%;
+}
+
+#homeNav a{
+	text-decoration: none;
+    color: white;
+    font-weight: normal;
+}
+
+#homeNav a:hover {
+    color: blue;
+}
+
+#homeNav ul{
+	list-style-type:none;
+}
+
+#homeNav li {
+	display: inline-block;	
+    padding: 0 8%;
+    background-color: black;
+    width: 4em;
+    height:  1.25em;
+}
+
+#homeNav li:hover {
+
+}
+
+
+#catCredit {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: white;
+    font-size: 12px;
+    font-family: sans-serif;
+    text-transform: none;
+}
+
+#catCredit a{
+    text-decoration: none;
+    color: white;
+}
+
+.hide{
+    display: none;
+}
