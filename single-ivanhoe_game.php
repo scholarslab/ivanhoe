@@ -1,19 +1,19 @@
-<?php get_header(); ?>
-
 <?php
+    get_header();
 
-$original_query           = $wp_query;
-$ivanhoe_game_id          = $post->ID;
-$ivanhoe_parent_permalink = get_permalink( $post->ID );
-$role                     = ivanhoe_user_has_role( $post->ID );
-
+    $original_query           = $wp_query;
+    $ivanhoe_game_id          = $post->ID;
+    $ivanhoe_parent_permalink = get_permalink( $post->ID );
+    $role                     = ivanhoe_user_has_role( $post->ID );
 ?>
 
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 <article class="game">
     <header>
         <h1><?php the_title(); ?></h1>
-        <p><?php printf( __('Playing since: %s', 'ivanhoe' ), get_the_time('F j, Y') ); ?></p>
+        <p>
+            <?php printf( __('Playing since: %s', 'ivanhoe' ), get_the_time('F j, Y') ); ?>
+        </p>
 
     </header>
 
@@ -28,15 +28,12 @@ $role                     = ivanhoe_user_has_role( $post->ID );
 
         <?php endif; ?>
 
-
-
         <?php
             $args = array(
-            'post_type' => 'ivanhoe_role',
-            'post_parent' => $ivanhoe_game_id
+                'post_type' => 'ivanhoe_role',
+                'post_parent' => $ivanhoe_game_id
             );
             $characters = new WP_Query ( $args );
-
             $character_posts = $characters->get_posts();
 
             if ( !empty( $character_posts ) ) :
@@ -45,14 +42,13 @@ $role                     = ivanhoe_user_has_role( $post->ID );
                 <article>
                 <?php if ( $characters->have_posts() ) : ?>
                     <ul class='character_list'>
-                <?php while ( $characters->have_posts() ) : $characters->the_post();
-                    if ($post->ID == $role->ID) continue; ?>
-                        <li class='role'>
-                            <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
-                            <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
-                        </li>
-
-                <?php endwhile; ?>
+                        <?php while ( $characters->have_posts() ) : $characters->the_post();
+                            if ($post->ID == $role->ID) continue; ?>
+                                <li class='role'>
+                                    <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
+                                    <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
+                                </li>
+                        <?php endwhile; ?>
                     </ul>
                 <?php endif; ?>
                 </article>
