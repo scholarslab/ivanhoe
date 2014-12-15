@@ -19,9 +19,9 @@ add_theme_support( 'custom-background', $ivanhoe_background_defaults );
  * Modify the admin bar to remove nodes, preventing people from making
  * moves, roles, or role journal entires without proper metadata
  */
-add_action( 'admin_bar_menu', 'modify_admin_bar', 999 );
+add_action( 'admin_bar_menu', 'ivanhoe_modify_admin_bar', 999 );
 
-function modify_admin_bar( $wp_admin_bar )
+function ivanhoe_modify_admin_bar( $wp_admin_bar )
 {
     $wp_admin_bar->remove_node( 'new-ivanhoe_move' );
     $wp_admin_bar->remove_node( 'new-ivanhoe_role' );
@@ -277,7 +277,7 @@ add_action('wp_enqueue_scripts', 'ivanhoe_enqueue_scripts');
  * Error handling
  ************/
 
-function print_errors($errors)
+function ivanhoe_print_errors($errors)
 {
     $html = <<<ERROR
       <div class="bs-callout bs-callout-danger">

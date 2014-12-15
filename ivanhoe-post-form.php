@@ -195,7 +195,7 @@ if ($move_source) {
 </header>
 
 <?php if( $error_messages ) : ?>
-  <?php echo print_errors($error_messages); ?>
+  <?php echo ivanhoe_print_errors($error_messages); ?>
 <?php endif; ?>
 
 <?php if ( $message ) : ?>
