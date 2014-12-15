@@ -40,3 +40,20 @@ function ivanhoe_new_excerpt_more( $more )
 }
 
 add_filter( 'excerpt_more', 'ivanhoe_new_excerpt_more' );
+
+/*
+* Generates the game excerpt
+*
+* @param WP_Post ivanhoe move post object
+* @return string html
+*/
+
+function ivanhoe_game_excerpt ($post)
+{
+    $post = (is_null($post)) ? get_post() : $post;
+    $game_id = $post->post_parent;
+    $role = ivanhoe_user_has_role( $game_id );
+    $game_title = ivanhoe_get_title_by_id( $game_id );
+    $game_excerpt = ivanhoe_get_excerpt_by_id( $game_id );
+    return $game_excerpt;
+}

@@ -2,11 +2,6 @@
     get_header();
     if (have_posts()) : while(have_posts()) : the_post();
     global $post;
-    $game_id = $post->post_parent;
-    $role = ivanhoe_user_has_role( $game_id );
-    $parent_ID = $post->post_parent;
-    $game_title = ivanhoe_get_title_by_id( $parent_ID );
-    $game_excerpt = ivanhoe_get_excerpt_by_id( $parent_ID );
 ?>
 <article class="single-move">
 
@@ -47,7 +42,7 @@
 
             <?php
                 echo('<h3>' . $game_title . '</h3>');
-                echo $game_excerpt;
+                echo ivanhoe_game_excerpt($post);
             ?>
         </div>
     </div>
