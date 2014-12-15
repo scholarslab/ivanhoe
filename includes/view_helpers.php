@@ -316,8 +316,6 @@ function ivanhoe_get_rationales($post=null)
  */
  function ivanhoe_display_rationales($post=null)
   {
-    // Does this line need to be repeated from the above function?
-    // $post = (is_null($post)) ? get_post() : $post;
     $html = '';
 
     $journal_entries = ivanhoe_get_rationales($post);
@@ -349,8 +347,8 @@ function ivanhoe_get_rationales($post=null)
 
 function new_excerpt_more( $more )
 {
-    // Why is the parameter passed here?
     return ' ... <a class="view-more" href="' . get_permalink( get_the_ID() )
         . '">' . __('View More', 'ivanhoe') . '</a>';
 }
+
 add_filter( 'excerpt_more', 'new_excerpt_more' );
