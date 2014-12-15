@@ -41,12 +41,49 @@ function ivanhoe_new_excerpt_more( $more )
 
 add_filter( 'excerpt_more', 'ivanhoe_new_excerpt_more' );
 
+/**
+ * Returns the first image found in the post content.
+ *
+ * @return string HTML.
+ */
+function ivanhoe_catch_that_properly_nested_html_media_tag_tree()
+{
+    global $post, $posts;
+    ob_start();
+    ob_end_clean();
+    $shortcoded = do_shortcode($post->post_content);
+    $output_videos = preg_match_all(
+        '/<(img|embed|iframe|video|audio)[^>]*>(.*?<\\/\1>)?/si',
+        $shortcoded,
+        $matches
+    );
+    return( $matches );
+}
+
+/**
+* Returns the first image found in post content
+*
+* @return media file
+*/
+
+function ivanhoe_display_first_media_file( $matches )
+{
+    $first_media_file = '';
+
+    if ( !empty( $matches [0] ) ) {
+        $first_media_file = $matches [0] [0];
+    }
+
+    return $first_media_file;
+}
+
 /*
 * Generates the game excerpt
 *
 * @param WP_Post ivanhoe move post object
 * @return string html
 */
+
 
 function ivanhoe_game_excerpt ($post)
 {
@@ -57,3 +94,27 @@ function ivanhoe_game_excerpt ($post)
     $game_excerpt = ivanhoe_get_excerpt_by_id( $game_id );
     return $game_excerpt;
 }
+
+/*
+* Returns either media file attached to post or media file and more
+* depending upon whether there is textual content in the move
+*
+* @return media file
+*/
+
+function ivanhoe_media_excerpt ()
+{
+    $the_excerpt = get_the_excerpt();
+    $move_image_source = '';
+    $matches = ivanhoe_catch_that_properly_nested_html_media_tag_tree();
+
+    if ( empty( $the_excerpt ) ) {
+        $move_image_source = ivanhoe_display_first_media_file( $matches ) . ' ... <a class="view-more" href="'. get_permalink( get_the_ID() ) . '">' . __('View More', 'ivanhoe') . '</a>';
+    } else {
+        $move_image_source = ivanhoe_display_first_media_file( $matches );
+    }
+
+    return $move_image_source;
+}
+
+

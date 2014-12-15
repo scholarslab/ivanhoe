@@ -183,42 +183,6 @@ function ivanhoe_move_link ($post=null)
 }
 
 /**
- * Returns the first image found in the post content.
- *
- * @return string HTML.
- */
-function ivanhoe_catch_that_properly_nested_html_media_tag_tree()
-{
-    global $post, $posts;
-    ob_start();
-    ob_end_clean();
-    $shortcoded = do_shortcode($post->post_content);
-    $output_videos = preg_match_all(
-        '/<(img|embed|iframe|video|audio)[^>]*>(.*?<\\/\1>)?/si',
-        $shortcoded,
-        $matches
-    );
-    return( $matches );
-}
-
-/**
-* Displays the first image found in post content
-*
-* @return media file
-*/
-
-function ivanhoe_display_first_media_file( $matches )
-{
-    $first_media_file = '';
-
-    if ( !empty( $matches [0] ) ) {
-        $first_media_file = $matches [0] [0];
-    }
-
-    return $first_media_file;
-}
-
-/**
  * Returns the title of a post by ID.
  *
  * @return string HTML.

@@ -270,7 +270,7 @@ function ivanhoe_get_move_source($post=null)
  */
 function ivanhoe_display_move_source($post=null)
 {
-    $html = '0';
+    $html = '';
     $source_id = ivanhoe_get_move_source($post);
 
     // Check if $source_id isn't 0 and if we can get another post with its value.

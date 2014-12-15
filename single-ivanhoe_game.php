@@ -146,18 +146,8 @@
             <div class="excerpt">
 
                 <?php
-                $the_excerpt = get_the_excerpt();
-                $move_image_source = '';
-                $matches = ivanhoe_catch_that_properly_nested_html_media_tag_tree();
-
-                if ( empty( $the_excerpt ) ) {
-                    $move_image_source = ivanhoe_display_first_media_file( $matches ) . ' ... <a class="view-more" href="'. get_permalink( get_the_ID() ) . '">' . __('View More', 'ivanhoe') . '</a>';
-                } else {
-                    $move_image_source = ivanhoe_display_first_media_file( $matches );
-                }
-
-                echo $move_image_source;
-                the_excerpt();
+                    echo ivanhoe_media_excerpt();
+                    the_excerpt();
                 ?>
 
             </div>
