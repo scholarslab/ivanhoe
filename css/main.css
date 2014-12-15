@@ -1,5 +1,8 @@
 /* CONTENT PAGES STUFF */
-
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+}
 #nav {
     text-align: center;
     position: fixed;
@@ -59,6 +62,7 @@
 /*Horizontal rules*/
 
 .doubleUneven {
+    width: 100px;
     border-top: solid black 3px;
     border-bottom: solid black 1px;
     padding: 1px;
