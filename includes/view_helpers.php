@@ -200,6 +200,12 @@ function catch_that_properly_nested_html_media_tag_tree()
     return( $matches );
 }
 
+/**
+* Displays the first image found in post content
+*
+* @return media file
+*/
+
 function display_first_media_file( $matches )
 {
     $first_media_file = '';
