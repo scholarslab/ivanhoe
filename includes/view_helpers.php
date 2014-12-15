@@ -10,6 +10,9 @@ function ivanhoe_response_form_url($post=null)
     $post    = (is_null($post)) ? get_post() : $post;
     $url     = "";
     $role    = ivanhoe_user_has_role($post->post_parent);
+    if ($role === FALSE) {
+        throw new Exception("Invalid POST (missing role).");
+    }
     $role_id = $role->ID;
 
     $ivanhoe_params = array(
@@ -69,9 +72,9 @@ function ivanhoe_user_has_role($game_id, $user_id=null)
         if ($role) {
             return $role;
         }
-        return false;
+        return FALSE;
     }
-    return false;
+    return FALSE;
 }
 
 /**
@@ -157,14 +160,14 @@ function ivanhoe_move_link ($post=null)
     $post = (is_null($post)) ? get_post() : $post;
     $html = '';
     $post_type = get_post_type($post );
-    $role = false;
+    $role = FALSE;
     if ($post_type == 'ivanhoe_game') {
         $role = ivanhoe_user_has_role( $post->ID );
     } elseif ($post_type == 'ivanhoe_move') {
         $role = ivanhoe_user_has_role( $post->post_parent );
     }
 
-    if ( $role ) {
+    if ( $role !== FALSE ) {
 
         $respond = __(
             'Respond <span class="visuallyhidden post-title">to %s</span>',

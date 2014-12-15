@@ -18,7 +18,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
     </header>
 
     <div id="game-data">
-        <?php if($role): ?>
+        <?php if ($role !== FALSE): ?>
 
         <h3><?php _e( 'Your Current Role', 'ivanhoe' ); ?></h3>
         <article class="role">
@@ -40,7 +40,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
             $character_posts = $characters->get_posts();
 
             if ( !empty( $character_posts ) ) :
-            if ( is_user_logged_in() && $role ) : ?>
+            if ( is_user_logged_in() && $role !== FALSE ) : ?>
                 <h3><?php _e( 'Other Characters', 'ivanhoe' ); ?></h3>
                 <article>
                 <?php if ( $characters->have_posts() ) : ?>
@@ -92,7 +92,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
         <div>
             <?php if ( is_user_logged_in() ) :
 
-                if ( $role ) :
+                if ( $role !== FALSE ) :
 
                 ?>
 

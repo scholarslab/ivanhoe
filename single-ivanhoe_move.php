@@ -13,7 +13,7 @@
 
            if ( is_user_logged_in() ) :
 
-            if ( $role ) : ?>
+            if ( $role !== FALSE ) : ?>
 
            <?php echo ivanhoe_move_link( $post ); ?>
 
