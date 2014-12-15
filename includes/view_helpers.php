@@ -189,7 +189,7 @@ function ivanhoe_move_link ($post=null)
  *
  * @return string HTML.
  */
-function catch_that_properly_nested_html_media_tag_tree()
+function ivanhoe_catch_that_properly_nested_html_media_tag_tree()
 {
     global $post, $posts;
     ob_start();
@@ -209,7 +209,7 @@ function catch_that_properly_nested_html_media_tag_tree()
 * @return media file
 */
 
-function display_first_media_file( $matches )
+function ivanhoe_display_first_media_file( $matches )
 {
     $first_media_file = '';
 
@@ -225,7 +225,7 @@ function display_first_media_file( $matches )
  *
  * @return string HTML.
  */
-function get_excerpt_by_id($post_id=null)
+function ivanhoe_get_excerpt_by_id($post_id=null)
 {
     if (is_null($post_id)) {
         $the_post = get_post();
@@ -254,7 +254,7 @@ function get_excerpt_by_id($post_id=null)
  *
  * @return string HTML.
  */
-function get_title_by_id($post_id=null)
+function ivanhoe_get_title_by_id($post_id=null)
 {
     if (is_null($post_id)) {
         $the_post = get_post();
@@ -345,10 +345,10 @@ function ivanhoe_get_rationales($post=null)
  * Creates a "Read More" link to post at the end of the_excerpt.
  */
 
-function new_excerpt_more( $more )
+function ivanhoe_new_excerpt_more( $more )
 {
     return ' ... <a class="view-more" href="' . get_permalink( get_the_ID() )
         . '">' . __('View More', 'ivanhoe') . '</a>';
 }
 
-add_filter( 'excerpt_more', 'new_excerpt_more' );
+add_filter( 'excerpt_more', 'ivanhoe_new_excerpt_more' );
