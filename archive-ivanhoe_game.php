@@ -12,11 +12,11 @@
 if ( have_posts()) : ?>
     <?php echo ivanhoe_paginate_links($wp_query);?>
     <?php while(have_posts()) : the_post(); ?>
-<article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
-    <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
-    <h2 class="game-title"><a class="game-link" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-    <?php the_excerpt(); ?>
-</article>
+    <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
+        <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+        <h2 class="game-title"><a class="game-link" href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+        <?php the_excerpt(); ?>
+    </article>
 
 <?php endwhile; ?>
 <?php echo ivanhoe_paginate_links();?>
