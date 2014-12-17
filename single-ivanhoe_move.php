@@ -1,8 +1,6 @@
-<?php
-    get_header();
-    if (have_posts()) : while(have_posts()) : the_post();
-    global $post;
-?>
+<?php get_header(); ?>
+<?php if (have_posts()) : while(have_posts()) : the_post(); ?>
+<?php global $post; ?>
 <article class="single-move">
 
     <header>
@@ -15,18 +13,16 @@
                 <?php the_time('F j, Y'); ?>
             </time>
         </p>
-        <?php
-            if ( is_user_logged_in() ) :
-                if ( $role !== FALSE ) :
-                    echo ivanhoe_move_link( $post );
-                else : ?>
+        <?php if ( is_user_logged_in() ) : ?>
+            <?php if ( $role !== FALSE ) : ?>
+                <?php echo ivanhoe_move_link( $post ); ?>
+            <?php else : ?>
 
-            <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="btn">
-            <?php _e( 'Make a Role!', 'ivanhoe' ); ?></a>
-
-                <?php endif; ?>
+                <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="btn"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a>
 
             <?php endif; ?>
+
+        <?php endif; ?>
 
     </header>
     <div class="source-response-container">
@@ -39,7 +35,6 @@
         </div>
         <div class="game-description">
             <h2><?php _e( 'Game Description', 'ivanhoe' ); ?></h2>
-
             <?php
                 echo('<h3>' . $game_title . '</h3>');
                 echo ivanhoe_game_excerpt($post);
