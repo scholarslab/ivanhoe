@@ -89,8 +89,6 @@ function ivanhoe_game_excerpt ($post)
 {
     $post = (is_null($post)) ? get_post() : $post;
     $game_id = $post->post_parent;
-    $role = ivanhoe_user_has_role( $game_id );
-    $game_title = ivanhoe_get_title_by_id( $game_id );
     $game_excerpt = ivanhoe_get_excerpt_by_id( $game_id );
     return $game_excerpt;
 }

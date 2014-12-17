@@ -1,6 +1,11 @@
 <?php get_header(); ?>
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
-<?php global $post; ?>
+<?php
+    global $post;
+    $game_id = $post->post_parent;
+    $role = ivanhoe_user_has_role($game_id);
+    $game_title = ivanhoe_get_title_by_id($game_id);
+?>
 <article class="single-move">
 
     <header>
