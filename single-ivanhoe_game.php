@@ -5,6 +5,24 @@
     $ivanhoe_game_id          = $post->ID;
     $ivanhoe_parent_permalink = get_permalink( $post->ID );
     $role                     = ivanhoe_user_has_role( $post->ID );
+
+    // Logic for character list
+    $character_args = array(
+        'post_type' => 'ivanhoe_role',
+        'post_parent' => $ivanhoe_game_id
+    );
+    $characters = new WP_Query ( $character_args );
+    $character_posts = $characters->get_posts();
+
+    //Logic for pagination
+    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+    $pagination_args = array (
+        'post_type'   => 'ivanhoe_move',
+        'post_parent' => $post->ID,
+        'paged'       => $paged
+    );
+    $pagination_query = new WP_Query( $pagination_args );
+
 ?>
 
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
@@ -18,6 +36,7 @@
     </header>
 
     <div id="game-data">
+        <!-- Shows role of current user -->
         <?php if ($role !== FALSE): ?>
 
         <h3><?php _e( 'Your Current Role', 'ivanhoe' ); ?></h3>
@@ -27,15 +46,9 @@
         </article>
 
         <?php endif; ?>
+        <!-- Ends section showing current role -->
 
         <?php
-            $args = array(
-                'post_type' => 'ivanhoe_role',
-                'post_parent' => $ivanhoe_game_id
-            );
-            $characters = new WP_Query ( $args );
-            $character_posts = $characters->get_posts();
-
             if ( !empty( $character_posts ) ) :
             if ( is_user_logged_in() && $role !== FALSE ) : ?>
                 <h3><?php _e( 'Other Characters', 'ivanhoe' ); ?></h3>
@@ -57,27 +70,20 @@
             <?php else : ?>
                 <h3><?php _e( 'Characters', 'ivanhoe' ); ?></h3>
                 <article>
-                <?php $args = array(
-                    'post_type' => 'ivanhoe_role',
-                    'post_parent' => $ivanhoe_game_id
-                    );
-                $characters = new WP_Query ( $args );
-                if ( $characters->have_posts() ) : ?>
-                    <ul class='character_list'>
-                <?php while ( $characters->have_posts() ) : $characters->the_post(); ?>
-                    <li class='role'>
-                        <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
-                        <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
-                    </li>
-                <?php endwhile; ?>
-                    </ul>
-                <?php endif; ?>
+                    <?php if ( $characters->have_posts() ) : ?>
+                        <ul class='character_list'>
+                    <?php while ( $characters->have_posts() ) : $characters->the_post(); ?>
+                        <li class='role'>
+                            <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
+                            <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
+                        </li>
+                    <?php endwhile; ?>
+                        </ul>
+                    <?php endif; ?>
                 </article>
                 <?php wp_reset_postdata(); ?>
                 <?php endif;
             endif; ?>
-
-
 
         <h3><?php _e( 'Game Description', 'ivanhoe' ); ?></h3>
 
@@ -102,8 +108,6 @@
                         <input type="submit" name="movesubmit" value="<?php _e( 'Make a Move', 'ivanhoe' ); ?>" class="btn" id="respond-to-move">
                     </form>
 
-
-
                 <?php else : ?>
 
                 <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="btn"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a>
@@ -112,28 +116,18 @@
 
             <?php endif; ?>
 
-
         </div>
     </div>
 
     <?php
-
-    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
-    $args = array (
-        'post_type'   => 'ivanhoe_move',
-        'post_parent' => $post->ID,
-        'paged'       => $paged
-    );
-    $wp_query = new WP_Query( $args );
-
-
-    if ( $wp_query->have_posts()) : ?>
+    // removed pagination logic from here
+    if ( $pagination_query->have_posts()) : ?>
 
     <div id="moves">
-        <?php echo ivanhoe_paginate_links($wp_query);?>
+        <?php echo ivanhoe_paginate_links($pagination_query);?>
 
         <?php
-        while($wp_query->have_posts()) : $wp_query->the_post(); ?>
+        while($pagination_query->have_posts()) : $pagination_query->the_post(); ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <header>
                 <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
@@ -164,7 +158,7 @@
 
         <?php endwhile; ?>
 
-        <?php echo ivanhoe_paginate_links($wp_query);?>
+        <?php echo ivanhoe_paginate_links($pagination_query);?>
     </div>
 
 
@@ -175,7 +169,7 @@
 
     <?php endif; ?>
 
-<?php $wp_query = $original_query; ?>
+<?php $pagination_query = $original_query; ?>
 
 </article>
 
