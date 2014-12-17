@@ -6,7 +6,7 @@
     $ivanhoe_parent_permalink = get_permalink( $post->ID );
     $role                     = ivanhoe_user_has_role( $post->ID );
 
-    // Logic for character list
+    // Character list
     $character_args = array(
         'post_type' => 'ivanhoe_role',
         'post_parent' => $ivanhoe_game_id
@@ -14,14 +14,13 @@
     $characters = new WP_Query ( $character_args );
     $character_posts = $characters->get_posts();
 
-    //Logic for pagination
+    // Pagination
     $paged = get_query_var('paged') ? get_query_var('paged') : 1;
     $pagination_args = array (
         'post_type'   => 'ivanhoe_move',
         'post_parent' => $post->ID,
         'paged'       => $paged
     );
-    $pagination_query = new WP_Query( $pagination_args );
 
 ?>
 
@@ -48,6 +47,7 @@
         <?php endif; ?>
         <!-- Ends section showing current role -->
 
+        <!-- Shows list of other characters -->
         <?php
             if ( !empty( $character_posts ) ) :
             if ( is_user_logged_in() && $role !== FALSE ) : ?>
@@ -84,6 +84,7 @@
                 <?php wp_reset_postdata(); ?>
                 <?php endif;
             endif; ?>
+            <!-- Ends section showing other characters -->
 
         <h3><?php _e( 'Game Description', 'ivanhoe' ); ?></h3>
 
@@ -92,6 +93,7 @@
         <?php the_content(); ?>
 
         <div>
+        <!-- Shows either the make a move button or the make a role button -->
             <?php if ( is_user_logged_in() ) :
 
                 if ( $role !== FALSE ) :
@@ -115,19 +117,22 @@
                 <?php endif; ?>
 
             <?php endif; ?>
+            <!-- Ends section showing buttons -->
 
         </div>
     </div>
 
+    <!-- Main content of page -->
     <?php
     // removed pagination logic from here
-    if ( $pagination_query->have_posts()) : ?>
+    $wp_query = new WP_Query( $pagination_args );
+    if ( $wp_query->have_posts()) : ?>
 
     <div id="moves">
-        <?php echo ivanhoe_paginate_links($pagination_query);?>
+        <?php echo ivanhoe_paginate_links($wp_query);?>
 
         <?php
-        while($pagination_query->have_posts()) : $pagination_query->the_post(); ?>
+        while($wp_query->have_posts()) : $wp_query->the_post(); ?>
         <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
             <header>
                 <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
@@ -158,7 +163,7 @@
 
         <?php endwhile; ?>
 
-        <?php echo ivanhoe_paginate_links($pagination_query);?>
+        <?php echo ivanhoe_paginate_links($wp_query);?>
     </div>
 
 
@@ -169,9 +174,10 @@
 
     <?php endif; ?>
 
-<?php $pagination_query = $original_query; ?>
+<?php $wp_query = $original_query; ?>
 
 </article>
+<!-- Ends main content of page -->
 
 <?php endwhile; endif; ?>
 
