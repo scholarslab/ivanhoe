@@ -11,3 +11,5 @@ require_once($IVANHOE_DIR .'/includes/post_meta.php');
 require_once($IVANHOE_DIR .'/includes/view_helpers.php');
 
 require_once($IVANHOE_DIR .'/includes/excerpts.php');
+
+require_once($IVANHOE_DIR .'/includes/links.php');

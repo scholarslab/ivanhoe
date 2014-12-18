@@ -23,7 +23,8 @@
                 <?php echo ivanhoe_move_link( $post ); ?>
             <?php else : ?>
 
-                <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="btn"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a>
+                <?php $url = ivanhoe_role_form_url($post); ?>
+                <?php echo ivanhoe_a($url, 'Make a Role!', "class = 'btn'"); ?>
 
             <?php endif; ?>
 
@@ -51,7 +52,11 @@
 
         <?php the_content(); ?>
 
-        <p class="return-btn"><a href="<?php echo get_permalink( $post->post_parent ); ?>"><?php _e( 'Return to game', 'ivanhoe' ); ?></a></p>
+        <p class="return-btn">
+            <?php $url = get_permalink( $post->post_parent); ?>
+            <?php echo ivanhoe_a($url, 'Return to game'); ?>
+
+        </p>
 
     </div>
 

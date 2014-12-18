@@ -77,7 +77,7 @@ function ivanhoe_display_first_media_file( $matches )
     return $first_media_file;
 }
 
-/*
+/**
 * Generates the game excerpt
 *
 * @param WP_Post ivanhoe move post object
@@ -93,7 +93,7 @@ function ivanhoe_game_excerpt ($post)
     return $game_excerpt;
 }
 
-/*
+/**
 * Returns either media file attached to post or media file and more
 * depending upon whether there is textual content in the move
 *
