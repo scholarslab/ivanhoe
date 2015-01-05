@@ -2,10 +2,10 @@
 
 <header>
     <h1><?php _e( 'Games', 'ivanhoe' ); ?></h1>
-    <?php if ( is_user_logged_in() ) :
-    	$url = add_query_arg(array('ivanhoe' => 'ivanhoe_game'), home_url()); ?>
-    	<a href="<?php echo $url; ?>" class="btn" id="make-a-game"><?php _e( 'Make a Game', 'ivanhoe' ); ?></a>
-	<?php endif; ?>
+    <?php if ( is_user_logged_in() ) : ?>
+    	<?php $url = add_query_arg(array('ivanhoe' => 'ivanhoe_game'), home_url()); ?>
+            <?php echo ivanhoe_a($url, 'Make a Game', 'class="btn" id="make-a-game"'); ?>
+    <?php endif; ?>
 </header>
 
 <?php

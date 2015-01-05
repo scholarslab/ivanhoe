@@ -6,17 +6,21 @@
 * @param $url
 * @param $link_text
 * @param $css_options string e.x. "class = 'btn'"
-* @param $escape escapes link text unless set to false
+* @param $text_escape boolean escapes link text unless set to false
+* @param $url_escape boolean escapes link text unless set to false
 *
 * @return html anchor tags with css and link text
 */
 
-function ivanhoe_a ($url, $link_text, $css_options=null, $escape=true)
+function ivanhoe_a ($url, $link_text, $css_options=null, $url_escape=true, $text_escape=true)
 {
-    $url = htmlspecialchars($url);
+
+    if ($url_escape) {
+        $url = htmlspecialchars($url);
+    }
 
     $translated_text = __($link_text, 'ivanhoe');
-    if ($escape) {
+    if ($text_escape) {
         $translated_text = htmlspecialchars($translated_text);
     }
 
@@ -32,7 +36,3 @@ function ivanhoe_a ($url, $link_text, $css_options=null, $escape=true)
 
     return $html;
 }
-
-
-
-
