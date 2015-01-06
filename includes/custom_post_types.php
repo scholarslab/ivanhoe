@@ -77,7 +77,7 @@ function ivanhoe_create_post_types()
 
     add_rewrite_rule(
         'games/([.*]+)/page/([0-9]+)/?$',
-        'index.php?ivanhoe_game=[1]&paged=$matches[2]',
+        'index.php?ivanhoe_game=$matches[1]&paged=$matches[2]',
         'top'
     );
 
