@@ -24,7 +24,7 @@
             <?php else : ?>
 
                 <?php $url = ivanhoe_role_form_url($post); ?>
-                <?php echo ivanhoe_a($url, 'Make a Role!', "class = 'btn'"); ?>
+                <?php echo ivanhoe_a($url, 'Make a Role!', "class = 'btn'", ESCAPE_TEXT); ?>
 
             <?php endif; ?>
 
@@ -55,7 +55,6 @@
         <p class="return-btn">
             <?php $url = get_permalink( $post->post_parent); ?>
             <?php echo ivanhoe_a($url, 'Return to game'); ?>
-
         </p>
 
     </div>
