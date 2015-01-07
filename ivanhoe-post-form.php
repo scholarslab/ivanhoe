@@ -5,54 +5,16 @@ if(!is_user_logged_in()) {
 
 require_once ABSPATH . 'wp-admin/includes/post.php' ;
 
-// Get our post type.
+$IVANHOE_DIR = dirname(__FILE__);
+
 $post_type = $_GET['ivanhoe'];
+$class_name = str_replace(' ', '', ucwords(str_replace('_', ' ', $post_type)));
+require_once($IVANHOE_DIR . "/includes/post_form/$post_type.php");
+$post_form = new $class_name();
 
-$newpost = get_default_post_to_edit($post_type, true);
+echo $post_form->render();
 
-// Set some variables based on our post_type.
-switch ($post_type) {
-    case 'ivanhoe_game':
-        $form_title = 'Make a Game';
-        $post_title_label = __( 'Game Title', 'ivanhoe' );
-        $post_thumbnail_label = __( 'Game Thumbnail', 'ivanhoe' );
-        $post_content_label = __( 'Game Description', 'ivanhoe' );
-    break;
-
-    case 'ivanhoe_move':
-        $form_title = __( 'Make a Move', 'ivanhoe' );
-        $post_title_label = __( 'Move Title', 'ivanhoe' );
-        $post_content_label = __( 'Move Content', 'ivanhoe' );
-        $post_rationale_label = __( 'Rationale', 'ivanhoe' );
-        break;
-
-    case 'ivanhoe_role':
-        $form_title = __( 'Make a Role', 'ivanhoe' );
-        $post_title_label = __( 'Role Name', 'ivanhoe' );
-        $post_thumbnail_label = __( 'Role Thumbnail', 'ivanhoe' );
-        $post_content_label = __( 'Role Description', 'ivanhoe' );
-        break;
-
-    default: // If there's no valid value passed to the ivanhoe var.
-      die;
-}
-
-// Form fields. All post types have these.
-$post_title = !empty ( $_POST['post_title'] ) ? $_POST['post_title'] : null;
-$post_content = !empty ( $_POST['post_content'] ) ? $_POST['post_content'] : null;
-
-// Move variables.
-$parent_post = isset( $_GET['parent_post'] ) ? $_GET['parent_post'] : null;
-$move_source = isset ( $_GET['move_source'] ) ? $_GET['move_source'] : null;
-$role_id = isset( $_GET['ivanhoe_role_id'] ) ? $_GET['ivanhoe_role_id'] : null;
-$post_rationale = !empty ( $_POST['post_rationale']) ? $_POST['post_rationale'] : null;
-
-// special fields
-$rationale_title = "";
-$rationale_content = "";
-
-// Creates an empty array for error messages.
-$error_messages = array();
+// HERE WE ARE
 
 // If we have a game ID and a post title, insert a post.
 if ( !empty( $_POST )) {
