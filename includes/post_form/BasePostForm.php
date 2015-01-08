@@ -62,7 +62,7 @@ abstract class BasePostForm
     /**
      * The move being responded to.
      *
-     * @var string/int
+     * @var array
      */
     var $move_source;
 
@@ -202,6 +202,10 @@ abstract class BasePostForm
             ? $_GET['ivanhoe_role_id'] : null;
         $this->rationale   = !empty ( $_POST['post_rationale'])
             ? $_POST['post_rationale'] : null;
+
+        if (!is_array($this->move_source)) {
+            $this->move_source = array($this->move_source);
+        }
     }
 
     /**
@@ -299,19 +303,11 @@ abstract class BasePostForm
     public function add_move_source($post)
     {
         if ($this->move_source) {
-            if (is_array($this->move_source)) {
-                foreach ($this->move_source as $move) {
-                    add_post_meta(
-                        $post,
-                        'Ivanhoe Move Source',
-                        $move
-                    );
-                }
-            } else {
+            foreach ($this->move_source as $move) {
                 add_post_meta(
                     $post,
                     'Ivanhoe Move Source',
-                    $this->move_source
+                    $move
                 );
             }
         }
@@ -372,11 +368,7 @@ abstract class BasePostForm
 
         $game = get_post($this->parent_post);
         $message[] = $this->get_making_message($game);
-        if ($this->move_source) {
-            $ms = is_array($this->move_source)
-                ? $this->move_source : array($this->move_source);
-            $message[] = $this->get_move_source_message($game, $ms);
-        }
+        $message[] = $this->get_move_source_message($game);
 
         return implode($message);
     }
@@ -393,30 +385,31 @@ abstract class BasePostForm
      * This creates a move source status message.
      *
      * @param $game post
-     * @param $move_sources array An array of move sources.
      *
      * @return string
      * @author Eric Rochester <erochest@virginia.edu>
      */
-    public function get_move_source_message($game, $move_sources)
+    public function get_move_source_message($game)
     {
         $message = array();
 
-        $message[] = sprintf(
-            __( 'You are making a move on the game '
+        if ($this->move_source) {
+            $message[] = sprintf(
+                __( 'You are making a move on the game '
                 . '&#8220;<a href="%1$s">%2$s</a>&#8221; in response '
                 . 'to the following: <ul>' , 'ivanhoe' ),
-            get_permalink($this->parent_post),
-            $game->post_title
-        );
+                get_permalink($this->parent_post),
+                $game->post_title
+            );
 
-        foreach ($move_sources as $move) {
-            $link  = get_permalink($move);
-            $title = get_the_title($move);
-            $message[] = "<li><a href='$link'>$title</a></li>";
+            foreach ($this->move_source as $move) {
+                $link  = get_permalink($move);
+                $title = get_the_title($move);
+                $message[] = "<li><a href='$link'>$title</a></li>";
+            }
+
+            $message[] = "</ul>";
         }
-
-        $message[] = "</ul>";
         return implode($message);
     }
 }
