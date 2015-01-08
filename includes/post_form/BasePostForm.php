@@ -128,7 +128,40 @@ abstract class BasePostForm
      **/
     public function render()
     {
-        return "";
+        $buffer = array();
+
+        if (!empty($_POST)) {
+            $this->validate_post();
+            if (!$this->has_errors()) {
+                $this->insert_new_post();
+                $this->redirect();
+                exit;
+            }
+        }
+
+        get_header();
+        $buffer[] = $this->get_status_message();
+        // HERE WE ARE
+
+        return implode($buffer);
+    }
+
+    /**
+     * This redirects to the game or to the parent.
+     *
+     *
+     * @return void
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function redirect()
+    {
+        $url = get_post_type_archive_link('ivanhoe_game');
+
+        if ($this->parent_post) {
+            $url = get_permalink($this->parent_post);
+        }
+
+        wp_redirect($url);
     }
 
     /**
@@ -181,7 +214,209 @@ abstract class BasePostForm
      */
     public function error($msg)
     {
-        $this->error_messages[] = $msg;
+        $this->error_messages[] = __($msg, 'ivanhoe');
     }
 
+    /**
+     * Does error checking on the POST data.
+     *
+     * @return void
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function validate_post($post)
+    {
+        if(empty($this->title)) {
+            $this->error('A title is required');
+        }
+
+        if(empty($this->content)) {
+            $this->error('A description is required');
+        }
+    }
+
+    /**
+     * Test whether any errors have been flagged.
+     *
+     * @return bool
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function has_errors()
+    {
+        return (! empty($this->error_messages));
+    }
+
+    /**
+     * This inserts the new post into the database and returns it.
+     *
+     * @return post
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function insert_new_post()
+    {
+        $data = array(
+            'ID'           => $this->new_post->ID,
+            'post_content' => $this->content,
+            'post_title'   => $this->title,
+            'post_status'  => 'publish',
+            'post_type'    => $this->get_post_type()
+        );
+
+        if ($this->parent_post) {
+            $data['post_parent'] = $this->parent_post;
+        }
+
+        $post = wp_insert_post($data);
+        $this->add_image($post);
+        $this->add_move_source($post);
+        $this->add_rationale($post);
+
+        return $post;
+    }
+
+    /**
+     * This adds an image (if there is one) to the form.
+     *
+     * @param $post Post The post to add the image to.
+     *
+     * @return void
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function add_image($post)
+    {
+        if (isset($_FILES['post_thumbnail'])) {
+            ivanhoe_add_image('post_thumbnail', $post);
+        }
+    }
+
+    /**
+     * This adds whatever move source metadata is there to the post.
+     *
+     * @param $post Post The post to add the metadata to.
+     *
+     * @return void
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function add_move_source($post)
+    {
+        if ($this->move_source) {
+            if (is_array($this->move_source)) {
+                foreach ($this->move_source as $move) {
+                    add_post_meta(
+                        $post,
+                        'Ivanhoe Move Source',
+                        $move
+                    );
+                }
+            } else {
+                add_post_meta(
+                    $post,
+                    'Ivanhoe Move Source',
+                    $this->move_source
+                );
+            }
+        }
+    }
+
+    /**
+     * This adds whatever rationale is there to the post.
+     *
+     * TODO: Decide whether or not we want the RJ to be public.
+     *
+     * @param $post Post The post to add the rationale to.
+     *
+     * @return rationale post or null
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function add_rationale($post)
+    {
+        $journal_entry = null;
+
+        if ($this->rationale) {
+            $title = sprintf(
+                __( 'Journal Entry for %s', 'ivanhoe' ),
+                $this->title
+            );
+            $journal_entry_data = array(
+                'post_content' => $this->rationale,
+                'post_title'   => $title,
+                'post_status'  => 'publish',
+                'post_type'    => 'ivanhoe_role_journal',
+                'post_parent'  => $post
+            );
+
+            $journal_entry = wp_insert_post( $journal_entry_data );
+            update_post_meta(
+                $journal_entry,
+                'Ivanhoe Game Source',
+                $this->parent_post
+            );
+            update_post_meta(
+                $journal_entry,
+                'Ivanhoe Role ID',
+                $this->role_id
+            );
+        }
+
+        return $journal_entry;
+    }
+
+    /**
+     * This returns a status message, telling the user what she just did.
+     *
+     * @return string
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function get_status_message()
+    {
+        $message = array();
+
+        $game = get_post($this->parent_post);
+        $message[] = $this->get_making_message($game);
+        if ($this->move_source) {
+            $ms = is_array($this->move_source)
+                ? $this->move_source : array($this->move_source);
+            $message[] = $this->get_move_source_message($game, $ms);
+        }
+
+        return implode($message);
+    }
+
+    /**
+     * This returns a 'You are making a....' message.
+     *
+     * @return string
+     * @author Eric Rochester <erochest@virginia.edu>
+     **/
+    abstract function get_making_message($game);
+
+    /**
+     * This creates a move source status message.
+     *
+     * @param $game post
+     * @param $move_sources array An array of move sources.
+     *
+     * @return string
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function get_move_source_message($game, $move_sources)
+    {
+        $message = array();
+
+        $message[] = sprintf(
+            __( 'You are making a move on the game '
+                . '&#8220;<a href="%1$s">%2$s</a>&#8221; in response '
+                . 'to the following: <ul>' , 'ivanhoe' ),
+            get_permalink($this->parent_post),
+            $game->post_title
+        );
+
+        foreach ($move_sources as $move) {
+            $link  = get_permalink($move);
+            $title = get_the_title($move);
+            $message[] = "<li><a href='$link'>$title</a></li>";
+        }
+
+        $message[] = "</ul>";
+        return implode($message);
+    }
 }

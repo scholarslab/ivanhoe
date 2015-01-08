@@ -21,6 +21,15 @@ class IvanhoeMove
         $this->other_label   = __( 'Rationale', 'ivanhoe' );
     }
     
+    public function get_making_message($game)
+    {
+        return sprintf(
+            __( 'You are making a move on the game '
+                . '&#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'),
+            get_permalink($parent_post),
+            $ivanhoe_game->post_title
+        );
+    }
 }
 
 

@@ -21,5 +21,14 @@ class IvanhoeGame
         $this->content_label = __( 'Game Description', 'ivanhoe' );
     }
     
+    public function get_status_message()
+    {
+        return '';
+    }
+
+    public function get_making_message($game)
+    {
+        return '';
+    }
 }
 
