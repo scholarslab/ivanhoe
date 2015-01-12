@@ -6,7 +6,7 @@ if(!is_user_logged_in()) {
 require_once ABSPATH . 'wp-admin/includes/post.php' ;
 
 // Get our post type.
-$post_type = $_GET['ivanhoe'];
+$post_type = get_query_var('ivanhoe');
 
 $newpost = get_default_post_to_edit($post_type, true);
 
