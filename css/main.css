@@ -1,3 +1,17 @@
+html {
+    color: #333333;
+}
+
+body{
+    min-width: 800px;
+}
+
+.titleLetter{
+    cursor: pointer;
+    curson: hand;
+}
+
+
 /* CONTENT PAGES STUFF */
 h1 {
     text-align: center;
@@ -10,7 +24,7 @@ h1 {
     margin: auto;
     z-index: 100000;
     width: 100%;
-    background-color: black;
+    background-color: #333333;
     color: white; 
 }
 
@@ -60,13 +74,11 @@ h1 {
 
 
 /*Horizontal rules*/
-
 .doubleUneven {
     width: 100px;
-    border-top: solid black 3px;
-    border-bottom: solid black 1px;
+    border-top: solid #333333 3px;
+    border-bottom: solid #333333 1px;
     padding: 1px;
     border-left: 0;
     border-right: 0;
-
 }

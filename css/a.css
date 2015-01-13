@@ -12,6 +12,7 @@ body{
     min-height: 100%;
     background-color: black;
     text-transform: uppercase; 
+    overflow: hidden;
 }
 
 #logo {
@@ -19,6 +20,7 @@ body{
     text-align: center;
 }
     
+/*text stroke lacks x-browser compatibility*/
 .titleLetter {
     display: inline-block;
     font-size: 120px;
@@ -30,6 +32,7 @@ body{
 	font-size: 100px;
 	text-align: center;
     width: 100%;
+    min-width: 800px;
 	display: block;
 	margin: auto;
     position: absolute;
@@ -49,6 +52,10 @@ body{
 	text-decoration: none;
     color: white;
     font-weight: normal;
+    background-color: black;
+    width: 5em;
+    height:  1.25em;
+    display: inline-block;
 }
 
 #homeNav a:hover {
@@ -63,10 +70,6 @@ body{
 
 #homeNav li {
 	display: inline-block;	
-    padding: 0 8%;
-    background-color: black;
-    width: 4em;
-    height:  1.25em;
 }
 
 #homeNav li:hover {

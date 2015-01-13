@@ -1,0 +1,91 @@
+/* typography - 
+Calibri, Segoe UI, Arial, sans-serif
+*/ 
+
+html{
+    background-color: #ff66ff;
+    min-height: 100%;
+    border-top: black 10px solid;
+    border-left: black 10px solid;
+}
+
+body{
+    font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
+    font-weight: bold;
+    color: black;
+    text-transform: uppercase;
+}
+
+/*rotation needs x-browser compatibility for IE*/
+
+#logo {
+    -webkit-transform: rotate(-45deg);
+    -moz-transform: rotate(-45deg);
+    -ms-transform: rotate(-45deg);
+    -o-transform: rotate(-45deg);
+    display: block;
+    float: left;
+    margin-top: 200px;
+    width: 900px;
+}
+    
+.titleLetter {
+    display: inline-block;
+    font-size: 180px;
+}
+
+#subtitle {
+    font-family: Georgia, Times, "Times New Roman", serif;
+	font-size: 50px;
+    width: 50%;
+    float: left;
+    margin-left:470px;
+}
+
+#homeNav{
+    font-size: 40px; 
+    letter-spacing: .1em;
+    display: inline-block;
+    float: left;
+    width: 50%;
+    margin-left: 300px;
+    padding-top: .5em;
+}
+
+#homeNav a{
+	text-decoration: none;
+    display: inline-block;
+    margin-right: 1em;
+    color: black;
+}
+
+#homeNav a:hover {
+    
+}
+
+#homeNav ul{
+	list-style-type:none;
+    padding: 0;
+    margin: 0;
+}
+
+#homeNav li {
+	display: inline-block;	
+}
+
+#homeNav li:hover {
+
+}
+
+.caps {
+
+    font-size: 1.3em;
+}
+
+#catCredit {
+    display: none;
+}
+
+.hide{
+    display: none;
+}
