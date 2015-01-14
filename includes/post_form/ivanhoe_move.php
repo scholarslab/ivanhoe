@@ -1,11 +1,11 @@
 <?php
 
-require_once dirname(__FILE__) . "BasePostForm.php";
+require_once dirname(__FILE__) . "/BasePostForm.php";
 
 /**
  * This defines the concrete implementation for the game form.
  */
-class IvanhoeMove
+class IvanhoeMove extends BasePostForm
 {
 
     public function get_post_type()
@@ -29,6 +29,20 @@ class IvanhoeMove
             get_permalink($parent_post),
             $ivanhoe_game->post_title
         );
+    }
+
+    public function render_thumbnail()
+    {
+        return "";
+    }
+    public function render_rationale()
+    {
+        $input = "<div>"
+            . "<label for='post_rationale'>$this->rationale_title</label>"
+            . $this->wp_editor($this->rationale_content, 'post_rationale', array('media_btns' => false))
+            . "</div>";
+
+        return $input;
     }
 }
 

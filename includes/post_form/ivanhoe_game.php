@@ -1,11 +1,11 @@
 <?php
 
-require_once dirname(__FILE__) . "BasePostForm.php";
+require_once dirname(__FILE__) . "/BasePostForm.php";
 
 /**
  * This defines the concrete implementation for the game form.
  */
-class IvanhoeGame
+class IvanhoeGame extends BasePostForm
 {
 
     public function get_post_type()

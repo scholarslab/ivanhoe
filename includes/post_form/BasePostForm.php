@@ -128,8 +128,6 @@ abstract class BasePostForm
      **/
     public function render()
     {
-        $buffer = array();
-
         if (!empty($_POST)) {
             $this->validate_post();
             if (!$this->has_errors()) {
@@ -139,11 +137,20 @@ abstract class BasePostForm
             }
         }
 
-        get_header();
-        $buffer[] = $this->get_status_message();
-        // HERE WE ARE
+        echo "<strong>Starting to render...</strong>";
+        $game   = get_post($this->parent_post);
+        $buffer = "";
 
-        return implode($buffer);
+        $buffer .= $this->get_header();
+        $buffer .= $this->get_status_message($game);
+        $buffer .= $this->render_form_title();
+        $buffer .= $this->render_errors();
+        $buffer .= $this->render_message($game);
+        $buffer .= $this->render_form();
+        $buffer .= $this->get_footer();
+        echo "<strong>Done rendering...</strong>";
+
+        return $buffer;
     }
 
     /**
@@ -332,6 +339,7 @@ abstract class BasePostForm
                 __( 'Journal Entry for %s', 'ivanhoe' ),
                 $this->title
             );
+            // TODO: check which rationale is which
             $journal_entry_data = array(
                 'post_content' => $this->rationale,
                 'post_title'   => $title,
@@ -362,15 +370,14 @@ abstract class BasePostForm
      * @return string
      * @author Eric Rochester <erochest@virginia.edu>
      */
-    public function get_status_message()
+    public function get_status_message($game)
     {
-        $message = array();
+        $message = "";
 
-        $game = get_post($this->parent_post);
-        $message[] = $this->get_making_message($game);
-        $message[] = $this->get_move_source_message($game);
+        $message .= $this->get_making_message($game);
+        $message .= $this->get_move_source_message($game);
 
-        return implode($message);
+        return $message;
     }
 
     /**
@@ -391,10 +398,10 @@ abstract class BasePostForm
      */
     public function get_move_source_message($game)
     {
-        $message = array();
+        $message = "";
 
         if ($this->move_source) {
-            $message[] = sprintf(
+            $message .= sprintf(
                 __( 'You are making a move on the game '
                 . '&#8220;<a href="%1$s">%2$s</a>&#8221; in response '
                 . 'to the following: <ul>' , 'ivanhoe' ),
@@ -405,11 +412,163 @@ abstract class BasePostForm
             foreach ($this->move_source as $move) {
                 $link  = get_permalink($move);
                 $title = get_the_title($move);
-                $message[] = "<li><a href='$link'>$title</a></li>";
+                $message .= "<li><a href='$link'>$title</a></li>";
             }
 
-            $message[] = "</ul>";
+            $message .= "</ul>";
         }
-        return implode($message);
+        return $message;
+    }
+
+    /**
+     * This returns the header for the form.
+     *
+     * @return string
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function render_form_title()
+    {
+        return "<header><h1>{$this->form_title}</h1></header>";
+    }
+
+    /**
+     * This returns any output for error messages.
+     *
+     * @return string
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function render_errors()
+    {
+        $output = "";
+
+        if ($this->has_errors()) {
+            $output .= ivanhoe_print_errors($this->error_messages);
+            $this->error_messages = array();
+        }
+
+        return $output;
+    }
+
+    /**
+     * This gets and renders the message, if there is one.
+     *
+     * @return string
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function render_message($game)
+    {
+        $message = $this->get_status_message($game);
+
+        if (!empty($message)) {
+            $message =
+                "<div class='new-ivanhoe-meta new-ivanhoe-move-meta'>" .
+                "<p><strong>$message</strong></p></div>";
+        }
+
+        return $message;
+    }
+
+    /**
+     * This returns the page header as a string.
+     *
+     * @return string
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function get_header()
+    {
+        ob_start();
+        get_header();
+        $header = ob_end_flush();
+        return $header;
+    }
+
+    /**
+     * This returns the page footer as a string.
+     *
+     * @return string
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function get_footer()
+    {
+        ob_start();
+        get_footer();
+        $footer = ob_end_flush();
+        return $footer;
+    }
+
+    /**
+     * This renders the form element.
+     *
+     * @return string
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function render_form()
+    {
+        $title = htmlspecialchars($this->title);
+        $form  = "";
+
+        $form .= '<form action="" class="new-ivanhoe-form" '
+            . 'method="post" enctype="multipart/form-data">';
+
+        $form .= "<div>"
+            . "<label for='post_title'>$this->title_label</label>"
+            . "<input type='text' size='50' name='post_title' value='$title' required>"
+            . "</div>";
+
+        $form .= $this->render_thumbnail();
+
+        $form .= "<div>"
+            . "<label for='post_content'>$this->content_label</label>"
+            . $this->wp_editor($this->content, "post_content")
+            . "</div>";
+
+        $form .= $this->render_rationale();
+
+        $form .= '<input type="submit" class="btn" value="'
+            . _e( 'Save', 'ivanhoe' ) . '">';
+
+        $form .= '</form>';
+
+        return $form;
+    }
+
+    /**
+     * Renders the form elements for the thumbnail.
+     *
+     * @return string
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function render_thumbnail()
+    {
+        $input = "<div>"
+            . "<label for='post_thumbnail'>$this->other_label</label>"
+            . "<input type='file' name='post_thumbnail'>"
+            . "</div>";
+        return $input;
+    }
+
+    /**
+     * This outputs the WP editor.
+     *
+     * @return string
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function wp_editor($content, $name, $param=array())
+    {
+        ob_start();
+        wp_editor($content, $name, $param);
+        $editor = ob_end_flush();
+        return $editor;
+    }
+
+    /**
+     * This returns the form element for the rationale.
+     *
+     * @return string
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function render_rationale()
+    {
+        return "";
     }
 }
