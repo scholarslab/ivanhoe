@@ -555,6 +555,8 @@ abstract class BasePostForm
      */
     public function wp_editor($content, $name, $param=array())
     {
+        // TODO: This appears to go ahead and write the editor code to the 
+        // output buffer, not letting ob_* capture it.
         ob_start();
         wp_editor($content, $name, $param);
         $editor = ob_end_flush();
