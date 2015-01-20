@@ -86,3 +86,7 @@ h1 {
 .contentp {
     padding-left: 100px;
 }
+
+.centered {
+    text-align: center;
+}
