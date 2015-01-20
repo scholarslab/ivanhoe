@@ -38,8 +38,10 @@ body{
     font-family: Georgia, Times, "Times New Roman", serif;
 	font-size: 50px;
     width: 50%;
-    float: left;
-    margin-left:470px;
+    max-width: 800px;
+    left:470px;
+    position: relative;
+ 
 }
 
 #homeNav{

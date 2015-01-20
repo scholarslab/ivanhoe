@@ -47,10 +47,11 @@ body {
 	-webkit-text-fill-color: transparent;
     display: block;
     float: left;
-    width: 7em;
-    padding-top: 7%;
+    width: 35%;
+    padding-top: 2em;
     margin: 10px;
     text-align: left;
+    
 }
 
 
@@ -60,6 +61,11 @@ body {
     border-bottom: white solid 15px;
     border-top: white solid 15px;
     text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 30%;
+    margin-left: 15em;
+    position: absolute;
 }
 
 #homeNav li {
@@ -71,6 +77,11 @@ body {
 #homeNav a{
     text-decoration: none;
     color: #ff9900;
+}
+
+#homeNav a:hover{
+    text-decoration: none;
+    color: #B8E62E;
 }
 
 .hide {
