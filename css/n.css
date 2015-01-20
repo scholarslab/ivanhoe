@@ -4,9 +4,9 @@ Calibri, Segoe UI, Arial, sans-serif
 
 html{
     background-color: #ff66ff;
-    min-height: 100%;
     border-top: black 10px solid;
     border-left: black 10px solid;
+    height: 98.5%;
 }
 
 body{

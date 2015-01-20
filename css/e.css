@@ -1,1 +1,47 @@
-/* map */
+/* typewriter */
+
+
+body {
+    font-family: 'Cutive Mono', 'Courier New', Courier, monospace ;
+    padding: 3em;
+}
+
+
+
+.hide{
+    display: none;
+}
+
+#logo {
+    border-bottom: black solid 1px;
+    display: inline-block;
+    margin-bottom: 1em;
+}
+
+a {
+   color: black;
+   text-decoration: none;
+}
+
+ul{
+    margin: 1em 0;
+    padding: 0; 
+}
+
+
+li {
+  list-style: none;
+}
+
+
+/*replace bullets with dashes - questionably x-browser compatible */
+ul li:before
+{
+    content: '-';
+    margin: 0;    /* any design */
+}
+
+
+#catCredit {
+    display: none;
+}
