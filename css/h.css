@@ -1,1 +1,94 @@
-/* blackletter */
+/* 60s/70s */
+
+html {
+    padding: 0;
+    margin: 0;
+    text-align: center;
+}
+
+body {
+    font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+    background-color: black;
+    font-size: 100px;
+    color: white;
+    padding-top: 5%;
+}
+
+
+#logo {
+    font-family: 'Fjalla One', sans-serif;
+    margin: 10px;
+    width: 7em;
+    height:0;
+    padding-bottom: 7em;
+    -moz-border-radius: 7em; 
+    -webkit-border-radius: 7em; 
+    border-radius: 50%;
+    background: #005C8A; 
+    display: inline-block;
+    float: left;
+    text-align: left;
+}
+
+.titleLetter {
+    color:white;
+    font-size: 2em;
+    display: inline-block;
+    font-weight: bold;
+    line-height: 4.5em;
+    margin-right: -.1em;
+}
+
+
+#subtitle {
+	background: -webkit-linear-gradient(top, #ff9900, #B8E62E);
+	background: linear-gradient(top, #ff9900, #B8E62E);
+	-webkit-background-clip: text;
+	-webkit-text-fill-color: transparent;
+    display: block;
+    float: left;
+    width: 35%;
+    padding-top: 2em;
+    margin: 10px;
+    text-align: left;
+    
+}
+
+
+#homeNav {
+    float: left;
+    font-size: .5em;
+    border-bottom: white solid 15px;
+    border-top: white solid 15px;
+    text-align: center;
+    padding-left: 50px;
+    padding-right: 50px;
+    width: 30%;
+    margin-left: 15em;
+    position: absolute;
+}
+
+#homeNav li {
+    display: inline-block;
+    margin-right: .1em;
+    text-align: center;
+}
+
+#homeNav a{
+    text-decoration: none;
+    color: #ff9900;
+}
+
+#homeNav a:hover{
+    text-decoration: none;
+    color: #B8E62E;
+}
+
+.hide {
+    display: none;
+}
+
+#catCredit {
+    display: none;
+}
+

@@ -3,6 +3,7 @@ $(function(){
 
 
 function styleSwitch(){
+    
     var letter = $(this).attr('id');
     if ($("#switch").attr("href") !== "css/"+ letter + ".css"){
     

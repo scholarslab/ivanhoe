@@ -8,7 +8,7 @@ body{
 
 .titleLetter{
     cursor: pointer;
-    curson: hand;
+    cursor: hand;
 }
 
 
@@ -38,8 +38,8 @@ h1 {
 	font-size: 1em;
 	font-family: Tahoma;
 	letter-spacing: .1em;	
-	text-align: left;
-	width: 15em;
+	text-align: center;
+	width: 12em;
 	font-weight: bold;
 	padding: 20px 0;
     color: white;
@@ -52,6 +52,7 @@ h1 {
 
 #nav a:hover{
 	color: #bbbbbb;
+
 }
 
 
