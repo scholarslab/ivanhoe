@@ -1,0 +1,86 @@
+
+
+/* CONTENT PAGES STUFF */
+h1 {
+    text-align: center;
+    text-transform: uppercase;
+}
+#nav {
+    text-align: center;
+    position: fixed;
+    top: 0px;
+    margin: auto;
+    z-index: 100000;
+    width: 100%;
+    background-color: #333333;
+    color: white; 
+}
+
+#nav ul{
+    display: inline;
+}
+
+#nav li {
+    display: inline-block;
+    list-style-type:none;
+    font-size: 1em;
+    font-family: Tahoma;
+    letter-spacing: .1em;   
+    text-align: left;
+    width: 15em;
+    font-weight: bold;
+    padding: 20px 0;
+    color: white;
+}
+
+#nav a {
+    text-decoration: none;
+    color: white;
+}
+
+#nav a:hover{
+    color: #bbbbbb;
+}
+
+#content a {
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+}
+
+
+#content {
+    text-align: left;
+    padding-top: 75px;
+    width: 75%;
+    min-width: 800px;
+    margin: auto;
+    font-family: Garamond, Baskerville, 'Baskerville Old Face', 'Hoefler Text', 'Times New Roman', serif
+}
+
+#navTitle {
+    font-family: 'Crimson Text', Georgia, serif;
+    letter-spacing: .2em;
+    font-weight: bold;
+    display: inline-block;
+    font-size: 2em;
+    padding: 20px 0;
+}
+
+
+/*Horizontal rules*/
+.doubleUneven {
+    width: 100px;
+    border-top: solid #333333 3px;
+    border-bottom: solid #333333 1px;
+    padding: 1px;
+    border-left: 0;
+    border-right: 0;
+}
+.contentp {
+    padding-left: 100px;
+}
+
+.centered {
+    text-align: center;
+}
