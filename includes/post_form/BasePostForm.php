@@ -198,7 +198,7 @@ abstract class BasePostForm
         $this->parent_post = isset( $_GET['parent_post'] )
             ? $_GET['parent_post'] : null;
         $this->move_source = isset ( $_GET['move_source'] )
-            ? $_GET['move_source'] : null;
+            ? $_GET['move_source'] : array();
         $this->role_id     = isset( $_GET['ivanhoe_role_id'] )
             ? $_GET['ivanhoe_role_id'] : null;
         $this->rationale   = !empty ( $_POST['post_rationale'])
