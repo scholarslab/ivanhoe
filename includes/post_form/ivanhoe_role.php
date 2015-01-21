@@ -23,11 +23,11 @@ class IvanhoeRole extends BasePostForm
     
     public function get_move_source_message($game)
     {
-        echo sprintf(
+        return sprintf(
             __( 'You are making a role on the game '
                 . '&#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'),
             get_permalink($this->parent_post),
-            $ivanhoe_game->post_title
+            $game->post_title
         );
     }
 }

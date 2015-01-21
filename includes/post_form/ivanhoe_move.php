@@ -35,14 +35,14 @@ class IvanhoeMove extends BasePostForm
 
     public function get_move_source_message($game)
     {
-        echo sprintf(
+        $buffer = sprintf(
             __( 'You are making a move on the game '
                 . '&#8220;<a href="%1$s">%2$s</a>&#8221;', 'ivanhoe'),
             get_permalink($parent_post),
-            $ivanhoe_game->post_title
+            $game->post_title
         );
         if ($this->move_source) {
-            echo sprintf(
+            $buffer .= sprintf(
                 __( ' in response to the following: <ul>' , 'ivanhoe' ),
                 get_permalink($this->parent_post),
                 $game->post_title
@@ -51,14 +51,16 @@ class IvanhoeMove extends BasePostForm
             foreach ($this->move_source as $move) {
                 $link  = get_permalink($move);
                 $title = get_the_title($move);
-                echo "<li><a href='$link'>$title</a></li>";
+                $buffer .= "<li><a href='$link'>$title</a></li>";
             }
 
-            echo "</ul>";
+            $buffer .= "</ul>";
 
         } else {
-            echo ".";
+            $buffer .= ".";
         }
+
+        return $buffer;
     }
 }
 

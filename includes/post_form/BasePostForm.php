@@ -140,7 +140,6 @@ abstract class BasePostForm
         $game   = get_post($this->parent_post);
 
         $this->get_header();
-        $this->get_status_message($game);
         $this->render_form_title();
         $this->render_errors();
         $this->render_message($game);
@@ -367,7 +366,7 @@ abstract class BasePostForm
      */
     public function get_status_message($game)
     {
-        $this->get_move_source_message($game);
+        return $this->get_move_source_message($game);
     }
 
     /**

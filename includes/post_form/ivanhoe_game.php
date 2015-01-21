@@ -28,7 +28,7 @@ class IvanhoeGame extends BasePostForm
 
     public function get_move_source_message($game)
     {
-        return;
+        return '';
     }
 }
 
