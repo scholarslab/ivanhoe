@@ -23,7 +23,7 @@ class IvanhoeMove extends BasePostForm
     
     public function get_making_message($game)
     {
-        return sprintf(
+        echo sprintf(
             __( 'You are making a move on the game '
                 . '&#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'),
             get_permalink($parent_post),
@@ -33,16 +33,14 @@ class IvanhoeMove extends BasePostForm
 
     public function render_thumbnail()
     {
-        return "";
+        return;
     }
     public function render_rationale()
     {
-        $input = "<div>"
+        echo "<div>"
             . "<label for='post_rationale'>$this->rationale_title</label>"
             . $this->wp_editor($this->rationale_content, 'post_rationale', array('media_btns' => false))
             . "</div>";
-
-        return $input;
     }
 }
 

@@ -123,7 +123,7 @@ abstract class BasePostForm
     /**
      * This renders the entire page.
      *
-     * @return string
+     * @return void
      * @author Eric Rochester <erochest@virginia.edu>
      **/
     public function render()
@@ -137,20 +137,15 @@ abstract class BasePostForm
             }
         }
 
-        echo "<strong>Starting to render...</strong>";
         $game   = get_post($this->parent_post);
-        $buffer = "";
 
-        $buffer .= $this->get_header();
-        $buffer .= $this->get_status_message($game);
-        $buffer .= $this->render_form_title();
-        $buffer .= $this->render_errors();
-        $buffer .= $this->render_message($game);
-        $buffer .= $this->render_form();
-        $buffer .= $this->get_footer();
-        echo "<strong>Done rendering...</strong>";
-
-        return $buffer;
+        $this->get_header();
+        $this->get_status_message($game);
+        $this->render_form_title();
+        $this->render_errors();
+        $this->render_message($game);
+        $this->render_form();
+        $this->get_footer();
     }
 
     /**
@@ -372,12 +367,8 @@ abstract class BasePostForm
      */
     public function get_status_message($game)
     {
-        $message = "";
-
-        $message .= $this->get_making_message($game);
-        $message .= $this->get_move_source_message($game);
-
-        return $message;
+        $this->get_making_message($game);
+        $this->get_move_source_message($game);
     }
 
     /**
@@ -398,10 +389,8 @@ abstract class BasePostForm
      */
     public function get_move_source_message($game)
     {
-        $message = "";
-
         if ($this->move_source) {
-            $message .= sprintf(
+            echo sprintf(
                 __( 'You are making a move on the game '
                 . '&#8220;<a href="%1$s">%2$s</a>&#8221; in response '
                 . 'to the following: <ul>' , 'ivanhoe' ),
@@ -412,12 +401,11 @@ abstract class BasePostForm
             foreach ($this->move_source as $move) {
                 $link  = get_permalink($move);
                 $title = get_the_title($move);
-                $message .= "<li><a href='$link'>$title</a></li>";
+                echo "<li><a href='$link'>$title</a></li>";
             }
 
-            $message .= "</ul>";
+            echo "</ul>";
         }
-        return $message;
     }
 
     /**
@@ -428,7 +416,7 @@ abstract class BasePostForm
      */
     public function render_form_title()
     {
-        return "<header><h1>{$this->form_title}</h1></header>";
+        echo "<header><h1>{$this->form_title}</h1></header>";
     }
 
     /**
@@ -439,14 +427,10 @@ abstract class BasePostForm
      */
     public function render_errors()
     {
-        $output = "";
-
         if ($this->has_errors()) {
-            $output .= ivanhoe_print_errors($this->error_messages);
+            echo ivanhoe_print_errors($this->error_messages);
             $this->error_messages = array();
         }
-
-        return $output;
     }
 
     /**
@@ -465,7 +449,7 @@ abstract class BasePostForm
                 "<p><strong>$message</strong></p></div>";
         }
 
-        return $message;
+        echo $message;
     }
 
     /**
@@ -476,10 +460,7 @@ abstract class BasePostForm
      */
     public function get_header()
     {
-        ob_start();
         get_header();
-        $header = ob_end_flush();
-        return $header;
     }
 
     /**
@@ -490,10 +471,7 @@ abstract class BasePostForm
      */
     public function get_footer()
     {
-        ob_start();
         get_footer();
-        $footer = ob_end_flush();
-        return $footer;
     }
 
     /**
@@ -505,31 +483,28 @@ abstract class BasePostForm
     public function render_form()
     {
         $title = htmlspecialchars($this->title);
-        $form  = "";
 
-        $form .= '<form action="" class="new-ivanhoe-form" '
+        echo '<form action="" class="new-ivanhoe-form" '
             . 'method="post" enctype="multipart/form-data">';
 
-        $form .= "<div>"
+        echo "<div>"
             . "<label for='post_title'>$this->title_label</label>"
             . "<input type='text' size='50' name='post_title' value='$title' required>"
             . "</div>";
 
-        $form .= $this->render_thumbnail();
+        $this->render_thumbnail();
 
-        $form .= "<div>"
+        echo "<div>"
             . "<label for='post_content'>$this->content_label</label>"
             . $this->wp_editor($this->content, "post_content")
             . "</div>";
 
-        $form .= $this->render_rationale();
+        $this->render_rationale();
 
-        $form .= '<input type="submit" class="btn" value="'
+        echo '<input type="submit" class="btn" value="'
             . _e( 'Save', 'ivanhoe' ) . '">';
 
-        $form .= '</form>';
-
-        return $form;
+        echo '</form>';
     }
 
     /**
@@ -540,11 +515,10 @@ abstract class BasePostForm
      */
     public function render_thumbnail()
     {
-        $input = "<div>"
+        echo "<div>"
             . "<label for='post_thumbnail'>$this->other_label</label>"
             . "<input type='file' name='post_thumbnail'>"
             . "</div>";
-        return $input;
     }
 
     /**
@@ -555,12 +529,7 @@ abstract class BasePostForm
      */
     public function wp_editor($content, $name, $param=array())
     {
-        ob_start();
         wp_editor($content, $name, $param);
-        $editor = ob_get_contents();
-        ob_end_clean();
-
-        return $editor;
     }
 
     /**
@@ -571,6 +540,6 @@ abstract class BasePostForm
      */
     public function render_rationale()
     {
-        return "";
+        return;
     }
 }

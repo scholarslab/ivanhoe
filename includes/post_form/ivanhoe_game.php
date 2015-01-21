@@ -23,12 +23,12 @@ class IvanhoeGame extends BasePostForm
     
     public function get_status_message()
     {
-        return '';
+        return;
     }
 
     public function get_making_message($game)
     {
-        return '';
+        return;
     }
 }
 

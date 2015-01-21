@@ -12,4 +12,4 @@ $class_name = str_replace(' ', '', ucwords(str_replace('_', ' ', $post_type)));
 require_once($IVANHOE_DIR . "/includes/post_form/$post_type.php");
 $post_form = new $class_name();
 
-echo $post_form->render();
+$post_form->render();
