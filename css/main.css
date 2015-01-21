@@ -1,9 +1,10 @@
-html {
-    color: #333333;
+html, body{
+    margin: 0;
+    padding: 0;
 }
 
-body{
-    min-width: 800px;
+html {
+    color: #333333;
 }
 
 .titleLetter{
@@ -17,31 +18,32 @@ h1 {
     text-align: center;
     text-transform: uppercase;
 }
+
+h2{
+    text-align: center;
+}
+
 #nav {
     text-align: center;
-    position: fixed;
-    top: 0px;
-    margin: auto;
-    z-index: 100000;
-    width: 100%;
     background-color: #333333;
     color: white; 
+    padding: 20px;
 }
 
 #nav ul{
-	display: inline;
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
 #nav li {
 	display: inline-block;
-	list-style-type:none;
 	font-size: 1em;
 	font-family: Tahoma;
 	letter-spacing: .1em;	
 	text-align: center;
-	width: 12em;
 	font-weight: bold;
-	padding: 20px 0;
+	padding-right: 20px;
     color: white;
 }
 
@@ -60,7 +62,7 @@ h1 {
     text-align: left;
     padding-top: 75px;
     width: 75%;
-    min-width: 800px;
+    max-width: 800px;
     margin: auto;
 }
 
@@ -68,9 +70,9 @@ h1 {
     font-family: 'Crimson Text', Georgia, serif;
 	letter-spacing: .2em;
 	font-weight: bold;
-	display: inline-block;
+	display: block;
 	font-size: 2em;
-	padding: 20px 0;
+    margin-bottom: 20px;
 }
 
 
@@ -83,10 +85,14 @@ h1 {
     border-left: 0;
     border-right: 0;
 }
-.contentp {
-    padding-left: 100px;
-}
 
-.centered {
-    text-align: center;
+@media screen and (min-width: 600px) {
+    #navTitle{
+        display: inline-block;
+        margin-bottom: 0;
+    }
+    #nav ul{
+        display: inline;
+    }
+
 }
