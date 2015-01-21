@@ -20,16 +20,6 @@ class IvanhoeMove extends BasePostForm
         $this->content_label = __( 'Move Content', 'ivanhoe' );
         $this->other_label   = __( 'Rationale', 'ivanhoe' );
     }
-    
-    public function get_making_message($game)
-    {
-        echo sprintf(
-            __( 'You are making a move on the game '
-                . '&#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'),
-            get_permalink($parent_post),
-            $ivanhoe_game->post_title
-        );
-    }
 
     public function render_thumbnail()
     {
@@ -41,6 +31,34 @@ class IvanhoeMove extends BasePostForm
             . "<label for='post_rationale'>$this->rationale_title</label>"
             . $this->wp_editor($this->rationale_content, 'post_rationale', array('media_btns' => false))
             . "</div>";
+    }
+
+    public function get_move_source_message($game)
+    {
+        echo sprintf(
+            __( 'You are making a move on the game '
+                . '&#8220;<a href="%1$s">%2$s</a>&#8221;', 'ivanhoe'),
+            get_permalink($parent_post),
+            $ivanhoe_game->post_title
+        );
+        if ($this->move_source) {
+            echo sprintf(
+                __( ' in response to the following: <ul>' , 'ivanhoe' ),
+                get_permalink($this->parent_post),
+                $game->post_title
+            );
+
+            foreach ($this->move_source as $move) {
+                $link  = get_permalink($move);
+                $title = get_the_title($move);
+                echo "<li><a href='$link'>$title</a></li>";
+            }
+
+            echo "</ul>";
+
+        } else {
+            echo ".";
+        }
     }
 }
 
