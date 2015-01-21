@@ -27,10 +27,9 @@ class IvanhoeMove extends BasePostForm
     }
     public function render_rationale()
     {
-        echo "<div>"
-            . "<label for='post_rationale'>$this->rationale_title</label>"
-            . $this->wp_editor($this->rationale_content, 'post_rationale', array('media_btns' => false))
-            . "</div>";
+        echo "<div><label for='post_rationale'>$this->other_label</label>";
+        $this->wp_editor($this->rationale_content, 'post_rationale', array('media_btns' => false));
+        echo "</div>";
     }
 
     public function get_move_source_message($game)

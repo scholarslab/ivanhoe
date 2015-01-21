@@ -465,10 +465,9 @@ abstract class BasePostForm
 
         $this->render_thumbnail();
 
-        echo "<div>"
-            . "<label for='post_content'>$this->content_label</label>"
-            . $this->wp_editor($this->content, "post_content")
-            . "</div>";
+        echo "<div><label for='post_content'>$this->content_label</label>";
+        $this->wp_editor($this->content, "post_content");
+        echo "</div>";
 
         $this->render_rationale();
 
