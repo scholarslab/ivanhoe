@@ -76,11 +76,13 @@ h1 {
   text-align: center;
 }
 /* i styles */
-.i-style body {
+
+.i-style {
   font-family: 'Crimson Text', Georgia, serif;
   color: #333;
   text-align: center;
 }
+
 .i-style #logo {
   margin: auto;
   padding-top: 12%;
@@ -141,7 +143,7 @@ h1 {
   background: url("../img/bookcat.jpg") no-repeat -9999px -9999px;
 }
 /* v styles */
-body .v-style {
+.v-style {
   background-color: #000;
   color: #6f3;
   font-family: 'VT323', 'Courier New', Courier, monospace;
@@ -209,7 +211,7 @@ body .v-style {
 .a-style html {
   min-height: 100%;
 }
-.a-style body {
+.a-style {
   font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
   font-weight: bold;
   color: #fff;
@@ -286,17 +288,16 @@ body .v-style {
   display: none;
 }
 /* n styles */
-.n-style html {
-  background-color: #f6f;
-  border-top: #000 10px solid;
-  border-left: #000 10px solid;
-  height: 98.5%;
-}
-.n-style body {
+
+.n-style {
   font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
   font-weight: bold;
   color: #000;
   text-transform: uppercase;
+  background-color: #f6f;
+  border-top: #000 10px solid;
+  border-left: #000 10px solid;
+  height: 98.5%;
 }
 .n-style #logo {
   -webkit-transform: rotate(-45deg);
@@ -360,12 +361,15 @@ body .v-style {
   margin: 0;
   text-align: center;
 }
-.h-style body {
+.h-style {
   font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
   background-color: #000;
   font-size: 100px;
   color: #fff;
   padding-top: 5%;
+  padding: 0;
+  margin: 0;
+  text-align: center;
 }
 .h-style #logo {
   font-family: 'Fjalla One', sans-serif;
@@ -433,10 +437,8 @@ body .v-style {
   display: none;
 }
 /* o styles */
-.o-style html {
-  cursor: crosshair;
-}
-.o-style body {
+
+.o-style {
   font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
   background-color: #0ff;
   background-image: url("../img/tile2.png");
@@ -444,6 +446,7 @@ body .v-style {
   padding: 3%;
   text-align: center;
   font-size: 75px;
+    cursor: crosshair;
 }
 .o-style #logo {
   background-color: #fff;
@@ -497,7 +500,7 @@ body .v-style {
   display: none;
 }
 /* e styles */
-.e-style body {
+.e-style {
   font-family: 'Cutive Mono', 'Courier New', Courier, monospace;
   padding: 3em;
 }
