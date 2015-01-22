@@ -1,0 +1,10 @@
+div#nav {
+	background-color: black;
+	
+}
+
+div#nav a{
+	color: #66ff33;
+	font-family: 'VT323','Courier New', Courier, monospace;
+
+}
