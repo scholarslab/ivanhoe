@@ -1,0 +1,529 @@
+html {
+  color: #333;
+}
+body {
+  min-width: 800px;
+}
+.titleLetter {
+  cursor: pointer;
+  cursor: hand;
+}
+/* CONTENT PAGES STUFF */
+h1 {
+  text-align: center;
+  text-transform: uppercase;
+}
+#nav {
+  text-align: center;
+  position: fixed;
+  top: 0px;
+  margin: auto;
+  z-index: 100000;
+  width: 100%;
+  background-color: #333;
+  color: #fff;
+}
+#nav ul {
+  display: inline;
+}
+#nav li {
+  display: inline-block;
+  list-style-type: none;
+  font-size: 1em;
+  font-family: Tahoma;
+  letter-spacing: 0.1em;
+  text-align: center;
+  width: 12em;
+  font-weight: bold;
+  padding: 20px 0;
+  color: #fff;
+}
+#nav a {
+  text-decoration: none;
+  color: #fff;
+}
+#nav a:hover {
+  color: #bbb;
+}
+#content {
+  text-align: left;
+  padding-top: 75px;
+  width: 75%;
+  min-width: 800px;
+  margin: auto;
+}
+#navTitle {
+  font-family: 'Crimson Text', Georgia, serif;
+  letter-spacing: 0.2em;
+  font-weight: bold;
+  display: inline-block;
+  font-size: 2em;
+  padding: 20px 0;
+}
+/*Horizontal rules*/
+.doubleUneven {
+  width: 100px;
+  border-top: solid #333 3px;
+  border-bottom: solid #333 1px;
+  padding: 1px;
+  border-left: 0;
+  border-right: 0;
+}
+.contentp {
+  padding-left: 100px;
+}
+.centered {
+  text-align: center;
+}
+/* i styles */
+.i-style body {
+  font-family: 'Crimson Text', Georgia, serif;
+  color: #333;
+  text-align: center;
+}
+.i-style #logo {
+  margin: auto;
+  padding-top: 12%;
+}
+.i-style .titleLetter {
+  display: inline-block;
+  width: 1em;
+  font-size: 100px;
+  font-weight: bold;
+}
+.i-style #semicolon {
+  width: 0.3em;
+}
+.i-style #subtitle {
+  font-size: 1.25em;
+  letter-spacing: 0.3em;
+  display: block;
+  margin: auto;
+  padding-top: 20px;
+  text-transform: uppercase;
+}
+.i-style #homeNav {
+  width: 100%;
+}
+.i-style #homeNav a {
+  text-decoration: none;
+  color: #000;
+}
+.i-style #homeNav a:hover {
+  color: #bbb;
+}
+.i-style #homeNav ul {
+  list-style-type: none;
+  padding-top: 3%;
+  font-size: 1em;
+  font-family: Tahoma, sans-serif;
+  letter-spacing: 0.2em;
+  padding: 5% 0;
+  margin: 0;
+}
+.i-style #homeNav li {
+  display: inline-block;
+  width: 14em;
+}
+.i-style #homeNav li:hover {
+  color: #bbb;
+  font-family: Georgia;
+}
+.i-style #homeRule {
+  width: 10%;
+  display: block;
+  margin-top: 5%;
+}
+.i-style #catCredit {
+  display: none;
+}
+.i-style #preload {
+  background: url("../img/bookcat.jpg") no-repeat -9999px -9999px;
+}
+/* v styles */
+body .v-style {
+  background-color: #000;
+  color: #6f3;
+  font-family: 'VT323', 'Courier New', Courier, monospace;
+}
+.v-style #logo {
+  margin: auto;
+  text-align: center;
+  padding-top: 12%;
+}
+.v-style .titleLetter {
+  display: inline-block;
+  font-size: 100px;
+  text-transform: lowercase;
+}
+.v-style #subtitle {
+  font-size: 1.25em;
+  letter-spacing: 0.3em;
+  text-align: center;
+  display: block;
+  margin: auto;
+  padding-top: 20px;
+  text-transform: uppercase;
+}
+.v-style #homeNav {
+  text-align: center;
+  width: 100%;
+}
+.v-style #homeNav a {
+  text-decoration: none;
+  color: #6f3;
+}
+.v-style #homeNav a:hover {
+  color: #c3f;
+}
+.v-style #homeNav ul {
+  list-style-type: none;
+  padding: 3% 0 0 0;
+  font-size: 1em;
+  letter-spacing: 0.2em;
+  margin: 0;
+}
+.v-style #homeNav li {
+  display: inline-block;
+  width: 15em;
+  height: 2.5em;
+  margin: 3em;
+  padding-top: 1em;
+}
+.v-style #homeNav li:hover,
+.v-style #dl {
+  border-top: 1px #000 solid;
+  border-bottom: 1px #000 solid;
+}
+.v-style .hide {
+  display: none;
+}
+.v-style #catCredit {
+  display: none;
+}
+/* a styles */
+.a-style {
+/*text stroke lacks x-browser compatibility*/
+  -webkit-text-stroke-color: #000;
+}
+.a-style html {
+  min-height: 100%;
+}
+.a-style body {
+  font-family: Impact, Haettenschweiler, "Franklin Gothic Bold", Charcoal, "Helvetica Inserat", "Bitstream Vera Sans Bold", "Arial Black", "sans serif";
+  font-weight: bold;
+  color: #fff;
+  background-image: url("../img/bookcat.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 100%;
+  background-color: #000;
+  text-transform: uppercase;
+  overflow: hidden;
+}
+.a-style #logo {
+  margin: auto;
+  text-align: center;
+}
+.a-style .titleLetter {
+  display: inline-block;
+  font-size: 120px;
+  -webkit-text-stroke-width: 3px;
+}
+.a-style #subtitle {
+  font-size: 100px;
+  text-align: center;
+  width: 100%;
+  min-width: 800px;
+  display: block;
+  margin: auto;
+  position: absolute;
+  bottom: 0;
+  -webkit-text-stroke-width: 3px;
+  -webkit-text-stroke-color: #000;
+  z-index: -1;
+}
+.a-style #homeNav {
+  text-align: center;
+  font-size: 40px;
+  width: 100%;
+}
+.a-style #homeNav a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: normal;
+  background-color: #000;
+  width: 5em;
+  height: 1.25em;
+  display: inline-block;
+}
+.a-style #homeNav a:hover {
+  color: #00f;
+}
+.a-style #homeNav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.a-style #homeNav li {
+  display: inline-block;
+}
+.a-style #homeNav li:hover,
+.a-style #catCredit {
+  position: absolute;
+  top: 0;
+  right: 0;
+  color: #fff;
+  font-size: 12px;
+  font-family: sans-serif;
+  text-transform: none;
+}
+.a-style #catCredit a {
+  text-decoration: none;
+  color: #fff;
+}
+.a-style .hide {
+  display: none;
+}
+/* n styles */
+.n-style html {
+  background-color: #f6f;
+  border-top: #000 10px solid;
+  border-left: #000 10px solid;
+  height: 98.5%;
+}
+.n-style body {
+  font-family: 'Franklin Gothic Medium', 'Franklin Gothic', 'ITC Franklin Gothic', Arial, sans-serif;
+  font-weight: bold;
+  color: #000;
+  text-transform: uppercase;
+}
+.n-style #logo {
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -ms-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  display: block;
+  float: left;
+  margin-top: 200px;
+  width: 900px;
+}
+.n-style .titleLetter {
+  display: inline-block;
+  font-size: 180px;
+}
+.n-style #subtitle {
+  font-family: Georgia, Times, "Times New Roman", serif;
+  font-size: 50px;
+  width: 50%;
+  max-width: 800px;
+  left: 470px;
+  position: relative;
+}
+.n-style #homeNav {
+  font-size: 40px;
+  letter-spacing: 0.1em;
+  display: inline-block;
+  float: left;
+  width: 50%;
+  margin-left: 300px;
+  padding-top: 0.5em;
+}
+.n-style #homeNav a {
+  text-decoration: none;
+  display: inline-block;
+  margin-right: 1em;
+  color: #000;
+}
+.n-style #homeNav a:hover,
+.n-style #homeNav ul {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+.n-style #homeNav li {
+  display: inline-block;
+}
+.n-style #homeNav li:hover,
+.n-style .caps {
+  font-size: 1.3em;
+}
+.n-style #catCredit {
+  display: none;
+}
+.n-style .hide {
+  display: none;
+}
+/* h styles */
+.h-style html {
+  padding: 0;
+  margin: 0;
+  text-align: center;
+}
+.h-style body {
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  background-color: #000;
+  font-size: 100px;
+  color: #fff;
+  padding-top: 5%;
+}
+.h-style #logo {
+  font-family: 'Fjalla One', sans-serif;
+  margin: 10px;
+  width: 7em;
+  height: 0;
+  padding-bottom: 7em;
+  -moz-border-radius: 7em;
+  -webkit-border-radius: 7em;
+  border-radius: 50%;
+  background: #005c8a;
+  display: inline-block;
+  float: left;
+  text-align: left;
+}
+.h-style .titleLetter {
+  color: #fff;
+  font-size: 2em;
+  display: inline-block;
+  font-weight: bold;
+  line-height: 4.5em;
+  margin-right: -0.1em;
+}
+.h-style #subtitle {
+  background: -webkit-linear-gradient(top, #f90, #b8e62e);
+  background: linear-gradient(top, #f90, #b8e62e);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  display: block;
+  float: left;
+  width: 35%;
+  padding-top: 2em;
+  margin: 10px;
+  text-align: left;
+}
+.h-style #homeNav {
+  float: left;
+  font-size: 0.5em;
+  border-bottom: #fff solid 15px;
+  border-top: #fff solid 15px;
+  text-align: center;
+  padding-left: 50px;
+  padding-right: 50px;
+  width: 30%;
+  margin-left: 15em;
+  position: absolute;
+}
+.h-style #homeNav li {
+  display: inline-block;
+  margin-right: 0.1em;
+  text-align: center;
+}
+.h-style #homeNav a {
+  text-decoration: none;
+  color: #f90;
+}
+.h-style #homeNav a:hover {
+  text-decoration: none;
+  color: #b8e62e;
+}
+.h-style .hide {
+  display: none;
+}
+.h-style #catCredit {
+  display: none;
+}
+/* o styles */
+.o-style html {
+  cursor: crosshair;
+}
+.o-style body {
+  font-family: Arial, Helvetica Neue, Helvetica, sans-serif;
+  background-color: #0ff;
+  background-image: url("../img/tile2.png");
+  color: #00f;
+  padding: 3%;
+  text-align: center;
+  font-size: 75px;
+}
+.o-style #logo {
+  background-color: #fff;
+  background-image: url("../img/notfound.jpg");
+  background-position: 98% 5%;
+  background-repeat: no-repeat;
+  display: block;
+  margin: auto;
+  border: #f00 1px solid;
+  width: 9em;
+}
+.o-style #i {
+  color: #f00;
+  font-size: 100px;
+}
+.o-style .titleLetter {
+  display: inline-block;
+  font-weight: bold;
+  font-size: 75px;
+  color: #f0f;
+}
+.o-style #subtitle {
+  font-size: 50px;
+  font-family: Papyrus, fantasy;
+}
+.o-style #homeNav {
+  font-size: 20px;
+}
+.o-style #homeNav a {
+  padding: 7px;
+  border: inset #808080 4px;
+  background-color: #808080;
+}
+.o-style #homeNav ul {
+  font-size: 1em;
+  font-family: Tahoma, sans-serif;
+}
+.o-style #homeNav li {
+  display: inline-block;
+}
+.o-style #homeRule {
+  width: 75%;
+  color: none;
+  display: block;
+  border-top: dotted 10px #f00;
+}
+.o-style #catCredit {
+  display: none;
+}
+.o-style .hide {
+  display: none;
+}
+/* e styles */
+.e-style body {
+  font-family: 'Cutive Mono', 'Courier New', Courier, monospace;
+  padding: 3em;
+}
+.e-style .hide {
+  display: none;
+}
+.e-style #logo {
+  border-bottom: #000 solid 1px;
+  display: inline-block;
+  margin-bottom: 1em;
+}
+.e-style a {
+  color: #000;
+  text-decoration: none;
+}
+.e-style ul {
+  margin: 1em 0;
+  padding: 0;
+}
+.e-style li {
+  list-style: none;
+}
+.e-style ul li:before {
+  content: '-';
+  margin: 0; /* any design */
+}
+.e-style #catCredit {
+  display: none;
+}
