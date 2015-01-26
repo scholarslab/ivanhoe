@@ -297,6 +297,8 @@ h1 {
   float: left;
   margin-top: 200px;
   width: 900px;
+  position:relative;
+  z-index:10;
 }
 #home .n-style .titleLetter {
   display: inline-block;
@@ -309,6 +311,7 @@ h1 {
   max-width: 800px;
   left: 470px;
   position: relative;
+  z-index:1;
 }
 #home .n-style #homeNav {
   font-size: 40px;
