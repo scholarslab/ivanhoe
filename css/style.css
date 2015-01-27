@@ -1,5 +1,4 @@
 body {
-  min-width: 800px;
   color: #333;
 }
 /* CONTENT PAGES STUFF */
@@ -9,16 +8,12 @@ h1 {
 }
 #nav {
   text-align: center;
-  position: fixed;
-  top: 0px;
-  margin: auto;
-  z-index: 100000;
-  width: 100%;
   background-color: #333;
   color: #fff;
 }
 #nav ul {
-  display: inline;
+  margin-left: 0;
+  padding-left: 0;
 }
 #nav li {
   display: inline-block;
@@ -27,7 +22,6 @@ h1 {
   font-family: Tahoma;
   letter-spacing: 0.1em;
   text-align: center;
-  width: 12em;
   font-weight: bold;
   padding: 20px 0;
   color: #fff;
@@ -43,7 +37,6 @@ h1 {
   text-align: left;
   padding-top: 75px;
   width: 75%;
-  min-width: 800px;
   margin: auto;
 }
 #navTitle {
