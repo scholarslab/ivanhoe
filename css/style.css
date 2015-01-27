@@ -521,3 +521,52 @@ h1 {
   color: #6f3;
   font-family: 'VT323', 'Courier New', Courier, monospace;
 }
+
+/* Styles pulled in from an overwritten commit -
+    All of this needs to be actually integrated into the CSS sheet properly
+*/
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  color: #333333;
+}
+
+h2 {
+  text-align: center;
+}
+
+#nav {
+  padding: 20px;
+}
+
+#nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+#nav li {
+  padding-right: 20px;
+}
+
+#content {
+  max-width: 800px;
+}
+
+#navTitle {
+  margin-bottom: 20px;
+}
+
+@media screen and (min-width: 600px) {
+  #navTitle {
+    display: inline-block;
+    margin-bottom: 0;
+  }
+  #nav ul {
+    display: inline;
+  }
+}
