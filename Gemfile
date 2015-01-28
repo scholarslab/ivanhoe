@@ -14,5 +14,6 @@ group :test do
   gem 'mysql2'
   gem 'guard-rspec'
   gem 'ffaker'
+  gem 'mustache'
 end
 
