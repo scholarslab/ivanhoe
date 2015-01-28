@@ -2,6 +2,7 @@ require 'dotenv'
 require 'fileutils'
 require 'ffaker'
 
+require 'mustache'
 require 'mysql2'
 
 require 'capybara/rspec'
@@ -66,13 +67,21 @@ def db_setup
 
   puts "importing data"
 
-  system "cat #{DB_DUMP} | sed 's,URL_BASE,#{URL_BASE},g' | mysql -h #{DB_HOST} --port #{DB_PORT} -u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME} 2> /dev/null"
+  mustache = IO.read DB_DUMP
+  stdin, _, _ = Open3.popen3(
+    "mysql -h #{DB_HOST} --port #{DB_PORT} " \
+      "-u #{DB_USER} --password=#{DB_PASSWORD} #{DB_NAME}")
+  sql = Mustache.render(mustache, :URL_BASE => URL_BASE)
+  sql.each_line do |line|
+    stdin.puts line
+  end
 
   cxn.query("USE #{DB_NAME};")
 
   TABLE_NAMES.each do |name|
     cxn.query("DELETE FROM `#{name}`;")
     cxn.query("INSERT INTO `#{name}` SELECT * FROM `copy_#{name}`;")
+    sleep(0.1)
   end
 
   cxn.close
@@ -84,8 +93,6 @@ RSpec.configure do |config|
   config.before(:all) do |ex|
 
     db_setup
-    @cxn = "random string"
-
     @cxn = Mysql2::Client.new(
       :database => DB_NAME,
       :host => DB_HOST,
