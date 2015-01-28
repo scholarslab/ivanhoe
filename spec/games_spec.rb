@@ -1,23 +1,15 @@
 require 'spec_helper'
 
-def tiny_mce_fill_in(name, args)
-  page.execute_script("tinymce.editors[0].setContent('#{args[:with]}')")
-end
-
 describe "Transactions", :type => :feature, :js => true  do
+
+  include ApplicationHelper
+
       before do
         visit(URL_BASE)
         click_link('Log in')
         fill_in 'Username', with: 'admin'
         fill_in 'Password', with: 'admin'
         click_button 'Log In'
-      end
-
-      def make_game
-        click_link 'Make a Game'
-        fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
-        tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-        click_button 'Save'
       end
 
       it "has a game info" do
@@ -30,6 +22,8 @@ end
 
 describe "Games View", :type => :feature, :js => true  do
 
+  include ApplicationHelper
+
   @valid_game = {
     :game_title => Faker::Lorem.words(rand(2..8)),
     :game_description => Faker::Lorem.paragraphs(rand(1..3))
@@ -41,12 +35,6 @@ describe "Games View", :type => :feature, :js => true  do
   end
 
   describe "authenticated users can do stuff" do
-    def login
-      click_link('Log in')
-      fill_in 'Username', with: 'admin'
-      fill_in 'Password', with: 'admin'
-      click_button 'Log In'
-    end
 
     before do
       login
@@ -64,13 +52,6 @@ describe "Games View", :type => :feature, :js => true  do
       fill_in 'Username', with: 'admin'
       fill_in 'Password', with: 'admin'
       click_button 'Log In'
-    end
-
-    def make_game
-      click_link 'Make a Game'
-      fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
-      tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-      click_button 'Save'
     end
 
     before do

@@ -1,60 +1,13 @@
 require 'spec_helper'
 
-def tiny_mce_fill_in(name, args)
-  page.execute_script("tinymce.editors[0].setContent('#{args[:with]}')")
-end
+describe "Single Game View", :type => :feature, :js => true  do
 
-describe "Game View", :type => :feature, :js => true  do
+  include ApplicationHelper
 
   @valid_game = {
     :game_title => Faker::Lorem.words(rand(2..8)),
     :game_description => Faker::Lorem.paragraphs(rand(1..3))
   }
-
-  def login
-    click_link('Log in')
-    fill_in 'Username', with: 'admin'
-    fill_in 'Password', with: 'admin'
-    click_button 'Log In'
-  end
-
-  def login_editor
-    click_link('Log in')
-    fill_in 'Username', with: 'editor'
-    fill_in 'Password', with: 'editor'
-    click_button 'Log In'
-  end
-
-  def make_game
-    click_link 'Make a Game'
-    fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
-    tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-    click_button 'Save'
-  end
-
-  def make_role
-    click_link('Make a Role!')
-    fill_in 'post_title', :with => Faker::Lorem.words(rand(2..4)).join(' ')
-    tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-    attach_file('post_thumbnail', 'spec/dumps/puppy.jpg')
-    click_button 'Save'
-  end
-
-  def make_a_move
-    click_link 'Make a move'
-    fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
-    tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-    tiny_mce_fill_in('post_rationale', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-    click_button 'Save'
-  end
-
-  def respond_to_move
-    click_link('Respond')
-    fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
-    tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-    tiny_mce_fill_in('post_rationale', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-    click_button 'Save'
-  end
 
   before(:each) do
     visit(URL_BASE)
@@ -120,7 +73,7 @@ describe "Game View", :type => :feature, :js => true  do
         end
 
         it "has the Make a move button" do
-          expect(page).to have_selector('#make-a-move')
+          expect(page).to have_selector('#respond-to-move')
         end
 
       end
@@ -178,7 +131,8 @@ describe "Game View", :type => :feature, :js => true  do
       end
 
       it "has the Respond to move button" do
-        expect(page).to have_link('Respond')
+        first('.new_source').click
+        expect(page).to have_selector('#respond-to-move')
       end
 
       it "has the move excerpt" do
@@ -188,7 +142,7 @@ describe "Game View", :type => :feature, :js => true  do
       describe "and with a response to a move" do
 
         before do
-          respond_to_move
+          main_page_respond_to_move
         end
 
         it 'has a move source block with Source header' do
@@ -200,7 +154,7 @@ describe "Game View", :type => :feature, :js => true  do
         end
 
         it 'has a source move that is linked to an individual move page' do
-          expect(page).to have_selector('.game-discussion-source ul li a')
+          expect(page).to have_selector('.game-discussion-source ul a li')
         end
 
         it 'has a move responses block with Response header' do

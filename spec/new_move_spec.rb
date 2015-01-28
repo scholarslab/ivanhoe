@@ -1,47 +1,8 @@
 require 'spec_helper'
 
-def tiny_mce_fill_in(name, args)
-  page.execute_script("tinymce.editors[0].setContent('#{args[:with]}')")
-end
+describe 'Make a Move View', :type => :feature, :js => true do
 
-def login
-    click_link('Log in')
-    fill_in 'Username', with: 'admin'
-    fill_in 'Password', with: 'admin'
-    click_button 'Log In'
-end
-
-def make_game
-    click_link 'Make a Game'
-    fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
-    tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-    click_button 'Save'
-end
-
-def make_role
-    click_link('Make a Role!')
-    fill_in 'post_title', :with => Faker::Lorem.words(rand(2..4)).join(' ')
-    tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-    click_button 'Save'
-end
-
-def make_a_move
-    click_link 'Make a move'
-    fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
-    tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-    tiny_mce_fill_in('post_rationale', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-    click_button 'Save'
-end
-
-def respond_to_move
-    click_link('Respond')
-    fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
-    tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-    tiny_mce_fill_in('post_rationale', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-    click_button 'Save'
-end
-
-describe 'Make a Role View', :type => :feature, :js => true do
+    include ApplicationHelper
 
     before(:each) do
         visit(URL_BASE)
@@ -55,7 +16,7 @@ describe 'Make a Role View', :type => :feature, :js => true do
     describe 'for a move with no source' do
 
       before (:each) do
-        click_link('Make a move')
+        click_button('Make a Move')
       end
 
       it 'has the Make a Move header' do
@@ -117,7 +78,8 @@ describe 'Make a Role View', :type => :feature, :js => true do
 
       before do
         make_a_move
-        click_link('Respond ')
+        first('.new_source').click
+        click_button 'Respond'
       end
 
       it 'has the move meta box' do
@@ -138,7 +100,7 @@ describe 'Make a Role View', :type => :feature, :js => true do
           # links = page.all('a')
           # game_link = links[0]
           # move_link = links[1]
-          expect(page).to have_content('in response to the move')
+          expect(page).to have_content('in response to the following')
           expect(page).to have_selector('a')
         end
       end

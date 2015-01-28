@@ -1,11 +1,26 @@
-<?php get_header(); ?>
-
 <?php
+    get_header();
 
-$original_query           = $wp_query;
-$ivanhoe_game_id          = $post->ID;
-$ivanhoe_parent_permalink = get_permalink( $post->ID );
-$role                     = ivanhoe_user_has_role( $post->ID );
+    $original_query           = $wp_query;
+    $ivanhoe_game_id          = $post->ID;
+    $ivanhoe_parent_permalink = get_permalink( $post->ID );
+    $role                     = ivanhoe_user_has_role( $post->ID );
+
+    // Character list
+    $character_args = array(
+        'post_type' => 'ivanhoe_role',
+        'post_parent' => $ivanhoe_game_id
+    );
+    $characters = new WP_Query ( $character_args );
+    $character_posts = $characters->get_posts();
+
+    // Pagination
+    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
+    $pagination_args = array (
+        'post_type'   => 'ivanhoe_move',
+        'post_parent' => $post->ID,
+        'paged'       => $paged
+    );
 
 ?>
 
@@ -13,12 +28,15 @@ $role                     = ivanhoe_user_has_role( $post->ID );
 <article class="game">
     <header>
         <h1><?php the_title(); ?></h1>
-        <p><?php printf( __('Playing since: %s', 'ivanhoe' ), get_the_time('F j, Y') ); ?></p>
+        <p>
+            <?php printf( __('Playing since: %s', 'ivanhoe' ), get_the_time('F j, Y') ); ?>
+        </p>
 
     </header>
 
     <div id="game-data">
-        <?php if($role): ?>
+        <!-- Shows role of current user -->
+        <?php if ($role !== FALSE): ?>
 
         <h3><?php _e( 'Your Current Role', 'ivanhoe' ); ?></h3>
         <article class="role">
@@ -27,32 +45,23 @@ $role                     = ivanhoe_user_has_role( $post->ID );
         </article>
 
         <?php endif; ?>
+        <!-- Ends section showing current role -->
 
-
-
+        <!-- Shows list of other characters -->
         <?php
-            $args = array(
-            'post_type' => 'ivanhoe_role',
-            'post_parent' => $ivanhoe_game_id
-            );
-            $characters = new WP_Query ( $args );
-
-            $character_posts = $characters->get_posts();
-
             if ( !empty( $character_posts ) ) :
-            if ( is_user_logged_in() && $role ) : ?>
+            if ( is_user_logged_in() && $role !== FALSE ) : ?>
                 <h3><?php _e( 'Other Characters', 'ivanhoe' ); ?></h3>
                 <article>
                 <?php if ( $characters->have_posts() ) : ?>
                     <ul class='character_list'>
-                <?php while ( $characters->have_posts() ) : $characters->the_post();
-                    if ($post->ID == $role->ID) continue; ?>
-                        <li class='role'>
-                            <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
-                            <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
-                        </li>
-
-                <?php endwhile; ?>
+                        <?php while ( $characters->have_posts() ) : $characters->the_post();
+                            if ($post->ID == $role->ID) continue; ?>
+                                <li class='role'>
+                                    <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
+                                    <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
+                                </li>
+                        <?php endwhile; ?>
                     </ul>
                 <?php endif; ?>
                 </article>
@@ -61,27 +70,21 @@ $role                     = ivanhoe_user_has_role( $post->ID );
             <?php else : ?>
                 <h3><?php _e( 'Characters', 'ivanhoe' ); ?></h3>
                 <article>
-                <?php $args = array(
-                    'post_type' => 'ivanhoe_role',
-                    'post_parent' => $ivanhoe_game_id
-                    );
-                $characters = new WP_Query ( $args );
-                if ( $characters->have_posts() ) : ?>
-                    <ul class='character_list'>
-                <?php while ( $characters->have_posts() ) : $characters->the_post(); ?>
-                    <li class='role'>
-                        <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
-                        <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
-                    </li>
-                <?php endwhile; ?>
-                    </ul>
-                <?php endif; ?>
+                    <?php if ( $characters->have_posts() ) : ?>
+                        <ul class='character_list'>
+                    <?php while ( $characters->have_posts() ) : $characters->the_post(); ?>
+                        <li class='role'>
+                            <a href="<?php echo get_permalink( $post->ID ); ?>" class="image-container"><?php echo get_the_post_thumbnail($post->ID, 'medium'); ?></a>
+                            <a href="<?php echo get_permalink( $post->ID ); ?>"><?php echo $post->post_title; ?></a>
+                        </li>
+                    <?php endwhile; ?>
+                        </ul>
+                    <?php endif; ?>
                 </article>
                 <?php wp_reset_postdata(); ?>
                 <?php endif;
             endif; ?>
-
-
+            <!-- Ends section showing other characters -->
 
         <h3><?php _e( 'Game Description', 'ivanhoe' ); ?></h3>
 
@@ -90,9 +93,10 @@ $role                     = ivanhoe_user_has_role( $post->ID );
         <?php the_content(); ?>
 
         <div>
+        <!-- Shows either the make a move button or the make a role button -->
             <?php if ( is_user_logged_in() ) :
 
-                if ( $role ) :
+                if ( $role !== FALSE ) :
 
                 ?>
 
@@ -106,35 +110,28 @@ $role                     = ivanhoe_user_has_role( $post->ID );
                         <input type="submit" name="movesubmit" value="<?php _e( 'Make a Move', 'ivanhoe' ); ?>" class="btn" id="respond-to-move">
                     </form>
 
-
-
                 <?php else : ?>
 
-                <a href="<?php echo ivanhoe_role_form_url( $post ); ?>" class="btn"><?php _e( 'Make a Role!', 'ivanhoe' ); ?></a>
+                    <?php $url = ivanhoe_role_form_url($post); ?>
+
+                    <?php echo ivanhoe_a($url, 'Make a Role!', 'class="btn"', ESCAPE_TEXT); ?>
 
                 <?php endif; ?>
 
             <?php endif; ?>
-
+            <!-- Ends section showing buttons -->
 
         </div>
     </div>
 
+    <!-- Main content of page -->
     <?php
-
-    $paged = get_query_var('paged') ? get_query_var('paged') : 1;
-    $args = array (
-        'post_type'   => 'ivanhoe_move',
-        'post_parent' => $post->ID,
-        'paged'       => $paged
-    );
-    $wp_query = new WP_Query( $args );
-
-
+    // removed pagination logic from here
+    $wp_query = new WP_Query( $pagination_args );
     if ( $wp_query->have_posts()) : ?>
 
     <div id="moves">
-        <?php ivanhoe_paginate_links($wp_query);?>
+        <?php echo ivanhoe_paginate_links($wp_query);?>
 
         <?php
         while($wp_query->have_posts()) : $wp_query->the_post(); ?>
@@ -150,37 +147,25 @@ $role                     = ivanhoe_user_has_role( $post->ID );
             <div class="excerpt">
 
                 <?php
-                $the_excerpt = get_the_excerpt();
-                $move_image_source = '';
-                $matches = catch_that_properly_nested_html_media_tag_tree();
-
-                if ( empty( $the_excerpt ) ) {
-                    $move_image_source = display_first_media_file( $matches ) . ' ... <a class="view-more" href="'. get_permalink( get_the_ID() ) . '">' . __('View More', 'ivanhoe') . '</a>';
-                } else {
-                    $move_image_source = display_first_media_file( $matches );
-                }
-
-                echo $move_image_source;
-                the_excerpt();
+                    echo ivanhoe_media_excerpt();
+                    the_excerpt();
                 ?>
 
             </div>
 
             <div class="game-discussion-source">
-                <?php ivanhoe_get_move_source( $post ); ?>
+                <?php echo ivanhoe_display_move_source( $post ); ?>
             </div>
 
-<!--             <?php //print_r($source_id); ?> -->
-
             <div class="game-discussion-response">
-                <?php ivanhoe_get_move_responses( $post ); ?>
+                <?php echo ivanhoe_display_move_responses( $post ); ?>
             </div>
 
         </article>
 
         <?php endwhile; ?>
 
-        <?php ivanhoe_paginate_links($wp_query);?>
+        <?php echo ivanhoe_paginate_links($wp_query);?>
     </div>
 
 
@@ -194,6 +179,7 @@ $role                     = ivanhoe_user_has_role( $post->ID );
 <?php $wp_query = $original_query; ?>
 
 </article>
+<!-- Ends main content of page -->
 
 <?php endwhile; endif; ?>
 
