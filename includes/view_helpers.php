@@ -130,7 +130,7 @@ function ivanhoe_paginate_links ( $query = null )
         $base = str_replace(
             $big,
             '%#%',
-            esc_url( get_pagenum_link( $big ) )
+            get_pagenum_link( $big, false )
         );
         $html = '<div class="pagination">'
             . paginate_links( array(
