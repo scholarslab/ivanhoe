@@ -48,10 +48,10 @@ add_filter( 'excerpt_more', 'ivanhoe_new_excerpt_more' );
  */
 function ivanhoe_catch_that_properly_nested_html_media_tag_tree()
 {
-    global $post, $posts;
+    global $post, $posts, $wp_embed;
     ob_start();
     ob_end_clean();
-    $shortcoded = do_shortcode($post->post_content);
+    $shortcoded = $wp_embed->run_shortcode($post->post_content);
     $output_videos = preg_match_all(
         '/<(img|embed|iframe|video|audio)[^>]*>(.*?<\\/\1>)?/si',
         $shortcoded,
@@ -114,5 +114,3 @@ function ivanhoe_media_excerpt ()
 
     return $move_image_source;
 }
-
-
