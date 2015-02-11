@@ -1,4 +1,32 @@
+require 'csv'
+
 module ApplicationHelper
+
+  def dump_table(dump_dir, table_name)
+    output  = "#{dump_dir}/#{table_name}.csv"
+    results = @cxn.query("SELECT * FROM #{table_name};").to_a
+    CSV.open(output, 'wb', :write_headers => true) do |csv|
+      unless results.empty?
+        fields = results.first.keys.sort
+        csv << fields
+        results.each do |row|
+          csv << fields.map { |key| row[key] }
+        end
+      end
+    end
+  end
+
+  def db_dump
+    now      = Time.new
+    dump_dir = "db-dump-#{now.strftime '%Y%m%d-%H%M%S.%L'}"
+    Dir.mkdir dump_dir
+
+    @cxn.query("SHOW TABLES;")
+      .map    { |row| row["Tables_in_test_ivanhoe"] }
+      .reject { |table| table.start_with? "copy_wp" }
+      .each   { |table| dump_table dump_dir, table }
+  end
+
 
   def tiny_mce_fill_in(name, args)
     page.execute_script("tinymce.editors[0].setContent('#{args[:with]}')")
