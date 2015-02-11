@@ -42,11 +42,14 @@ CHANGING_TABLES = %w{
 WP_CONFIG      = ENV.fetch('WP_CONFIG', '../../../wp-config.php')
 
 DB_HOST        = ENV.fetch('DB_HOST', 'localhost')
+WP_DB_HOST     = ENV.fetch('WP_DB_HOST', DB_HOST)
 DB_USER        = ENV.fetch('DB_USER', 'ivanhoe')
+WP_DB_USER     = ENV.fetch('WP_DB_USER', DB_USER)
 DB_PASSWORD    = ENV.fetch('DB_PASSWORD', 'ivanhoe')
 WP_DB_PASSWORD = ENV.fetch('WP_DB_PASSWORD', DB_PASSWORD)
 DB_NAME        = ENV.fetch('DB_NAME', 'test_ivanhoe')
-DB_PORT        = ENV.fetch('DB_PORT', '8889')
+DB_PORT        = ENV.fetch('DB_PORT', '3306')
+WP_DB_PORT     = ENV.fetch('WP_DB_PORT', DB_PORT)
 URL_BASE       = ENV.fetch('URL_BASE', 'http://localhost:8888/ivanhoe')
 
 DB_DUMP        = "./spec/dumps/ivanhoe.sql"
@@ -105,7 +108,7 @@ RSpec.configure do |config|
 
   config.after(:all) do
 
-    @cxn.close
+    @cxn.close unless @cxn.nil?
 
   end
 
@@ -127,11 +130,11 @@ RSpec.configure do |config|
       if line.start_with?("define('DB_NAME'")
         line = "define('DB_NAME',     '#{DB_NAME}');\n# #{line}"
       elsif line.start_with?("define('DB_USER'")
-        line = "define('DB_USER',     '#{DB_USER}');\n# #{line}"
+        line = "define('DB_USER',     '#{WP_DB_USER}');\n# #{line}"
       elsif line.start_with?("define('DB_PASSWORD'")
         line = "define('DB_PASSWORD', '#{WP_DB_PASSWORD}');\n# #{line}"
       elsif line.start_with?("define('DB_HOST'")
-        line = "define('DB_HOST',     '#{DB_HOST}:#{DB_PORT}');\n# #{line}"
+        line = "define('DB_HOST',     '#{WP_DB_HOST}:#{WP_DB_PORT}');\n# #{line}"
       elsif line.start_with?("$table_prefix")
         line = "$table_prefix = 'wp_';\n# #{line}"
       end
