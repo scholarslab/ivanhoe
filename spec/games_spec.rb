@@ -12,9 +12,12 @@ describe "Transactions", :type => :feature, :js => true  do
         click_button 'Log In'
       end
 
-      it "has a game info" do
+      it "has a game info", :current => true do
         click_link 'Games'
+        start = Time.new
         make_game
+        done = Time.new
+        puts "ELAPSED TIME: #{done - start}"
         within('.ivanhoe_game') { expect(page).to have_selector('h2') }
       end
 
