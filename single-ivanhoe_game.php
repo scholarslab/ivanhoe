@@ -186,12 +186,7 @@
 <?php get_footer(); ?>
 
 <script type="text/javascript">
-    $('#moves').infinitescroll({
-        navSelector: '#pagination',
-        nextSelector: '#pagination .next',
-        itemSelector: '#moves article.ivanhoe_move',
-    },
-    function () {
+    function multisource () {
         var ivanhoe_selected_moves = {};
 
         function update_button(){
@@ -226,44 +221,15 @@
         });
 
         update_button();
-    });
-
-</script>
-
-<script type="text/javascript">
-    var ivanhoe_selected_moves = {};
-
-    function update_button(){
-        var li = $('.basic_element_of_semantically_incoherent_metaphor li');
-        var header = $('#multi_source_list_of_doom_header');
-        if (li.length === 0) {
-            document.move_info.
-            movesubmit.value="Make a Move";
-            header.hide ();
-        } else {
-            document.move_info.
-            movesubmit.value="Respond";
-            header.show ();
-        }
     }
 
-    $('.new_source').click(function(){
-        var $this = $(this);
-        var value = $this.data('value');
-        if (ivanhoe_selected_moves[value] == null) {
-            $('.basic_element_of_semantically_incoherent_metaphor').append
-            ("<li><input type='hidden' value='" + value + "' name='move_source[]'>" + $this.data('title') + "</li>").click
-            (function( event ) {
-                $(event.target).remove();
-                update_button();
-                delete ivanhoe_selected_moves[value];
-            });
-
-            update_button();
-        ivanhoe_selected_moves[value] = true;
-        }
+    $('#moves').infinitescroll({
+        navSelector: '#pagination',
+        nextSelector: '#pagination .next',
+        itemSelector: '#moves article.ivanhoe_move',
+    }, function () {
+        multisource();
     });
 
-    update_button();
-
+    multisource();
 </script>
