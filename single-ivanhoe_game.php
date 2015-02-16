@@ -104,7 +104,7 @@
                         <input type="hidden" name="ivanhoe" value="ivanhoe_move">
                         <input type='hidden' name='parent_post' value='<?php echo $ivanhoe_game_id; ?>'>
                         <input type='hidden' name='ivanhoe_role_id' value='<?php echo $role->ID; ?>'>
-                        <h3 id='multi_source_list_of_doom_header'>Responding to the following</h3>
+                        <h3 id='multi_source_list_of_doom_header'>Responding to the following: <small>(click to remove)</small></h3>
                         <ul class="basic_element_of_semantically_incoherent_metaphor">
                         </ul>
                         <input type="submit" name="movesubmit" value="<?php _e( 'Make a Move', 'ivanhoe' ); ?>" class="btn" id="respond-to-move">
