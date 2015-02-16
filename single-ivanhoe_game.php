@@ -141,7 +141,11 @@
                 <p><span class="byline"><?php the_author_posts_link(); ?></span>
             &middot; <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
                 <?php $ivanhoe_post_id=$post->ID; ?>
-                    <span class="new_source btn" data-title="<?php echo get_the_title($ivanhoe_post_id); ?>" data-value="<?php echo $ivanhoe_post_id; ?>">Add to Moves</span>
+                    <?php if ( is_user_logged_in() ) : ?>
+                        <?php if ( $role !== FALSE ) : ?>
+                            <span class="new_source btn" data-title="<?php echo get_the_title($ivanhoe_post_id); ?>" data-value="<?php echo $ivanhoe_post_id; ?>">Add to Moves</span>
+                        <?php endif ?>
+                    <?php endif ?>
             </header>
 
             <div class="excerpt">
