@@ -98,7 +98,7 @@ RSpec.configure do |config|
 
   config.after(:all) do
 
-    @cxn.close
+    @cxn.close unless @cxn.nil?
 
   end
 
