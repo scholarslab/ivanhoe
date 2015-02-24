@@ -20,8 +20,8 @@ class IvanhoeGame extends BasePostForm
         $this->other_label   = __( 'Game Thumbnail', 'ivanhoe' );
         $this->content_label = __( 'Game Description', 'ivanhoe' );
     }
-    
-    public function get_status_message()
+
+    public function get_status_message($game)
     {
         return;
     }
