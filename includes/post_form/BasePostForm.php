@@ -228,7 +228,7 @@ abstract class BasePostForm
      * @return void
      * @author Eric Rochester <erochest@virginia.edu>
      */
-    public function validate_post($post)
+    public function validate_post()
     {
         if(empty($this->title)) {
             $this->error('A title is required');
