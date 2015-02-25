@@ -1,4 +1,5 @@
 require 'csv'
+require 'date'
 
 module ApplicationHelper
 
@@ -64,42 +65,54 @@ module ApplicationHelper
   # - 1.22162
   # - 1.3177
   # - 1.288371
-  def make_game
+  def make_game(user_login='admin')
     db_dump
-    # results = @cxn.query("SELECT MAX(ID)+1 AS row_id FROM wp_posts;")
-    # row_id = results.to_a.first['row_id']
+    @cxn.transaction do
+      wp_posts = @cxn[:wp_posts]
+      row_id = wp_posts.max(:id) + 1
 
-    # # TODO: also call @cxn.escape on all of these (and the guid)
-    # # TODO: Am I sure I don't want to just use sequel?
-    # guid = "#{BASE_URL}/?post_type=ivanhoe_game&p=#{row_id}"
-    # post_author = nil
-    # post_content = nil
-    # post_content_filtered = nil
+      guid = "#{URL_BASE}/?post_type=ivanhoe_game&p=#{row_id}"
+      post_author = @cxn[:wp_users].first(:user_login => user_login)[:ID]
+      post_title = Faker::Lorem.words(rand(2..8)).join(' ')
+      post_content = Faker::Lorem.paragraphs(rand(3..10)).join('<p>')
+      now = DateTime.now
+      now_gmt = now
 
-    # HEREIAM: the data in this line appears to be the autosave data. I've
-    # added the sleep below, so hopefully re-running it should now output the
-    # complete saved entry.
+      # HEREIAM: the data in this line appears to be the autosave data. I've
+      # added the sleep below, so hopefully re-running it should now output the
+      # complete saved entry.
 
-    # @cxn.query(<<END
-      # INSERT INTO wp_posts
-        # (ID,comment_count,comment_status,guid,menu_order,ping_status,pinged,
-        # post_author,post_content,post_content_filtered,
-        # post_date,post_date_gmt,post_excerpt,post_mime_type,
-        # post_modified,post_modified_gmt,
-        # post_name,
-        # post_parent,post_password,post_status,post_title,post_type,to_ping)
-        # VALUES
-        # (#{row_id},0,'open',#{guid},0,'open','',
-        # #{post_author},#{post_content},#{post_content_filtered},
-        # #{now},#{now_gmt},'','',
-        # #{now},#{now_gmt},'',0,'',auto-draft,Auto Draft,ivanhoe_game,''
-# END
-# )
+      wp_posts.insert({
+        :ID                    => row_id,
+        :comment_count         => 0,
+        :comment_status        => 'closed',
+        :guid                  => guid,
+        :menu_order            => 0,
+        :ping_status           => 'open',
+        :pinged                => '',
+        :post_author           => post_author,
+        :post_content          => post_content,
+        :post_content_filtered => '',
+        :post_date             => now,
+        :post_date_gmt         => now_gmt,
+        :post_excerpt          => '',
+        :post_mime_type        => '',
+        :post_modified         => now,
+        :post_modified_gmt     => now_gmt,
+        :post_name             => post_title.gsub(/ /, '-'),
+        :post_parent           => 0,
+        :post_password         => '',
+        :post_status           => 'publish',
+        :post_title            => post_title,
+        :post_type             => 'ivanhoe_game',
+        :to_ping               => '',
+      })
+    end
 
-    click_link 'Make a Game'
-    fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
-    tiny_mce_fill_in_post_content('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-    click_button 'Save'
+    # click_link 'Make a Game'
+    # fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
+    # tiny_mce_fill_in_post_content('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+    # click_button 'Save'
 
     sleep 0.5
     db_dump

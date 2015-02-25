@@ -105,6 +105,7 @@ RSpec.configure do |config|
       :user     => DB_USER,
       :password => DB_PASSWORD,
       :port     => DB_PORT,
+      # TODO: Remove the next line:
       :loggers  => [Logger.new($stdout)]
     )
 
