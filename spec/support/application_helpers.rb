@@ -4,7 +4,7 @@ module ApplicationHelper
 
   def dump_table(dump_dir, table_name)
     output  = "#{dump_dir}/#{table_name}.csv"
-    results = @cxn.query("SELECT * FROM #{table_name};").to_a
+    results = @cxn[table_name.to_sym].all
     CSV.open(output, 'wb', :write_headers => true) do |csv|
       unless results.empty?
         fields = results.first.keys.sort
@@ -21,8 +21,8 @@ module ApplicationHelper
     dump_dir = "db-dump-#{now.strftime '%Y%m%d-%H%M%S.%L'}"
     Dir.mkdir dump_dir
 
-    @cxn.query("SHOW TABLES;")
-      .map    { |row| row["Tables_in_test_ivanhoe"] }
+    @cxn["SHOW TABLES;"]
+      .map    { |row| row[:Tables_in_test_ivanhoe] }
       .reject { |table| table.start_with? "copy_wp" }
       .each   { |table| dump_table dump_dir, table }
   end
@@ -59,6 +59,11 @@ module ApplicationHelper
   # - 0.516728
   # - 0.551325
   # mean = 0.540142667
+  #
+  # (From run on Feb 25):
+  # - 1.22162
+  # - 1.3177
+  # - 1.288371
   def make_game
     db_dump
     # results = @cxn.query("SELECT MAX(ID)+1 AS row_id FROM wp_posts;")

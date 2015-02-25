@@ -15,5 +15,6 @@ group :test do
   gem 'guard-rspec'
   gem 'ffaker'
   gem 'mustache'
+  gem 'sequel'
 end
 

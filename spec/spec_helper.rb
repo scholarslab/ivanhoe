@@ -2,8 +2,10 @@ require 'dotenv'
 require 'fileutils'
 require 'ffaker'
 
+require 'logger'
 require 'mustache'
 require 'mysql2'
+require 'sequel'
 
 require 'capybara/rspec'
 require 'capybara-webkit'
@@ -96,27 +98,30 @@ RSpec.configure do |config|
   config.before(:all) do |ex|
 
     db_setup
-    @cxn = Mysql2::Client.new(
+    @cxn = Sequel.connect(
+      :adapter  => 'mysql2',
       :database => DB_NAME,
-      :host => DB_HOST,
-      :username => DB_USER,
+      :host     => DB_HOST,
+      :user     => DB_USER,
       :password => DB_PASSWORD,
-      :port => DB_PORT
-      )
+      :port     => DB_PORT,
+      :loggers  => [Logger.new($stdout)]
+    )
 
   end
 
   config.after(:all) do
 
-    @cxn.close unless @cxn.nil?
+    @cxn.disconnect unless @cxn.nil?
 
   end
 
   config.before(:each) do
 
     CHANGING_TABLES.each do |name|
-      @cxn.query("DELETE FROM `#{name}`;")
-      @cxn.query("INSERT INTO `#{name}` SELECT * FROM `copy_#{name}`;")
+      table = @cxn[name.to_sym]
+      table.delete
+      table.insert(@cxn["copy_#{name}".to_sym])
     end
 
   end

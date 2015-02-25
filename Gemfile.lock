@@ -74,6 +74,7 @@ GEM
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.6)
     sass (3.2.19)
+    sequel (4.19.0)
     slop (3.5.0)
     susy (1.0.9)
       compass (>= 0.12.2)
@@ -97,4 +98,5 @@ DEPENDENCIES
   mysql2
   pg
   rspec
+  sequel
   susy (~> 1.0.9)
