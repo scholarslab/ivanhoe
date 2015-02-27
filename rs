@@ -1,6 +1,6 @@
 #! /bin/bash
 
-rm screenshot_2014*
+rm screenshot_2015*
 rm capybara-*.html
-rspec
-ls screenshot_2014*.png && open screenshot_2014*.png
+rspec "$*"
+ls screenshot_2015*.png && open screenshot_2015*.png
