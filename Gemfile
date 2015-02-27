@@ -10,10 +10,10 @@ group :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'capybara-screenshot'
-  gem 'pg'
   gem 'mysql2'
   gem 'guard-rspec'
   gem 'ffaker'
-  gem 'mustache'
+  gem 'sequel'
+  gem 'database_cleaner'
 end
 
