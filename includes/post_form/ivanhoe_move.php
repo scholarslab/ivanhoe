@@ -7,6 +7,7 @@ require_once dirname(__FILE__) . "/BasePostForm.php";
  */
 class IvanhoeMove extends BasePostForm
 {
+    
 
     public function get_post_type()
     {
@@ -37,7 +38,7 @@ class IvanhoeMove extends BasePostForm
         $buffer = sprintf(
             __( 'You are making a move on the game '
                 . '&#8220;<a href="%1$s">%2$s</a>&#8221;', 'ivanhoe'),
-            get_permalink($parent_post),
+            get_permalink($this->parent_post),
             $game->post_title
         );
         if ($this->move_source) {
@@ -60,6 +61,37 @@ class IvanhoeMove extends BasePostForm
         }
 
         return $buffer;
+    }
+    
+    /* here goes nothin' -ARB */
+    public function render_content(){
+        
+        $content = "<div id = 'parent_moves'>";
+        
+        
+               
+        foreach ($this->move_source as $move) {
+            $args = array (
+                'post_type'   => 'ivanhoe_role',
+                'author'      => get_post_field("post_author", $move),
+            );
+            $posts = get_posts($args);
+            $role = reset($posts);
+        
+            /* Role name place holder til I figure out an easy way to reference role names*/         
+            $author = '';
+            
+            $content .= "<div class = 'parent_move'>";
+            $content .= "<h1>" . get_post_field("post_title", $move) . " by ";
+            $content .= $role->post_title ."</h1>"; 
+            $content .= get_post_field("post_content", $move);
+            $content .= "</div>";
+                
+          
+        }
+        
+        echo $content . "</div>";
+        
     }
 }
 
