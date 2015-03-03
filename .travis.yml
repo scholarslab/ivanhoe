@@ -23,4 +23,4 @@ before_script:
   - wget https://raw.githubusercontent.com/waynegraham/wordpress-theme-tests/master/setup/setup.sh
   - source setup.sh
 
-script: bundle exec rspec
+script: cd /tmp/wordpress/wp-content/themes/ivanhoe && bundle exec rspec spec
