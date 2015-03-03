@@ -18,10 +18,6 @@ end
 
 describe "a view with a response with multiple sources"
 
-    # click a game
-    # make role
-    # make 2 moves
-    # click respond to this move on both moves, then click respond button
     before do
       first('.game-link').click
       make_role
@@ -45,14 +41,7 @@ describe "a view with a response with multiple sources"
       end
     end
 
-
-
-    # fill in form
-    # should return to game page
-    # check under move sources to make sure there are two list items
-    # check under responses on two source moves to make sure there is a response (one list item)
-
-    # need to abstract the hell out of this to make an actual respond to multiple move helper function
+    # need to abstract this to make an actual respond to multiple move helper function
     # Would create 10 moves...click random number of moves from moves array
 
 end
