@@ -524,6 +524,10 @@ article {
     @include span-columns(8);
 }
 
+.parent-moves {
+    @include span-columns(8);
+}
+
 .author .description {
     @include span-columns(4 omega);
 }
