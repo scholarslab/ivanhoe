@@ -65,75 +65,36 @@ module ApplicationHelper
   # - 1.22162
   # - 1.3177
   # - 1.288371
+  #
+  # (March 4)
+  # - 0.443992
+  # - 0.456232
+  # - 0.50325
+  #
+  # (direct inserting, March 4)
+  # - 0.036109
+  # - 0.0266
+  # - 0.03718
+
+  # NB: When you use this, make sure you access the page again *after* creating
+  # the game, before testing the expectation. Otherwise, you'll be looking at
+  # an old page.
   def make_game(user_login='admin')
-    db_dump
-    @cxn.transaction do
-      # wp_posts = @cxn[:wp_posts]
-      # row_id = wp_posts.max(:id) + 1
-
-      # guid  = "#{URL_BASE}/?post_type=ivanhoe_game&p=#{row_id}"
-      # guid1 = "#{URL_BASE}/?post_type=ivanhoe_game&p=#{row_id + 1}"
-      # post_author = @cxn[:wp_users].first(:user_login => user_login)[:ID]
-      post_title = Faker::Lorem.words(rand(2..8)).join(' ')
-      post_content = Faker::Lorem.paragraphs(rand(3..10)).join('<p>')
-      # now = DateTime.now
-      # now_gmt = now
-
-      author = WPDB::User.first(:user_login => user_login)
-      WPDB::Post.create(
-        :post_title            => post_title,
-        :post_content          => post_content,
-        :author                => author,
-        :post_excerpt          => '',
-        :to_ping               => '',
-        :pinged                => '',
-        :post_content_filtered => '',
-        :post_status           => 'publish',
-        :post_type             => 'ivanhoe_game',
-        :comment_status        => 'closed',
-      )
-
-      # wp_posts.insert({
-        # :ID                    => row_id + 1,
-        # :comment_count         => 0,
-        # :comment_status        => 'closed',
-        # :guid                  => guid1,
-        # :menu_order            => 0,
-        # :ping_status           => 'open',
-        # :pinged                => '',
-        # :post_author           => post_author,
-        # :post_content          => post_content,
-        # :post_content_filtered => '',
-        # :post_date             => now,
-        # :post_date_gmt         => now_gmt,
-        # :post_excerpt          => '',
-        # :post_mime_type        => '',
-        # :post_modified         => now,
-        # :post_modified_gmt     => now_gmt,
-        # :post_name             => post_title.gsub(/ /, '-'),
-        # :post_parent           => 0,
-        # :post_password         => '',
-        # :post_status           => 'publish',
-        # :post_title            => post_title,
-        # :post_type             => 'ivanhoe_game',
-        # :to_ping               => '',
-      # })
-    end
-
-    db_dump
-
-    # TODO: WP recongizes the game above only when we also create one through
-    # the web UI below.
-
-    # click_link 'Make a Game'
-    # fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
-    # tiny_mce_fill_in_post_content('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
-    # click_button 'Save'
-
-    slept = sleep 20
-    puts "SLEPT FOR #{slept}s."
-
-    db_dump
+    post_title   = Faker::Lorem.words(rand(2..8)).join(' ')
+    post_content = Faker::Lorem.paragraphs(rand(3..10)).join('<p>')
+    author       = WPDB::User.first(:user_login => user_login)
+    WPDB::Post.create(
+      :post_title            => post_title,
+      :post_content          => post_content,
+      :author                => author,
+      :post_excerpt          => '',
+      :to_ping               => '',
+      :pinged                => '',
+      :post_content_filtered => '',
+      :post_status           => 'publish',
+      :post_type             => 'ivanhoe_game',
+      :comment_status        => 'closed',
+    )
   end
 
   def make_role
