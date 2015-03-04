@@ -66,7 +66,7 @@ class IvanhoeMove extends BasePostForm
     /* here goes nothin' -ARB */
     public function render_content(){
         
-        $content = "<div id = 'parent_moves'>";
+        $content = "<div class = 'parent-moves'>";
         
         
                
@@ -81,7 +81,7 @@ class IvanhoeMove extends BasePostForm
             /* Role name place holder til I figure out an easy way to reference role names*/         
             $author = '';
             
-            $content .= "<div class = 'parent_move'>";
+            $content .= "<div class = 'parent-move'>";
             $content .= "<h1>" . get_post_field("post_title", $move) . " by ";
             $content .= $role->post_title ."</h1>"; 
             $content .= get_post_field("post_content", $move);
