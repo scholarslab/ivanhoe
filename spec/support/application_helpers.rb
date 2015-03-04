@@ -71,11 +71,9 @@ module ApplicationHelper
 # This function covers responding to multiple moves from the single-ivanhoe_game page
   def respond_to_multiple_moves
     moves = page.all('#moves article')
-    # first_move_button = moves[0].find('.new_source', match: :first)
-    # second_move_button = moves[1].find('.new_source', match: :first)
-    # first_move_button.click
-    # second_move_button.click
-    moves.each do |move|
+
+    @num_sources = rand(2...@num_moves)
+    moves[0...@num_sources].each do |move|
       within move do
         find('.new_source').click
       end

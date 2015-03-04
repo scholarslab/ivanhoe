@@ -21,23 +21,16 @@ describe "a move"
     before do
       first('.game-link').click
       make_role
-      @n = rand(2...10)
-      @n.times { make_a_move }
+      @num_moves = rand(2..10)
+      @num_moves.times { make_a_move }
       respond_to_multiple_moves
     end
 
     it 'should list multiple sources in the source column' do
       source_block = first('#moves article .game-discussion-source')
       within(source_block) do
-        expect(find('ul')).to have_selector('li', count: @n)
+        expect(find('ul')).to have_selector('li', count: @num_sources)
       end
     end
-
-
-    # create random number n
-    # create n moves
-    # respond to a random number of moves between 2 and n
-    # that means clicking .new_source of n different moves
-    # check for that number of list items in the it block
 
 end
