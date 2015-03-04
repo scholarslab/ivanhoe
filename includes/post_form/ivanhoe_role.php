@@ -30,4 +30,9 @@ class IvanhoeRole extends BasePostForm
             $game->post_title
         );
     }
+    
+    
+    public function render_content(){
+        return;
+    }
 }
