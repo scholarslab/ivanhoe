@@ -5,15 +5,6 @@ add_theme_support('menus');
 add_theme_support('post-thumbnails', array('ivanhoe_role', 'ivanhoe_game'));
 add_theme_support( 'automatic-feed-links' );
 
-/**
- * Custom backgrounds.
- */
-$ivanhoe_background_defaults = array(
-    'default-color' => '#fff',
-    'default-image' => get_template_directory_uri() . '/images/tile.png'
-);
-
-add_theme_support( 'custom-background', $ivanhoe_background_defaults );
 
 /**
  * Modify the admin bar to remove nodes, preventing people from making
