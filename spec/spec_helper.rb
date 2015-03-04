@@ -6,6 +6,7 @@ require 'logger'
 require 'mustache'
 require 'mysql2'
 require 'sequel'
+require 'ruby-wpdb'
 
 require 'capybara/rspec'
 require 'capybara-webkit'
@@ -108,6 +109,7 @@ RSpec.configure do |config|
       # TODO: Remove the next line:
       :loggers  => [Logger.new($stdout)]
     )
+    @wpdb = WPDB.init("mysql2://#{DB_USER}:#{DB_PASSWORD}@#{DB_HOST}:#{DB_PORT}/#{DB_NAME}")
 
   end
 

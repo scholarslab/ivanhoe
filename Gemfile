@@ -16,5 +16,6 @@ group :test do
   gem 'ffaker'
   gem 'mustache'
   gem 'sequel'
+  gem 'ruby-wpdb'
 end
 

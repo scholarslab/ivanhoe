@@ -68,53 +68,71 @@ module ApplicationHelper
   def make_game(user_login='admin')
     db_dump
     @cxn.transaction do
-      wp_posts = @cxn[:wp_posts]
-      row_id = wp_posts.max(:id) + 1
+      # wp_posts = @cxn[:wp_posts]
+      # row_id = wp_posts.max(:id) + 1
 
-      guid = "#{URL_BASE}/?post_type=ivanhoe_game&p=#{row_id}"
-      post_author = @cxn[:wp_users].first(:user_login => user_login)[:ID]
+      # guid  = "#{URL_BASE}/?post_type=ivanhoe_game&p=#{row_id}"
+      # guid1 = "#{URL_BASE}/?post_type=ivanhoe_game&p=#{row_id + 1}"
+      # post_author = @cxn[:wp_users].first(:user_login => user_login)[:ID]
       post_title = Faker::Lorem.words(rand(2..8)).join(' ')
       post_content = Faker::Lorem.paragraphs(rand(3..10)).join('<p>')
-      now = DateTime.now
-      now_gmt = now
+      # now = DateTime.now
+      # now_gmt = now
 
-      # HEREIAM: the data in this line appears to be the autosave data. I've
-      # added the sleep below, so hopefully re-running it should now output the
-      # complete saved entry.
-
-      wp_posts.insert({
-        :ID                    => row_id,
-        :comment_count         => 0,
-        :comment_status        => 'closed',
-        :guid                  => guid,
-        :menu_order            => 0,
-        :ping_status           => 'open',
-        :pinged                => '',
-        :post_author           => post_author,
-        :post_content          => post_content,
-        :post_content_filtered => '',
-        :post_date             => now,
-        :post_date_gmt         => now_gmt,
-        :post_excerpt          => '',
-        :post_mime_type        => '',
-        :post_modified         => now,
-        :post_modified_gmt     => now_gmt,
-        :post_name             => post_title.gsub(/ /, '-'),
-        :post_parent           => 0,
-        :post_password         => '',
-        :post_status           => 'publish',
+      author = WPDB::User.first(:user_login => user_login)
+      WPDB::Post.create(
         :post_title            => post_title,
-        :post_type             => 'ivanhoe_game',
+        :post_content          => post_content,
+        :author                => author,
+        :post_excerpt          => '',
         :to_ping               => '',
-      })
+        :pinged                => '',
+        :post_content_filtered => '',
+        :post_status           => 'publish',
+        :post_type             => 'ivanhoe_game',
+        :comment_status        => 'closed',
+      )
+
+      # wp_posts.insert({
+        # :ID                    => row_id + 1,
+        # :comment_count         => 0,
+        # :comment_status        => 'closed',
+        # :guid                  => guid1,
+        # :menu_order            => 0,
+        # :ping_status           => 'open',
+        # :pinged                => '',
+        # :post_author           => post_author,
+        # :post_content          => post_content,
+        # :post_content_filtered => '',
+        # :post_date             => now,
+        # :post_date_gmt         => now_gmt,
+        # :post_excerpt          => '',
+        # :post_mime_type        => '',
+        # :post_modified         => now,
+        # :post_modified_gmt     => now_gmt,
+        # :post_name             => post_title.gsub(/ /, '-'),
+        # :post_parent           => 0,
+        # :post_password         => '',
+        # :post_status           => 'publish',
+        # :post_title            => post_title,
+        # :post_type             => 'ivanhoe_game',
+        # :to_ping               => '',
+      # })
     end
+
+    db_dump
+
+    # TODO: WP recongizes the game above only when we also create one through
+    # the web UI below.
 
     # click_link 'Make a Game'
     # fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
     # tiny_mce_fill_in_post_content('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
     # click_button 'Save'
 
-    sleep 0.5
+    slept = sleep 20
+    puts "SLEPT FOR #{slept}s."
+
     db_dump
   end
 
