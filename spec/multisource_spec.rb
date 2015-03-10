@@ -16,7 +16,7 @@ before(:each) do
      rand(2..3).times { make_game }
 end
 
-describe "a move"
+describe "a move" do
 
     before do
       first('.game-link').click
@@ -32,5 +32,8 @@ describe "a move"
         expect(find('ul')).to have_selector('li', count: @num_sources)
       end
     end
+
+end
+
 
 end
