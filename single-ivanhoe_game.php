@@ -35,7 +35,47 @@
     </header>
 
     <div id="game-data">
+        <div>
+        <!-- Shows either the make a move button or the make a role button -->
+            <?php if ( is_user_logged_in() ) :
+
+                if ( $role !== FALSE ) :
+
+                ?>
+
+                    <form name="move_info" action='<?php echo home_url(); ?>' method='get'>
+                        <input type="hidden" name="ivanhoe" value="ivanhoe_move">
+                        <input type='hidden' name='parent_post' value='<?php echo $ivanhoe_game_id; ?>'>
+                        <input type='hidden' name='ivanhoe_role_id' value='<?php echo $role->ID; ?>'>
+                        <h3 id='multi_source_list_of_doom_header'>Responding to the following</h3>
+                        <ul class="basic_element_of_semantically_incoherent_metaphor">
+                        </ul>
+                        <input type="submit" name="movesubmit" value="<?php _e( 'Make a Move', 'ivanhoe' ); ?>" class="btn" id="respond-to-move">
+                    </form>
+
+                <?php else : ?>
+
+                    <?php $url = ivanhoe_role_form_url($post); ?>
+
+                    <?php echo ivanhoe_a($url, 'Make a Role!', 'class="btn"', ESCAPE_TEXT); ?>
+
+                <?php endif; ?>
+
+            <?php endif; ?>
+        <!-- Ends section showing buttons -->
+
+        </div>
+
+        <!-- Shows game description -->
+       
+        <h3><?php _e( 'Game Description', 'ivanhoe' ); ?></h3>
+
+        <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+
+        <?php the_excerpt(); ?>
+
         <!-- Shows role of current user -->
+
         <?php if ($role !== FALSE): ?>
 
         <h3><?php _e( 'Your Current Role', 'ivanhoe' ); ?></h3>
@@ -84,44 +124,8 @@
                 <?php wp_reset_postdata(); ?>
                 <?php endif;
             endif; ?>
-            <!-- Ends section showing other characters -->
+        <!-- Ends section showing other characters -->
 
-        <h3><?php _e( 'Game Description', 'ivanhoe' ); ?></h3>
-
-        <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
-
-        <?php the_content(); ?>
-
-        <div>
-        <!-- Shows either the make a move button or the make a role button -->
-            <?php if ( is_user_logged_in() ) :
-
-                if ( $role !== FALSE ) :
-
-                ?>
-
-                    <form name="move_info" action='<?php echo home_url(); ?>' method='get'>
-                        <input type="hidden" name="ivanhoe" value="ivanhoe_move">
-                        <input type='hidden' name='parent_post' value='<?php echo $ivanhoe_game_id; ?>'>
-                        <input type='hidden' name='ivanhoe_role_id' value='<?php echo $role->ID; ?>'>
-                        <h3 id='multi_source_list_of_doom_header'>Responding to the following</h3>
-                        <ul class="basic_element_of_semantically_incoherent_metaphor">
-                        </ul>
-                        <input type="submit" name="movesubmit" value="<?php _e( 'Make a Move', 'ivanhoe' ); ?>" class="btn" id="respond-to-move">
-                    </form>
-
-                <?php else : ?>
-
-                    <?php $url = ivanhoe_role_form_url($post); ?>
-
-                    <?php echo ivanhoe_a($url, 'Make a Role!', 'class="btn"', ESCAPE_TEXT); ?>
-
-                <?php endif; ?>
-
-            <?php endif; ?>
-            <!-- Ends section showing buttons -->
-
-        </div>
     </div>
 
     <!-- Main content of page -->
@@ -173,8 +177,6 @@
 
         <?php echo ivanhoe_paginate_links($wp_query);?>
     </div>
-
-
 
     <?php else : ?>
 
