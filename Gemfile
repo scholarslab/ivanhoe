@@ -10,7 +10,7 @@ group :test do
   gem 'capybara'
   gem 'capybara-webkit'
   gem 'capybara-screenshot'
-  gem 'pg'
+#  gem 'pg'
   gem 'mysql2'
   gem 'guard-rspec'
   gem 'ffaker'
