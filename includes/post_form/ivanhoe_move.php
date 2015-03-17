@@ -63,7 +63,7 @@ class IvanhoeMove extends BasePostForm
         return $buffer;
     }
     
-    /* here goes nothin' -ARB */
+    /* Shows parent moves -ARB */
     public function render_content(){
         
         $content = "<div class = 'parent-moves'>";
@@ -77,8 +77,7 @@ class IvanhoeMove extends BasePostForm
             );
             $posts = get_posts($args);
             $role = reset($posts);
-        
-            /* Role name place holder til I figure out an easy way to reference role names*/         
+            
             $author = '';
             
             $content .= "<div class = 'parent-move'>";
