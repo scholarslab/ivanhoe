@@ -22,6 +22,7 @@ GEM
       chunky_png (~> 1.2)
       fssm (>= 0.2.7)
       sass (~> 3.2.19)
+    database_cleaner (1.4.0)
     diff-lcs (1.2.5)
     dotenv (0.11.1)
       dotenv-deployment (~> 0.0.2)
@@ -72,6 +73,7 @@ GEM
       diff-lcs (>= 1.1.3, < 2.0)
     rspec-mocks (2.14.6)
     sass (3.2.19)
+    sequel (4.19.0)
     slop (3.5.0)
     susy (1.0.9)
       compass (>= 0.12.2)
@@ -88,9 +90,11 @@ DEPENDENCIES
   capybara
   capybara-screenshot
   capybara-webkit
+  database_cleaner
   dotenv
   ffaker
   guard-rspec
   mysql2
   rspec
+  sequel
   susy (~> 1.0.9)

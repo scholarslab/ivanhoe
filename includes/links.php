@@ -11,10 +11,18 @@
 * @return html anchor tags with css and link text
 */
 
-define(ESCAPE_NONE, 0);
-define(ESCAPE_URL, 1);
-define(ESCAPE_TEXT, 2);
-define(ESCAPE_BOTH, 3);
+if (!defined('ESCAPE_NONE')) {
+    define('ESCAPE_NONE', 0);
+}
+if (!defined('ESCAPE_URL')) {
+    define('ESCAPE_URL', 1);
+}
+if (!defined('ESCAPE_TEXT')) {
+    define('ESCAPE_TEXT', 2);
+}
+if (!defined('ESCAPE_BOTH')) {
+    define('ESCAPE_BOTH', 3);
+}
 
 function ivanhoe_a ($url, $link_text, $css_options=null, $escape=ESCAPE_BOTH)
 {

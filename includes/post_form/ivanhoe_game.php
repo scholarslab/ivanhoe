@@ -20,8 +20,8 @@ class IvanhoeGame extends BasePostForm
         $this->other_label   = __( 'Game Thumbnail', 'ivanhoe' );
         $this->content_label = __( 'Game Description', 'ivanhoe' );
     }
-    
-    public function get_status_message()
+
+    public function get_status_message($game)
     {
         return;
     }
@@ -29,6 +29,10 @@ class IvanhoeGame extends BasePostForm
     public function get_move_source_message($game)
     {
         return '';
+    }
+    
+    public function render_content(){
+        return;
     }
 }
 

@@ -5,15 +5,6 @@ add_theme_support('menus');
 add_theme_support('post-thumbnails', array('ivanhoe_role', 'ivanhoe_game'));
 add_theme_support( 'automatic-feed-links' );
 
-/**
- * Custom backgrounds.
- */
-$ivanhoe_background_defaults = array(
-    'default-color' => '#fff',
-    'default-image' => get_template_directory_uri() . '/images/tile.png'
-);
-
-add_theme_support( 'custom-background', $ivanhoe_background_defaults );
 
 /**
  * Modify the admin bar to remove nodes, preventing people from making
@@ -32,6 +23,13 @@ function ivanhoe_modify_admin_bar( $wp_admin_bar )
         $wp_admin_bar->remove_node( 'dashboard' );
     }
 }
+
+
+function customize_register_init( $wp_customize ){
+    $wp_customize->remove_control('blogdescription');
+}
+
+add_action( 'customize_register', 'customize_register_init' );
 
 function ivanhoe_page_menu( $args = array() )
 {
@@ -343,6 +341,7 @@ function ivanhoe_public_template()
 
     }
 }
+
 
 add_filter( 'template_redirect', 'ivanhoe_public_template' );
 
