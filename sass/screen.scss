@@ -10,7 +10,7 @@ html {
 }
 
 body {
-    font-family: 'Crimson Text', Georgia, serif;
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     color: #444;
     margin:0;
     padding:0;
@@ -18,14 +18,19 @@ body {
 }
 
 h1 {
+<<<<<<< HEAD
     font-family: 'Crimson Text', Georgia, serif;
     text-transform: uppercase;
 	letter-spacing: .2em;
     font-size: 2.5em;
+=======
+    font-weight: 200;
+    @include adjust-font-size-to(30px);
+>>>>>>> parent of 3101374... Make style as boring as possible (no more color ever)
 }
 
 h2 {
-    font-family: 'Crimson Text', Georgia, serif;
+    font-weight: 700;
 }
 
 .excerpt {
@@ -49,10 +54,10 @@ h2 {
 
 /* Links */
 a {
-    &:link {color: #000;}
-    &:visited {color: #000;}
-    &:hover {color: #aaa; text-decoration:none;}
-    &:active {color: #000;}
+    &:link {color: #004D05;}
+    &:visited {color: #004D05;}
+    &:hover {color: #8c3; text-decoration:none;}
+    &:active {color: #8a3;}
 
     h1 &,
     h2 & {
@@ -141,17 +146,24 @@ img {
     display: block;
     text-align: center;
     position: relative;
-    background: #000;
+    background: #34612D;
     margin-top: 10px;
+
+    /*Background Gradients */
+    @include background-image(linear-gradient(bottom, #34612D 0%, #217D0F 100%, #B5D1B2 100%));
+    @include border-radius(10px);
+
+    border: 1px solid #217D0F;
+    border-top: 1px solid #C3D6DF;
 
     &:link,
     &:visited {
-        color: #ddd;
+        color: white;
         color: rgba(255, 255, 255, 0.85);
     }
     &:hover,
     &:active {
-        color: #ddd;
+        color: white;
     }
 
 }
@@ -170,7 +182,8 @@ header[role=banner] {
 nav {
     display:block;
     text-align:center;
-    border-bottom: black solid 3px;
+    border: 1px solid #ccc;
+    border-width: 1px 0;
 
     a {
         text-decoration:none;
@@ -199,6 +212,7 @@ main {
     clear:both;
     overflow:hidden;
     zoom:1;
+    border-radius: 5px;
     padding-top: $gutter-width;
     padding-bottom: $gutter-width;
 
@@ -209,6 +223,7 @@ main {
     background: #eee;
     background: rgba(black, 0.05);
     clear: both;
+    border: dotted 1px #ccc;
     padding: 1px rhythm(1);
 
     .role{
@@ -221,11 +236,11 @@ main {
 }
 
 .discussion-source {
-   
+    border-bottom: $border;
 }
 
 .discussion-response {
-   
+    border-bottom: $border;
 }
 
 .options {
@@ -236,6 +251,9 @@ main {
 }
 
 article {
+    background-color: white;
+    background-color: rgba(white, 0.9);
+    border: dotted 1px #ccc;
     margin-bottom: rhythm(1);
     padding: rhythm(1);
 
@@ -280,12 +298,15 @@ article {
         }
 
         h1 {
+        font-size: 400%;
+        font-variant: small-caps;
         margin-bottom: 5px;
         margin-top: 5px;
         }
 
         .move {
             h1 {
+                font-size: 200%;
                 margin-bottom: 5px;
                 margin-top: 5px;
             }
@@ -326,6 +347,7 @@ article {
 footer[role=contentinfo] {
     clear:both;
     @include clearfix;
+    border-top: 1px solid #ccc;
     padding: rhythm(3) 0;
 
     .ivanhoelink {
@@ -386,12 +408,14 @@ footer[role=contentinfo] {
 #wrap {
     background-color: white;
     background-color: rgba(white, 0.9);
+    border: 1px solid #ccc;
     @include container;
 }
 
 .new-ivanhoe-meta {
     background: #eee;
     background: rgba(black, 0.05);
+    border:1px solid #ccc;
     padding: 1px rhythm(1);
 }
 
@@ -473,6 +497,7 @@ h1 {
 
 nav {
     text-align:right;
+    border-width: 0 0 1px;
 }
 
 #game-data, .source-response-container {
@@ -502,7 +527,7 @@ article {
 }
 
 .new-ivanhoe-form {
-    @include span-columns(10);
+    @include span-columns(8);
 }
 
 .parent-moves {

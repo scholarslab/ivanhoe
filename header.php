@@ -28,7 +28,10 @@
         <header role="banner">
 
             <h1><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo('site_title'); ?></a></h1>
-
+            <?php
+                if($description = get_bloginfo('description')):?>
+                <p><?php echo $description ?></p>
+            <?php endif; ?>
 
             <?php
             wp_nav_menu( array( 'fallback_cb' => 'ivanhoe_page_menu', 'theme_location' => 'header', 'container' => 'nav' ) );

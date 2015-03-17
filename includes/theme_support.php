@@ -24,13 +24,6 @@ function ivanhoe_modify_admin_bar( $wp_admin_bar )
     }
 }
 
-
-function customize_register_init( $wp_customize ){
-    $wp_customize->remove_control('blogdescription');
-}
-
-add_action( 'customize_register', 'customize_register_init' );
-
 function ivanhoe_page_menu( $args = array() )
 {
 
@@ -341,7 +334,6 @@ function ivanhoe_public_template()
 
     }
 }
-
 
 add_filter( 'template_redirect', 'ivanhoe_public_template' );
 
