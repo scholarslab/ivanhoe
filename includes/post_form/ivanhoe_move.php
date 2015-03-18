@@ -91,7 +91,7 @@ class IvanhoeMove extends BasePostForm
           
         }
         
-        
+        //fixes dumb stuff with shortcode embeds
         global $wp_embed;
         echo $wp_embed->run_shortcode($content) . "</div>";
         
