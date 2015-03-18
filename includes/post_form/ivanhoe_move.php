@@ -86,10 +86,14 @@ class IvanhoeMove extends BasePostForm
             $content .= get_post_field("post_content", $move);
             $content .= "</div>";
                 
+            
+            
           
         }
         
-        echo $content . "</div>";
+        
+        global $wp_embed;
+        echo $wp_embed->run_shortcode($content) . "</div>";
         
     }
 }

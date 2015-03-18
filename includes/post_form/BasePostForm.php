@@ -100,6 +100,8 @@ abstract class BasePostForm
      * @var array(string)
      */
     var $error_messages;
+    
+
 
     /**
      * Create the post form.
