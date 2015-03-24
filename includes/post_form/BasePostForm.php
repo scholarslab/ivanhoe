@@ -278,6 +278,7 @@ abstract class BasePostForm
         $this->add_image($post);
         $this->add_move_source($post);
         $this->add_rationale($post);
+        $this->notify_responses($post);
 
         return $post;
     }
@@ -525,4 +526,52 @@ abstract class BasePostForm
      * ARB
      */
      abstract function render_content();
+
+    /**
+     * Notifies authors of posts to which this move responds.
+     */
+    public function notify_responses($post_id)
+    {
+
+        $post = get_post($post_id);
+
+        $game = get_post( $post->post_parent );
+
+        $author = get_userdata( $post->post_author );
+
+        $response_ids = get_post_meta($post->ID, 'Ivanhoe Move Source');
+
+        $blogname = get_bloginfo('name');
+
+        // Email headers.
+        $email_domain =  preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME']));
+        $wp_email = 'wordpress@'.$email_domain;
+        $from = "From: \"$blogname\" <$wp_email>";
+        $reply_to = "Reply-To: do-not-reply@".$email_domain;
+
+        $message_headers = "$from\n" . "Content-Type: text/plain; charset=\"" . get_option('blog_charset') . "\"\n"
+                         . $reply_to . "\n";
+
+        if ($response_ids) {
+            foreach ($response_ids as $response_id) {
+                $response = get_post($response_id);
+                $response_author = get_userdata($response->post_author);
+                $response_author_email = $response_author->user_email;
+
+                // Email subject.
+                $subject = sprintf( __( 'New response on your move "%s"' ), $response->post_title );
+
+                // Email message.
+                $notify_message  = sprintf( __( 'New response on your move "%1$s" in the game "%2$s": "%3$s" by %4$s.' ), $response->post_title, $game->post_title, $post->post_title, $author->display_name ) . "\r\n";
+
+
+                @wp_mail( $response_author_email, wp_specialchars_decode( $subject ), $notify_message, $message_headers );
+                
+            }
+        }
+
+        exit;
+        return true;
+    }
+        
 }
