@@ -570,7 +570,6 @@ abstract class BasePostForm
             }
         }
 
-        exit;
         return true;
     }
         
