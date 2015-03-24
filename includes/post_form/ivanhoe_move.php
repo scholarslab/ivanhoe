@@ -68,9 +68,11 @@ class IvanhoeMove extends BasePostForm
         
         $content = "<div class = 'parent-moves'>";
         
-        
+        //count posts for possible conditions based on number of posts and to name anchors
+        $count = 0;
                
         foreach ($this->move_source as $move) {
+                        
             $args = array (
                 'post_type'   => 'ivanhoe_role',
                 'author'      => get_post_field("post_author", $move),
@@ -78,15 +80,14 @@ class IvanhoeMove extends BasePostForm
             $posts = get_posts($args);
             $role = reset($posts);
             
-            $author = '';
-            
-            $content .= "<div class = 'parent-move'>";
-            $content .= "<h2>" . get_post_field("post_title", $move) . " by ";
+            $content .= "<div id = parent>" ;        
+            $content .= "<h2 class = parent-title>" . get_post_field("post_title", $move) . " by ";
             $content .= $role->post_title ."</h2>"; 
+            $content .= "<div class = 'parent-move'>";
             $content .= get_post_field("post_content", $move);
-            $content .= "</div>";
+            $content .= "</div></div>";
                 
-            
+            $count++;
             
           
         }
