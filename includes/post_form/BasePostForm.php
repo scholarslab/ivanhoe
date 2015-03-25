@@ -556,22 +556,26 @@ abstract class BasePostForm
             foreach ($response_ids as $response_id) {
                 $response = get_post($response_id);
                 $response_author = get_userdata($response->post_author);
-                $response_author_email = $response_author->user_email;
 
-                // Email subject.
-                $subject = sprintf( __( 'New response on your move "%s"' ), $response->post_title );
+                $response_email_option = $response_author->notification_response_moves;
 
-                // Email message.
-                $notify_message  = sprintf( __( 'New response on your move "%1$s" in the game "%2$s": "%3$s" by %4$s.' ), $response->post_title, $game->post_title, $post->post_title, $author->display_name ) . "\r\n";
-                $notify_message .= sprintf( get_permalink($post_id) ) . "\r\n";
+                if ($response_email_option == true) {
+                    $response_author_email = $response_author->user_email;
+
+                    // Email subject.
+                    $subject = sprintf( __( 'New response on your move "%s"' ), $response->post_title );
+
+                    // Email message.
+                    $notify_message  = sprintf( __( 'New response to your move "%1$s" in the game "%2$s": "%3$s" by %4$s.' ), $response->post_title, $game->post_title, $post->post_title, $author->display_name ) . "\r\n";
+                    $notify_message .= sprintf( get_permalink($post_id) ) . "\r\n";
 
 
-                @wp_mail( $response_author_email, wp_specialchars_decode( $subject ), $notify_message, $message_headers );
-                
+                    @wp_mail( $response_author_email, wp_specialchars_decode( $subject ), $notify_message, $message_headers );
+                }
             }
         }
 
         return true;
     }
-        
+
 }
