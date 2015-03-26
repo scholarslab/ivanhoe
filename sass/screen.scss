@@ -157,12 +157,21 @@ img {
     &:visited {
         color: white;
         color: rgba(255, 255, 255, 0.85);
+
     }
     &:hover,
     &:active {
         color: white;
+        background: #8c3;
+        border: 1px solid #7AB82E;
+        border-top: 1px solid #C3D6DF;
     }
 
+}
+
+.clicked {
+    // background: #8c3;
+    background: darken(#34612D, 10%);
 }
 
 .return-button{
