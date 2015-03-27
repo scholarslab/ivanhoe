@@ -210,7 +210,7 @@
             }
         }
 
-        $('.new_source').click(function(){
+        $('#moves').on('click', '.new_source.btn', function(){
             var $this = $(this);
             var value = $this.data('value');
             if (ivanhoe_selected_moves[value] == null) {
@@ -230,15 +230,13 @@
         update_button();          
     }
 
+    multisource();
+
+
     $('#moves').infinitescroll({
         navSelector: '#pagination',
         nextSelector: '#pagination .next',
         itemSelector: '#moves article.ivanhoe_move'
-    },
-    function () {
-        multisource();
     });
-
-    multisource();
-
+   
 </script>
