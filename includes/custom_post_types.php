@@ -46,6 +46,7 @@ function ivanhoe_create_post_types()
                 'edit_post'          => 'update_core',
                 'read_post'          => 'read',
                 'delete_post'        => 'update_core',
+                'delete_posts'       => 'update_core',
                 'edit_posts'         => 'update_core',
                 'edit_others_posts'  => 'update_core',
                 'publish_posts'      => 'update_core',
