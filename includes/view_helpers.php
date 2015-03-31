@@ -132,7 +132,7 @@ function ivanhoe_paginate_links ( $query = null )
             '%#%',
             get_pagenum_link( $big, false )
         );
-        $html = '<div class="pagination">'
+        $html = '<div id="pagination">'
             . paginate_links( array(
                 'base'      => $base,
                 'format'    => '?paged=%#%',

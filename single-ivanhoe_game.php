@@ -35,7 +35,47 @@
     </header>
 
     <div id="game-data">
+        <div>
+        <!-- Shows either the make a move button or the make a role button -->
+            <?php if ( is_user_logged_in() ) :
+
+                if ( $role !== FALSE ) :
+
+                ?>
+
+                    <form name="move_info" action='<?php echo home_url(); ?>' method='get'>
+                        <input type="hidden" name="ivanhoe" value="ivanhoe_move">
+                        <input type='hidden' name='parent_post' value='<?php echo $ivanhoe_game_id; ?>'>
+                        <input type='hidden' name='ivanhoe_role_id' value='<?php echo $role->ID; ?>'>
+                        <h3 id='multi_source_list_of_doom_header'>Responding to the following</h3>
+                        <ul class="basic_element_of_semantically_incoherent_metaphor">
+                        </ul>
+                        <input type="submit" name="movesubmit" value="<?php _e( 'Make a Move', 'ivanhoe' ); ?>" class="btn" id="respond-to-move">
+                    </form>
+
+                <?php else : ?>
+
+                    <?php $url = ivanhoe_role_form_url($post); ?>
+
+                    <?php echo ivanhoe_a($url, 'Make a Role!', 'class="btn"', ESCAPE_TEXT); ?>
+
+                <?php endif; ?>
+
+            <?php endif; ?>
+        <!-- Ends section showing buttons -->
+
+        </div>
+
+        <!-- Shows game description -->
+       
+        <h3><?php _e( 'Game Description', 'ivanhoe' ); ?></h3>
+
+        <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
+
+        <?php the_excerpt(); ?>
+
         <!-- Shows role of current user -->
+
         <?php if ($role !== FALSE): ?>
 
         <h3><?php _e( 'Your Current Role', 'ivanhoe' ); ?></h3>
@@ -84,44 +124,8 @@
                 <?php wp_reset_postdata(); ?>
                 <?php endif;
             endif; ?>
-            <!-- Ends section showing other characters -->
+        <!-- Ends section showing other characters -->
 
-        <h3><?php _e( 'Game Description', 'ivanhoe' ); ?></h3>
-
-        <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
-
-        <?php the_content(); ?>
-
-        <div>
-        <!-- Shows either the make a move button or the make a role button -->
-            <?php if ( is_user_logged_in() ) :
-
-                if ( $role !== FALSE ) :
-
-                ?>
-
-                    <form name="move_info" action='<?php echo home_url(); ?>' method='get'>
-                        <input type="hidden" name="ivanhoe" value="ivanhoe_move">
-                        <input type='hidden' name='parent_post' value='<?php echo $ivanhoe_game_id; ?>'>
-                        <input type='hidden' name='ivanhoe_role_id' value='<?php echo $role->ID; ?>'>
-                        <h3 id='multi_source_list_of_doom_header'>Responding to the following</h3>
-                        <ul class="basic_element_of_semantically_incoherent_metaphor">
-                        </ul>
-                        <input type="submit" name="movesubmit" value="<?php _e( 'Make a Move', 'ivanhoe' ); ?>" class="btn" id="respond-to-move">
-                    </form>
-
-                <?php else : ?>
-
-                    <?php $url = ivanhoe_role_form_url($post); ?>
-
-                    <?php echo ivanhoe_a($url, 'Make a Role!', 'class="btn"', ESCAPE_TEXT); ?>
-
-                <?php endif; ?>
-
-            <?php endif; ?>
-            <!-- Ends section showing buttons -->
-
-        </div>
     </div>
 
     <!-- Main content of page -->
@@ -131,7 +135,6 @@
     if ( $wp_query->have_posts()) : ?>
 
     <div id="moves">
-        <?php echo ivanhoe_paginate_links($wp_query);?>
 
         <?php
         while($wp_query->have_posts()) : $wp_query->the_post(); ?>
@@ -141,7 +144,13 @@
                 <p><span class="byline"><?php the_author_posts_link(); ?></span>
             &middot; <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
                 <?php $ivanhoe_post_id=$post->ID; ?>
-                    <span class="new_source btn" data-title="<?php echo get_the_title($ivanhoe_post_id); ?>" data-value="<?php echo $ivanhoe_post_id; ?>">Add to Moves</span>
+                <?php if ( is_user_logged_in() ) :
+
+                if ( $role !== FALSE ) :
+
+                ?>
+                <span class="new_source btn" data-title="<?php echo get_the_title($ivanhoe_post_id); ?>" data-value="<?php echo $ivanhoe_post_id; ?>">Add to Moves</span>
+                <?php endif; endif; ?>
             </header>
 
             <div class="excerpt">
@@ -168,8 +177,6 @@
         <?php echo ivanhoe_paginate_links($wp_query);?>
     </div>
 
-
-
     <?php else : ?>
 
     <p><?php _e( 'There are no moves for this game.', 'ivanhoe' ); ?></p>
@@ -186,39 +193,50 @@
 <?php get_footer(); ?>
 
 <script type="text/javascript">
-    var ivanhoe_selected_moves = {};
+    function multisource () {
+        var ivanhoe_selected_moves = {};
 
-    function update_button(){
-        var li = $('.basic_element_of_semantically_incoherent_metaphor li');
-        var header = $('#multi_source_list_of_doom_header');
-        if (li.length === 0) {
-            document.move_info.
-            movesubmit.value="Make a Move";
-            header.hide ();
-        } else {
-            document.move_info.
-            movesubmit.value="Respond";
-            header.show ();
+        function update_button(){
+            var li = $('.basic_element_of_semantically_incoherent_metaphor li');
+            var header = $('#multi_source_list_of_doom_header');
+            if (li.length === 0) {
+                document.move_info.
+                movesubmit.value="Make a Move";
+                header.hide ();
+            } else {
+                document.move_info.
+                movesubmit.value="Respond";
+                header.show ();
+            }
         }
+
+        $('#moves').on('click', '.new_source.btn', function(){
+            var $this = $(this);
+            var value = $this.data('value');
+            if (ivanhoe_selected_moves[value] == null) {
+                $('.basic_element_of_semantically_incoherent_metaphor').append
+                ("<li><input type='hidden' value='" + value + "' name='move_source[]'>" + $this.data('title') + "</li>").click
+                (function( event ) {
+                    $(event.target).remove();
+                    update_button();
+                    delete ivanhoe_selected_moves[value];
+                });
+
+                update_button();
+            ivanhoe_selected_moves[value] = true;
+            }
+        });
+
+        update_button();          
     }
 
-    $('.new_source').click(function(){
-        var $this = $(this);
-        var value = $this.data('value');
-        if (ivanhoe_selected_moves[value] == null) {
-            $('.basic_element_of_semantically_incoherent_metaphor').append
-            ("<li><input type='hidden' value='" + value + "' name='move_source[]'>" + $this.data('title') + "</li>").click
-            (function( event ) {
-                $(event.target).remove();
-                update_button();
-                delete ivanhoe_selected_moves[value];
-            });
+    multisource();
 
-            update_button();
-        ivanhoe_selected_moves[value] = true;
-        }
+
+    $('#moves').infinitescroll({
+        navSelector: '#pagination',
+        nextSelector: '#pagination .next',
+        itemSelector: '#moves article.ivanhoe_move'
     });
-
-    update_button();
-
+   
 </script>

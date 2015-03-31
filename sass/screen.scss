@@ -14,9 +14,14 @@ body {
     color: #444;
     margin:0;
     padding:0;
+    font-size: 12px;
 }
 
 h1 {
+    font-family: 'Crimson Text', Georgia, serif;
+    text-transform: uppercase;
+	letter-spacing: .2em;
+    font-size: 2.5em;
     font-weight: 200;
     @include adjust-font-size-to(30px);
 }
@@ -247,7 +252,7 @@ article {
     background-color: rgba(white, 0.9);
     border: dotted 1px #ccc;
     margin-bottom: rhythm(1);
-    padding: 1px rhythm(1);
+    padding: rhythm(1);
 
     /* Removes padding, background, and border on the first article on blog posts and author pages. */
     .single main > &,
@@ -402,8 +407,6 @@ footer[role=contentinfo] {
     background-color: rgba(white, 0.9);
     border: 1px solid #ccc;
     @include container;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
 .new-ivanhoe-meta {
@@ -438,17 +441,17 @@ footer[role=contentinfo] {
     }
 
     .comment-author {
-        line-height: 32px;
+        line-height: 2em;
 
         img {
             float:left;
-            margin-right: 5px;
+            margin-right: .5em;
         }
     }
 
     .comment-meta {
         text-align:right;
-        line-height: 32px;
+        line-height: 2em;
 
         &:after {
             display:table;
@@ -469,7 +472,7 @@ footer[role=contentinfo] {
 #commentform {
     input[type=text],
     textarea {
-        max-width: 400px;
+         @include span-columns(4);
     }
 }
 
@@ -478,11 +481,11 @@ footer[role=contentinfo] {
 @media (min-width: 700px) {
 
 html {
-    padding:40px;
+    padding:2em;
 }
 
 h1 {
-    @include adjust-font-size-to(40px);
+    @include adjust-font-size-to(30px);
 }
 
 #wrap {
@@ -521,6 +524,10 @@ article {
 }
 
 .new-ivanhoe-form {
+    @include span-columns(8);
+}
+
+.parent-moves {
     @include span-columns(8);
 }
 
@@ -568,22 +575,22 @@ footer[role=contentinfo] .ivanhoelink {
 
 }
 
-
+/* wtf is this? */
 .bs-callout {
-  margin: 20px 0;
-  padding: 20px;
+  margin: 1em 0;
+  padding: 1em;
   border-left: 3px solid #eee;
 
   h4 {
     margin-top: 0;
-    margin-bottom: 5px;
-    font-size: 18px;
+    margin-bottom: .5em;
+    font-size: 1.5em;
     font-weight: 500;
     font-height: 1.1;
   }
 
   p {
-    mrgin: 0 0 10px;
+    mrgin: 0 0 1em;
 
     &:last-child { margin-bottom: 0;}
   }

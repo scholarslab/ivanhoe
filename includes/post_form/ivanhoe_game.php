@@ -30,5 +30,9 @@ class IvanhoeGame extends BasePostForm
     {
         return '';
     }
+    
+    public function render_content(){
+        return;
+    }
 }
 

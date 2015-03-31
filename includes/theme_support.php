@@ -5,15 +5,19 @@ add_theme_support('menus');
 add_theme_support('post-thumbnails', array('ivanhoe_role', 'ivanhoe_game'));
 add_theme_support( 'automatic-feed-links' );
 
-/**
- * Custom backgrounds.
- */
-$ivanhoe_background_defaults = array(
-    'default-color' => '#fff',
-    'default-image' => get_template_directory_uri() . '/images/tile.png'
-);
+// Queue infinite scroll script
+function add_infinite_scroll_script ()
+{
+    wp_enqueue_script(
+        'jquery.infinitescroll.min', 
+        get_template_directory_uri() . '/javascripts/infinite-scroll/jquery.infinitescroll.min.js',
+        array('jquery'),
+        null,
+        true
+        );
+}
 
-add_theme_support( 'custom-background', $ivanhoe_background_defaults );
+add_action('wp_enqueue_scripts', 'add_infinite_scroll_script');
 
 /**
  * Modify the admin bar to remove nodes, preventing people from making

@@ -101,6 +101,8 @@ abstract class BasePostForm
      */
     var $error_messages;
 
+
+
     /**
      * Create the post form.
      */
@@ -113,6 +115,7 @@ abstract class BasePostForm
 
         $this->populate_labels();
         $this->read_http_vars();
+
 
         $this->rationale_title   = "";
         $this->rationale_content = "";
@@ -140,6 +143,8 @@ abstract class BasePostForm
         $game   = get_post($this->parent_post);
 
         $this->get_header();
+
+        $this->render_content();
         $this->render_form_title();
         $this->render_errors();
         $this->render_message($game);
@@ -512,4 +517,12 @@ abstract class BasePostForm
     {
         return;
     }
+
+    /* Renders non-form content
+     *
+     * Useless comment is useless. Will replace later (maybe)
+     *
+     * ARB
+     */
+     abstract function render_content();
 }
