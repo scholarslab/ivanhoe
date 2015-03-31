@@ -18,15 +18,12 @@ body {
 }
 
 h1 {
-<<<<<<< HEAD
     font-family: 'Crimson Text', Georgia, serif;
     text-transform: uppercase;
 	letter-spacing: .2em;
     font-size: 2.5em;
-=======
     font-weight: 200;
     @include adjust-font-size-to(30px);
->>>>>>> parent of 3101374... Make style as boring as possible (no more color ever)
 }
 
 h2 {

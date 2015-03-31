@@ -20,7 +20,7 @@ describe 'Make a Move View', :type => :feature, :js => true do
       end
 
       it 'has the Make a Move header' do
-        expect(page).to have_content('Make a Move')
+        expect(page).to have_content('MAKE A MOVE')
       end
 
       it 'has a move title label' do

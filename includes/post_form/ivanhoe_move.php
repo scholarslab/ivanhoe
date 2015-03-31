@@ -80,18 +80,16 @@ class IvanhoeMove extends BasePostForm
             $posts = get_posts($args);
             $role = reset($posts);
             
-<<<<<<< HEAD
+
             $author = '';
             
-            $content .= "<div class = 'parent-move'>";
+            $content .= "<div>";
             $content .= "<h1>" . get_post_field("post_title", $move) . " by ";
             $content .= $role->post_title ."</h1>"; 
-=======
             $content .= "<div id = parent>" ;        
             $content .= "<h2 class = parent-title>" . get_post_field("post_title", $move) . " by ";
             $content .= $role->post_title ."</h2>"; 
             $content .= "<div class = 'parent-move'>";
->>>>>>> c73815b... Add .js to toggle parent moves on move page
             $content .= get_post_field("post_content", $move);
             $content .= "</div></div>";
                 
