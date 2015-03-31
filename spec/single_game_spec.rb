@@ -173,24 +173,29 @@ describe "Single Game View", :type => :feature, :js => true  do
 
     end
 
-    describe "with over 10 moves" do
+   # The following pagination tests are no longer relevant due to
+   #  infinite scroll. We need to write tests to make sure that infinite
+   # scroll works. Can make capybara execute script to scroll to bottom
+   # of the page.
 
-      before do
-        make_role
-        11.times { make_a_move }
-      end
+    # describe "with over 10 moves" do
 
-      it 'has pagination' do
-        expect(page).to have_selector('.pagination')
-      end
+    #   before do
+    #     make_role
+    #     11.times { make_a_move }
+    #   end
 
-      it 'indicates the current page in pagination' do
-        within('.pagination', match: :first) do
-          expect(page).to have_selector('.current')
-        end
-      end
+    #   it 'has pagination' do
+    #     expect(page).to have_selector('.pagination')
+    #   end
 
-    end
+    #   it 'indicates the current page in pagination' do
+    #     within('.pagination', match: :first) do
+    #       expect(page).to have_selector('.current')
+    #     end
+    #   end
+
+    # end
 
   end
 
