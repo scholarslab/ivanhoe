@@ -24,13 +24,6 @@ describe "A single game view", :type => :feature, :js => true do
             expect(page).to have_selector('article.ivanhoe_move', count: 11)
         end
 
-        # go to the game
-        # make a role
-        # make at least 10 moves
-        # scroll to the bottom of the page to trigger infinite scroll
-        # create an array of moves
-        # check for something in the 11th move
-
     end
 
 end
