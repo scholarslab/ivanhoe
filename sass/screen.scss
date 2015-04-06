@@ -10,20 +10,24 @@ html {
 }
 
 body {
-    font-family: 'Crimson Text', Georgia, serif;
+    font-family: "Source Sans Pro", Helvetica, Arial, sans-serif;
     color: #444;
     margin:0;
     padding:0;
+    font-size: 12px;
 }
 
 h1 {
     font-family: 'Crimson Text', Georgia, serif;
     text-transform: uppercase;
 	letter-spacing: .2em;
+    font-size: 2.5em;
+    font-weight: 200;
+    @include adjust-font-size-to(30px);
 }
 
 h2 {
-    font-family: 'Crimson Text', Georgia, serif;
+    font-weight: 700;
 }
 
 .excerpt {
@@ -47,10 +51,10 @@ h2 {
 
 /* Links */
 a {
-    &:link {color: #000;}
-    &:visited {color: #000;}
-    &:hover {color: #aaa; text-decoration:none;}
-    &:active {color: #000;}
+    &:link {color: #004D05;}
+    &:visited {color: #004D05;}
+    &:hover {color: #8c3; text-decoration:none;}
+    &:active {color: #8a3;}
 
     h1 &,
     h2 & {
@@ -139,17 +143,24 @@ img {
     display: block;
     text-align: center;
     position: relative;
-    background: #000;
+    background: #34612D;
     margin-top: 10px;
+
+    /*Background Gradients */
+    @include background-image(linear-gradient(bottom, #34612D 0%, #217D0F 100%, #B5D1B2 100%));
+    @include border-radius(10px);
+
+    border: 1px solid #217D0F;
+    border-top: 1px solid #C3D6DF;
 
     &:link,
     &:visited {
-        color: #ddd;
+        color: white;
         color: rgba(255, 255, 255, 0.85);
     }
     &:hover,
     &:active {
-        color: #ddd;
+        color: white;
     }
 
 }
@@ -168,7 +179,8 @@ header[role=banner] {
 nav {
     display:block;
     text-align:center;
-    border-bottom: black solid 3px;
+    border: 1px solid #ccc;
+    border-width: 1px 0;
 
     a {
         text-decoration:none;
@@ -197,6 +209,7 @@ main {
     clear:both;
     overflow:hidden;
     zoom:1;
+    border-radius: 5px;
     padding-top: $gutter-width;
     padding-bottom: $gutter-width;
 
@@ -207,6 +220,7 @@ main {
     background: #eee;
     background: rgba(black, 0.05);
     clear: both;
+    border: dotted 1px #ccc;
     padding: 1px rhythm(1);
 
     .role{
@@ -219,11 +233,11 @@ main {
 }
 
 .discussion-source {
-   
+    border-bottom: $border;
 }
 
 .discussion-response {
-   
+    border-bottom: $border;
 }
 
 .options {
@@ -234,8 +248,11 @@ main {
 }
 
 article {
+    background-color: white;
+    background-color: rgba(white, 0.9);
+    border: dotted 1px #ccc;
     margin-bottom: rhythm(1);
-    padding: 1px rhythm(1);
+    padding: rhythm(1);
 
     /* Removes padding, background, and border on the first article on blog posts and author pages. */
     .single main > &,
@@ -257,12 +274,17 @@ article {
             margin-right: rhythm(1);
         }
     }
-
+    
+    
     /* Articles with a class of move.
     &.move {
         margin-bottom: rhythm(3);
         @include clearfix;
-    }
+    } 
+    
+    closed this comment that was commenting this out, but not sure if it was supposed to be or not. -ARB
+    */
+ 
 
     /* Articles with a class of game. */
     &.game {
@@ -278,12 +300,15 @@ article {
         }
 
         h1 {
+        font-size: 400%;
+        font-variant: small-caps;
         margin-bottom: 5px;
         margin-top: 5px;
         }
 
         .move {
             h1 {
+                font-size: 200%;
                 margin-bottom: 5px;
                 margin-top: 5px;
             }
@@ -324,6 +349,7 @@ article {
 footer[role=contentinfo] {
     clear:both;
     @include clearfix;
+    border-top: 1px solid #ccc;
     padding: rhythm(3) 0;
 
     .ivanhoelink {
@@ -384,14 +410,14 @@ footer[role=contentinfo] {
 #wrap {
     background-color: white;
     background-color: rgba(white, 0.9);
+    border: 1px solid #ccc;
     @include container;
-    padding-left: 10px;
-    padding-right: 10px;
 }
 
 .new-ivanhoe-meta {
     background: #eee;
     background: rgba(black, 0.05);
+    border:1px solid #ccc;
     padding: 1px rhythm(1);
 }
 
@@ -420,17 +446,17 @@ footer[role=contentinfo] {
     }
 
     .comment-author {
-        line-height: 32px;
+        line-height: 2em;
 
         img {
             float:left;
-            margin-right: 5px;
+            margin-right: .5em;
         }
     }
 
     .comment-meta {
         text-align:right;
-        line-height: 32px;
+        line-height: 2em;
 
         &:after {
             display:table;
@@ -451,7 +477,7 @@ footer[role=contentinfo] {
 #commentform {
     input[type=text],
     textarea {
-        max-width: 400px;
+         @include span-columns(4);
     }
 }
 
@@ -460,11 +486,11 @@ footer[role=contentinfo] {
 @media (min-width: 700px) {
 
 html {
-    padding:40px;
+    padding:2em;
 }
 
 h1 {
-    @include adjust-font-size-to(40px);
+    @include adjust-font-size-to(30px);
 }
 
 #wrap {
@@ -473,6 +499,7 @@ h1 {
 
 nav {
     text-align:right;
+    border-width: 0 0 1px;
 }
 
 #game-data, .source-response-container {
@@ -502,7 +529,7 @@ article {
 }
 
 .new-ivanhoe-form {
-    @include span-columns(10);
+    @include span-columns(8);
 }
 
 .parent-moves {
@@ -553,22 +580,22 @@ footer[role=contentinfo] .ivanhoelink {
 
 }
 
-
+/* wtf is this? */
 .bs-callout {
-  margin: 20px 0;
-  padding: 20px;
+  margin: 1em 0;
+  padding: 1em;
   border-left: 3px solid #eee;
 
   h4 {
     margin-top: 0;
-    margin-bottom: 5px;
-    font-size: 18px;
+    margin-bottom: .5em;
+    font-size: 1.5em;
     font-weight: 500;
     font-height: 1.1;
   }
 
   p {
-    mrgin: 0 0 10px;
+    mrgin: 0 0 1em;
 
     &:last-child { margin-bottom: 0;}
   }
@@ -593,4 +620,16 @@ footer[role=contentinfo] .ivanhoelink {
   background-color: #f4f8fa;
   border-color: #5bc0de;
 }
+
+
+/* Parent moves on Make a Move page */ 
+.parent-moves{
+    height: auto !important;
+    display: block;
+}
+
+.parent-move {
+    display: none;
+}
+
 

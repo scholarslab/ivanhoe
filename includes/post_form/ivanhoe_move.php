@@ -63,34 +63,44 @@ class IvanhoeMove extends BasePostForm
         return $buffer;
     }
     
-    /* here goes nothin' -ARB */
+    /* Shows parent moves -ARB */
     public function render_content(){
         
         $content = "<div class = 'parent-moves'>";
         
-        
+        //count posts for possible conditions based on number of posts and to name anchors
+        $count = 0;
                
         foreach ($this->move_source as $move) {
+                        
             $args = array (
                 'post_type'   => 'ivanhoe_role',
                 'author'      => get_post_field("post_author", $move),
             );
             $posts = get_posts($args);
             $role = reset($posts);
-        
-            /* Role name place holder til I figure out an easy way to reference role names*/         
+            
+
             $author = '';
             
-            $content .= "<div class = 'parent-move'>";
-            $content .= "<h2>" . get_post_field("post_title", $move) . " by ";
+            $content .= "<div>";
+            $content .= "<h1>" . get_post_field("post_title", $move) . " by ";
+            $content .= $role->post_title ."</h1>"; 
+            $content .= "<div id = parent>" ;        
+            $content .= "<h2 class = parent-title>" . get_post_field("post_title", $move) . " by ";
             $content .= $role->post_title ."</h2>"; 
+            $content .= "<div class = 'parent-move'>";
             $content .= get_post_field("post_content", $move);
-            $content .= "</div>";
+            $content .= "</div></div>";
                 
+            $count++;
+            
           
         }
         
-        echo $content . "</div>";
+        //fixes dumb stuff with shortcode embeds
+        global $wp_embed;
+        echo $wp_embed->run_shortcode($content) . "</div>";
         
     }
 }
