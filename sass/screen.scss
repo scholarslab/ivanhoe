@@ -51,10 +51,10 @@ h2 {
 
 /* Links */
 a {
-    &:link {color: #14293D;}
+    &:link {color: #001F33;}
     &:visited {color: #336699;}
-    &:hover {color: #7094B8; text-decoration:none;}
-    &:active {color: #7094B8;}
+    &:hover {color: #2E5CB8; text-decoration:none;}
+    &:active {color: #2E5CB8;}
 
     h1 &,
     h2 & {
@@ -143,7 +143,7 @@ img {
     display: block;
     text-align: center;
     position: relative;
-    background: #34612D;
+    background: #336699;
     margin-top: 10px;
 
     /*Background Gradients */
@@ -162,8 +162,8 @@ img {
     &:hover,
     &:active {
         color: white;
-        background: #7094B8;
-        border: 1px solid #7AB82E;
+        background: #2E5CB8;
+        border: 1px solid #254A93;
         border-top: 1px solid #C3D6DF;
     }
 
@@ -171,7 +171,15 @@ img {
 
 .clicked {
     // background: #8c3;
-    background: darken(#34612D, 10%);
+    background: darken(#336699, 10%);
+
+    /*Background Gradients */
+    @include background-image(linear-gradient(bottom, #1F3D5C 0%, #001F33 100%, #001F33 100%));
+    @include border-radius(10px);
+
+    border: 1px solid #1F3D5C;
+    border-top: 1px solid #001F33;
+
 }
 
 .return-button{
