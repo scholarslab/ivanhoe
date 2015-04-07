@@ -51,10 +51,10 @@ h2 {
 
 /* Links */
 a {
-    &:link {color: #004D05;}
-    &:visited {color: #004D05;}
-    &:hover {color: #8c3; text-decoration:none;}
-    &:active {color: #8a3;}
+    &:link {color: #14293D;}
+    &:visited {color: #336699;}
+    &:hover {color: #7094B8; text-decoration:none;}
+    &:active {color: #7094B8;}
 
     h1 &,
     h2 & {
@@ -147,10 +147,10 @@ img {
     margin-top: 10px;
 
     /*Background Gradients */
-    @include background-image(linear-gradient(bottom, #34612D 0%, #217D0F 100%, #B5D1B2 100%));
+    @include background-image(linear-gradient(bottom, #14293D 0%, #336699 100%, #336699 100%));
     @include border-radius(10px);
 
-    border: 1px solid #217D0F;
+    border: 1px solid #14293D;
     border-top: 1px solid #C3D6DF;
 
     &:link,
@@ -162,7 +162,7 @@ img {
     &:hover,
     &:active {
         color: white;
-        background: #8c3;
+        background: #7094B8;
         border: 1px solid #7AB82E;
         border-top: 1px solid #C3D6DF;
     }
