@@ -6,7 +6,7 @@
 
 html {
     margin:0;
-    padding:10px;
+    padding: 0;
 }
 
 body {
@@ -20,14 +20,17 @@ body {
 h1 {
     font-family: 'Crimson Text', Georgia, serif;
     text-transform: uppercase;
-	letter-spacing: .2em;
-    font-size: 2.5em;
+	letter-spacing: .15em;
+    font-size: 3em;
 }
 
 h2 {
     font-family: 'Crimson Text', Georgia, serif;
 }
 
+p {
+    font-size: 1.5em;
+}
 .excerpt {
   @include clearfix;
 }
@@ -68,16 +71,16 @@ a, img {
 input[type=text], label, textarea{display: block;}
 
 label {
-    font-size: 20px;
+    font-size: 1.5em;
     font-weight: bold;
-    padding-top: 10px;
-    padding-bottom: 5px;
+    padding-top: .75em;
+    padding-bottom: .75em;
 }
 
 input[type=text], textarea {
     width: 100%;
     border-radius: 3px;
-    padding: 5px;
+    padding: .5em;
     border: 1px solid #ccc;
 }
 
@@ -132,18 +135,18 @@ img {
 }
 
 .btn {
-    width: 200px;
-    min-height: 30px;
-    line-height: 30px;
+    font-family: 'Crimson Text', Georgia, serif;
+    width: 10em;    
+    min-height: 2em;
+    line-height: 2em;
     color: white;
     text-decoration: none;
-    font-size: 18px;
+    font-size: 1.5em;
     display: block;
     text-align: center;
-    position: relative;
     background: #000;
-    margin-top: 10px;
-
+    border: none;
+    
     &:link,
     &:visited {
         color: #ddd;
@@ -153,12 +156,14 @@ img {
     &:active {
         color: #ddd;
     }
+    
 
 }
 
 .return-button{
     text-align: right;
 }
+
 
 
 /* Banner */
@@ -202,7 +207,7 @@ main {
     padding-top: $gutter-width;
     padding-bottom: $gutter-width;
 
-    header { margin-bottom: 10px;}
+    header { margin-bottom: .5em;}
 }
 
 #game-data, .source-response-container {
@@ -214,9 +219,13 @@ main {
     .role{
         .image-container {
             float:left;
-            width: 75px;
+            @include span-columns(8);
             margin-right: 1em;
         }
+    }
+    
+    .btn {
+        
     }
 }
 
@@ -229,8 +238,6 @@ main {
 }
 
 .options {
-    margin-top: 20px;
-    margin-bottom: 20px;
     @include span-columns(12);
     text-align: center;
 }
@@ -261,14 +268,12 @@ article {
     }
     
     
-    /* Articles with a class of move.
+    /* Articles with a class of move. */
     &.move {
         margin-bottom: rhythm(3);
         @include clearfix;
     } 
-    
-    closed this comment that was commenting this out, but not sure if it was supposed to be or not. -ARB
-    */
+   
  
 
     /* Articles with a class of game. */
@@ -283,16 +288,16 @@ article {
             margin-bottom: rhythm(1);
             padding: 0;
         }
-
+/* whyyy so redundant -- come back and deal with :( */ 
         h1 {
-        margin-bottom: 5px;
-        margin-top: 5px;
+        margin-bottom: .5em;
+        margin-top: .5em;
         }
 
         .move {
             h1 {
-                margin-bottom: 5px;
-                margin-top: 5px;
+                margin-bottom: .5em;
+                margin-top: .5em;
             }
         }
     }
@@ -343,8 +348,8 @@ footer[role=contentinfo] {
 
 
 .pagination {
-    margin-bottom: 50px;
-    margin-top: 20px;
+    margin-bottom: 1em;
+    margin-top: 1em;
     a {
       text-decoration: none;
     }
@@ -488,26 +493,13 @@ nav {
     @include span-columns(8);
 }
 
-article {
-    header {
-        .btn {
-            float: right;
-            display: inline;
-        }
-
-        p {
-            @include span-columns(6);
-        }
-    }
-
-}
 
 .new-ivanhoe-meta {
     @include span-columns(4 omega);
 }
 
 .new-ivanhoe-form {
-    @include span-columns(10);
+    @include span-columns(8);
 }
 
 .parent-moves {
@@ -558,7 +550,8 @@ footer[role=contentinfo] .ivanhoelink {
 
 }
 
-/* wtf is this? */
+/* wtf is this? 
+
 .bs-callout {
   margin: 1em 0;
   padding: 1em;
@@ -598,6 +591,7 @@ footer[role=contentinfo] .ivanhoelink {
   background-color: #f4f8fa;
   border-color: #5bc0de;
 }
+*/
 
 
 /* Parent moves on Make a Move page */ 
