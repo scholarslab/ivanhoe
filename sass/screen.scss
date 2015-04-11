@@ -257,10 +257,8 @@ article {
         background:none;
         border:none;
     }
-
     @include clearfix;
-
-
+    
     /* Articles with a class of role. */
     &.role{
         @include span-columns(12);
@@ -270,15 +268,13 @@ article {
             margin-right: rhythm(1);
         }
     }
-    
-    
-   /* Articles with a class of move. */
-
+        
+    /* Articles with a class of move. */
     &.move {
         margin-bottom: rhythm(3);
         @include clearfix;
 
- 
+    }
 
     /* Articles with a class of game. */
     &.game {
@@ -292,7 +288,7 @@ article {
             margin-bottom: rhythm(1);
             padding: 0;
         }
-/* whyyy so redundant -- come back and deal with :( */ 
+        /* whyyy so redundant -- come back and deal with :( */ 
         h1 {
         margin-bottom: .5em;
         margin-top: .5em;
@@ -315,7 +311,7 @@ article {
 
     }
 
-/* Articles with a class of character_list. */
+    /* Articles with a class of character_list. */
     ul.character_list{
         list-style-type: none;
         padding-left: 0;
@@ -414,7 +410,6 @@ footer[role=contentinfo] {
 }
 
 .author .roles {
-
     .wp-post-image {
         float:right;
         margin-right:0;
@@ -580,9 +575,8 @@ nav {
 footer[role=contentinfo] .ivanhoelink {
     width: space(3);
 }
-
-
 }
+
 
 /* wtf is this? 
 
