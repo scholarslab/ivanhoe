@@ -154,7 +154,8 @@ img {
     }
     &:hover,
     &:active {
-        color: #ddd;
+        color: #ddd;     
+        cursor: pointer;
     }
     
 
@@ -332,6 +333,7 @@ article {
     margin-bottom: 4em;
 }
 
+
 /* Global footer */
 footer[role=contentinfo] {
     clear:both;
@@ -346,7 +348,7 @@ footer[role=contentinfo] {
     }
 }
 
-
+/* Will be obsolete when infinite scroll happens */ 
 .pagination {
     margin-bottom: 1em;
     margin-top: 1em;
@@ -379,7 +381,6 @@ footer[role=contentinfo] {
 }
 
 .attribution {
-    color: red;
     font-variant: small-caps;
 }
 
@@ -406,6 +407,7 @@ footer[role=contentinfo] {
 }
 
 .author .description {
+
 }
 
 .author .roles {
@@ -491,6 +493,10 @@ nav {
 
 #moves{
     @include span-columns(8);
+    
+    article{
+        border-bottom: solid black 1px;
+    }
 }
 
 
@@ -523,10 +529,35 @@ nav {
 
 .game-discussion-source {
     @include span-columns(4,9);
+    font-size: 1.25em;
+    
+    h3 {
+        padding: 0;
+        margin-bottom: 0;
+        margin-top: 2em;
+    }
+    
+    ul {
+        list-style: none;
+        padding: 0;
+    }
 }
 
 .game-discussion-response {
     @include span-columns(4 omega,9);
+    font-size: 1.25em;
+    
+    h3 {
+        padding: 0;
+        margin-bottom: 0;
+        margin-top: 2em;
+    }
+    
+    ul {
+        list-style: none;
+        padding: 0;
+    }
+    
 }
 
 .moves{
