@@ -16,7 +16,7 @@ describe 'Make a Game View', :type => :feature, :js => true do
     end
 
     it 'has the Make a Game header' do
-      expect(page).to have_content('Make a Game')
+      expect(page).to have_content('MAKE A GAME')
     end
 
     it 'has a game title label' do

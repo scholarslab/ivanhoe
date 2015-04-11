@@ -15,5 +15,6 @@ group :test do
   gem 'ffaker'
   gem 'sequel'
   gem 'database_cleaner'
+  gem 'mustache'
 end
 

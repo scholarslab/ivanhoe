@@ -20,8 +20,11 @@ body {
 h1 {
     font-family: 'Crimson Text', Georgia, serif;
     text-transform: uppercase;
-	letter-spacing: .15em;
-    font-size: 3em;
+	letter-spacing: .2em;
+    font-size: 2.5em;
+    font-weight: 200;
+    @include adjust-font-size-to(30px);
+
 }
 
 h2 {
@@ -269,12 +272,12 @@ article {
     }
     
     
-    /* Articles with a class of move. */
+   /* Articles with a class of move. */
+
     &.move {
         margin-bottom: rhythm(3);
         @include clearfix;
-    } 
-   
+
  
 
     /* Articles with a class of game. */
@@ -623,6 +626,18 @@ footer[role=contentinfo] .ivanhoelink {
   border-color: #5bc0de;
 }
 */
+
+
+/* Parent moves on Make a Move page */ 
+.parent-moves{
+    height: auto !important;
+    display: block;
+}
+
+.parent-move {
+    display: none;
+}
+
 
 
 /* Parent moves on Make a Move page */ 
