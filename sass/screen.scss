@@ -22,9 +22,7 @@ h1 {
     text-transform: uppercase;
 	letter-spacing: .2em;
     font-size: 2.5em;
-    font-weight: 200;
-    @include adjust-font-size-to(30px);
-
+    font-weight: 700;   
 }
 
 h2 {
@@ -87,10 +85,6 @@ input[type=text], textarea {
     border: 1px solid #ccc;
 }
 
-textarea {
-    display: block;
-}
-
 /* Images */
 img {
     max-width: 100%;
@@ -117,7 +111,7 @@ img {
 }
 
 .wp-caption-text {
-    font-size: 75%;
+    font-size: 1em;
     text-align: center;
 }
 
@@ -129,7 +123,7 @@ img {
 .eyebrow {
     margin:0;
     color: #777;
-    font-size: 90%;
+    font-size: 1em;
     font-weight:bold;
 }
 
@@ -173,13 +167,20 @@ img {
 /* Banner */
 header[role=banner] {
     @include clearfix;
+    @include span-columns(8);
+    border-bottom: black solid 3px;
+    margin: 0;
+    padding-left: 5em;
+}
+
+.banner-title {
+    font-size: 4em;
 }
 
 /* Main Navigation */
 nav {
     display:block;
-    text-align:center;
-    border-bottom: black solid 3px;
+    font-size: 1.5em;
 
     a {
         text-decoration:none;
@@ -205,25 +206,26 @@ nav {
 
 /* Main Content Container */
 main {
+    //@include span-columns(12);
     clear:both;
     overflow:hidden;
     zoom:1;
-    padding-top: $gutter-width;
-    padding-bottom: $gutter-width;
 
-    header { margin-bottom: .5em;}
 }
 
 #game-data, .source-response-container {
     background: #eee;
     background: rgba(black, 0.05);
-    clear: both;
+    margin: 0;
     padding: 1px rhythm(1);
+    position: fixed;
+    height: 100%;
+    right: 0;
+    @include span-columns(4);
 
     .role{
         .image-container {
             float:left;
-            @include span-columns(8);
             margin-right: 1em;
         }
     }
@@ -241,15 +243,43 @@ main {
    
 }
 
+#moves {
+    @include span-columns(8);
+    
+    article {    
+        border-top: black 1px solid;
+        display: block; 
+        width: 100%;    
+        
+        header {
+            display: block;
+            width: 100%;
+            
+             h1{
+                float: left;
+                margin: 0;
+                padding: 0;
+            }
+            
+            p {
+                @include clearfix;
+                width: 100%;
+            }
+        }
+        
+    
+        .btn {
+            float: right;   
+        }
+    }
+}
+
 .options {
     @include span-columns(12);
     text-align: center;
 }
 
 article {
-    margin-bottom: rhythm(1);
-    padding: rhythm(1);
-
     /* Removes padding, background, and border on the first article on blog posts and author pages. */
     .single main > &,
     .author main > & {
@@ -271,6 +301,10 @@ article {
         
     /* Articles with a class of move. */
     &.move {
+        h1 {
+                margin-bottom: .5em;
+                margin-top: .5em;
+        }
         margin-bottom: rhythm(3);
         @include clearfix;
 
@@ -283,27 +317,19 @@ article {
         }
 
         header {
-            @include span-columns(12);
+            @include span-columns(8);
             margin-top: 0;
             margin-bottom: rhythm(1);
             padding: 0;
         }
-        /* whyyy so redundant -- come back and deal with :( */ 
-        h1 {
-        margin-bottom: .5em;
-        margin-top: .5em;
-        }
 
-        .move {
-            h1 {
-                margin-bottom: .5em;
-                margin-top: .5em;
-            }
-        }
     }
 
-    header {
+    banner {
         @include clearfix;
+        @include span-columns(8);
+        margin:0; 
+        padding: 0;
 
         .btn {
             margin-bottom:1em;
@@ -466,7 +492,7 @@ footer[role=contentinfo] {
 }
 
 
-/* Styles for viewports greater than 700px wide. */
+/* Styles for viewports greater than 700px wide. 
 @media (min-width: 700px) {
 
 html {
@@ -576,7 +602,7 @@ footer[role=contentinfo] .ivanhoelink {
     width: space(3);
 }
 }
-
+*/
 
 /* wtf is this? 
 

@@ -26,15 +26,17 @@
 
     <div id="wrap">
 
-        <header role="banner">
-
-            <h1><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo('site_title'); ?></a></h1>
-
-
-            <?php
-            wp_nav_menu( array( 'fallback_cb' => 'ivanhoe_page_menu', 'theme_location' => 'header', 'container' => 'nav' ) );
-            ?>
-
-        </header>
+   
 
         <main>
+
+        <header role="banner">
+
+            <h1 class = "banner-title"><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo('site_title'); ?></a></h1>
+
+
+   <!--        <?php
+            wp_nav_menu( array( 'fallback_cb' => 'ivanhoe_page_menu', 'theme_location' => 'header', 'container' => 'nav' ) );
+            ?> -->
+
+        </header>
