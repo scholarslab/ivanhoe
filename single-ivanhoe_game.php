@@ -192,7 +192,17 @@
 
 <?php get_footer(); ?>
 
+<!--
+  TODO: for some reason, loading JS with the enqueue script makes .readmore
+  throw an exepction. Calling it from the site works.
+-->
+<script src="http://jedfoster.com/js/readmore.min.js"></script>
+
 <script type="text/javascript">
+$(document).ready(function(){
+  "use strict";
+
+    //TODO: this can be broken in to seperate functions
     function multisource () {
         var ivanhoe_selected_moves = {};
 
@@ -200,13 +210,16 @@
             var li = $('.basic_element_of_semantically_incoherent_metaphor li');
             var header = $('#multi_source_list_of_doom_header');
 
-            if (li.length === 0) {
-                document.move_info.movesubmit.value="Make a Move";
-                header.hide ();
-            } else {
-                document.move_info.
-                movesubmit.value="Respond";
-                header.show ();
+            //TODO: fix this
+            if (!document.move_info === undefined) {
+              if (li.length === 0 ) {
+                  document.move_info.movesubmit.value="Make a Move";
+                  header.hide ();
+              } else {
+                  document.move_info.
+                  movesubmit.value="Respond";
+                  header.show ();
+              }
             }
         }
 
@@ -227,7 +240,7 @@
             }
         });
 
-        update_button();          
+        update_button();
     }
 
     multisource();
@@ -239,18 +252,7 @@
         itemSelector: '#moves article.ivanhoe_move'
     });
 
-    $(document).ready(function(){
-        $('#game-excerpt').readmore({
-            speed: 75,
-            collapsedHeight: 200,
-        });
+    $('#game-excerpt').readmore({});
 
-        console.log($('#game-excerpt'));
-    });
-
-    
-
-    
-
-   
+});
 </script>
