@@ -269,9 +269,16 @@ function ivanhoe_enqueue_scripts()
         false,
         false
     );
+    wp_register_script(
+        'readmore',
+        get_stylesheet_directory_uri() . '/javascripts/readmore.min.js',
+        array(),
+        false,
+        false
+    );
 
     // enqueue the scripts for use in theme
-    wp_enqueue_script (array('ivanhoe_modernizr', 'ivanhoe_respond'));
+    wp_enqueue_script (array('ivanhoe_modernizr', 'ivanhoe_respond', 'readmore'));
 
 }
 

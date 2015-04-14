@@ -72,7 +72,7 @@
 
         <?php if ( has_post_thumbnail() ) { the_post_thumbnail(); } ?>
 
-        <?php the_excerpt(); ?>
+        <div id='game-excerpt'><?php the_content(); ?> </div>
 
         <!-- Shows role of current user -->
 
@@ -199,9 +199,9 @@
         function update_button(){
             var li = $('.basic_element_of_semantically_incoherent_metaphor li');
             var header = $('#multi_source_list_of_doom_header');
+
             if (li.length === 0) {
-                document.move_info.
-                movesubmit.value="Make a Move";
+                document.move_info.movesubmit.value="Make a Move";
                 header.hide ();
             } else {
                 document.move_info.
@@ -238,5 +238,19 @@
         nextSelector: '#pagination .next',
         itemSelector: '#moves article.ivanhoe_move'
     });
+
+    $(document).ready(function(){
+        $('#game-excerpt').readmore({
+            speed: 75,
+            collapsedHeight: 200,
+        });
+
+        console.log($('#game-excerpt'));
+    });
+
+    
+
+    
+
    
 </script>
