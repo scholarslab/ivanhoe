@@ -11,7 +11,7 @@ function add_infinite_scroll_script ()
     wp_enqueue_script(
         'jquery.infinitescroll.min', 
         get_template_directory_uri() . '/javascripts/infinite-scroll/jquery.infinitescroll.min.js',
-        array('jquery'),
+        array(),
         null,
         true
         );
@@ -274,7 +274,7 @@ function ivanhoe_enqueue_scripts()
         get_stylesheet_directory_uri() . '/javascripts/readmore.min.js',
         array(),
         false,
-        false
+        true
     );
 
     // enqueue the scripts for use in theme

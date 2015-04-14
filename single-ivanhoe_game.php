@@ -196,7 +196,6 @@
   TODO: for some reason, loading JS with the enqueue script makes .readmore
   throw an exepction. Calling it from the site works.
 -->
-<script src="http://jedfoster.com/js/readmore.min.js"></script>
 
 <script type="text/javascript">
 $(document).ready(function(){
