@@ -7,7 +7,7 @@
     $game_title = ivanhoe_get_title_by_id($game_id);
 ?>
 
-<div class="source-response-container sidebar">
+<div class="source-response-container sidebar" >
 
         <div class="discussion-source">
             <?php echo ivanhoe_display_move_source( $post ); ?>
