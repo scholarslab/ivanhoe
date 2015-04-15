@@ -14,6 +14,7 @@
     $characters = new WP_Query ( $character_args );
     $character_posts = $characters->get_posts();
 
+ 
     // Pagination
     $paged = get_query_var('paged') ? get_query_var('paged') : 1;
     $pagination_args = array (
@@ -26,7 +27,7 @@
 
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 
-<div id="game-data">
+<div id="game-data" class = "sidebar">
         <div>
         <!-- Shows either the make a move button or the make a role button -->
             <?php if ( is_user_logged_in() ) :
@@ -120,7 +121,7 @@
         
         
             <?php
-            wp_nav_menu( array( 'fallback_cb' => 'ivanhoe_page_menu', 'theme_location' => 'header', 'container' => 'nav' ) );
+            wp_nav_menu( array( 'fallback_cb' => 'ivanhoe_page_menu'));
             ?>
 
     </div>
@@ -161,6 +162,8 @@
                 <p><span class="byline"><?php the_author_posts_link(); ?></span>
             &middot; <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
                 <?php $ivanhoe_post_id=$post->ID; ?>
+             
+             
              
             </header>
 

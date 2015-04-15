@@ -32,7 +32,7 @@
 
         <header role="banner">
 
-            <h1 class = "banner-title"><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo('site_title'); ?></a></h1>
+           <h1 class = "banner-title"><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo('site_title'); ?></a></h1> 
 
 
    <!--        <?php

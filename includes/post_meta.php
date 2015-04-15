@@ -12,7 +12,8 @@ function ivanhoe_move_meta_box($post=null)
     $html = '<p><label for="post_parent">' . __('Game', 'ivanhoe' )
     . '</label></p>'
     . '<p><input type="text" name="post_parent" value="'
-    . $post->post_parent . '">';
+    . $post->post_parent . '">' ;
+  //  . wp_nav_menu( array( 'fallback_cb' => 'ivanhoe_page_menu')) ;
 
     return $html;
 }

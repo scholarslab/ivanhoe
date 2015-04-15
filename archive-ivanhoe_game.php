@@ -1,11 +1,15 @@
 <?php get_header(); ?>
 
-<header>
-    <h1><?php _e( 'Games', 'ivanhoe' ); ?></h1>
+<div class = "sidebar">
     <?php if ( is_user_logged_in() ) : ?>
     	<?php $url = add_query_arg(array('ivanhoe' => 'ivanhoe_game'), home_url()); ?>
             <?php echo ivanhoe_a($url, 'Make a Game', 'class="btn" id="make-a-game"'); ?>
     <?php endif; ?>
+
+</div>
+
+<header class= "form-title">
+    <h1><?php _e( 'Games', 'ivanhoe' ); ?></h1>
 </header>
 
 <?php

@@ -115,6 +115,7 @@ img {
     text-align: center;
 }
 
+
 /* Custom Utility Classes */
 .citation {
     font-variant: small-caps;
@@ -169,7 +170,7 @@ header[role=banner] {
     @include clearfix;
     @include span-columns(8);
     border-bottom: black solid 3px;
-    margin: 0;
+    margin: 1em;
     padding-left: 5em;
 }
 
@@ -206,14 +207,12 @@ nav {
 
 /* Main Content Container */
 main {
-    //@include span-columns(12);
     clear:both;
     overflow:hidden;
     zoom:1;
-
 }
 
-#game-data, .source-response-container {
+.sidebar {
     background: #eee;
     background: rgba(black, 0.05);
     margin: 0;
@@ -222,57 +221,42 @@ main {
     height: 100%;
     right: 0;
     @include span-columns(4);
-
-    .role{
-        .image-container {
-            float:left;
-            margin-right: 1em;
-        }
-    }
-    
-    .btn {
-        
-    }
 }
 
-.discussion-source {
-   
-}
-
-.discussion-response {
-   
-}
-
-#moves {
+.game, .single-move, .ivanhoe_game {
     @include span-columns(8);
     
-    article {    
-        border-top: black 1px solid;
+     article {    
         display: block; 
         width: 100%;    
-        
-        header {
-            display: block;
-            width: 100%;
-            
-             h1{
-                float: left;
-                margin: 0;
-                padding: 0;
-            }
-            
-            p {
-                @include clearfix;
-                width: 100%;
-            }
-        }
-        
-    
+         
         .btn {
             float: right;   
         }
     }
 }
+
+/* Move titles on game page */ 
+.game article header {
+        @include span-columns(8);
+        margin-top: 0;
+        margin-bottom: rhythm(1);
+        display: block;
+        width: 100%;
+        
+        h1{
+            float: left;
+            margin: 0;
+            padding:0;
+        }
+        
+        p {
+            @include clearfix;
+            width: 100%;
+        }
+    
+}
+
 
 .options {
     @include span-columns(12);
@@ -285,14 +269,12 @@ article {
     .author main > & {
         padding:0;
         background:none;
-        border:none;
+        border: 0;
     }
     @include clearfix;
     
     /* Articles with a class of role. */
     &.role{
-        @include span-columns(12);
-
         .wp-post-image{
             float: left;
             margin-right: rhythm(1);
@@ -300,7 +282,8 @@ article {
     }
         
     /* Articles with a class of move. */
-    &.move {
+    &.ivanhoe_move {
+        border-top: black 1px solid; 
         h1 {
                 margin-bottom: .5em;
                 margin-top: .5em;
@@ -316,27 +299,8 @@ article {
             padding: rhythm(1);
         }
 
-        header {
-            @include span-columns(8);
-            margin-top: 0;
-            margin-bottom: rhythm(1);
-            padding: 0;
-        }
-
     }
-
-    banner {
-        @include clearfix;
-        @include span-columns(8);
-        margin:0; 
-        padding: 0;
-
-        .btn {
-            margin-bottom:1em;
-        }
-
-    }
-
+    
     /* Articles with a class of character_list. */
     ul.character_list{
         list-style-type: none;
@@ -352,7 +316,6 @@ article {
 }
 
 .move .meta {
-    font-size: 90%;
     color: #999;
     margin-top: 0;
     margin-bottom: 4em;
@@ -374,6 +337,8 @@ footer[role=contentinfo] {
 }
 
 /* Will be obsolete when infinite scroll happens */ 
+
+/*
 .pagination {
     margin-bottom: 1em;
     margin-top: 1em;
@@ -404,7 +369,7 @@ footer[role=contentinfo] {
     }
     }
 }
-
+*/
 .attribution {
     font-variant: small-caps;
 }
@@ -429,10 +394,6 @@ footer[role=contentinfo] {
     background: #eee;
     background: rgba(black, 0.05);
     padding: 1px rhythm(1);
-}
-
-.author .description {
-
 }
 
 .author .roles {
@@ -527,11 +488,20 @@ nav {
 .new-ivanhoe-meta {
     @include span-columns(4 omega);
 }
-
+*/
 .new-ivanhoe-form {
     @include span-columns(8);
 }
 
+.form-title {
+    @include span-columns(8);
+}
+
+.menu {
+    
+}
+
+/*
 .parent-moves {
     @include span-columns(8);
 }

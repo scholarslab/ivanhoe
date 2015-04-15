@@ -143,9 +143,8 @@ abstract class BasePostForm
         $game   = get_post($this->parent_post);
 
         $this->get_header();
-
-        $this->render_content();
         $this->render_form_title();
+        $this->render_content();
         $this->render_errors();
         $this->render_message($game);
         $this->render_form();
@@ -392,7 +391,7 @@ abstract class BasePostForm
      */
     public function render_form_title()
     {
-        echo "<header><h1>{$this->form_title}</h1></header>";
+        echo "<header class='form-title'><h1>{$this->form_title}</h1></header>";
     }
 
     /**
@@ -421,11 +420,13 @@ abstract class BasePostForm
 
         if (!empty($message)) {
             $message =
-                "<div class='new-ivanhoe-meta new-ivanhoe-move-meta'>" .
+                "<div class='new-ivanhoe-meta new-ivanhoe-move-meta sidebar'>" .
                 "<p><strong>$message</strong></p></div>";
         }
 
         echo $message;
+        
+        
     }
 
     /**
