@@ -17,5 +17,7 @@ group :test do
   gem 'mustache'
   gem 'sequel'
   gem 'ruby-wpdb'
+  gem 'mime-types'
+  gem 'exifr'
+  gem 'php-serialize'
 end
-

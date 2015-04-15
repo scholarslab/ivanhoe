@@ -12,7 +12,7 @@ describe "Transactions", :type => :feature, :js => true  do
         click_button 'Log In'
       end
 
-      it "has a game info", :current => true do
+      it "has a game info" do
         make_game
         click_link 'Games'
         within('.ivanhoe_game') { expect(page).to have_selector('h2') }
@@ -55,8 +55,8 @@ describe "Games View", :type => :feature, :js => true  do
     end
 
     before do
-      click_link 'Games'
       rand(2..5).times { make_game }
+      click_link 'Games'
     end
 
     describe "the Games page" do

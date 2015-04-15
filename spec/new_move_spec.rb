@@ -8,9 +8,9 @@ describe 'Make a Move View', :type => :feature, :js => true do
         visit(URL_BASE)
         click_link('Games')
         login
-        make_game
+        game = make_game
         first('.game-title a').click
-        make_role
+        make_role('admin', game.id)
     end
 
     describe 'for a move with no source' do

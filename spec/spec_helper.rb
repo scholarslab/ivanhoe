@@ -42,7 +42,8 @@ CHANGING_TABLES = %w{
   }
 
 # You need to set up this database in mysql.
-WP_CONFIG      = ENV.fetch('WP_CONFIG', '../../../wp-config.php')
+WP_DIR         = ENV.fetch('WP_DIR', '../../..')
+WP_CONFIG      = ENV.fetch('WP_CONFIG', "#{WP_DIR}/wp-config.php")
 
 DB_HOST        = ENV.fetch('DB_HOST', 'localhost')
 WP_DB_HOST     = ENV.fetch('WP_DB_HOST', DB_HOST)
@@ -107,7 +108,7 @@ RSpec.configure do |config|
       :password => DB_PASSWORD,
       :port     => DB_PORT,
       # TODO: Remove the next line:
-      :loggers  => [Logger.new($stdout)]
+      # :loggers  => [Logger.new($stdout)]
     )
     @wpdb = WPDB.init("mysql2://#{DB_USER}:#{DB_PASSWORD}@#{DB_HOST}:#{DB_PORT}/#{DB_NAME}")
 
