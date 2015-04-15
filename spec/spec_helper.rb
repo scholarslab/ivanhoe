@@ -119,6 +119,10 @@ RSpec.configure do |config|
       @cxn.query("INSERT INTO `#{name}` SELECT * FROM `copy_#{name}`;")
     end
 
+    page.driver.allow_url("0.gravatar.com")
+    page.driver.allow_url("ajax.googleapis.com")
+    page.driver.allow_url("fonts.googleapis.com")
+
   end
 
   # Patch wp config for testing.

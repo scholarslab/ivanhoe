@@ -69,8 +69,8 @@ describe 'Make a Role View', :type => :feature, :js => true do
       before do
 
         attach_file('post_thumbnail', 'spec/dumps/puppy.jpg')
-        fill_in 'post_title', :with => Faker::Lorem.words(rand(2..4)).join(' ')
-        tiny_mce_fill_in('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+        fill_in 'post_title', :with => FFaker::Lorem.words(rand(2..4)).join(' ')
+        tiny_mce_fill_in('post_content', :with => FFaker::Lorem.paragraphs(rand(3..10)).join('<p>'))
         click_button 'Save'
 
       end

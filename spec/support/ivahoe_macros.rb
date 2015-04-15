@@ -1,8 +1,8 @@
 module IvanhoeMacros
 
   @valid_game = {
-    :game_title => Faker::Lorem.words(rand(2..8)),
-    :game_description => Faker::Lorem.paragraphs(rand(1..3))
+    :game_title => FFaker::Lorem.words(rand(2..8)),
+    :game_description => FFaker::Lorem.paragraphs(rand(1..3))
   }
 
   def self.tiny_mce_fill_in(name, args)
