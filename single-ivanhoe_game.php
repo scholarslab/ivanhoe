@@ -120,9 +120,7 @@
         <!-- Ends section showing other characters -->
         
         
-            <?php
-            wp_nav_menu( array( 'fallback_cb' => 'ivanhoe_page_menu'));
-            ?>
+            <?php wp_nav_menu( array( 'fallback_cb' => 'ivanhoe_page_menu')); ?>
 
     </div>
     

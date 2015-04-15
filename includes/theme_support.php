@@ -181,7 +181,7 @@ function ivanhoe_append_nav_menu_items( $items )
 }
 
 add_filter('wp_nav_menu_items', 'ivanhoe_append_nav_menu_items', 10, 2 );
-register_nav_menu('header', 'header nav' );
+//register_nav_menu('header', 'header nav' );
 
 
 /**

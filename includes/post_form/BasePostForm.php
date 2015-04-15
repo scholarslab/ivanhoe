@@ -423,9 +423,9 @@ abstract class BasePostForm
                 "<div class='new-ivanhoe-meta new-ivanhoe-move-meta sidebar'>" .
                 "<p><strong>$message</strong></p></div>";
         }
+        
 
         echo $message;
-        
         
     }
 
