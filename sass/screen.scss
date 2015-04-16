@@ -243,6 +243,7 @@ main {
             float: right;   
         }
     }
+    
 }
 
 /* Move titles on game page */ 
@@ -322,6 +323,12 @@ article {
         }
     }
 
+}
+
+.has-post-thumbnail {
+    img {
+        width: 50%;
+    }
 }
 
 .move .meta {
