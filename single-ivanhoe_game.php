@@ -212,11 +212,13 @@
         $('#moves').on('click', '.new_source.btn', function(){
             var $this = $(this);
             var value = $this.data('value');
+            $this.addClass('clicked');
             if (ivanhoe_selected_moves[value] == null) {
                 $('.basic_element_of_semantically_incoherent_metaphor').append
                 ("<li><input type='hidden' value='" + value + "' name='move_source[]'>" + $this.data('title') + "</li>").click
                 (function( event ) {
                     $(event.target).remove();
+                    $this.removeClass('clicked');
                     update_button();
                     delete ivanhoe_selected_moves[value];
                 });

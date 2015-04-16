@@ -170,8 +170,7 @@ img {
 }
 
 .clicked {
-    // background: #8c3;
-    background: darken(#336699, 10%);
+    background: darken(#336699, 30%);
 
     /*Background Gradients */
     @include background-image(linear-gradient(bottom, #1F3D5C 0%, #001F33 100%, #001F33 100%));
