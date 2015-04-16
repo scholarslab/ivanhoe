@@ -508,11 +508,10 @@ nav {
 }
 
 
-/*
 .parent-moves {
     @include span-columns(8);
 }
-
+/*
 .author .description {
     @include span-columns(4 omega);
 }
@@ -645,6 +644,18 @@ footer[role=contentinfo] .ivanhoelink {
 
 .parent-move {
     display: none;
+}
+
+.parent-title:hover {
+    cursor: pointer;
+    color: gray;
+}
+
+.parent-btn {
+    font-weight: bold;
+    display: block-inline;
+    margin-right: 1em;
+    font-size: 1.5em;
 }
 
 
