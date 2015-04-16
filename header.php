@@ -9,6 +9,16 @@
 
     <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro:200,400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="<?php echo get_template_directory_uri() . '/stylesheets/screen.css'; ?>">
+    <?php 
+    global $post;
+
+    if($post->post_type == 'ivanhoe_game' && has_post_thumbnail() ) {
+
+
+    }
+
+    ?>
+
 
     <?php
     if ( is_singular() && get_option( 'thread_comments' ) )
