@@ -1,7 +1,10 @@
 {
   "name": "jquery-infinite-scroll",
   "version": "2.1.0",
+<<<<<<< HEAD
   "main": "jquery.infinitescroll.js",
+=======
+>>>>>>> develop
   "dependencies": {
     "jquery": "~1.7.2"
   }

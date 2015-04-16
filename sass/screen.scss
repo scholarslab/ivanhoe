@@ -291,12 +291,17 @@ article {
             margin-right: rhythm(1);
         }
     }
-
+    
+    
     /* Articles with a class of move.
     &.move {
         margin-bottom: rhythm(3);
         @include clearfix;
-    }
+    } 
+    
+    closed this comment that was commenting this out, but not sure if it was supposed to be or not. -ARB
+    */
+ 
 
     /* Articles with a class of game. */
     &.game {
@@ -632,4 +637,16 @@ footer[role=contentinfo] .ivanhoelink {
   background-color: #f4f8fa;
   border-color: #5bc0de;
 }
+
+
+/* Parent moves on Make a Move page */ 
+.parent-moves{
+    height: auto !important;
+    display: block;
+}
+
+.parent-move {
+    display: none;
+}
+
 

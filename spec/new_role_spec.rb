@@ -14,7 +14,7 @@ describe 'Make a Role View', :type => :feature, :js => true do
     end
 
     it 'has the Make a Role header' do
-      expect(page).to have_content('Make a Role')
+      expect(page).to have_content('MAKE A ROLE')
     end
 
     it 'has a role name label' do

@@ -134,7 +134,6 @@
     if ( $wp_query->have_posts()) : ?>
 
     <div id="moves">
-        <?php echo ivanhoe_paginate_links($wp_query);?>
 
         <?php
         while($wp_query->have_posts()) : $wp_query->the_post(); ?>
@@ -193,41 +192,49 @@
 <?php get_footer(); ?>
 
 <script type="text/javascript">
-    var ivanhoe_selected_moves = {};
+    function multisource () {
+        var ivanhoe_selected_moves = {};
 
-    function update_button(){
-        var li = $('.basic_element_of_semantically_incoherent_metaphor li');
-        var header = $('#multi_source_list_of_doom_header');
-        if (li.length === 0) {
-            document.move_info.
-            movesubmit.value="Make a Move";
-            header.hide ();
-        } else {
-            document.move_info.
-            movesubmit.value="Respond";
-            header.show ();
+        function update_button(){
+            var li = $('.basic_element_of_semantically_incoherent_metaphor li');
+            var header = $('#multi_source_list_of_doom_header');
+            if (li.length === 0) {
+                document.move_info.
+                movesubmit.value="Make a Move";
+                header.hide ();
+            } else {
+                document.move_info.
+                movesubmit.value="Respond";
+                header.show ();
+            }
         }
+
+        $('#moves').on('click', '.new_source.btn', function(){
+            var $this = $(this);
+            var value = $this.data('value');
+            if (ivanhoe_selected_moves[value] == null) {
+                $('.basic_element_of_semantically_incoherent_metaphor').append
+                ("<li><input type='hidden' value='" + value + "' name='move_source[]'>" + $this.data('title') + "</li>").click
+                (function( event ) {
+                    $(event.target).remove();
+                    update_button();
+                    delete ivanhoe_selected_moves[value];
+                });
+                update_button();
+            ivanhoe_selected_moves[value] = true;
+            }
+        });
+
+        update_button();          
     }
 
-    $('.new_source').click(function(){
-        var $this = $(this);
-        var value = $this.data('value');
-        $this.addClass('clicked');
-        if (ivanhoe_selected_moves[value] == null) {
-            $('.basic_element_of_semantically_incoherent_metaphor').append
-            ("<li><input type='hidden' value='" + value + "' name='move_source[]'>" + $this.data('title') + "</li>").click
-            (function( event ) {
-                $(event.target).remove();
-                $this.removeClass('clicked');
-                update_button();
-                delete ivanhoe_selected_moves[value];
-            });
+    multisource();
 
-            update_button();
-        ivanhoe_selected_moves[value] = true;
-        }
+
+    $('#moves').infinitescroll({
+        navSelector: '#pagination',
+        nextSelector: '#pagination .next',
+        itemSelector: '#moves article.ivanhoe_move'
     });
-
-    update_button();
-
+   
 </script>

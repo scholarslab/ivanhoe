@@ -21,7 +21,7 @@ describe 'Single Rationale View', :type => :feature, :js => true do
     end
 
     it 'has the rationale title' do
-      expect(page).to have_content('Journal Entry for')
+      expect(page).to have_content('JOURNAL ENTRY FOR')
       expect(page).to have_selector('article h1')
     end
 

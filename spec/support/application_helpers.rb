@@ -49,6 +49,7 @@ module ApplicationHelper
     click_button 'Save'
   end
 
+# This respond to move function primarily covers the single-ivanhoe_move view
   def respond_to_move
     click_link('Respond')
     fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
@@ -57,9 +58,27 @@ module ApplicationHelper
     click_button 'Save'
   end
 
+# This function covers responding to a move from the single-ivanhoe_game page.
   def main_page_respond_to_move
     first('.new_source').click
     click_button('Respond')
+    fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
+    tiny_mce_fill_in_post_content('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+    tiny_mce_fill_in_post_rationale('post_rationale', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
+    click_button 'Save'
+  end
+
+# This function covers responding to multiple moves from the single-ivanhoe_game page
+  def respond_to_multiple_moves
+    moves = page.all('#moves article')
+
+    @num_sources = rand(2...@num_moves)
+    moves[0...@num_sources].each do |move|
+      within move do
+        find('.new_source').click
+      end
+    end
+    click_button 'Respond'
     fill_in 'post_title', :with => Faker::Lorem.words(rand(2..8)).join(' ')
     tiny_mce_fill_in_post_content('post_content', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
     tiny_mce_fill_in_post_rationale('post_rationale', :with => Faker::Lorem.paragraphs(rand(3..10)).join('<p>'))
