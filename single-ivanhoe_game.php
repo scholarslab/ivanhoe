@@ -84,7 +84,9 @@
         <!-- Shows list of other characters -->
         <?php
             if ( !empty( $character_posts ) ) :
-            if ( is_user_logged_in() && $role !== FALSE ) : ?>
+
+            if ( is_user_logged_in() && $role !== FALSE ) : 
+                if (!$character_posts[0] == $role) : ?>
                 <h3><?php _e( 'Other Characters', 'ivanhoe' ); ?></h3>
                 <article>
                 <?php if ( $characters->have_posts() ) : ?>
@@ -97,7 +99,8 @@
                                 </li>
                         <?php endwhile; ?>
                     </ul>
-                <?php endif; ?>
+                <?php endif; 
+                        endif; ?>
                 </article>
                 <?php wp_reset_postdata(); ?>
 
