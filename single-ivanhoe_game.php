@@ -66,7 +66,7 @@
 
         <?php if ( has_post_thumbnail() ) { the_post_thumbnail('medium'); } ?>
 
-        <?php the_excerpt(); ?>
+        <div id='game-excerpt'><?php the_content(); ?> </div>
 
         <!-- Shows role of current user -->
 
@@ -206,21 +206,33 @@
 
 <?php get_footer(); ?>
 
+<!--
+  TODO: for some reason, loading JS with the enqueue script makes .readmore
+  throw an exepction. Calling it from the site works.
+-->
+
 <script type="text/javascript">
+$(document).ready(function(){
+  "use strict";
+
+    //TODO: this can be broken in to seperate functions
     function multisource () {
         var ivanhoe_selected_moves = {};
 
         function update_button(){
             var li = $('.basic_element_of_semantically_incoherent_metaphor li');
             var header = $('#multi_source_list_of_doom_header');
-            if (li.length === 0) {
-                document.move_info.
-                movesubmit.value="Make a Move";
-                header.hide ();
-            } else {
-                document.move_info.
-                movesubmit.value="Respond";
-                header.show ();
+
+            //TODO: fix this
+            if (!document.move_info === undefined) {
+              if (li.length === 0 ) {
+                  document.move_info.movesubmit.value="Make a Move";
+                  header.hide ();
+              } else {
+                  document.move_info.
+                  movesubmit.value="Respond";
+                  header.show ();
+              }
             }
         }
 
@@ -242,7 +254,7 @@
             }
         });
 
-        update_button();          
+        update_button();
     }
 
     multisource();
@@ -253,5 +265,8 @@
         nextSelector: '#pagination .next',
         itemSelector: '#moves article.ivanhoe_move'
     });
-   
+
+    $('#game-excerpt').readmore({});
+
+});
 </script>

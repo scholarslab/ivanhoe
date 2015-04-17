@@ -11,7 +11,7 @@ function add_infinite_scroll_script ()
     wp_enqueue_script(
         'jquery.infinitescroll.min', 
         get_template_directory_uri() . '/javascripts/infinite-scroll/jquery.infinitescroll.min.js',
-        array('jquery'),
+        array(),
         null,
         true
         );
@@ -276,9 +276,16 @@ function ivanhoe_enqueue_scripts()
         false,
         false
     );
+    wp_register_script(
+        'readmore',
+        get_stylesheet_directory_uri() . '/javascripts/readmore.min.js',
+        array(),
+        false,
+        true
+    );
 
     // enqueue the scripts for use in theme
-    wp_enqueue_script (array('ivanhoe_modernizr', 'ivanhoe_respond'));
+    wp_enqueue_script (array('ivanhoe_modernizr', 'ivanhoe_respond', 'readmore'));
 
 }
 
