@@ -27,7 +27,6 @@
 
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 
-<div id="game-data" class = "sidebar">
         <div>
         <!-- Shows either the make a move button or the make a role button -->
             <?php if ( is_user_logged_in() ) :

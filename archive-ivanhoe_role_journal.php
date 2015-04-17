@@ -1,5 +1,5 @@
 <?php get_header(); ?>
-
+</div>
 <header>
     <h1 class = "form-title"><?php _e( 'Roles', 'ivanhoe' ); ?></h1>
 </header>

@@ -1,6 +1,6 @@
 <?php get_header(); ?>
 
-<div class = "sidebar">
+
     <?php if ( is_user_logged_in() ) : ?>
     	<?php $url = add_query_arg(array('ivanhoe' => 'ivanhoe_game'), home_url()); ?>
             <?php echo ivanhoe_a($url, 'Make a Game', 'class="btn" id="make-a-game"'); ?>

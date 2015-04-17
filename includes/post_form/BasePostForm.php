@@ -420,7 +420,6 @@ abstract class BasePostForm
 
         if (!empty($message)) {
             $message =
-                "<div class='new-ivanhoe-meta new-ivanhoe-move-meta sidebar'>" .
                 "<p><strong>$message</strong></p>"
                 . "</div>";
         }

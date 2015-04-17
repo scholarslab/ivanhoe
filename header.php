@@ -47,3 +47,5 @@
 
 
         </header>
+        
+  <div class = "sidebar">

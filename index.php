@@ -1,4 +1,6 @@
 <?php get_header(); ?>
+
+</div>
 <?php if (have_posts()) : ?>
 <?php echo ivanhoe_paginate_links();?>
 <?php while(have_posts()) : the_post(); ?>
