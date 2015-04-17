@@ -158,7 +158,7 @@
                 <?php $ivanhoe_post_id=$post->ID; ?>
                 <span class="new_source btn" data-title="<?php echo get_the_title($ivanhoe_post_id); ?>" data-value="<?php echo $ivanhoe_post_id; ?>">Add to Moves</span>
                 <?php endif; endif; ?>
-                <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
+                <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                 <p><span class="byline"><?php the_author_posts_link(); ?></span>
             &middot; <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
              
