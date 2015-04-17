@@ -391,7 +391,7 @@ abstract class BasePostForm
      */
     public function render_form_title()
     {
-        echo "<header class='form-title'><h1>{$this->form_title}</h1></header>";
+        echo "</div><header class='form-title'><h1>{$this->form_title}</h1></header>";
     }
 
     /**

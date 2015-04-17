@@ -165,11 +165,6 @@ img {
 
 .clicked {
     background: darken(#336699, 30%);
-
-    /*Background Gradients */
-    @include background-image(linear-gradient(bottom, #1F3D5C 0%, #001F33 100%, #001F33 100%));
-    @include border-radius(10px);
-
     border: 1px solid #1F3D5C;
     border-top: 1px solid #001F33;
 
@@ -197,7 +192,9 @@ header[role=banner] {
 /* Main Navigation */
 nav {
     display:block;
-    font-size: 1.5em;
+    font-size: 1.5em;    
+    background: #eee;
+    background: rgba(#eee, 0.7);
     
     &.menu {
         @include span-columns(4);
@@ -244,6 +241,7 @@ main {
     position: fixed;
     height: 100%;
     right: 0;
+    overflow: auto;
     @include span-columns(4);
 }
 
