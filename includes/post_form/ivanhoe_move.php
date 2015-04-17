@@ -79,13 +79,7 @@ class IvanhoeMove extends BasePostForm
             );
             $posts = get_posts($args);
             $role = reset($posts);
-            
 
-            $author = '';
-            
-            $content .= "<div>";
-            $content .= "<h1>" . get_post_field("post_title", $move) . " by ";
-            $content .= $role->post_title ."</h1>"; 
             $content .= "<div id = parent>" ;        
             $content .= "<h2 class = parent-title>" . get_post_field("post_title", $move) . " by ";
             $content .= $role->post_title ."</h2>"; 

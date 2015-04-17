@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <header>
-    <h1><?php _e( 'Roles', 'ivanhoe' ); ?></h1>
+    <h1 class = "form-title"><?php _e( 'Roles', 'ivanhoe' ); ?></h1>
 </header>
 
 <?php

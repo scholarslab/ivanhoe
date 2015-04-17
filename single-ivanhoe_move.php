@@ -6,7 +6,26 @@
     $role = ivanhoe_user_has_role($game_id);
     $game_title = ivanhoe_get_title_by_id($game_id);
 ?>
-<article class="single-move">
+
+<div class="source-response-container sidebar" >
+
+        <div class="discussion-source">
+            <?php echo ivanhoe_display_move_source( $post ); ?>
+        </div>
+        <div class="discussion-response">
+            <?php echo ivanhoe_display_move_responses( $post ); ?>
+        </div>
+        <div class="game-description">
+            <h2><?php _e( 'Game Description', 'ivanhoe' ); ?></h2>
+            <?php
+                echo('<h3>' . $game_title . '</h3>');
+                echo ivanhoe_game_excerpt($post);
+            ?>
+        </div>
+     
+    </div>
+
+<article class="single-move">   
 
     <header>
         <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
@@ -31,22 +50,6 @@
         <?php endif; ?>
 
     </header>
-    <div class="source-response-container">
-
-        <div class="discussion-source">
-            <?php echo ivanhoe_display_move_source( $post ); ?>
-        </div>
-        <div class="discussion-response">
-            <?php echo ivanhoe_display_move_responses( $post ); ?>
-        </div>
-        <div class="game-description">
-            <h2><?php _e( 'Game Description', 'ivanhoe' ); ?></h2>
-            <?php
-                echo('<h3>' . $game_title . '</h3>');
-                echo ivanhoe_game_excerpt($post);
-            ?>
-        </div>
-    </div>
 
     <div id="moves">
 
