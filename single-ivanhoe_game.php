@@ -85,7 +85,7 @@
             if ( !empty( $character_posts ) ) :
 
             if ( is_user_logged_in() && $role !== FALSE ) : 
-                if (!$character_posts[0] == $role) : ?>
+                if (!($character_posts[0] == $role || sizeof($character_posts) > 1 )) : ?>
                 <h3><?php _e( 'Other Characters', 'ivanhoe' ); ?></h3>
                 <article>
                 <?php if ( $characters->have_posts() ) : ?>
