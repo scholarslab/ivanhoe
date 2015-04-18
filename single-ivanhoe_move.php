@@ -14,9 +14,16 @@
             <?php echo ivanhoe_display_move_responses( $post ); ?>
         </div>
         <div class="game-description">
+             <?php if ( has_post_thumbnail($game_id) ) { 
+              echo "<div class = 'move-thumbnail'>" 
+             . get_the_post_thumbnail($game_id,'medium') 
+             . "</div>";
+             } ?>
+        
             <h2><?php _e( 'Game Description', 'ivanhoe' ); ?></h2>
             <?php
                 echo('<h3>' . $game_title . '</h3>');
+      
                 echo ivanhoe_game_excerpt($post);
             ?>
         </div>
@@ -41,7 +48,7 @@
             <?php else : ?>
 
                 <?php $url = ivanhoe_role_form_url($post); ?>
-                <?php echo ivanhoe_a($url, 'Make a Role!', "class = 'btn'", ESCAPE_TEXT); ?>
+                <?php echo ivanhoe_a($url, 'Make a Role', "class = 'btn'", ESCAPE_TEXT); ?>
 
             <?php endif; ?>
 

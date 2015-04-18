@@ -9,6 +9,7 @@
     $move_query = new WP_Query( $args );
 ?>
 <?php get_header(); ?>
+</div>
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 
 <article class="role">

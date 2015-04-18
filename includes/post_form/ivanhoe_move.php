@@ -35,7 +35,18 @@ class IvanhoeMove extends BasePostForm
 
     public function get_move_source_message($game)
     {
-        $buffer = sprintf(
+        
+        
+        $buffer = '';
+        
+        
+        if ( has_post_thumbnail($this->parent_post) ) { 
+            $buffer .= "<div class = 'move-thumbnail'>" 
+             . get_the_post_thumbnail($this->parent_post,'medium') 
+             . "</div>";
+        } 
+        
+         $buffer .= sprintf(
             __( 'You are making a move on the game '
                 . '&#8220;<a href="%1$s">%2$s</a>&#8221;', 'ivanhoe'),
             get_permalink($this->parent_post),
@@ -47,7 +58,8 @@ class IvanhoeMove extends BasePostForm
                 get_permalink($this->parent_post),
                 $game->post_title
             );
-
+     
+            
             foreach ($this->move_source as $move) {
                 $link  = get_permalink($move);
                 $title = get_the_title($move);

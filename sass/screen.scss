@@ -83,8 +83,7 @@ input[type=text], textarea {
 }
 
 .new-ivanhoe-form {
-    @include span-columns(8);
-        
+    @include span-columns(8);        
 }
 
 .form-title {
@@ -167,8 +166,6 @@ img {
     &:active {
         color: white;
         background: #2E5CB8;
-        border: 1px solid #254A93;
-        border-top: 1px solid #C3D6DF;
         color: #ddd;     
         cursor: pointer;
     }
@@ -177,14 +174,10 @@ img {
 }
 
 .clicked {
-    background: darken(#336699, 30%);
-    border: 1px solid #1F3D5C;
-    border-top: 1px solid #001F33;
-
-}
-
-.return-button{
-    text-align: right;
+        color: white;
+        background: #2E5CB8;
+        color: #ddd;     
+        cursor: pointer;
 }
 
 
@@ -240,17 +233,13 @@ nav {
 }
 
 /* Main Content Container */
-main {
-    clear:both;
-    overflow:hidden;
-    zoom:1;
-}
+
 
 .sidebar {
     background: #eee;
     background: rgba(black, 0.05);
     margin: 0;
-    padding: 1px rhythm(1);
+    padding: 1em 1em 5em 1em;
     position: fixed;
     height: 100%;
     right: 0;
@@ -258,7 +247,7 @@ main {
     @include span-columns(4);
 }
 
-.game, .single-move, .ivanhoe_game {
+.game, .single-move, .ivanhoe_game, .role, .journal, .post{
     @include span-columns(8);
     
      article {    
@@ -436,6 +425,10 @@ footer[role=contentinfo] {
     background-color: white;
     background-color: rgba(white, 0.9);
     @include container;
+    clear:both;
+    overflow:hidden;
+    zoom:1;
+   
 }
 
 .new-ivanhoe-meta {
@@ -686,5 +679,15 @@ footer[role=contentinfo] .ivanhoelink {
 }
 
 #multisource-title {
-   //display: none;
+
+}
+
+.return-btn {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: right;
+}
+
+.move-thumbnail {
+
 }
