@@ -27,7 +27,8 @@ class IvanhoeRole extends BasePostForm
             __( 'You are making a role on the game '
                 . '&#8220;<a href="%1$s">%2$s</a>.&#8221;', 'ivanhoe'),
             get_permalink($this->parent_post),
-            $game->post_title
+            $game->post_title,
+            '</div>'
         );
     }
     
