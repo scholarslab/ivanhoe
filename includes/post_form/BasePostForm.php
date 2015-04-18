@@ -143,11 +143,11 @@ abstract class BasePostForm
         $game   = get_post($this->parent_post);
 
         $this->get_header();
+        $this->render_message($game);
         $this->render_form_title();
         $this->render_content();
-        $this->render_errors();
-        $this->render_message($game);
         $this->render_form();
+        $this->render_errors();
         $this->get_footer();
     }
 
@@ -420,8 +420,7 @@ abstract class BasePostForm
 
         if (!empty($message)) {
             $message =
-                "<p><strong>$message</strong></p>"
-                . "</div>";
+                "<p><strong>$message</strong></p>";
         }
         
 

@@ -39,10 +39,10 @@
                         <input type="hidden" name="ivanhoe" value="ivanhoe_move">
                         <input type='hidden' name='parent_post' value='<?php echo $ivanhoe_game_id; ?>'>
                         <input type='hidden' name='ivanhoe_role_id' value='<?php echo $role->ID; ?>'>
-                        <h3 id='multi_source_list_of_doom_header'>Responding to the following</h3>
-                        <ul class="basic_element_of_semantically_incoherent_metaphor">
-                        </ul>
                         <input type="submit" name="movesubmit" value="<?php _e( 'Make a Move', 'ivanhoe' ); ?>" class="btn" id="respond-to-move">
+                        <h3 id='multisource-title'>Responding to the following</h3>
+                        <ul class="multisource-response">
+                        </ul>
                     </form>
 
                 <?php else : ?>
@@ -219,20 +219,28 @@ $(document).ready(function(){
         var ivanhoe_selected_moves = {};
 
         function update_button(){
-            var li = $('.basic_element_of_semantically_incoherent_metaphor li');
-            var header = $('#multi_source_list_of_doom_header');
+            var li = $('.multisource-response li');
+            var header = $('#multisource-title');
 
             //TODO: fix this
-            if (!document.move_info === undefined) {
+           /* if (!document.move_info === undefined) {
               if (li.length === 0 ) {
-                  document.move_info.movesubmit.value="Make a Move";
-                  header.hide ();
               } else {
                   document.move_info.
                   movesubmit.value="Respond";
                   header.show ();
               }
+            }*/
+            
+        if (li.length == 0){                
+                  document.move_info.movesubmit.value="Make a Move";
+                  header.hide ();                
+            } else {
+                document.move_info.movesubmit.value="Respond";
+                header.show ();
+                
             }
+
         }
 
         $('#moves').on('click', '.new_source.btn', function(){
@@ -240,7 +248,7 @@ $(document).ready(function(){
             var value = $this.data('value');
             $this.addClass('clicked');
             if (ivanhoe_selected_moves[value] == null) {
-                $('.basic_element_of_semantically_incoherent_metaphor').append
+                $('.multisource-response').append
                 ("<li><input type='hidden' value='" + value + "' name='move_source[]'>" + $this.data('title') + "</li>").click
                 (function( event ) {
                     $(event.target).remove();

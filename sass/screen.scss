@@ -82,6 +82,19 @@ input[type=text], textarea {
     border: 1px solid #ccc;
 }
 
+.new-ivanhoe-form {
+    @include span-columns(8);
+        
+}
+
+.form-title {
+    @include span-columns(8);
+}
+
+.parent-moves {
+    @include span-columns(8);
+}
+
 /* Images */
 img {
     max-width: 100%;
@@ -181,7 +194,7 @@ header[role=banner] {
     @include clearfix;
     @include span-columns(8);
     border-bottom: black solid 3px;
-    margin: 1em;
+    //margin: 1em;
     padding-left: 5em;
 }
 
@@ -524,18 +537,7 @@ nav {
     @include span-columns(4 omega);
 }
 */
-.new-ivanhoe-form {
-    @include span-columns(8);
-}
 
-.form-title {
-    @include span-columns(8);
-}
-
-
-.parent-moves {
-    @include span-columns(8);
-}
 /*
 .author .description {
     @include span-columns(4 omega);
@@ -683,4 +685,6 @@ footer[role=contentinfo] .ivanhoelink {
     font-size: 1.5em;
 }
 
-
+#multisource-title {
+   //display: none;
+}
