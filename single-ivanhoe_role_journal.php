@@ -3,7 +3,7 @@
 </div>
 
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
-<article>
+<article class = ".journal">
     <h1><?php the_title(); ?></h1>
     <?php the_content(); ?>
     <?php echo get_the_title($post->post_parent); ?>

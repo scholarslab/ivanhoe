@@ -47,4 +47,4 @@
         </header>
         
  
-  <div class = "sidebar">
+  <div class = "sidebar"> 
