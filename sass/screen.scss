@@ -723,7 +723,7 @@ footer[role=contentinfo] .ivanhoelink {
  //   @include clearfix;    
     width: 31%;
     min-width: 30em;
-    height: 45em;
+    height: 60em;
     display: block-inline;
     background-color: #efefec;
     float: left;
@@ -735,6 +735,7 @@ footer[role=contentinfo] .ivanhoelink {
         
     img {
         margin: auto;
+        max-height: 20em;
     }
         
     p {
