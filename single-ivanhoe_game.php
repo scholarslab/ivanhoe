@@ -249,7 +249,7 @@ $(document).ready(function(){
             $this.addClass('clicked');
             if (ivanhoe_selected_moves[value] == null) {
                 $('.multisource-response').append
-                ("<li><input type='hidden' value='" + value + "' name='move_source[]'>" + $this.data('title') + "</li>").click
+                ("<li><input type='hidden' value='" + value + "' name='move_source[]'>" + $this.data('title') + "[-]</li>").click
                 (function( event ) {
                     $(event.target).remove();
                     $this.removeClass('clicked');

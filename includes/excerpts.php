@@ -35,7 +35,7 @@ function ivanhoe_get_excerpt_by_id($post_id=null)
 
 function ivanhoe_new_excerpt_more( $more )
 {
-    return ' ... <a class="view-more" href="' . get_permalink( get_the_ID() )
+    return '... <a class="view-more" href="' . get_permalink( get_the_ID() )
         . '">' . __('View More', 'ivanhoe') . '</a>';
 }
 
