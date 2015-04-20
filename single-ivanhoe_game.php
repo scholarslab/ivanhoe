@@ -14,7 +14,7 @@
     $characters = new WP_Query ( $character_args );
     $character_posts = $characters->get_posts();
 
- 
+
     // Pagination
     $paged = get_query_var('paged') ? get_query_var('paged') : 1;
     $pagination_args = array (
@@ -59,7 +59,7 @@
         </div>
 
         <!-- Shows game description -->
-       
+
         <h3><?php _e( 'Game Description', 'ivanhoe' ); ?></h3>
 
 
@@ -84,7 +84,7 @@
         <?php
             if ( !empty( $character_posts ) ) :
 
-            if ( is_user_logged_in() && $role !== FALSE ) : 
+            if ( is_user_logged_in() && $role !== FALSE ) :
                 if (!($character_posts[0] == $role) || (sizeof($character_posts) > 1 )) : ?>
                 <h3><?php _e( 'Other Characters', 'ivanhoe' ); ?></h3>
                 <article>
@@ -98,7 +98,7 @@
                                 </li>
                         <?php endwhile; ?>
                     </ul>
-                <?php endif; 
+                <?php endif;
                         endif; ?>
                 </article>
                 <?php wp_reset_postdata(); ?>
@@ -121,13 +121,13 @@
                 <?php endif;
             endif; ?>
         <!-- Ends section showing other characters -->
-        
+
      </div>
-    
+
 <article class="game">
 
 
-    
+
 
     <!-- Main content of page -->
     <header>
@@ -137,7 +137,7 @@
     </p>
 
     </header>
-    
+
     <?php
     // removed pagination logic from here
     $wp_query = new WP_Query( $pagination_args );
@@ -160,10 +160,10 @@
                 <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
                 <p><span class="byline"><?php the_author_posts_link(); ?></span>
             &middot; <time datetime="<?php the_time('Y-m-d'); ?>"><?php the_time('F j, Y'); ?></time></p>
-             
-             
-             
-             
+
+
+
+
             </header>
 
             <div class="excerpt">
@@ -231,14 +231,14 @@ $(document).ready(function(){
                   header.show ();
               }
             }*/
-            
-        if (li.length == 0){                
+
+        if (li.length == 0){
                   document.move_info.movesubmit.value="Make a Move";
-                  header.hide ();                
+                  header.hide ();
             } else {
                 document.move_info.movesubmit.value="Respond";
                 header.show ();
-                
+
             }
 
         }
@@ -249,7 +249,7 @@ $(document).ready(function(){
             $this.addClass('clicked');
             if (ivanhoe_selected_moves[value] == null) {
                 $('.multisource-response').append
-                ("<li><input type='hidden' value='" + value + "' name='move_source[]'>" + $this.data('title') + "[-]</li>").click
+                ("<li><input type='hidden' value='" + value + "' name='move_source[]'>" + $this.data('title') + "</li>").click
                 (function( event ) {
                     $(event.target).remove();
                     $this.removeClass('clicked');
