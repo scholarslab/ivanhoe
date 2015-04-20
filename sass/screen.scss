@@ -527,9 +527,46 @@ article {
     }
 }
 
+// Styles for form error messages
+.bs-callout {
+  margin: 1em 0;
+  padding: 1em;
+  border-left: 3px solid #efefec;
+  display: inline-block;
 
+  h4 {
+    margin-top: 0;
+    margin-bottom: .5em;
+    font-size: 1.5em;
+    font-weight: 500;
+    font-height: 1.1;
+  }
 
+  p {
+    margin: 0 0 1em;
 
+    &:last-child { margin-bottom: 0;}
+  }
+}
+
+.bs-callout-danger {
+  background-color: #fdf7f7;
+  border-color: #d9534f;
+
+  h4 {
+    color: #d9534f;
+  }
+}
+
+.bs-callout-warning {
+  background-color: #fcf8f2;
+  border-color: #f0ad4e;
+}
+
+.bs-callout-info {
+  background-color: #f4f8fa;
+  border-color: #5bc0de;
+}
 
 /* Styles for viewports greater than 700px wide.
 @media (min-width: 700px) {
@@ -672,7 +709,6 @@ footer[role=contentinfo] .ivanhoelink {
     }
 }
 */
-
 
 
 /* wtf is this?
