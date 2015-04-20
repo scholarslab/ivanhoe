@@ -370,9 +370,21 @@ article {
 }
 
 .multisource-response{
+
+    list-style-type: none;
+
     li {
         cursor: pointer;
         font-size: 1.5em;
+        text-indent: -1.4em;
+    }
+
+    li:before {
+       font-family: "dashicons";
+       content: "\f153";
+       float: left;
+       width: 1.4em;
+       margin-top: 5px;
     }
 
     li:hover{
