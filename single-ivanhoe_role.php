@@ -7,8 +7,22 @@
         'author' => $post->post_author
     );
     $move_query = new WP_Query( $args );
+    
+    
+    
+    global $post;
+    $game_id = $post->post_parent;
+    $game_title = ivanhoe_get_title_by_id($game_id);
 ?>
 <?php get_header(); ?>
+
+<h3><?php _e( 'Game Description', 'ivanhoe' ); ?></h3>
+<?php 
+    if ( has_post_thumbnail($post->post_parent) ) { echo get_the_post_thumbnail($post->post_parent, 'medium'); }
+    echo('<h3>' . $game_title . '</h3>');      
+    echo ivanhoe_game_excerpt($post);
+?>
+
 </div>
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
 
@@ -16,7 +30,7 @@
 
     <h1><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h1>
 
-    <?php the_post_thumbnail('medium'); ?>
+    <?php the_post_thumbnail('large'); ?>
 
     <?php the_content(); ?>
 

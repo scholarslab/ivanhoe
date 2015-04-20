@@ -1,5 +1,9 @@
 @import "base";
 
+/*
+ * Main layout stuff
+ */ 
+
 * {
     @include box-sizing(border-box);
 }
@@ -18,22 +22,115 @@ body {
 }
 
 #wrap {
-    @include clearfix;
-    background-color: rgba(white, 0.9);
+    @include span-columns(16);
     @include container;
     clear:both;
     overflow:hidden;
     zoom:1;  
     padding-right: columns(4);
-    margin: 2em;
-    width: span-columns(12);
-   
+    float: right;
+    display: block;
+    margin-right: 1em;
 }
+
+/* Banner */
+header[role=banner] {
+    width: 100%;
+    padding: 0;
+    border-bottom: black solid 3px;
+    text-align: center;
+    display: block;
+    float: left;
+    font-size: 2em;
+    }
+
+.sidebar {
+    @include span-columns(4);
+    background: #efefec;
+    margin: 0 !important; 
+    padding: 1em 1em 9em 1em;
+    position: fixed;
+    height: 100%;
+    right: 0;
+    overflow: auto;
+    float: right;
+    
+    h3 {
+        font-size: 1.5em;
+        padding: 0;
+        margin: 0;
+    }
+    
+    img {
+        padding: .5em;
+        display: block;
+    }
+}
+
+/* Main Navigation */
+nav {
+    @include span-columns(4);
+    display:block;
+    font-size: 1.5em;    
+    background: #efefec;
+    background: rgba(#efefec, 0.7);
+    margin: 0;
+    
+    &.menu {
+        position: fixed;
+        right: 0;
+        bottom: 0;  
+        text-align: center;
+    }
+
+    a {
+        text-decoration:none;
+        color: $accent3;
+        
+        &:link {color: $accent3;}
+        &:visited {color: $accent3;}
+        &:hover {color: $accent2;}
+        &:active {color: $accent2;}
+        
+    }
+
+    ul {
+        list-style:none;
+        padding-left:0;
+    }
+
+    li {
+        display:inline-block;
+
+        & + li:before {
+            display:inline-block;
+            margin: 0 .25em;
+            content: " · ";
+            color: #ccc;
+        }
+    }
+}
+/* Global footer 
+footer[role=contentinfo] {
+    clear:both;
+    @include clearfix;
+    padding: rhythm(3) 0;
+
+    .ivanhoelink {
+        display:block;
+        width: space(8);
+        margin-left:auto;
+        margin-right:auto;
+    }
+}
+
+*/
+
 
 h1 {
     font-family: 'Crimson Text', Georgia, serif;
     text-transform: uppercase;
-	letter-spacing: .2em;
+    letter-spacing: .2em;
     font-size: 2.5em;
     font-weight: 700;   
 }
@@ -43,35 +140,31 @@ h2 {
     font-size: 1.75em;
 }
 
-p {
-    font-size: 1.5em;
-}
 .excerpt {
   @include clearfix;
-}
-
-/*
- * Hide only visually, but have it available for screenreaders: h5bp.com/v
- */
-
-.visuallyhidden {
-    border: 0;
-    clip: rect(0 0 0 0);
-    height: 1px;
-    margin: -1px;
-    overflow: hidden;
-    padding: 0;
-    position: absolute;
-    width: 1px;
 }
 
 /* Links */
 a {
     &:link {color: #000;}
-    &:visited {color: #000;}
-    &:hover {color: #aaa; text-decoration:none;}
+    &:visited {color: $accent1;}
+    &:hover {color: $accent2;}
     &:active {color: #000;}
     text-decoration:none;
+    
+    h1, h2, h3 {
+        color: black;
+        }
+    
+}
+
+h1, h2, h3 {
+    a, a:visited, a:active, a:link {
+        color: black;
+    }
+    
+    a:hover {color: $accent2;}
+   
 }
 
 a, img {
@@ -92,53 +185,26 @@ input[type=text], textarea {
     width: 100%;
     border-radius: 3px;
     padding: .5em;
-    border: 1px solid #ccc;
+    border: 1px solid black;
 }
 
-/*
+.form-title{
+    width: 100%;
+    //display: block;
+    text-align: center;
+    padding: 1em;  
+    float: left;
+}
+
 .new-ivanhoe-form {
-    @include span-columns(8);        
 }
 
-.form-title {
-    @include span-columns(8);
-}
-
-.parent-moves {
-    @include span-columns(8);
-}
-
-*/
-
-/* Images */
+/* Images 
 img {
     max-width: 100%;
     max-height:100%;
     height:auto;
-}
-
-/* WordPress Generated Classes */
-.alignright {
-    float: right;
-    padding-left: .5em;
-}
-
-.aligncenter {
-    margin-left: auto;
-    margin-right:auto;
-    padding-left: .5em;
-    padding-right: .5em;
-}
-
-.alignleft {
-    float: left;
-    padding-right: .5em;
-}
-
-.wp-caption-text {
-    font-size: 1em;
-    text-align: center;
-}
+} */
 
 
 /* Custom Utility Classes */
@@ -157,125 +223,44 @@ img {
     margin-top:0 !important;
 }
 
-.btn {
-    font-family: 'Crimson Text', Georgia, serif;
-    width: 10em;    
+.btn ,.btn:visited, .btn:link{    
+    cursor: pointer;    
     min-height: 2em;
     line-height: 2em;
+    font-family: 'Crimson Text', Georgia, serif;
+    width: 10em;
     color: white;
     text-decoration: none;
     font-size: 1.5em;
     display: block;
     text-align: center;
-
     background: #000;
     border: none;
     margin: .5em;
     
-    &:link,
-    &:visited {
-        color: #ddd;
-        color: rgba(255, 255, 255, 0.85);
 
-    }
-    &:hover,
-    &:active {
+    &:hover, &:active {
         color: white;
-        background: #2E5CB8;
-        color: #ddd;     
-        cursor: pointer;
+        background: $accent1;
+        color: #ddd; 
     }
     
-
-}
-
-.clicked {
-        color: white;
-        background: #2E5CB8;
-        color: #ddd;     
-        cursor: pointer;
-}
-
-
-
-/* Banner */
-header[role=banner] {
-    padding: 0;
-    width: 100%;
-    border-bottom: black solid 3px;
-    text-align: center;
-    display: block;
-    margin-right: columns(4);
-    float: left;
-    font-size: 2em;
+    &.clicked {
+        color: $accent2;
+        background: black;
     }
-
-.form-title{
-    width: 100%;
-    //display: block;
-    text-align: center;
-    padding: 1em;  
-    float: left;
-}
-
-/* Main Navigation */
-nav {
-    width: columns(4);
-    display:block;
-    font-size: 1.5em;    
-    background: #eee;
-    background: rgba(#eee, 0.7);
-    margin: 0;
     
-    &.menu {
-        position: fixed;
-        right: 0;
-        bottom: 0;  
-        text-align: center;
-    }
-
-    a {
-        text-decoration:none;
-        color: #777;
-    }
-
-    ul {
-        list-style:none;
-        padding-left:0;
-    }
-
-    li {
-        display:inline-block;
-
-        & + li:before {
-            display:inline-block;
-            margin: 0 .25em;
-            content: " · ";
-            color: #ccc;
-        }
-    }
 }
 
-/* Main Content Container */
 
 
-.sidebar {
-   // @include clearfix;
-    background: #efefec;
-    margin: 0;
-    padding: 1em 1em 7em 1em;
-    position: fixed;
-    height: 100%;
-    right: 0;
-    overflow: auto;
-    width: columns(4);
-    float: right;
-}
+/*
+ * Specific page types
+ */ 
 
 .game, .single-move, .role, .journal, .post{
-   // width: columns(12);
-    
-     article {    
+    width: span-columns(12);
+    article {    
         display: block; 
         width: 100%;    
          
@@ -284,42 +269,24 @@ nav {
         }
     }
     padding: 1em;
-}
-
-/* Move titles on game page */ 
-.game article header {
-        padding: 1em;
-        display: block;
-        width: 100%;
-        
-        h1{
-            float: left;
-            margin: 0;
-            padding:0;
-        }
-        
-        p {
-            @include clearfix;
-            width: 100%;
-        }
+    
+    p {
+        font-size: 1.5em;
+    }
+    
     
 }
 
 
-.options {
-  //  @include span-columns(15);
-    text-align: center;
-}
-
 article {
-    /* Removes padding, background, and border on the first article on blog posts and author pages. */
+    /*Removes padding, background, and border on the first article on blog posts and author pages. */
     .single main > &,
     .author main > & {
         padding:0;
         background:none;
         border: 0;
     }
-    @include clearfix;
+    @include clearfix; 
     
     /* Articles with a class of role. */
     &.role{
@@ -341,19 +308,17 @@ article {
 
     }
 
-    /* Articles with a class of game. */
-    &.ivanhoe_game {
-        article {
-            padding: rhythm(1);
-        }
-        
-        img {
-            margin: 1em;
-        }
-
+.author .roles {
+    .wp-post-image {
+        float:right;
+        margin-right:0;
+        margin-left: rhythm(1);
+        margin-top: rhythm(1);
     }
+}
+
     
-    /* Articles with a class of character_list. */
+/* Articles with a class of character_list. */
     ul.character_list{
         list-style-type: none;
         padding-left: 0;
@@ -367,64 +332,146 @@ article {
 
 }
 
-.move .meta {
-    color: #999;
-    margin-top: 0;
-    margin-bottom: 4em;
-}
-
-
-
-/* Global footer */
-footer[role=contentinfo] {
-    clear:both;
-    @include clearfix;
-    padding: rhythm(3) 0;
-
-    .ivanhoelink {
-        display:block;
-        width: space(8);
-        margin-left:auto;
-        margin-right:auto;
+/* Role page */
+.role {
+    img{
+        max-height: 40em;
+        width: auto;
     }
 }
 
-/* Will be obsolete when infinite scroll happens */ 
+
+
+
+/* Make a Move page */ 
+.parent-moves{
+    height: auto !important;
+    display: block;
+}
+
+.parent-move {
+    display: none;
+    height: auto !important;
+}
+
+.parent-title:hover {
+    cursor: pointer;
+    color: gray;
+}
+
+.parent-btn {
+    font-weight: bold;
+    display: block-inline;
+    margin-right: 1em;
+    font-size: 1.5em;
+}
+
+.multisource-response{
+    li {
+        cursor: pointer;
+        font-size: 1.5em;        
+    }
+    
+    li:hover{
+        color: $accent2;
+    }
+}
+
+
+/* Game list stylez*/
+
+.view-more {
+    font-weight: bold;
+    float: right;
+    text-align: right;
+    width: 100%;
+  //  padding: 1em;
+}
+
+.ivanhoe_game {
+    @include clearfix;    
+    @include span-columns(5);
+    height: 60em;
+    display: block-inline;
+    background-color: #efefec;
+    float: left;
+    margin: 1em;
+    padding: 2em;
+    overflow: hidden;
+    text-align: center;
+      
+    img {
+        margin: auto;
+        max-height: 20em;
+        width: auto;    
+    }
+        
+    p {
+        border-top: black 1px solid;
+        border-bottom: black 1px solid;
+        text-align: justify;
+        padding: 2em 0;
+        margin: 1em;
+        font-size: 1.5em;
+    }
+
+    .game-title {
+        text-transform: uppercase;
+    }
+}
+
+.return-btn {
+    font-size: 2em;
+    font-weight: bold;
+    text-align: right;
+}
+
 
 /*
-.pagination {
-    margin-bottom: 1em;
-    margin-top: 1em;
-    a {
-      text-decoration: none;
-    }
-    .page-numbers {
-    border: 1px solid #004D05;
-    border-radius: 15px;
-    min-width: 30px;
-    min-height: 30px;
-    line-height: 100%;
-    text-align: center;
-    margin: 0px 3px;
-    padding: 6px 0px 0px;
-    vertical-align: middle;
-    display: inline-block;
-    border-radius: 10em;
-    &.current {
-      border-color: #004D05;
-      background-color: #004D05;
-      color: white;
-    }
-    &:hover {
-      border-color: #004D05;
-      background-color: rgba(#004D05, 0.2);
-      color: black;
-    }
-    }
+ * OTHER STUFF
+ */
+ 
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
 }
-*/
-.attribution {
-    font-variant: small-caps;
+
+
+/* WordPress Generated Classes */
+.alignright {
+    float: right;
+    padding-left: .5em;
+}
+
+.aligncenter {
+    margin-left: auto;
+    margin-right:auto;
+    padding-left: .5em;
+    padding-right: .5em;
+}
+
+.alignleft {
+    float: left;
+    padding-right: .5em;
+}
+
+.wp-caption-text {
+    font-size: 1.5em;
+    text-align: center;
+}
+
+.options {
+    text-align: center;
 }
 
 .new-post {
@@ -437,20 +484,6 @@ footer[role=contentinfo] {
     @include box-sizing(content-box); /* Fixes tab height issue. */
 }
 
-.new-ivanhoe-meta {
-    background: #efefec;
-    background: rgba(black, 0.05);
-    padding: 1px rhythm(1);
-}
-
-.author .roles {
-    .wp-post-image {
-        float:right;
-        margin-right:0;
-        margin-left: rhythm(1);
-        margin-top: rhythm(1);
-    }
-}
 
 .commentlist {
     list-style:none;
@@ -492,12 +525,8 @@ footer[role=contentinfo] {
     }
 }
 
-#commentform {
-    input[type=text],
-    textarea {
-   //      @include span-columns(4);
-    }
-}
+
+
 
 
 /* Styles for viewports greater than 700px wide. 
@@ -606,6 +635,44 @@ footer[role=contentinfo] .ivanhoelink {
 }
 */
 
+
+/* Will be obsolete when infinite scroll happens */ 
+
+/*
+.pagination {
+    margin-bottom: 1em;
+    margin-top: 1em;
+    a {
+      text-decoration: none;
+    }
+    .page-numbers {
+    border: 1px solid #004D05;
+    border-radius: 15px;
+    min-width: 30px;
+    min-height: 30px;
+    line-height: 100%;
+    text-align: center;
+    margin: 0px 3px;
+    padding: 6px 0px 0px;
+    vertical-align: middle;
+    display: inline-block;
+    border-radius: 10em;
+    &.current {
+      border-color: #004D05;
+      background-color: #004D05;
+      color: white;
+    }
+    &:hover {
+      border-color: #004D05;
+      background-color: rgba(#004D05, 0.2);
+      color: black;
+    }
+    }
+}
+*/
+
+
+
 /* wtf is this? 
 
 .bs-callout {
@@ -648,105 +715,3 @@ footer[role=contentinfo] .ivanhoelink {
   border-color: #5bc0de;
 }
 */
-
-
-/* Parent moves on Make a Move page */ 
-.parent-moves{
-    height: auto !important;
-    display: block;
-}
-
-.parent-move {
-    display: none;
-}
-
-
-
-/* Parent moves on Make a Move page */ 
-.parent-moves{
-    height: auto !important;
-    display: block;
-}
-
-.parent-move {
-    display: none;
-}
-
-.parent-title:hover {
-    cursor: pointer;
-    color: gray;
-}
-
-.parent-btn {
-    font-weight: bold;
-    display: block-inline;
-    margin-right: 1em;
-    font-size: 1.5em;
-}
-
-#multisource-title {
-
-}
-
-.multisource-response{
-    li {
-        cursor: pointer;
-        font-size: 1.5em;        
-    }
-    
-    li:hover{
-        color:  #2E5CB8;
-    }
-}
-
-.return-btn {
-    font-size: 2em;
-    font-weight: bold;
-    text-align: right;
-}
-
-.move-thumbnail {
-
-}
-
-/* Game list stylez*/
-
-.view-more {
-    font-weight: bold;
-    float: right;
-    text-align: right;
-    width: 100%;
-  //  padding: 1em;
-}
-
-.ivanhoe_game {
- //   @include clearfix;    
-    width: 31%;
-    min-width: 30em;
-    height: 60em;
-    display: block-inline;
-    background-color: #efefec;
-    float: left;
-    margin: 1em;
-    padding: 2em;
-    overflow: hidden;
-    text-align: center;
-        
-        
-    img {
-        margin: auto;
-        max-height: 20em;
-    }
-        
-    p {
-        border-top: black 1px solid;
-        border-bottom: black 1px solid;
-        text-align: justify;
-        padding: 2em 0;
-        margin: 1em;
-    }
-
-    .game-title {
-        text-transform: uppercase;
-    }
-}
