@@ -31,6 +31,7 @@ body {
     float: right;
     display: block;
     margin-right: 1em;
+    background-color: white;
 }
 
 /* Banner */
@@ -109,6 +110,10 @@ nav {
             color: #ccc;
         }
     }
+}
+
+#nav-trigger {
+    display: none;
 }
 /* Global footer 
 footer[role=contentinfo] {
@@ -529,43 +534,43 @@ article {
 
 
 
-/* Styles for viewports greater than 700px wide. 
-@media (min-width: 700px) {
+@media (max-width: 700px) {
 
-html {
-    padding:2em;
-}
-
-h1 {
-    @include adjust-font-size-to(30px);
-}
-
-#wrap {
-    @include container;
+.sidebar {
+    position: fixed;
+    top: 0;
+    right:0;
+    left: 0;
+    bottom: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
 }
 
 nav {
-    text-align:right;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    display: block;
 }
 
-#game-data, .source-response-container {
-    @include span-columns(4 omega);
+#wrap {
+    width: 100%;
+    margin: 0;
+    padding: 1em;
 }
 
-#moves{
-    @include span-columns(8);
-    
-    article{
-        border-bottom: solid black 1px;
-    }
+#nav-trigger {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    z-index: 5;
+    cursor: pointer;
+    background-color: black;
+    display: block;
 }
 
-
-.new-ivanhoe-meta {
-    @include span-columns(4 omega);
 }
-*/
-
 /*
 .author .description {
     @include span-columns(4 omega);
@@ -714,4 +719,4 @@ footer[role=contentinfo] .ivanhoelink {
   background-color: #f4f8fa;
   border-color: #5bc0de;
 }
-*/
+ */

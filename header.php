@@ -34,6 +34,8 @@
 
 <body <?php echo body_class(); ?>>
 
+
+
     <div id="wrap">
 
    
@@ -44,7 +46,7 @@
 
 
 
-        </header>
-        
+        </header>      
  
+<div id="nav-trigger">Menu</div>  
   <div class = "sidebar"> 
