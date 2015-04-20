@@ -2,7 +2,7 @@
 
 /*
  * Main layout stuff
- */ 
+ */
 
 * {
     @include box-sizing(border-box);
@@ -26,7 +26,7 @@ body {
     @include container;
     clear:both;
     overflow:hidden;
-    zoom:1;  
+    zoom:1;
     padding-right: columns(4);
     float: right;
     display: block;
@@ -47,20 +47,20 @@ header[role=banner] {
 .sidebar {
     @include span-columns(4);
     background: #efefec;
-    margin: 0 !important; 
+    margin: 0 !important;
     padding: 1em 1em 9em 1em;
     position: fixed;
     height: 100%;
     right: 0;
     overflow: auto;
     float: right;
-    
+
     h3 {
         font-size: 1.5em;
         padding: 0;
         margin: 0;
     }
-    
+
     img {
         padding: .5em;
         display: block;
@@ -71,27 +71,27 @@ header[role=banner] {
 nav {
     @include span-columns(4);
     display:block;
-    font-size: 1.5em;    
+    font-size: 1.5em;
     background: #efefec;
     background: rgba(#efefec, 0.7);
     margin: 0;
-    
+
     &.menu {
         position: fixed;
         right: 0;
-        bottom: 0;  
+        bottom: 0;
         text-align: center;
     }
 
     a {
         text-decoration:none;
         color: $accent3;
-        
+
         &:link {color: $accent3;}
         &:visited {color: $accent3;}
         &:hover {color: $accent2;}
         &:active {color: $accent2;}
-        
+
     }
 
     ul {
@@ -110,7 +110,7 @@ nav {
         }
     }
 }
-/* Global footer 
+/* Global footer
 footer[role=contentinfo] {
     clear:both;
     @include clearfix;
@@ -132,7 +132,7 @@ h1 {
     text-transform: uppercase;
     letter-spacing: .2em;
     font-size: 2.5em;
-    font-weight: 700;   
+    font-weight: 700;
 }
 
 h2 {
@@ -151,20 +151,20 @@ a {
     &:hover {color: $accent2;}
     &:active {color: #000;}
     text-decoration:none;
-    
+
     h1, h2, h3 {
         color: black;
         }
-    
+
 }
 
 h1, h2, h3 {
     a, a:visited, a:active, a:link {
         color: black;
     }
-    
+
     a:hover {color: $accent2;}
-   
+
 }
 
 a, img {
@@ -192,14 +192,14 @@ input[type=text], textarea {
     width: 100%;
     //display: block;
     text-align: center;
-    padding: 1em;  
+    padding: 1em;
     float: left;
 }
 
 .new-ivanhoe-form {
 }
 
-/* Images 
+/* Images
 img {
     max-width: 100%;
     max-height:100%;
@@ -223,8 +223,8 @@ img {
     margin-top:0 !important;
 }
 
-.btn ,.btn:visited, .btn:link{    
-    cursor: pointer;    
+.btn ,.btn:visited, .btn:link{
+    cursor: pointer;
     min-height: 2em;
     line-height: 2em;
     font-family: 'Crimson Text', Georgia, serif;
@@ -237,44 +237,45 @@ img {
     background: #000;
     border: none;
     margin: .5em;
-    
+
 
     &:hover, &:active {
         color: white;
         background: $accent1;
-        color: #ddd; 
+        color: #ddd;
     }
-    
+
     &.clicked {
-        color: $accent2;
-        background: black;
+        color: #aaa;
+        background: #eee;
+        cursor: default;
     }
-    
+
 }
 
 
 
 /*
  * Specific page types
- */ 
+ */
 
 .game, .single-move, .role, .journal, .post{
     width: span-columns(12);
-    article {    
-        display: block; 
-        width: 100%;    
-         
+    article {
+        display: block;
+        width: 100%;
+
         .btn {
-            float: right;   
+            float: right;
         }
     }
     padding: 1em;
-    
+
     p {
         font-size: 1.5em;
     }
-    
-    
+
+
 }
 
 
@@ -286,8 +287,8 @@ article {
         background:none;
         border: 0;
     }
-    @include clearfix; 
-    
+    @include clearfix;
+
     /* Articles with a class of role. */
     &.role{
         .wp-post-image{
@@ -295,10 +296,10 @@ article {
             margin-right: rhythm(1);
         }
     }
-        
+
     /* Articles with a class of move. */
     &.ivanhoe_move {
-        border-top: black 1px solid; 
+        border-top: black 1px solid;
         h1 {
                 margin-bottom: .5em;
                 margin-top: .5em;
@@ -317,7 +318,7 @@ article {
     }
 }
 
-    
+
 /* Articles with a class of character_list. */
     ul.character_list{
         list-style-type: none;
@@ -343,7 +344,7 @@ article {
 
 
 
-/* Make a Move page */ 
+/* Make a Move page */
 .parent-moves{
     height: auto !important;
     display: block;
@@ -369,9 +370,9 @@ article {
 .multisource-response{
     li {
         cursor: pointer;
-        font-size: 1.5em;        
+        font-size: 1.5em;
     }
-    
+
     li:hover{
         color: $accent2;
     }
@@ -389,7 +390,7 @@ article {
 }
 
 .ivanhoe_game {
-    @include clearfix;    
+    @include clearfix;
     @include span-columns(5);
     min-width: 20em;
     height: 60em;
@@ -400,13 +401,13 @@ article {
     padding: 2em;
     overflow: hidden;
     text-align: center;
-      
-    img {   
+
+    img {
         max-width: 100%;
         max-height: 20em;
-        height:auto; 
+        height:auto;
     }
-        
+
     p {
         border-top: black 1px solid;
         border-bottom: black 1px solid;
@@ -431,7 +432,7 @@ article {
 /*
  * OTHER STUFF
  */
- 
+
 /*
  * Hide only visually, but have it available for screenreaders: h5bp.com/v
  */
@@ -530,7 +531,7 @@ article {
 
 
 
-/* Styles for viewports greater than 700px wide. 
+/* Styles for viewports greater than 700px wide.
 @media (min-width: 700px) {
 
 html {
@@ -555,7 +556,7 @@ nav {
 
 #moves{
     @include span-columns(8);
-    
+
     article{
         border-bottom: solid black 1px;
     }
@@ -586,13 +587,13 @@ nav {
 .game-discussion-source {
     @include span-columns(4,9);
     font-size: 1.25em;
-    
+
     h3 {
         padding: 0;
         margin-bottom: 0;
         margin-top: 2em;
     }
-    
+
     ul {
         list-style: none;
         padding: 0;
@@ -602,18 +603,18 @@ nav {
 .game-discussion-response {
     @include span-columns(4 omega,9);
     font-size: 1.25em;
-    
+
     h3 {
         padding: 0;
         margin-bottom: 0;
         margin-top: 2em;
     }
-    
+
     ul {
         list-style: none;
         padding: 0;
     }
-    
+
 }
 
 .moves{
@@ -637,7 +638,7 @@ footer[role=contentinfo] .ivanhoelink {
 */
 
 
-/* Will be obsolete when infinite scroll happens */ 
+/* Will be obsolete when infinite scroll happens */
 
 /*
 .pagination {
@@ -674,7 +675,7 @@ footer[role=contentinfo] .ivanhoelink {
 
 
 
-/* wtf is this? 
+/* wtf is this?
 
 .bs-callout {
   margin: 1em 0;
