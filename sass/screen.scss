@@ -375,16 +375,16 @@ article {
 
     li {
         cursor: pointer;
-        font-size: 1.5em;
         text-indent: -1.4em;
     }
 
     li:before {
        font-family: "dashicons";
        content: "\f153";
-       float: left;
        width: 1.4em;
-       margin-top: 5px;
+       line-height:1.5;
+       display:block;
+       float:left;
     }
 
     li:hover{
