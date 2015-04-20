@@ -422,10 +422,10 @@ abstract class BasePostForm
             $message =
                 "<p><strong>$message</strong></p>";
         }
-        
+
 
         echo $message;
-        
+
     }
 
     /**
@@ -465,7 +465,7 @@ abstract class BasePostForm
 
         echo "<div>"
             . "<label for='post_title'>$this->title_label</label>"
-            . "<input type='text' size='50' name='post_title' placeholder='How does your move fit with your character? If you are responding to another character's move, how does your move relate to it? How can your move affect other characters and their future moves? What did you learn from the moves of others?' value='$title' required>"
+            . "<input type='text' size='50' name='post_title' value='$title' required>"
             . "</div>";
 
         $this->render_thumbnail();
