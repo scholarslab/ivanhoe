@@ -145,9 +145,9 @@ abstract class BasePostForm
         $this->get_header();
         $this->render_message($game);
         $this->render_form_title();
+        $this->render_errors();
         $this->render_content();
         $this->render_form();
-        $this->render_errors();
         $this->get_footer();
     }
 
