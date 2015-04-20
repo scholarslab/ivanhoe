@@ -471,7 +471,7 @@ abstract class BasePostForm
         $this->render_thumbnail();
 
         echo "<div><label for='post_content'>$this->content_label</label>";
-        $this->wp_editor("Invite others to play with you and help each other see ‘something' from multiple different perspectives. That ‘something' can be anything, for example, text, composition, video clip, piece of art, everyday object. Your imagination is the limit.", "post_content");
+        $this->wp_editor($this->content, "post_content");
         echo "</div>";
 
         $this->render_rationale();

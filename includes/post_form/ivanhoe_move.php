@@ -7,7 +7,7 @@ require_once dirname(__FILE__) . "/BasePostForm.php";
  */
 class IvanhoeMove extends BasePostForm
 {
-    
+
 
     public function get_post_type()
     {
@@ -35,17 +35,17 @@ class IvanhoeMove extends BasePostForm
 
     public function get_move_source_message($game)
     {
-        
-        
+
+
         $buffer = '';
-        
-        
-        if ( has_post_thumbnail($this->parent_post) ) { 
-            $buffer .= "<div class = 'move-thumbnail'>" 
-             . get_the_post_thumbnail($this->parent_post,'medium') 
+
+
+        if ( has_post_thumbnail($this->parent_post) ) {
+            $buffer .= "<div class = 'move-thumbnail'>"
+             . get_the_post_thumbnail($this->parent_post,'medium')
              . "</div>";
-        } 
-        
+        }
+
          $buffer .= sprintf(
             __( 'You are making a move on the game '
                 . '&#8220;<a href="%1$s">%2$s</a>&#8221;', 'ivanhoe'),
@@ -58,8 +58,8 @@ class IvanhoeMove extends BasePostForm
                 get_permalink($this->parent_post),
                 $game->post_title
             );
-     
-            
+
+
             foreach ($this->move_source as $move) {
                 $link  = get_permalink($move);
                 $title = get_the_title($move);
@@ -74,17 +74,17 @@ class IvanhoeMove extends BasePostForm
 
         return $buffer;
     }
-    
+
     /* Shows parent moves -ARB */
     public function render_content(){
-        
+
         $content = "<div class = 'parent-moves'>";
-        
+
         //count posts for possible conditions based on number of posts and to name anchors
         $count = 0;
-               
+
         foreach ($this->move_source as $move) {
-                        
+
             $args = array (
                 'post_type'   => 'ivanhoe_role',
                 'author'      => get_post_field("post_author", $move),
@@ -92,22 +92,71 @@ class IvanhoeMove extends BasePostForm
             $posts = get_posts($args);
             $role = reset($posts);
 
-            $content .= "<div id = parent>" ;        
+            $content .= "<div id = parent>" ;
             $content .= "<h2 class = parent-title>" . get_post_field("post_title", $move) . " by ";
-            $content .= $role->post_title ."</h2>"; 
+            $content .= $role->post_title ."</h2>";
             $content .= "<div class = 'parent-move'>";
             $content .= get_post_field("post_content", $move);
             $content .= "</div></div>";
-                
+
             $count++;
-            
-          
+
+
         }
-        
+
         //fixes dumb stuff with shortcode embeds
         global $wp_embed;
         echo $wp_embed->run_shortcode($content) . "</div>";
-        
+
+    }
+
+    /**
+     * This renders the form element.
+     *
+     * @return string
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function render_form()
+    {
+        $title = htmlspecialchars($this->title);
+
+        echo '<form action="" class="new-ivanhoe-form" '
+            . 'method="post" enctype="multipart/form-data">';
+
+        echo "<div>"
+            . "<label for='post_title'>$this->title_label</label>"
+            . "<input type='text' size='50' name='post_title' value='$title' required>"
+            . "</div>";
+
+        $this->render_thumbnail();
+
+        echo "<div><label for='post_content'>$this->content_label</label>";
+        $this->wp_editor('Move placeholder', "post_content");
+        echo "</div>";
+
+        $this->render_rationale();
+
+        echo '<input type="submit" class="btn" value="'
+            . __( 'Save', 'ivanhoe' ) . '">';
+
+        echo '</form>';
+    }
+
+    /**
+     * Does error checking on the POST data.
+     *
+     * @return void
+     * @author Eric Rochester <erochest@virginia.edu>
+     */
+    public function validate_post()
+    {
+        if(empty($this->title)) {
+            $this->error('A title is required');
+        }
+
+        if($this->content === 'Move placeholder' ) {
+            $this->error('A description is required');
+        }
     }
 }
 
