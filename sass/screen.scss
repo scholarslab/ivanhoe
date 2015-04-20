@@ -391,6 +391,7 @@ article {
 .ivanhoe_game {
     @include clearfix;    
     @include span-columns(5);
+    min-width: 20em;
     height: 60em;
     display: block-inline;
     background-color: #efefec;
@@ -400,10 +401,10 @@ article {
     overflow: hidden;
     text-align: center;
       
-    img {
-        margin: auto;
+    img {   
+        max-width: 100%;
         max-height: 20em;
-        width: auto;    
+        height:auto; 
     }
         
     p {
