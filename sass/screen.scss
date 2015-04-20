@@ -41,8 +41,23 @@ header[role=banner] {
     text-align: center;
     display: block;
     float: left;
-    font-size: 2em;
+
+    h1 {
+        margin-bottom:0;
+        line-height:1;
+        font-size: 4em;
     }
+
+    nav {
+        font-size: 1.75em;
+
+        ul {
+            margin-top:0;
+            padding:0;
+        }
+    }
+
+}
 
 .sidebar {
     @include span-columns(4);
@@ -69,19 +84,7 @@ header[role=banner] {
 
 /* Main Navigation */
 nav {
-    @include span-columns(4);
-    display:block;
-    font-size: 1.5em;
-    background: #efefec;
-    background: rgba(#efefec, 0.7);
     margin: 0;
-
-    &.menu {
-        position: fixed;
-        right: 0;
-        bottom: 0;
-        text-align: center;
-    }
 
     a {
         text-decoration:none;

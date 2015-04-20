@@ -42,9 +42,10 @@
 
            <h1 class = "banner-title"><a href="<?php echo home_url(); ?>"><?php echo get_bloginfo('site_title'); ?></a></h1> 
 
+<?php wp_nav_menu( array( 'fallback_cb' => 'ivanhoe_page_menu') ) ?>
 
 
         </header>
         
  
-  <div class = "sidebar"> 
+  <div class="sidebar">

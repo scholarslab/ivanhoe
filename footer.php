@@ -1,4 +1,3 @@
-<?php wp_nav_menu( array( 'fallback_cb' => 'ivanhoe_page_menu') ) ?>
 
 <footer role="contentinfo">
     <?php wp_footer(); ?>
