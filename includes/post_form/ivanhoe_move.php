@@ -79,7 +79,7 @@ class IvanhoeMove extends BasePostForm
     public function render_content(){
         
         $content = "<div class = 'parent-moves'>";
-        
+        $content = "<h2>Parent Moves</h2>";
         //count posts for possible conditions based on number of posts and to name anchors
         $count = 0;
                
@@ -92,9 +92,9 @@ class IvanhoeMove extends BasePostForm
             $posts = get_posts($args);
             $role = reset($posts);
 
-            $content .= "<div id = parent>" ;        
-            $content .= "<h2 class = parent-title>" . get_post_field("post_title", $move) . " by ";
-            $content .= $role->post_title ."</h2>"; 
+            $content .= "<div class=parent>";
+            $content .= "<h3 class=parent-title>" . get_post_field("post_title", $move) . " by ";
+            $content .= $role->post_title ."</h3>";
             $content .= "<div class = 'parent-move'>";
             $content .= get_post_field("post_content", $move);
             $content .= "</div></div>";

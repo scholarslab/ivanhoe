@@ -357,9 +357,16 @@ article {
     height: auto !important;
 }
 
+.parent-title {
+    font-size:1.25em;
+    margin:0;
+    line-height:1.5;
+}
+
 .parent-title:hover {
     cursor: pointer;
     color: gray;
+
 }
 
 .parent-btn {
