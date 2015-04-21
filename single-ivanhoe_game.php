@@ -214,6 +214,14 @@
 $(document).ready(function(){
   "use strict";
 
+    $('#moves').infinitescroll({
+        navSelector: '#pagination',
+        nextSelector: '#pagination .next',
+        itemSelector: '#moves article.ivanhoe_move'
+    });
+
+    $('#game-excerpt').readmore({});
+
     //TODO: this can be broken in to seperate functions
     function multisource () {
         var ivanhoe_selected_moves = {};
@@ -265,15 +273,6 @@ $(document).ready(function(){
     }
 
     multisource();
-
-
-    $('#moves').infinitescroll({
-        navSelector: '#pagination',
-        nextSelector: '#pagination .next',
-        itemSelector: '#moves article.ivanhoe_move'
-    });
-
-    $('#game-excerpt').readmore({});
 
 });
 </script>
