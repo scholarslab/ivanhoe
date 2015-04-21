@@ -278,6 +278,8 @@ abstract class BasePostForm
         $this->add_image($post);
         $this->add_move_source($post);
         $this->add_rationale($post);
+        $this->notify_responses($post);
+        $this->notify_all($post);
 
         return $post;
     }
@@ -525,4 +527,130 @@ abstract class BasePostForm
      * ARB
      */
      abstract function render_content();
+
+    /**
+     * Notifies authors of posts to which this move responds.
+     */
+    public function notify_responses($post_id)
+    {
+
+        $post = get_post($post_id);
+
+        $game = get_post( $post->post_parent );
+
+        $author = get_userdata( $post->post_author );
+
+        $response_ids = get_post_meta($post->ID, 'Ivanhoe Move Source');
+
+        // Email headers.
+        $message_headers = $this->notification_email_headers();
+
+        if ($response_ids) {
+            foreach ($response_ids as $response_id) {
+                $response = get_post($response_id);
+                $response_author = get_userdata($response->post_author);
+
+                $response_email_option = $response_author->notification_response_moves;
+
+                if ($response_email_option == true) {
+                    $response_author_email = $response_author->user_email;
+
+                    // Email subject.
+                    $subject = sprintf( __( 'New response on your move "%s"' ), $response->post_title );
+
+                    // Email message.
+                    $notify_message  = sprintf( __( 'New response to your move "%1$s" in the game "%2$s": "%3$s" by %4$s.' ), $response->post_title, $game->post_title, $post->post_title, $author->display_name ) . "\r\n";
+                    $notify_message .= sprintf( get_permalink($post_id) ) . "\r\n";
+
+
+                    @wp_mail( $response_author_email, wp_specialchars_decode( $subject ), $notify_message, $message_headers );
+                }
+            }
+        }
+
+        return true;
+    }
+
+    /**
+     * Notifies everyone playing a game when a new move has been made.
+     */
+    public function notify_all($post_id)
+    {
+
+        $post = get_post($post_id);
+
+        $game = get_post( $post->post_parent );
+
+        $author = get_userdata( $post->post_author );
+
+        $blogname = get_bloginfo('name');
+
+        $player_emails = $this->get_game_players($game);
+
+        // Email subject.
+        $subject = sprintf( __( 'New move on the game "%s"' ), $game->post_title );
+
+        // Email message.
+        $notify_message  = sprintf( __( 'New move on the game "%1$s": "%2$s" by %3$s.' ), $game->post_title, $post->post_title, $author->display_name ) . "\r\n";
+        $notify_message .= sprintf( get_permalink($post_id) ) . "\r\n";
+
+        $emails = array();
+
+        foreach ($player_emails as $email) {
+
+            $player = get_user_by('email', $email);
+
+            $response_email_option = $player->notification_all_moves;
+
+            if ($response_email_option == true) {
+
+                $message_headers = $this->notification_email_headers();
+                @wp_mail( $email, wp_specialchars_decode( $subject ), $notify_message, $message_headers );
+
+            }
+
+        }
+    }
+
+    private function notification_email_headers()
+    {
+        $blogname = get_bloginfo('name');
+
+        // Email headers.
+        $email_domain =  preg_replace('#^www\.#', '', strtolower($_SERVER['SERVER_NAME']));
+        $wp_email = 'wordpress@'.$email_domain;
+        $from = "From: \"$blogname\" <$wp_email>";
+        $reply_to = "Reply-To: do-not-reply@".$email_domain;
+
+        $message_headers = "$from\n" . "Content-Type: text/plain; charset=\"" . get_option('blog_charset') . "\"\n"
+            . $reply_to . "\n";
+
+        return $message_headers;
+    }
+
+    private function get_game_players($game)
+    {
+
+        $character_args = array(
+            'post_type' => 'ivanhoe_role',
+            'post_parent' => $game->ID
+        );
+
+        $characters = new WP_Query ( $character_args );
+
+        $character_posts = $characters->get_posts();
+
+        $authors = array();
+
+        foreach ($character_posts as $post) {
+
+            $user = get_userdata( $post->post_author );
+
+            $authors[] = $user->user_email;
+
+        }
+
+        return $authors;
+
+    }
 }

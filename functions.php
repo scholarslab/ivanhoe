@@ -13,3 +13,5 @@ require_once($IVANHOE_DIR .'/includes/view_helpers.php');
 require_once($IVANHOE_DIR .'/includes/excerpts.php');
 
 require_once($IVANHOE_DIR .'/includes/links.php');
+
+require_once($IVANHOE_DIR .'/includes/notifications.php');
