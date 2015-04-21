@@ -8,6 +8,8 @@
     @include box-sizing(border-box);
 }
 
+@include establish-baseline();
+
 html {
     margin:0;
     padding: 0;
@@ -18,19 +20,14 @@ body {
     color: #444;
     margin:0;
     padding:0;
-    font-size: 12px;
 }
 
 #wrap {
-    @include span-columns(16);
+    @include span-columns(12);
     @include container;
     clear:both;
     overflow:hidden;
     zoom:1;
-    padding-right: columns(4);
-    float: right;
-    display: block;
-    margin-right: 1em;
 }
 
 /* Banner */
@@ -43,9 +40,10 @@ header[role=banner] {
     float: left;
 
     h1 {
-        margin-bottom:0;
+        margin:0;
         line-height:1;
-        font-size: 4em;
+        @include adjust-font-size-to(36px);
+        @include adjust-leading-to(4, 36px);
 
         a {
             color: $accent3;
@@ -53,7 +51,6 @@ header[role=banner] {
     }
 
     nav {
-        font-size: 1.75em;
 
         ul {
             margin-top:0;
@@ -73,7 +70,7 @@ header[role=banner] {
     right: 0;
     overflow: auto;
     float: right;
-    font-size:1.25em;
+
     h3 {
         padding: 0;
         margin: 0;
@@ -84,6 +81,17 @@ header[role=banner] {
         padding: .5em;
         display: block;
     }
+
+    p,ul, article.role,
+    a[data-readmore-toggle] {
+        @include adjust-font-size-to(14px);
+        @include adjust-leading-to(1.2, 14px);
+    }
+
+    .btn {
+        @include adjust-font-size-to(18px);
+    }
+
 }
 
 /* Main Navigation */
@@ -110,34 +118,11 @@ nav {
         }
     }
 }
-/* Global footer
-footer[role=contentinfo] {
-    clear:both;
-    @include clearfix;
-    padding: rhythm(3) 0;
-
-    .ivanhoelink {
-        display:block;
-        width: space(8);
-        margin-left:auto;
-        margin-right:auto;
-    }
-}
-
-*/
-
 
 h1 {
-    font-family: 'Crimson Text', Georgia, serif;
     text-transform: uppercase;
     letter-spacing: .2em;
-    font-size: 2.5em;
     font-weight: 700;
-}
-
-h2 {
-    font-family: 'Crimson Text', Georgia, serif;
-    font-size: 1.75em;
 }
 
 .excerpt {
@@ -165,10 +150,7 @@ a, img {
 input[type=text], label, textarea{display: block;}
 
 label {
-    font-size: 1.5em;
     font-weight: bold;
-    padding-top: .75em;
-    padding-bottom: .75em;
 }
 
 input[type=text], textarea {
@@ -186,8 +168,6 @@ input[type=text], textarea {
     float: left;
 }
 
-.new-ivanhoe-form {
-}
 
 /* Images
 img {
@@ -205,7 +185,6 @@ img {
 .eyebrow {
     margin:0;
     color: #777;
-    font-size: 1em;
     font-weight:bold;
 }
 
@@ -218,16 +197,15 @@ img {
     min-height: 2em;
     line-height: 2em;
     font-family: 'Crimson Text', Georgia, serif;
-    min-width: 10em;
     color: white;
+    max-width: 250px;
+    min-width: 200px;
     text-decoration: none;
-    font-size: 1.5em;
     display: block;
     text-align: center;
     background: $accent1;
     border: none;
     margin: .5em;
-
 
     &:hover, &:active {
         color: white;
@@ -260,7 +238,6 @@ img {
     }
 
     p {
-        font-size: 1.5em;
     }
 
 
@@ -344,9 +321,7 @@ article {
 }
 
 .parent-title {
-    font-size:1.25em;
     margin:0;
-    line-height:1.5;
 }
 
 .parent-title:hover {
@@ -359,7 +334,6 @@ article {
     font-weight: bold;
     display: block-inline;
     margin-right: 1em;
-    font-size: 1.5em;
 }
 
 .multisource-response{
@@ -420,9 +394,6 @@ article {
         border-top: black 1px solid;
         border-bottom: black 1px solid;
         text-align: justify;
-        padding: 2em 0;
-        margin: 1em;
-        font-size: 1.5em;
     }
 
     .game-title {
@@ -431,7 +402,6 @@ article {
 }
 
 .return-btn {
-    font-size: 2em;
     font-weight: bold;
     text-align: right;
 }
@@ -476,7 +446,6 @@ article {
 }
 
 .wp-caption-text {
-    font-size: 1.5em;
     text-align: center;
 }
 
@@ -542,18 +511,8 @@ article {
   border-left: 3px solid #efefec;
   display: inline-block;
 
-  h4 {
-    margin-top: 0;
-    margin-bottom: .5em;
-    font-size: 1.5em;
-    font-weight: 500;
-    font-height: 1.1;
-  }
-
   p {
-    margin: 0 0 1em;
 
-    &:last-child { margin-bottom: 0;}
   }
 }
 
@@ -576,188 +535,3 @@ article {
   border-color: #5bc0de;
 }
 
-/* Styles for viewports greater than 700px wide.
-@media (min-width: 700px) {
-
-html {
-    padding:2em;
-}
-
-h1 {
-    @include adjust-font-size-to(30px);
-}
-
-#wrap {
-    @include container;
-}
-
-nav {
-    text-align:right;
-}
-
-#game-data, .source-response-container {
-    @include span-columns(4 omega);
-}
-
-#moves{
-    @include span-columns(8);
-
-    article{
-        border-bottom: solid black 1px;
-    }
-}
-
-
-.new-ivanhoe-meta {
-    @include span-columns(4 omega);
-}
-*/
-
-/*
-.author .description {
-    @include span-columns(4 omega);
-}
-
-.author .roles {
-    @include span-columns(8);
-
-    .wp-post-image {
-        float:right;
-        margin-right:0;
-        margin-left: rhythm(1);
-        margin-top: rhythm(1);
-    }
-}
-
-.game-discussion-source {
-    @include span-columns(4,9);
-    font-size: 1.25em;
-
-    h3 {
-        padding: 0;
-        margin-bottom: 0;
-        margin-top: 2em;
-    }
-
-    ul {
-        list-style: none;
-        padding: 0;
-    }
-}
-
-.game-discussion-response {
-    @include span-columns(4 omega,9);
-    font-size: 1.25em;
-
-    h3 {
-        padding: 0;
-        margin-bottom: 0;
-        margin-top: 2em;
-    }
-
-    ul {
-        list-style: none;
-        padding: 0;
-    }
-
-}
-
-.moves{
-    @include span-columns(6);
-    clear: left;
-}
-
-.rationales{
-    @include span-columns(6 omega);
-    clear:right;
-}
-
-.commentlist .commentauthor {
-    @include span-columns(6);
-}
-
-footer[role=contentinfo] .ivanhoelink {
-    width: space(3);
-}
-}
-*/
-
-
-/* Will be obsolete when infinite scroll happens */
-
-/*
-.pagination {
-    margin-bottom: 1em;
-    margin-top: 1em;
-    a {
-      text-decoration: none;
-    }
-    .page-numbers {
-    border: 1px solid #004D05;
-    border-radius: 15px;
-    min-width: 30px;
-    min-height: 30px;
-    line-height: 100%;
-    text-align: center;
-    margin: 0px 3px;
-    padding: 6px 0px 0px;
-    vertical-align: middle;
-    display: inline-block;
-    border-radius: 10em;
-    &.current {
-      border-color: #004D05;
-      background-color: #004D05;
-      color: white;
-    }
-    &:hover {
-      border-color: #004D05;
-      background-color: rgba(#004D05, 0.2);
-      color: black;
-    }
-    }
-}
-*/
-
-
-/* wtf is this?
-
-.bs-callout {
-  margin: 1em 0;
-  padding: 1em;
-  border-left: 3px solid #efefec;
-
-  h4 {
-    margin-top: 0;
-    margin-bottom: .5em;
-    font-size: 1.5em;
-    font-weight: 500;
-    font-height: 1.1;
-  }
-
-  p {
-    mrgin: 0 0 1em;
-
-    &:last-child { margin-bottom: 0;}
-  }
-}
-
-.bs-callout-danger {
-  background-color: #fdf7f7;
-  border-color: #d9534f;
-
-  h4 {
-    color: #d9534f;
-  }
-
-}
-
-.bs-callout-warning {
-  background-color: #fcf8f2;
-  border-color: #f0ad4e;
-}
-
-.bs-callout-info {
-  background-color: #f4f8fa;
-  border-color: #5bc0de;
-}
-*/
