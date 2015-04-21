@@ -243,6 +243,29 @@ img {
 
 }
 
+.game-discussion-response,
+.game-discussion-source {
+
+    h3,ul {
+        @include adjust-font-size-to(16px);
+    }
+
+    h3, ul, li {
+        display:inline;
+        margin:0;
+        padding:0;
+    }
+
+    h3:after {
+        content: ": ";
+    }
+
+    li + li:before {
+        content: " · ";
+        color: #999;
+    }
+
+}
 
 article {
     /*Removes padding, background, and border on the first article on blog posts and author pages. */
