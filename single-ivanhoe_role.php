@@ -55,7 +55,7 @@
             <?php endwhile; else: ?>
 
             <?php
-                $html = "There are no moves.";
+                $html = __( 'There are no moves', 'ivanhoe' );
                 echo $html;
             ?>
 
