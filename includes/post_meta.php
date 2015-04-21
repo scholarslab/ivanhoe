@@ -283,7 +283,7 @@ function ivanhoe_display_move_source($post=null)
         foreach ($source_id as $source ) {
             $source_link = get_permalink($source);
             $source_title = get_the_title($source);
-            $html .= "<a href='$source_link'><li>$source_title</li></a>";
+            $html .= "<li><a href='$source_link'>$source_title</a></li>";
         }
         $html .= "</ul>";
 
