@@ -211,68 +211,76 @@
 -->
 
 <script type="text/javascript">
-$(document).ready(function(){
-  "use strict";
+    $(document).ready(function(){
 
-    $('#moves').infinitescroll({
-        navSelector: '#pagination',
-        nextSelector: '#pagination .next',
-        itemSelector: '#moves article.ivanhoe_move'
-    });
-
-    $('#game-excerpt').readmore({});
-
-    //TODO: this can be broken in to seperate functions
-    function multisource () {
-        var ivanhoe_selected_moves = {};
-
-        function update_button(){
-            var li = $('.multisource-response li');
-            var header = $('#multisource-title');
-
-            //TODO: fix this
-           /* if (!document.move_info === undefined) {
-              if (li.length === 0 ) {
-              } else {
-                  document.move_info.
-                  movesubmit.value="Respond";
-                  header.show ();
-              }
-            }*/
-
-        if (li.length == 0){
-                  document.move_info.movesubmit.value="Make a Move";
-                  header.hide ();
-            } else {
-                document.move_info.movesubmit.value="Respond";
-                header.show ();
-
-            }
-
-        }
-
-        $('#moves').on('click', '.new_source.btn', function(){
-            var $this = $(this);
-            var value = $this.data('value');
-            $this.addClass('clicked');
-            if (ivanhoe_selected_moves[value] == null) {
-                $('.multisource-response').append
-                ("<li><input type='hidden' value='" + value + "' name='move_source[]'>" + $this.data('title') + "</li>").click
-                (function( event ) {
-                    $(event.target).remove();
-                    $this.removeClass('clicked');
-                    update_button();
-                    delete ivanhoe_selected_moves[value];
-                });
-                update_button();
-            ivanhoe_selected_moves[value] = true;
-            }
+        $('#moves').infinitescroll({
+            navSelector: '#pagination',
+            nextSelector: '#pagination .next',
+            itemSelector: '#moves article.ivanhoe_move'
         });
 
-        update_button();
-    }
+         $('#game-excerpt').readmore({});
 
-    multisource();
-
-});
+    });
 </script>
+
+<?php if ( is_user_logged_in() ) : ?>
+    <script type="text/javascript">
+        $(document).ready(function(){
+         "use strict";
+
+        //TODO: this can be broken in to seperate functions
+        function multisource () {
+            var ivanhoe_selected_moves = {};
+
+            function update_button(){
+                var li = $('.multisource-response li');
+                var header = $('#multisource-title');
+
+                //TODO: fix this
+               /* if (!document.move_info === undefined) {
+                  if (li.length === 0 ) {
+                  } else {
+                      document.move_info.
+                      movesubmit.value="Respond";
+                      header.show ();
+                  }
+                }*/
+
+            if (li.length == 0){
+                      document.move_info.movesubmit.value="Make a Move";
+                      header.hide ();
+                } else {
+                    document.move_info.movesubmit.value="Respond";
+                    header.show ();
+
+                }
+
+            }
+
+            $('#moves').on('click', '.new_source.btn', function(){
+                var $this = $(this);
+                var value = $this.data('value');
+                $this.addClass('clicked');
+                if (ivanhoe_selected_moves[value] == null) {
+                    $('.multisource-response').append
+                    ("<li><input type='hidden' value='" + value + "' name='move_source[]'>" + $this.data('title') + "</li>").click
+                    (function( event ) {
+                        $(event.target).remove();
+                        $this.removeClass('clicked');
+                        update_button();
+                        delete ivanhoe_selected_moves[value];
+                    });
+                    update_button();
+                ivanhoe_selected_moves[value] = true;
+                }
+            });
+
+            update_button();
+        }
+
+        multisource();
+
+    });
+    </script>
+<?php endif; ?>
