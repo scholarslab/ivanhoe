@@ -77,36 +77,42 @@ class IvanhoeMove extends BasePostForm
     
     /* Shows parent moves -ARB */
     public function render_content(){
-        
-        $content = "<div class = 'parent-moves'>";
-        $content = "<h2>Parent Moves</h2>";
-        //count posts for possible conditions based on number of posts and to name anchors
-        $count = 0;
-               
-        foreach ($this->move_source as $move) {
-                        
-            $args = array (
-                'post_type'   => 'ivanhoe_role',
-                'author'      => get_post_field("post_author", $move),
-            );
-            $posts = get_posts($args);
-            $role = reset($posts);
 
-            $content .= "<div class=parent>";
-            $content .= "<h3 class=parent-title>" . get_post_field("post_title", $move) . " by ";
-            $content .= $role->post_title ."</h3>";
-            $content .= "<div class = 'parent-move'>";
-            $content .= get_post_field("post_content", $move);
-            $content .= "</div></div>";
-                
-            $count++;
-            
-          
+        $content = "";
+
+        $parent_moves = $this->move_source;
+
+        if ($parent_moves) {
+            $content = "<div class = 'parent-moves'>";
+            $content = "<h2>Parent Moves</h2>";
+
+            //count posts for possible conditions based on number of posts and to name anchors
+            $count = 0;
+               
+            foreach ($this->move_source as $move) {
+                            
+                $args = array (
+                    'post_type'   => 'ivanhoe_role',
+                    'author'      => get_post_field("post_author", $move),
+                );
+                $posts = get_posts($args);
+                $role = reset($posts);
+
+                $content .= "<div class=parent>";
+                $content .= "<h3 class=parent-title>" . get_post_field("post_title", $move) . " by ";
+                $content .= $role->post_title ."</h3>";
+                $content .= "<div class = 'parent-move'>";
+                $content .= get_post_field("post_content", $move);
+                $content .= "</div></div>";
+                    
+                $count++;
+
+            }
         }
-        
+
         //fixes dumb stuff with shortcode embeds
         global $wp_embed;
-        echo $wp_embed->run_shortcode($content) . "</div>";
+        echo $wp_embed->run_shortcode($content);
         
     }
 }
