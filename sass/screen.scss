@@ -386,6 +386,16 @@ article {
 
 /* Game list stylez*/
 
+#box-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: space-between;
+    width: 100%;
+}
+
 .view-more {
     font-weight: bold;
     float: right;
@@ -395,17 +405,13 @@ article {
 }
 
 .ivanhoe_game {
-    @include clearfix;
-    @include span-columns(5);
-    min-width: 20em;
-    height: 60em;
-    display: block-inline;
+    margin: 1em auto;
+    flex-shrink: 1;
+    width: 20em;
     background-color: #efefec;
-    float: left;
-    margin: 1em;
     padding: 2em;
-    overflow: hidden;
     text-align: center;
+    display: block;
 
     img {
         max-width: 100%;
