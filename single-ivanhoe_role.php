@@ -13,15 +13,16 @@
     global $post;
     $game_id = $post->post_parent;
     $game_title = ivanhoe_get_title_by_id($game_id);
+    $parent_post = get_post($game_id);
 ?>
 <?php get_header(); ?>
 
 <h3><?php _e( 'Game Description', 'ivanhoe' ); ?></h3>
 <?php
     if ( has_post_thumbnail($post->post_parent) ) { echo get_the_post_thumbnail($post->post_parent, 'medium'); }
-    echo('<h3>' . $game_title . '</h3>');
-    echo ivanhoe_game_excerpt($post);
-?>
+    echo('<h3>' . $game_title . '</h3>');?>
+    
+<div id='game-excerpt'><?php echo $parent_post->post_content; ?> </div>
 
 </div>
 <?php if (have_posts()) : while(have_posts()) : the_post(); ?>
@@ -32,7 +33,7 @@
 
     <?php the_post_thumbnail('large'); ?>
 
-    <?php the_content(); ?>
+    <?php the_content(); ?> 
 
     <p class="return-btn">
             <?php $url = get_permalink( $post->post_parent); ?>
@@ -80,4 +81,15 @@
 <?php endwhile; ?>
 <?php endif; ?>
 
-<?php get_footer();
+<?php get_footer();?>
+
+<script>
+
+$(document).ready(function(){
+"use strict";
+
+    $('#game-excerpt').readmore({});
+
+});
+
+</script> 
