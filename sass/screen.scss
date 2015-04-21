@@ -46,6 +46,10 @@ header[role=banner] {
         margin-bottom:0;
         line-height:1;
         font-size: 4em;
+
+        a {
+            color: $accent3;
+        }
     }
 
     nav {
@@ -88,13 +92,6 @@ nav {
 
     a {
         text-decoration:none;
-        color: $accent3;
-
-        &:link {color: $accent3;}
-        &:visited {color: $accent3;}
-        &:hover {color: $accent2;}
-        &:active {color: $accent2;}
-
     }
 
     ul {
@@ -149,25 +146,15 @@ h2 {
 
 /* Links */
 a {
-    &:link {color: #000;}
+    &:link,
     &:visited {color: $accent1;}
     &:hover {color: $accent2;}
     &:active {color: #000;}
-    text-decoration:none;
 
-    h1, h2, h3 {
-        color: black;
-        }
-
-}
-
-h1, h2, h3 {
-    a, a:visited, a:active, a:link {
-        color: black;
+    h1 &,
+    h2 & {
+        text-decoration:none;
     }
-
-    a:hover {color: $accent2;}
-
 }
 
 a, img {
@@ -237,15 +224,14 @@ img {
     font-size: 1.5em;
     display: block;
     text-align: center;
-    background: #000;
+    background: $accent1;
     border: none;
     margin: .5em;
 
 
     &:hover, &:active {
         color: white;
-        background: $accent1;
-        color: #ddd;
+        background: $accent2;
     }
 
     &.clicked {

@@ -15,6 +15,6 @@ $show-grid-backgrounds  : true;
 // blues: 5995c8 3b8cbb
 
 $accent1: #3b8cbb;
-$accent2: #EE6833;
+$accent2: lighten($accent1, 10%);
 $accent3: #3D3F55;
 
