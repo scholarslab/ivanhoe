@@ -46,7 +46,7 @@ $curauth = ( isset( $_GET['author_name'] ) ) ? get_user_by( 'slug', $author_name
                   'post_type' => 'ivanhoe_move',
                   'post_parent' => $post->post_parent,
                   'author' => $curauth->ID,
-                  'posts_per_page' => '5'
+                  'posts_per_page' => '-1'
                 );
 
                 $moves_per_role_query = new WP_Query( $args );
