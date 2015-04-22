@@ -4,7 +4,8 @@
     (
         'post_type' => "ivanhoe_move",
         'post_parent' => $post->post_parent,
-        'author' => $post->post_author
+        'author' => $post->post_author,
+        'posts_per_page' => '-1'
     );
     $move_query = new WP_Query( $args );
 
