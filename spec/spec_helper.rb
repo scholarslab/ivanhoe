@@ -120,6 +120,7 @@ RSpec.configure do |config|
     end
 
     page.driver.allow_url("0.gravatar.com")
+    page.driver.allow_url("1.gravatar.com")
     page.driver.allow_url("ajax.googleapis.com")
     page.driver.allow_url("fonts.googleapis.com")
 
