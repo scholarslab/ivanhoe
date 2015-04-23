@@ -1,6 +1,7 @@
 require 'dotenv'
 require 'fileutils'
 require 'ffaker'
+require 'uri'
 
 require 'logger'
 require 'mustache'
@@ -132,6 +133,7 @@ RSpec.configure do |config|
     page.driver.allow_url("1.gravatar.com")
     page.driver.allow_url("ajax.googleapis.com")
     page.driver.allow_url("fonts.googleapis.com")
+    page.driver.allow_url(URI(URL_BASE).host) if URL_BASE.index("localhost").nil?
 
   end
 
