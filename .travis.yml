@@ -6,8 +6,6 @@ php:
 
 env:
   WP_CONFIG: ./wordpress/wp-config.php
-  DB_USER: travis
-  DB_PASSWORD: ""
   URL_BASE: http://localhost:8000
   DISPLAY: ":99.0"
 
