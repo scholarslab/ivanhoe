@@ -15,7 +15,6 @@
 <div id = "box-container">
 <?php
 if ( have_posts()) : ?>
-    <?php echo ivanhoe_paginate_links($wp_query);?>
     <?php while(have_posts()) : the_post(); ?>
     <article id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
         <a class="game-link" href="<?php the_permalink(); ?>">
@@ -32,5 +31,17 @@ if ( have_posts()) : ?>
 
 </div>
 
-<?php get_footer();
+<?php get_footer(); ?>
+
+<script type="text/javascript">
+    $(document).ready(function(){
+
+        $('#box-container').infinitescroll({
+            navSelector: '#pagination',
+            nextSelector: '#pagination .next',
+            itemSelector: '#box-container article.ivanhoe_game'
+        });
+
+    });
+</script>
 
