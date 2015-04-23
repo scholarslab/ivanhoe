@@ -105,3 +105,41 @@ function ivanhoe_create_post_types()
     );
 
 }
+
+/**
+ * When you delete a game, delete all children (moves and roles)
+ */
+add_action('delete_post', 'ivanhoe_delete_move_children');
+
+function ivanhoe_delete_move_children( $post_id )
+{
+    $args = array(
+        'post_parent' => $post_id,
+        'post_type' => 'ivanhoe_move'
+     );
+    $children = get_posts($args);
+    if (empty($children)) {
+        return;
+    }
+    foreach ($children as $post) {
+        wp_delete_post($post->ID);
+    }
+}
+
+add_action('delete_post', 'ivanhoe_delete_role_children');
+
+function ivanhoe_delete_role_children( $post_id )
+{
+    $args = array(
+        'post_parent' => $post_id,
+        'post_type' => 'ivanhoe_role'
+     );
+    $children = get_posts($args);
+    if (empty($children)) {
+        return;
+    }
+    foreach ($children as $post) {
+        wp_delete_post($post->ID);
+    }
+}
+
