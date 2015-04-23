@@ -1,3 +1,23 @@
-language: ruby
-rvm:
-  - 2.2
+language: php
+
+php:
+  - 5.5
+  - 5.6
+
+env:
+  WP_CONFIG: ./wordpress/wp-config.php
+  DB_USER: travis
+  DB_PASSWORD: ""
+  URL_BASE: http://localhost:8000
+
+before_script:
+  - bundle install
+  - ./travis_setup.sh
+  - php -S 0.0.0.0:8000 -t ./wordpress/
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+
+script: rake
+
+notifications:
+  irc: "irc.freenode.org#slab"
