@@ -5,6 +5,7 @@
     $game_id = $post->post_parent;
     $role = ivanhoe_user_has_role($game_id);
     $game_title = ivanhoe_get_title_by_id($game_id);
+    $parent_game = get_post($game_id);
 ?>
 
         <div class="discussion-source">
@@ -24,7 +25,7 @@
             <?php
                 echo('<h3>' . $game_title . '</h3>');?>
       
-                <div id='game-excerpt'><?php ivanhoe_game_excerpt() ?> </div>
+                <div id='game-excerpt'><?php echo $parent_game->post_content; ?> </div>
             
         </div>
      
