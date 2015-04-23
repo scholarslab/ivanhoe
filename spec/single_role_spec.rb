@@ -6,18 +6,17 @@ describe 'Single Role View', :type => :feature, :js => true do
 
     before(:each) do
         visit(URL_BASE)
-        click_link('Games')
         login
-        make_game
-        first('.game-title a').click
-        make_role
+        game = make_game
+        make_role(game_id: game)
+        visit(URL_BASE + "/?ivanhoe_game=#{game.post_name}")
         make_a_move
         within('#game-data article.role') do
             first('a').click
         end
     end
 
-    it 'has a linked role title' do
+    it 'has a linked role title', :current => true do
         within('.role') do
             expect(page).to have_selector('h1 a')
         end
@@ -70,4 +69,3 @@ describe 'Single Role View', :type => :feature, :js => true do
     end
 
 end
-

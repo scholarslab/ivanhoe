@@ -13,8 +13,10 @@ group :test do
   gem 'mysql2'
   gem 'guard-rspec'
   gem 'ffaker'
-  gem 'sequel'
-  gem 'database_cleaner'
   gem 'mustache'
+  gem 'sequel'
+  gem 'ruby-wpdb'
+  gem 'mime-types'
+  gem 'exifr'
+  gem 'php-serialize'
 end
-
