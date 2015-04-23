@@ -17,7 +17,7 @@ before_script:
   - ruby --version
   - bundle install
   - ./travis_setup.sh
-  - "sh -e php -S 0.0.0.0:8000 -t ./wordpress/"
+  - "sh -e $(which php) -S 0.0.0.0:8000 -t ./wordpress/"
   - "sh -e /etc/init.d/xvfb start"
 
 script: rake
