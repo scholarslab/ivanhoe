@@ -7,8 +7,8 @@ require 'mysql2'
 
 require 'capybara/rspec'
 require 'capybara-webkit'
-require 'capybara-screenshot'
-require 'capybara-screenshot/rspec'
+# require 'capybara-screenshot'
+# require 'capybara-screenshot/rspec'
 
 require 'helpers/media_files'
 
