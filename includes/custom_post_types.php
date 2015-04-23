@@ -43,14 +43,14 @@ function ivanhoe_create_post_types()
             'has_archive'  => true,
             'rewrite'      => array('slug' => 'games'),
             'capabilities' => array(
-                'edit_post'          => 'update_core',
+                'edit_post'          => 'activate_plugins',
                 'read_post'          => 'read',
-                'delete_post'        => 'update_core',
-                'delete_posts'       => 'update_core',
-                'edit_posts'         => 'update_core',
-                'edit_others_posts'  => 'update_core',
-                'publish_posts'      => 'update_core',
-                'read_private_posts' => 'update_core'
+                'delete_post'        => 'activate_plugins',
+                'delete_posts'       => 'activate_plugins',
+                'edit_posts'         => 'activate_plugins',
+                'edit_others_posts'  => 'activate_plugins',
+                'publish_posts'      => 'activate_plugins',
+                'read_private_posts' => 'activate_plugins'
             ),
         )
     );
