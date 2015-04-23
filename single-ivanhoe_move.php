@@ -5,6 +5,7 @@
     $game_id = $post->post_parent;
     $role = ivanhoe_user_has_role($game_id);
     $game_title = ivanhoe_get_title_by_id($game_id);
+    $parent_game = get_post($game_id);
 ?>
 
         <div class="discussion-source">
@@ -22,10 +23,10 @@
         
             <h2><?php _e( 'Game Description', 'ivanhoe' ); ?></h2>
             <?php
-                echo('<h3>' . $game_title . '</h3>');
+                echo('<h3>' . $game_title . '</h3>');?>
       
-                echo ivanhoe_game_excerpt($post);
-            ?>
+                <div id='game-excerpt'><?php echo $parent_game->post_content; ?> </div>
+            
         </div>
      
     </div>
@@ -71,4 +72,15 @@
 
 <?php endwhile; endif; ?>
 
-<?php get_footer();
+<?php get_footer(); ?>
+
+<script>
+
+$(document).ready(function(){
+"use strict";
+
+    $('#game-excerpt').readmore({});
+
+});
+
+</script> 
