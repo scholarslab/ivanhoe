@@ -12,6 +12,7 @@
     <h1><?php _e( 'Games', 'ivanhoe' ); ?></h1>
 </header>
 
+<div id = "box-container">
 <?php
 if ( have_posts()) : ?>
     <?php echo ivanhoe_paginate_links($wp_query);?>
@@ -28,6 +29,8 @@ if ( have_posts()) : ?>
 <?php else : ?>
 <p><?php _e( 'Apologies, but no results were found.', 'ivanhoe' ); ?></p>
 <?php endif; ?>
+
+</div>
 
 <?php get_footer();
 
