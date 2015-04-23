@@ -11,10 +11,9 @@ env:
   URL_BASE: http://localhost:8000
 
 before_script:
-  - echo RUBY
-  - echo `ruby --version`
-  - echo RVM
-  - echo `which rvm`
+  - rvm install $(< .ruby-version)
+  - rvm use $(< .ruby-version)
+  - ruby --version
   - bundle install
   - ./travis_setup.sh
   - php -S 0.0.0.0:8000 -t ./wordpress/
