@@ -143,3 +143,19 @@ function ivanhoe_delete_role_children( $post_id )
     }
 }
 
+add_action('delete_post', 'ivanhoe_delete_rationale_children');
+
+function ivanhoe_delete_rationale_children( $post_id )
+{
+    $args = array(
+        'post_parent' => $post_id,
+        'post_type' => 'ivanhoe_role_journal'
+     );
+    $children = get_posts($args);
+    if (empty($children)) {
+        return;
+    }
+    foreach ($children as $post) {
+        wp_delete_post($post->ID);
+    }
+}
