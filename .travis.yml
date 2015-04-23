@@ -9,6 +9,7 @@ env:
   DB_USER: travis
   DB_PASSWORD: ""
   URL_BASE: http://localhost:8000
+  DISPLAY: ":99.0"
 
 before_script:
   - rvm install $(< .ruby-version)
@@ -16,8 +17,7 @@ before_script:
   - ruby --version
   - bundle install
   - ./travis_setup.sh
-  - php -S 0.0.0.0:8000 -t ./wordpress/
-  - "export DISPLAY=:99.0"
+  - "sh -e php -S 0.0.0.0:8000 -t ./wordpress/"
   - "sh -e /etc/init.d/xvfb start"
 
 script: rake
