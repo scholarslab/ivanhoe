@@ -22,10 +22,10 @@
         
             <h2><?php _e( 'Game Description', 'ivanhoe' ); ?></h2>
             <?php
-                echo('<h3>' . $game_title . '</h3>');
+                echo('<h3>' . $game_title . '</h3>');?>
       
-                echo ivanhoe_game_excerpt($post);
-            ?>
+                <div id='game-excerpt'><?php ivanhoe_game_excerpt() ?> </div>
+            
         </div>
      
     </div>
@@ -71,4 +71,15 @@
 
 <?php endwhile; endif; ?>
 
-<?php get_footer();
+<?php get_footer(); ?>
+
+<script>
+
+$(document).ready(function(){
+"use strict";
+
+    $('#game-excerpt').readmore({});
+
+});
+
+</script> 
