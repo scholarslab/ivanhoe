@@ -46,6 +46,7 @@ WP_DB_HOST     = ENV.fetch('WP_DB_HOST', DB_HOST)
 DB_USER        = ENV.fetch('DB_USER', 'ivanhoe')
 WP_DB_USER     = ENV.fetch('WP_DB_USER', DB_USER)
 DB_PASSWORD    = ENV.fetch('DB_PASSWORD', 'ivanhoe')
+DB_PASSWORD    = nil if DB_PASSWORD.empty?
 WP_DB_PASSWORD = ENV.fetch('WP_DB_PASSWORD', DB_PASSWORD)
 DB_NAME        = ENV.fetch('DB_NAME', 'test_ivanhoe')
 DB_PORT        = ENV.fetch('DB_PORT', '3306')
