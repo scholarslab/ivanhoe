@@ -1,4 +1,5 @@
 require 'dotenv'
+require 'rspec/core/rake_task'
 
 Dotenv.load
 
@@ -11,6 +12,11 @@ DB_PORT        = ENV.fetch('DB_PORT', '8889')
 URL_BASE       = ENV.fetch('URL_BASE', 'http://localhost:8888/ivanhoe')
 
 DB_DUMP        = "./spec/dumps/ivanhoe.sql"
+
+
+task :default => :spec
+
+RSpec::Core::RakeTask.new(:spec)
 
 namespace :db do
 
