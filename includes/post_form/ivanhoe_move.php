@@ -7,7 +7,7 @@ require_once dirname(__FILE__) . "/BasePostForm.php";
  */
 class IvanhoeMove extends BasePostForm
 {
-    
+
 
     public function get_post_type()
     {
@@ -35,17 +35,17 @@ class IvanhoeMove extends BasePostForm
 
     public function get_move_source_message($game)
     {
-        
-        
+
+
         $buffer = '';
-        
-        
-        if ( has_post_thumbnail($this->parent_post) ) { 
-            $buffer .= "<div class = 'move-thumbnail'>" 
-             . get_the_post_thumbnail($this->parent_post,'medium') 
+
+
+        if ( has_post_thumbnail($this->parent_post) ) {
+            $buffer .= "<div class = 'move-thumbnail'>"
+             . get_the_post_thumbnail($this->parent_post,'medium')
              . "</div>";
-        } 
-        
+        }
+
          $buffer .= sprintf(
             __( 'You are making a move on the game '
                 . '&#8220;<a href="%1$s">%2$s</a>&#8221;', 'ivanhoe'),
@@ -58,8 +58,8 @@ class IvanhoeMove extends BasePostForm
                 get_permalink($this->parent_post),
                 $game->post_title
             );
-     
-            
+
+
             foreach ($this->move_source as $move) {
                 $link  = get_permalink($move);
                 $title = get_the_title($move);
@@ -74,7 +74,7 @@ class IvanhoeMove extends BasePostForm
 
         return $buffer;
     }
-    
+
     /* Shows parent moves -ARB */
     public function render_content(){
 
@@ -88,9 +88,9 @@ class IvanhoeMove extends BasePostForm
 
             //count posts for possible conditions based on number of posts and to name anchors
             $count = 0;
-               
+
             foreach ($this->move_source as $move) {
-                            
+
                 $args = array (
                     'post_type'   => 'ivanhoe_role',
                     'author'      => get_post_field("post_author", $move),
@@ -104,16 +104,16 @@ class IvanhoeMove extends BasePostForm
                 $content .= "<div class = 'parent-move'>";
                 $content .= get_post_field("post_content", $move);
                 $content .= "</div></div>";
-                    
+
                 $count++;
 
             }
         }
 
-        //fixes dumb stuff with shortcode embeds
+        // Runs shortcode to handle embeds
         global $wp_embed;
         echo $wp_embed->run_shortcode($content);
-        
+
     }
 }
 
