@@ -134,8 +134,8 @@ abstract class BasePostForm
         if (!empty($_POST)) {
             $this->validate_post();
             if (!$this->has_errors()) {
-                $this->insert_new_post();
-                $this->redirect();
+                $post = $this->insert_new_post();
+                $this->redirect(get_permalink($post));
                 exit;
             }
         }
@@ -158,9 +158,9 @@ abstract class BasePostForm
      * @return void
      * @author Eric Rochester <erochest@virginia.edu>
      */
-    public function redirect()
+    public function redirect($url = null)
     {
-        $url = get_post_type_archive_link('ivanhoe_game');
+        $url = $url ? $url : get_post_type_archive_link('ivanhoe_game');
 
         if ($this->parent_post) {
             $url = get_permalink($this->parent_post);
