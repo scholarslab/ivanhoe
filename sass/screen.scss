@@ -131,6 +131,7 @@ h1 {
 
 /* Links */
 a {
+    text-decoration:none;
     &:link,
     &:visited {color: $accent1;}
     &:hover {color: $accent2;}
@@ -168,13 +169,6 @@ input[type=text], textarea {
     float: left;
 }
 
-
-/* Images
-img {
-    max-width: 100%;
-    max-height:100%;
-    height:auto;
-} */
 
 
 /* Custom Utility Classes */
@@ -277,14 +271,6 @@ article {
     }
     @include clearfix;
 
-    /* Articles with a class of role. */
-    &.role{
-        .wp-post-image{
-            float: left;
-            margin-right: rhythm(1);
-        }
-    }
-
     /* Articles with a class of move. */
     &.ivanhoe_move {
         border-top: black 1px solid;
@@ -297,13 +283,17 @@ article {
 
     }
 
-.author .roles {
+.roles, &.role{
     .wp-post-image {
-        float:right;
+        float:right;    
         margin-right:0;
         margin-left: rhythm(1);
         margin-top: rhythm(1);
     }
+}
+
+.role {
+    border-top: black 1px solid;
 }
 
 
@@ -320,16 +310,6 @@ article {
     }
 
 }
-
-/* Role page */
-.role {
-    img{
-        max-height: 40em;
-        width: auto;
-    }
-}
-
-
 
 
 /* Make a Move page */
@@ -424,6 +404,7 @@ article {
         border-top: black 1px solid;
         border-bottom: black 1px solid;
         text-align: justify;
+        padding: 1em 0;
     }
 
     .game-title {
