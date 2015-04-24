@@ -91,6 +91,24 @@ header[role=banner] {
     .btn {
         @include adjust-font-size-to(18px);
     }
+    
+    .role{
+        width: 100%;
+        a {
+            @include clearfix;
+            float: left;
+            width: 100%;
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .wp-post-image {
+            display: block;
+            float: left;   
+            padding: .5em .5em .5em 0;
+            margin: 0;
+        }
+        margin-bottom: 1em;
+    }
 
 }
 
