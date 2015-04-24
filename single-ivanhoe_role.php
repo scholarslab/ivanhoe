@@ -40,10 +40,6 @@
 
     <?php the_content(); ?>
 
-    <p class="return-btn">
-            <?php $url = get_permalink( $post->post_parent); ?>
-            <?php echo ivanhoe_a($url, 'Return to game'); ?>
-    </p>
 
     <div class="moves">
 
@@ -78,6 +74,18 @@
         <h2><?php _e( 'Rationales', 'ivanhoe' ); ?></h2>
 
         <?php echo ivanhoe_display_rationales($post); ?>
+
+    </div>
+
+
+  <div id="moves">
+
+        <?php the_content(); ?>
+
+        <p class="return-btn">
+            <?php $url = get_permalink( $post->post_parent); ?>
+            <?php echo ivanhoe_a($url, 'Return to game'); ?>
+        </p>
 
     </div>
 
