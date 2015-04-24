@@ -64,17 +64,6 @@ $curauth = ( isset( $_GET['author_name'] ) ) ? get_user_by( 'slug', $author_name
             <?php endif; ?>
 
             <?php wp_reset_postdata(); ?>
-
-  <div id="moves">
-
-        <?php the_content(); ?>
-
-        <p class="return-btn">
-            <?php $url = get_permalink( $post->post_parent); ?>
-            <?php echo ivanhoe_a($url, 'Return to game'); ?>
-        </p>
-
-    </div>
             
         </article>
 
