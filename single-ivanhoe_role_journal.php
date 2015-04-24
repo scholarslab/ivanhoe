@@ -18,7 +18,7 @@
     ?>
 
     <p class="return-btn">
-            <?php echo ivanhoe_a($role_page_url, 'Return to Role Page'); ?>
+            <?php echo ivanhoe_a($role_page_url, 'Return to role page'); ?>
     </p>
     
 </article>
