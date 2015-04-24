@@ -93,7 +93,7 @@ header[role=banner] {
     }
     
     .role{
-        border: none;        
+        border: 0;        
         width: 100%;
         a {
             @include clearfix;
