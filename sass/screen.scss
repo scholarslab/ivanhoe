@@ -63,11 +63,12 @@ header[role=banner] {
 .sidebar {
     @include span-columns(4);
     background: #efefec;
-    margin: 0 !important;
+    margin: 0;
     padding: 1em;
     position: fixed;
     height: 100%;
     right: 0;
+    bottom: 0;
     overflow: auto;
     float: right;
 
@@ -108,7 +109,7 @@ header[role=banner] {
             padding: .5em .5em .5em 0;
             margin: 0;
         }
-        margin-bottom: 1em; 
+        padding-bottom: 1em; 
     }
 
 }
