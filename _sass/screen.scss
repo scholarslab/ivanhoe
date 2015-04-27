@@ -19,7 +19,7 @@ html {
 body {
     font-family: 'Crimson Text', Georgia, serif;
     @include container;
-    margin:0;    
+    margin:0;
     padding: 0 2em;
     color: #444;
     background: #fff;
@@ -43,6 +43,15 @@ h1 {
         }
     }
 
+}
+
+h1,h2 {
+    text-align:center;
+}
+
+h2 {
+    @include margin-leader(2, 24px);
+    @incldue adjust-font-size-to(24px);
 }
 
 .audible {
@@ -82,9 +91,9 @@ img {
 #banner {
     border-bottom: 3px solid #222;
     text-align:center;
-    
+
     nav {
-        
+
         ul {
             list-style:none;
             margin:0;
@@ -109,7 +118,7 @@ img {
             text-decoration:none;
         }
     }
-    
+
 }
 
 
