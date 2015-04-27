@@ -4,14 +4,6 @@
 @import "mixins";
 @import url(http://fonts.googleapis.com/css?family=Crimson+Text:400,700);
 
-// Suzy Settings
-$total-columns  : 16;
-$column-width: 10em;
-$gutter-width: 2em;
-$grid-padding   : $gutter-width;
-$container-style: magic;
-$show-grid-backgrounds  : true;
-
 // blues: 5995c8 3b8cbb
 
 $accent1: #3b8cbb;
@@ -19,4 +11,4 @@ $accent2: lighten($accent1, 10%);
 $accent3: #3D3F55;
 
 $base-font-size: 18px;
-
+$base-line-height: 26px;
