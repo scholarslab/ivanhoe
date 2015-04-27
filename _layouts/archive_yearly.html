@@ -1,0 +1,16 @@
+---
+layout: default
+title: Posts for {{ page.year }}
+bodyclass: archive
+---
+<h1>Posts for {{ page.year }}</h1>
+{% for m in (1..12) reversed %}
+{% if page.posts_by_month[page.year][m] %}
+<h2>{{ m | to_month }}</h2>
+<ul class="posts">
+  {% for post in page.posts_by_month[page.year][m]  %}
+  {% include postli.html %}
+  {% endfor %}
+</ul>
+{% endif %}
+{% endfor %}

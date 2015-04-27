@@ -1,0 +1,15 @@
+---
+layout: default
+title: Posts for {{ page.month }}
+bodyclass: archive
+---
+<h1>Posts for {{ page.month | to_month }}, {{ page.year }}</h1>
+{% if page.posts_by_month[page.year][page.month] %}
+<ul>
+{% for post in page.posts_by_month[page.year][page.month] %}
+{% include postli.html %}
+{% endfor %}
+</ul>
+{% else %}
+<p>No posts this month!</p>
+{% endif %}

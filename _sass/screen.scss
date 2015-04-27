@@ -1,0 +1,431 @@
+@import "base";
+
+/*
+ * Main layout stuff
+ */
+
+* {
+    @include box-sizing(border-box);
+}
+
+@include establish-baseline();
+
+html {
+    margin:0;
+    padding: 0;
+    background: #efefec;
+}
+
+body {
+    font-family: 'Crimson Text', Georgia, serif;
+    @include container;
+    padding: 0 2em;
+    color: #444;
+    background: #fff;
+    max-width: 700px;
+}
+
+
+h1 {
+    text-transform: uppercase;
+    letter-spacing: .2em;
+    font-weight: 700;
+}
+
+.excerpt {
+  @include clearfix;
+}
+
+/* Links */
+a {
+    &:link,
+    &:visited {color: $accent1;}
+    &:hover {color: $accent2;}
+    &:active {color: #000;}
+
+    h1 &,
+    h2 & {
+        text-decoration:none;
+    }
+}
+
+a, img {
+    border:0;
+}
+
+/* Forms */
+input[type=text], label, textarea{display: block;}
+
+label {
+    font-weight: bold;
+}
+
+input[type=text], textarea {
+    width: 100%;
+    border-radius: 3px;
+    padding: .5em;
+    border: 1px solid black;
+}
+
+.form-title{
+    width: 100%;
+    //display: block;
+    text-align: center;
+    padding: 1em;
+    float: left;
+}
+
+
+/* Images
+img {
+    max-width: 100%;
+    max-height:100%;
+    height:auto;
+} */
+
+
+/* Custom Utility Classes */
+.citation {
+    font-variant: small-caps;
+}
+
+.eyebrow {
+    margin:0;
+    color: #777;
+    font-weight:bold;
+}
+
+.eyebrow + * {
+    margin-top:0 !important;
+}
+
+.btn ,.btn:visited, .btn:link{
+    cursor: pointer;
+    min-height: 2em;
+    line-height: 2em;
+    font-family: 'Crimson Text', Georgia, serif;
+    color: white;
+    max-width: 250px;
+    min-width: 200px;
+    text-decoration: none;
+    display: block;
+    text-align: center;
+    background: $accent1;
+    border: none;
+    margin: .5em;
+
+    &:hover, &:active {
+        color: white;
+        background: $accent2;
+    }
+
+    &.clicked {
+        color: #aaa;
+        background: #eee;
+        cursor: default;
+    }
+
+}
+
+
+
+
+
+article {
+    /*Removes padding, background, and border on the first article on blog posts and author pages. */
+    .single main > &,
+    .author main > & {
+        padding:0;
+        background:none;
+        border: 0;
+    }
+    @include clearfix;
+
+    /* Articles with a class of role. */
+    &.role{
+        .wp-post-image{
+            float: left;
+            margin-right: rhythm(1);
+        }
+    }
+
+    /* Articles with a class of move. */
+    &.ivanhoe_move {
+        border-top: black 1px solid;
+        h1 {
+                margin-bottom: .5em;
+                margin-top: .5em;
+        }
+        margin-bottom: rhythm(3);
+        @include clearfix;
+
+    }
+
+.author .roles {
+    .wp-post-image {
+        float:right;
+        margin-right:0;
+        margin-left: rhythm(1);
+        margin-top: rhythm(1);
+    }
+}
+
+
+/* Articles with a class of character_list. */
+    ul.character_list{
+        list-style-type: none;
+        padding-left: 0;
+        margin-left: 0;
+        margin-top:0;
+        li {
+            clear: both;
+            @include clearfix;
+        }
+    }
+
+}
+
+/* Role page */
+.role {
+    img{
+        max-height: 40em;
+        width: auto;
+    }
+}
+
+
+
+
+/* Make a Move page */
+.parent-moves{
+    height: auto !important;
+    display: block;
+}
+
+.parent-move {
+    display: none;
+    height: auto !important;
+}
+
+.parent-title {
+    margin:0;
+}
+
+.parent-title:hover {
+    cursor: pointer;
+    color: gray;
+
+}
+
+.parent-btn {
+    font-weight: bold;
+    display: block-inline;
+    margin-right: 1em;
+}
+
+.multisource-response{
+
+    list-style-type: none;
+
+    li {
+        cursor: pointer;
+        text-indent: -1.4em;
+        clear:left;
+    }
+
+    li:before {
+       font-family: "dashicons";
+       content: "\f153";
+       width: 1.4em;
+       line-height:1.5;
+       display:block;
+       float:left;
+       margin-top: 5px;
+    }
+
+    li:hover{
+        color: $accent2;
+    }
+}
+
+
+/* Game list stylez*/
+
+#box-container {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: space-between;
+    width: 100%;
+}
+
+.view-more {
+    font-weight: bold;
+    float: right;
+    text-align: right;
+    width: 100%;
+  //  padding: 1em;
+}
+
+.ivanhoe_game {
+    margin: 1em auto;
+    flex-shrink: 1;
+    width: 20em;
+    background-color: #efefec;
+    padding: 2em;
+    text-align: center;
+    display: block;
+
+    img {
+        max-width: 100%;
+        max-height: 20em;
+        height:auto;
+    }
+
+    p {
+        border-top: black 1px solid;
+        border-bottom: black 1px solid;
+        text-align: justify;
+    }
+
+    .game-title {
+        text-transform: uppercase;
+    }
+}
+
+.return-btn {
+    font-weight: bold;
+    text-align: right;
+}
+
+
+/*
+ * OTHER STUFF
+ */
+
+/*
+ * Hide only visually, but have it available for screenreaders: h5bp.com/v
+ */
+
+.visuallyhidden {
+    border: 0;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+}
+
+
+/* WordPress Generated Classes */
+.alignright {
+    float: right;
+    padding-left: .5em;
+}
+
+.aligncenter {
+    margin-left: auto;
+    margin-right:auto;
+    padding-left: .5em;
+    padding-right: .5em;
+}
+
+.alignleft {
+    float: left;
+    padding-right: .5em;
+}
+
+.wp-caption-text {
+    text-align: center;
+}
+
+.options {
+    text-align: center;
+}
+
+.new-post {
+    & > div {
+        @include trailer(1);
+    }
+}
+
+.wp-editor-wrap * {
+    @include box-sizing(content-box); /* Fixes tab height issue. */
+}
+
+
+.commentlist {
+    list-style:none;
+    margin-left:0;
+    padding-left:0;
+
+    li {
+        border: 1px dotted #ccc;
+        padding: rhythm(1);
+        @include clearfix;
+    }
+
+    .comment-author {
+        line-height: 2em;
+
+        img {
+            float:left;
+            margin-right: .5em;
+        }
+    }
+
+    .comment-meta {
+        text-align:right;
+        line-height: 2em;
+
+        &:after {
+            display:table;
+            content: ' ';
+            width: 100%;
+            height: 0;
+            clear:both;
+            line-height:0;
+            padding:0;
+        }
+    }
+    .children {
+        @include push(1);
+        margin-top: rhythm(1);
+    }
+}
+
+// Styles for form error messages
+.bs-callout {
+  margin: 1em 0;
+  padding: 1em;
+  border-left: 3px solid #efefec;
+  display: inline-block;
+
+  p {
+
+  }
+}
+
+.bs-callout-danger {
+  background-color: #fdf7f7;
+  border-color: #d9534f;
+
+  h4 {
+    color: #d9534f;
+  }
+}
+
+.bs-callout-warning {
+  background-color: #fcf8f2;
+  border-color: #f0ad4e;
+}
+
+.bs-callout-info {
+  background-color: #f4f8fa;
+  border-color: #5bc0de;
+}
+

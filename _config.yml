@@ -1,0 +1,10 @@
+# standard jekyll configuration
+
+permalink: /:categories/:title/
+highlighter:  pygments
+markdown: rdiscount
+exclude: ['readme.md', 'Procfile', 'config.rb', '.gitignore', '.sass-cache', 'Gemfile', 'Gemfile.lock']
+show_drafts: true
+
+title: Ivanhoe - A Praxis Program Project
+domain: http://ivanhoe.scholarslab.org
