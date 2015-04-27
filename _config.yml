@@ -6,5 +6,5 @@ markdown: rdiscount
 exclude: ['readme.md', 'Procfile', 'config.rb', '.gitignore', '.sass-cache', 'Gemfile', 'Gemfile.lock']
 show_drafts: true
 
-title: Ivanhoe - A Praxis Program Project
+title: Ivanhoe
 domain: http://ivanhoe.scholarslab.org

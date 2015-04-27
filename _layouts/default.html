@@ -22,8 +22,16 @@
 <body class="{{ page.bodyclass }}">
 <a href="#main" class="audible">Skip to main content</a>
   <header id="banner" role="banner">
-
+      <h1>{{ site.title }}</h1>
+      <nav>
+          <ul>
+              <li><a href="/about.html">About</a></li>
+              <li><a href="/documentation.html">Documentation</a></li>
+              <li><a href="/download.html">Download</a></li>
+          </ul>
+      </nav>
   </header>
+
   <main id="main" role="main">
     {{ content }}
   </main>
