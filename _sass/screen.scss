@@ -29,7 +29,7 @@ body {
 
 h1 {
     text-transform: uppercase;
-    letter-spacing: 2px;
+    letter-spacing: 5px;
     font-weight: 700;
 
     #banner & {
@@ -37,6 +37,10 @@ h1 {
         @include adjust-leading-to(4, 60px);
         margin:0;
         text-align: center;
+
+        a {
+            color: #444;
+        }
     }
 
 }
@@ -78,7 +82,7 @@ img {
 #banner {
     border-bottom: 3px solid #222;
     text-align:center;
-
+    
     nav {
         
         ul {
@@ -106,5 +110,19 @@ img {
         }
     }
     
+}
+
+
+#contentinfo {
+    border-top: 3px solid #222;
+    text-align:center;
+    @include margin-leader(1);
+    @include padding-leader(1);
+    @include padding-trailer(1);
+}
+
+#slab-link {
+    display:block;
+    margin: rhythm(1) auto;
 }
 
