@@ -13,7 +13,7 @@
 html {
     margin:0;
     padding: 0;
-    background: #efefec;
+    background-color: #efefec;
 }
 
 body {
@@ -23,7 +23,6 @@ body {
     padding: 0 2em;
     color: #444;
     background: #fff;
-    max-width: 80%;
 }
 
 
@@ -158,4 +157,21 @@ img {
 }
 .dosis {
     font-family: Dosis;
+}
+
+@media screen and (min-width: 500px) {
+
+    html {
+        @include background-image(
+            linear-gradient(top, white, white)
+        );
+        background-size: 80% 1px;
+        background-repeat: repeat-y;
+
+    }
+
+    body {
+        max-width: 80%;
+    }
+
 }
