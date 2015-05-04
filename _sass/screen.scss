@@ -13,18 +13,89 @@
 html {
     margin:0;
     padding: 0;
-    background-color: #efefec;
 }
 
 body {
     font-family: 'Crimson Text', Georgia, serif;
-    @include container;
     margin:0;
+    @include container;
     padding: 0 2em;
     color: #444;
     background: #fff;
+    max-width: 1200px;
 }
 
+.home {
+    section {
+        border-bottom: 3px solid black;
+        @include padding-leader(2);
+        @include padding-trailer(2);
+        @include clearfix;
+    }
+}
+
+#about,#download, #team {
+    border-bottom: 3px solid black;
+    @include padding-leader(2);
+    @include padding-trailer(2);
+    @include clearfix;
+}
+
+#team {
+    border:none;
+}
+
+#download {
+
+    .text {
+        p {
+            @include adjust-font-size-to(24px);
+            @include adjust-leading-to(1.5, 24px);
+            &:first-child {
+                margin-top:0;
+            }
+        }
+
+    }
+
+    .links {
+        a {
+            display:block;
+            clear:both;
+            text-align:right;
+        }
+    }
+
+
+}
+
+
+#download-link {
+    display:block;
+    @include padding-leader(1, 30px);
+    @include padding-trailer(1, 30px);
+    @include adjust-font-size-to(30px);
+    text-decoration:none;
+    background-color: $accent1;
+    color: #fff;
+    text-align:center !important;
+}
+
+#about {
+    @include padding-leader(2);
+    @include padding-trailer(2);
+    border-bottom: 3px solid black;
+}
+
+#team {
+
+    h2 {
+        @include adjust-font-size-to($base-font-size);
+        margin:0;
+        text-align:left;
+    }
+
+}
 
 h1 {
     text-transform: uppercase;
@@ -90,9 +161,12 @@ img {
 #banner {
     border-bottom: 3px solid #222;
     text-align:center;
+    position:relative;
 
     nav {
-
+        position: absolute;
+        top:rhythm(1);
+        width: 100%;
         ul {
             list-style:none;
             margin:0;
@@ -118,6 +192,14 @@ img {
         }
     }
 
+}
+
+.tagline {
+    font-style:normal;
+    @include adjust-font-size-to(30px);
+    @include adjust-leading-to(3, 30px);
+    color: #555;
+    display:block;
 }
 
 
@@ -161,17 +243,42 @@ img {
 
 @media screen and (min-width: 500px) {
 
-    html {
-        @include background-image(
-            linear-gradient(top, white, white)
-        );
-        background-size: 80% 1px;
-        background-repeat: repeat-y;
-
+    #banner {
+        @include padding-leader(2);
+        h1 {
+            @include adjust-font-size-to(80px);
+        }
     }
 
-    body {
-        max-width: 80%;
+}
+
+
+@media screen and (min-width: 750px) {
+
+    #banner {
+        @include padding-leader(3);
+        h1 {
+            @include adjust-font-size-to(150px);
+        }
     }
 
+    section, div {
+        .primary {
+            @include span(4 of 8);
+        }
+        .secondary {
+            @include span(last 4 of 8);
+        }
+    }
+
+}
+
+@media screen and (min-width: 1000px) {
+
+    #banner {
+        @include padding-leader(5);
+        h1 {
+            @include adjust-font-size-to(200px);
+        }
+    }
 }
