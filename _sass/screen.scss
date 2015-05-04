@@ -162,6 +162,7 @@ img {
     border-bottom: 3px solid #222;
     text-align:center;
     position:relative;
+    @include padding-leader(2);
 
     nav {
         position: absolute;
@@ -171,9 +172,9 @@ img {
             list-style:none;
             margin:0;
             padding: 0;
-            @include adjust-font-size-to(20px);
-            @include adjust-leading-to(1, 20px);
-            @include margin-trailer(1, 20px);
+            @include adjust-font-size-to(16px);
+            @include adjust-leading-to(1, 16px);
+            @include margin-trailer(1, 16px);
             text-transform: uppercase;
             letter-spacing: 2px;
         }
