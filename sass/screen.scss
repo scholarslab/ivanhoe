@@ -92,10 +92,11 @@ header[role=banner] {
     .btn {
         @include adjust-font-size-to(18px);
     }
-    
+
     .role{
-        border: 0;        
+        border: 0;
         width: 100%;
+
         a {
             @include clearfix;
             float: left;
@@ -105,11 +106,11 @@ header[role=banner] {
         }
         .wp-post-image {
             display: block;
-            float: left;   
+            float: left;
             padding: .5em .5em .5em 0;
             margin: 0;
         }
-        padding-bottom: 1em; 
+        padding-bottom: 1em;
     }
 
 }
@@ -304,7 +305,7 @@ article {
 
 .roles, &.role{
     .wp-post-image {
-        float:right;    
+        float:right;
         margin-right:0;
         margin-left: rhythm(1);
         margin-top: rhythm(1);
@@ -387,12 +388,12 @@ article {
 /* Game list stylez*/
 
 #box-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: space-between;
+    @include display-flex(flex);
+    @include flex-wrap(wrap);
+    @include flex-direction(row);
+    @include justify-content(flex-start);
+    @include align-items(stretch);
+    @include align-content(space-between);
     width: 100%;
 }
 
@@ -406,7 +407,7 @@ article {
 
 .ivanhoe_game {
     margin: 1em auto;
-    flex-shrink: 1;
+    @include flex-shrink(1);
     width: 20em;
     background-color: #efefec;
     padding: 2em;

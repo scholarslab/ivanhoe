@@ -28,7 +28,7 @@
    <?php wp_head(); ?>
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="<?php echo get_template_directory_uri() .  '/js/parentmove.js'; ?>"></script> 
+    <script src="<?php echo get_template_directory_uri() .  '/javascripts/parentmove.js'; ?>"></script> 
 
 </head>
 
