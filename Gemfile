@@ -1,7 +1,8 @@
 # A sample Gemfile
 source "https://rubygems.org"
 
-gem "susy", "~>1.0.9"
+gem "susy", "~>2.2.3"
+gem "compass"
 
 gem "dotenv"
 

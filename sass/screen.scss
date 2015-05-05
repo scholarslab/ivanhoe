@@ -388,12 +388,12 @@ article {
 /* Game list stylez*/
 
 #box-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: space-between;
+    @include display-flex(flex);
+    @include flex-wrap(wrap);
+    @include flex-direction(row);
+    @include justify-content(flex-start);
+    @include align-items(stretch);
+    @include align-content(space-between);
     width: 100%;
 }
 
@@ -407,7 +407,7 @@ article {
 
 .ivanhoe_game {
     margin: 1em auto;
-    flex-shrink: 1;
+    @include flex-shrink(1);
     width: 20em;
     background-color: #efefec;
     padding: 2em;
