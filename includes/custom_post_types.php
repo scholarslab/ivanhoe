@@ -122,7 +122,7 @@ function ivanhoe_delete_move_children( $post_id )
         return;
     }
     foreach ($children as $post) {
-        wp_delete_post($post->ID);
+        wp_trash_post($post->ID);
     }
 }
 
@@ -139,7 +139,7 @@ function ivanhoe_delete_role_children( $post_id )
         return;
     }
     foreach ($children as $post) {
-        wp_delete_post($post->ID);
+        wp_trash_post($post->ID);
     }
 }
 
@@ -156,6 +156,6 @@ function ivanhoe_delete_rationale_children( $post_id )
         return;
     }
     foreach ($children as $post) {
-        wp_delete_post($post->ID);
+        wp_trash_post($post->ID);
     }
 }
