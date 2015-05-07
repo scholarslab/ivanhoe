@@ -162,8 +162,14 @@ img {
     max-width: 100%;
     max-height:100%;
     height:auto;
-}
 
+    &.screenshot {
+        border: 1px solid rgba(black,.1);
+        padding: 10px;
+        @include box-shadow(0 0 20px rgba(black, .2));
+        @include margin-trailer(1);
+    }
+}
 #banner {
     border-bottom: 3px solid #222;
     text-align:center;
