@@ -41,10 +41,6 @@ body {
     @include clearfix;
 }
 
-#team {
-    border:none;
-}
-
 #download {
 
     .text {
@@ -89,10 +85,20 @@ body {
 
 #team {
 
+    border: none;
+
     h2 {
-        @include adjust-font-size-to($base-font-size);
         margin:0;
+        margin-top:1em;
+        @include adjust-font-size-to($base-font-size);
         text-align:left;
+        @include adjust-leading-to(1, $base-font-size);
+    }
+
+    ul {
+        @include adjust-font-size-to(14px);
+        @include adjust-leading-to(.75, 14px);
+        margin-top:0;
     }
 
 }
