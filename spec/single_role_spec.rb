@@ -16,7 +16,7 @@ describe 'Single Role View', :type => :feature, :js => true do
         end
     end
 
-    it 'has a linked role title', :current => true do
+    it 'has a linked role title' do
         within('.role') do
             expect(page).to have_selector('h1 a')
         end

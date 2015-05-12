@@ -19,7 +19,7 @@ describe 'Single Move View', :type => :feature, :js => true do
   describe 'An individual move page' do
 
     before do
-      first('.game-title a').click
+      first('a .game-title').click
       make_role
       rand(2..5).times { make_a_move }
     end

@@ -9,7 +9,7 @@ describe 'Make a Role View', :type => :feature, :js => true do
         click_link('Games')
         login
         make_game
-        first('.game-title a').click
+        first('a .game-title').click
         click_link('Make a Role!')
     end
 

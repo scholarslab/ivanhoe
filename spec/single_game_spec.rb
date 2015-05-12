@@ -19,7 +19,7 @@ describe "Single Game View", :type => :feature, :js => true  do
   describe "An individual game page" do
 
     before do
-      first('.game-title a').click
+      first('a .game-title').click
     end
 
     describe "with no moves" do

@@ -9,7 +9,7 @@ describe 'Make a Move View', :type => :feature, :js => true do
         click_link('Games')
         login
         game = make_game
-        first('.game-title a').click
+        first('a .game-title').click
         make_role('admin', game.id)
     end
 

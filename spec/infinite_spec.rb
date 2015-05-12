@@ -14,8 +14,10 @@ describe "A single game view", :type => :feature, :js => true do
     describe 'A game with infinite scroll' do
 
         before do
-          first('.game-title a').click
+          first('a .game-title').click
+          game_page = current_url
           make_role
+          visit game_page
           11.times { make_a_move }
           page.execute_script('window.scrollTo(0,100000)')
         end

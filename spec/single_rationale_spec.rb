@@ -9,7 +9,7 @@ describe 'Single Rationale View', :type => :feature, :js => true do
         click_link('Games')
         login
         make_game
-        first('.game-title a').click
+        first('a .game-title').click
         make_role
         make_a_move
         within('#game-data article.role') do
