@@ -49,6 +49,7 @@ module ApplicationHelper
     ext        = File.extname(src)
     basename   = File.basename(src, ext)
     upload_dir = "uploads/%04d/%02d" % [today.year, today.month]
+    FileUtils::mkdir_p "#{WP_DIR}/wp-content/#{upload_dir}"
     n = 0
     begin
       path  = "%s/%s%02d%s" % [upload_dir, basename, n, ext]
