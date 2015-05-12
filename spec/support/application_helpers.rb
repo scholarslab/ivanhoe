@@ -153,8 +153,8 @@ module ApplicationHelper
   # the game, before testing the expectation. Otherwise, you'll be looking at
   # an old page.
   def make_game(user_login: 'admin')
-    post_title   = Faker::Lorem.words(rand(2..8)).join(' ')
-    post_content = Faker::Lorem.paragraphs(rand(3..10)).join('<p>')
+    post_title   = FFaker::Lorem.words(rand(2..8)).join(' ')
+    post_content = FFaker::Lorem.paragraphs(rand(3..10)).join('<p>')
     author       = WPDB::User.first(:user_login => user_login)
     WPDB::Post.create(
       :post_title            => post_title,
@@ -191,8 +191,8 @@ module ApplicationHelper
     elsif game_id.respond_to? :ID
       game_id = game_id.ID
     end
-    post_title   = Faker::Lorem.words(rand(2..4)).join(' ')
-    post_content = Faker::Lorem.paragraphs(rand(3..10)).join('<p>')
+    post_title   = FFaker::Lorem.words(rand(2..4)).join(' ')
+    post_content = FFaker::Lorem.paragraphs(rand(3..10)).join('<p>')
 
     author       = WPDB::User.first(:user_login => user_login)
     role = WPDB::Post.create(
