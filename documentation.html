@@ -4,6 +4,18 @@ title: Documentation
 ---
 
 <h1>Documentation</h1>
+
+<nav class="local">
+    <ul>
+        <li><a href="#admin-setup">Administrative Setup</a></li>
+        <li><a href="#managing-users">Managing Users</a></li>
+        <li><a href="#make-game">Make a Game</a></li>
+        <li><a href="#make-role">Make a Role</a></li>
+        <li><a href="#make-move">Make a Move</a></li>
+        <li><a href="#using-media">Using Media</a></li>
+    </ul>
+</nav>
+
 <h2 id="admin-setup">Administrative Setup</h2>
 <ol>
     <li>Download the zip file, unzip, and put it into the folder wp-content/themes.</li>
@@ -13,9 +25,9 @@ title: Documentation
 </ol>
 <p><strong>Note:</strong> If you are not logged in, the “Make a Role” and “Make a Move” buttons will not show up. Users who are not logged in can only browse games.</p>
 
-<h2 id="add-users">Adding Users</h2>
+<h2 id="managing-users">Managing Users</h2>
 <p>Once administrators have downloaded the theme they can invite users to participate in Ivanhoe one of two ways: adding users manually or allowing anyone to register. If you want control over who can access your learning environment the best option is to manually add users to your Ivanhoe theme. If you wish for users to access your games and create a larger network of users you should make your games available for anyone to register.</p>
-<p>Adding Users Manually
+<h3 id="adding-users-manually">Adding Users Manually</h3>
 <ol>
     <li>Log into your WordPress Administration Panel (Dashboard)</li>
     <li>Click on the “Users” Tab on the left hand side of the screen</li>
@@ -24,10 +36,10 @@ title: Documentation
     <li>Assign a Role: Unlike a typical WordPress, all roles have the same capabilities. Users of all levels may make moves, make roles, and create new games. However, only administrators may add new users. If you want to be the only user who may edit elements of the game, you may wish to make specify this in the Game Description field. See "Game Description Fields" below for more information.</li>
     <li>When all fields are complete click “Add New User.”</li>
 </ol>
-</p>
+
 <p><strong>NOTE:</strong> You must assign users a “username” and “password” and provide the user’s e-mail address. We suggest making the username a variation of the user’s actual name and making the password something easy to remember. For example if the person who you wish to register’s name is John Smith an easy to assign username would be something like “JSmith” and the password could be “1234!@#$” – users have the ability to change both their username and password after accepting their invitation to play. </p>
 <img src="images/screenshot2.jpg" class="screenshot">
-<p>Allowing Users to Register
+<h3 id="allowing-users-to-register">Allowing Users to Register</h3>
     <ol>
         <li>Log into your WordPress Administration Panel (Dashboard)</li>
         <li>Click on “Settings.” This will take you to the “General” settings. </li>
@@ -35,17 +47,14 @@ title: Documentation
         <li>Under “New User Default Role,” select “Author,” “Editor,” or “Administrator.”</li>
         <li>Click “Save Changes” at the bottom of the page.</li>
     </ol>
-</p>
 
-<p><strong>Ivanhoe Notifications</strong>
+<h3 id="ivanhoe-notification">Ivanhoe Notifications</h3>
 <ol>
         <li>Log into your WordPress Administration Panel (Dashboard).</li>
         <li>Under “Users,” select “Your Profile.” This will take you to the Profile page.</li>
         <li>Under the last section of that page “Ivanhoe Notifications,” you can choose to receive email notifications when someone makes a move on a game you are playing, and/ or when someone responds to a move you made.</li>
         <li>Click “Update Profile” at the bottom of the page.</li>
     </ol>
-</p>
-<p>When you play Ivanhoe you can start by creating a new game, making a role, or by making a move inside of an existing game. When you are making a connection inside of an already existing game, you are creating a role or making a move, when you are building a new space for pedagogical play you are starting a new game. </p>
 
 <h2 id="make-game">Make a Game</h2>
 <p><i>What text, music, or artwork will be the focus of your game? What do you want to explore from different perspectives and learn about with others?</i></p>
@@ -108,28 +117,14 @@ title: Documentation
 <img src="images/rationale.png" class="screenshot">
 <img src="images/journalentry.png" class="screenshot">
 
-<h2 id="insert-media">Insert Media</h2>
+<h2 id="using-media">Using Media</h2>
     <p>If you wish to enhance your games, roles, or moves with media (photos, movies, songs) you will need to click on the “Add Media” button. Doing so will bring you to a space where you can upload more files or add files that have already been uploaded. Files that have already been uploaded are under “Media Library.”</p>
 <img src="images/screenshot6.jpg" class="screenshot">
-<h2 id="upload">Upload a New File</h2>
+<h3 id="upload">Upload a New File</h3>
 <ol>
     <li>Click on Upload Files link</li>
     <li>Click on the “Select Files” button to upload a photo/movie from your harddrive or click on “Insert from URL” link on the left to add content already available on the Internet. If selecting a new file, choose the content you wish and then click the “open” button.</li>
     <li>Once file/URL had been selected click “Insert into Page”</li>
 </ol>
-<h2 id="media-library">Using the Media Library</h2>
+<h3 id="media-library">Using the Media Library</h3>
 <p>Select the file that has already been uploaded and click “Insert into Page”</p>
-
-<h1 id="how-contribute">How to Contribute</h1>
-<p>Here is a quick guide for contributing developers:
-<ol>
-    <li>Install Wordpress (as instructed before you download the Ivanhoe theme.)</li>
-    <li>Have a copy of our Ivanhoe WP Theme downloaded and running.</li>
-    <li>Install an up to date version of Ruby, several Ruby Gems (you can bundle-install them) in order to run SASS.</li>
-    <li>Note that we use SASS as a pre-processor framework, Compass as a general SASS library, and Susy as a grid framework.</li>
-    <li>Create a GitHub account and have Git installed on your computer. </li> 
-    <li>Fork our Github repository to your own Github account and clone your copy of Ivanhoe in your WordPress installation, in the Themes directory.</li>
-    <li>Make the suggested changes in a separate topic branch on Github, specific to the feature you want to provide or the bug you want to fix. (<strong>Note:</strong> If you want to edit a Css file, do not edit the stylesheets directly, but edit the Sas files, and recompile them when you want to push the changes.)</li>
-    <li>Send us a pull request.</li> 
-
-<p>For more details on how to contribute on GitHub check out <a href ="http://scholarslab.org/research-and-development/forking-fetching-pushing-pulling/">Jeremy’s blogpost on forking, fetching, pushing, and pulling on GitHub.</a>.</p>

@@ -46,7 +46,7 @@ body {
     .text {
         p {
             @include adjust-font-size-to(24px);
-            @include adjust-leading-to(1.5, 24px);
+            @include adjust-leading-to(1, 24px);
             &:first-child {
                 margin-top:0;
             }
@@ -107,6 +107,7 @@ h1 {
     text-transform: uppercase;
     letter-spacing: 5px;
     font-weight: 700;
+    text-align:center;
 
     #banner & {
         @include adjust-font-size-to(60px);
@@ -119,10 +120,6 @@ h1 {
         }
     }
 
-}
-
-h1,h2 {
-    text-align:center;
 }
 
 h2 {
@@ -213,6 +210,40 @@ img {
     @include adjust-leading-to(3, 30px);
     color: #555;
     display:block;
+}
+
+.local {
+    float:right;
+    background: rgba(black, .05);
+    width: 30%;
+    padding: rhythm(.75);
+    margin: 0 0 rhythm(1) rhythm(1);
+    border: 1px solid rgba(black, .2);
+
+
+    + h2 {
+        margin-top:0;
+    }
+
+
+    ul {
+        margin:0;
+        padding:0;
+        list-style:none;
+        @include adjust-font-size-to(18px);
+        @include adjust-leading-to(.75, 18px);
+        a {
+            border-bottom: 1px dotted rgba(black, .2);
+            text-decoration:none;
+            display:block;
+            padding: rhythm(.25, 18px) 0;
+        }
+
+        li:last-child a {
+            border:none;
+        }
+
+    }
 }
 
 
