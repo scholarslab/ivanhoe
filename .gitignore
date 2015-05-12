@@ -1,2 +1,4 @@
+build/
+dist/
 .sass-cache/
 _site/
