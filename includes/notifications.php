@@ -27,7 +27,7 @@ function ivanhoe_display_notifications_options( $user ) {
         <input type="checkbox" name="notification_response_moves" id="notification_response_moves" value="true"
         <?php if ($notification_response_moves == true):?> checked="checked"<?php endif; ?>
  /><br />
-        <span class="description"><?php _e("Check if you wish to receive an email every time someone makes a move on the games your playing."); ?></span>
+        <span class="description"><?php _e("Check if you wish to receive an email every time someone makes a move that responds to a move you made."); ?></span>
     </td>
     </tr>
 
@@ -42,7 +42,7 @@ function ivanhoe_save_notification_options( $user_id ) {
 
     if ( !current_user_can( 'edit_user', $user_id ) )
         return false;
-    
+
     update_user_meta( $user_id, 'notification_all_moves', $_POST['notification_all_moves'] );
     update_user_meta( $user_id, 'notification_response_moves', $_POST['notification_response_moves'] );
 

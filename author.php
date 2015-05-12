@@ -64,6 +64,7 @@ $curauth = ( isset( $_GET['author_name'] ) ) ? get_user_by( 'slug', $author_name
             <?php endif; ?>
 
             <?php wp_reset_postdata(); ?>
+            
         </article>
 
         <?php

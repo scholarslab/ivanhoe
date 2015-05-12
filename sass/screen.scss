@@ -63,11 +63,12 @@ header[role=banner] {
 .sidebar {
     @include span-columns(4);
     background: #efefec;
-    margin: 0 !important;
-    padding: 1em 1em 9em 1em;
+    margin: 0;
+    padding: 2em 1em 1em 1em;
     position: fixed;
     height: 100%;
     right: 0;
+    bottom: 0;
     overflow: auto;
     float: right;
 
@@ -90,6 +91,26 @@ header[role=banner] {
 
     .btn {
         @include adjust-font-size-to(18px);
+    }
+
+    .role{
+        border: 0;
+        width: 100%;
+
+        a {
+            @include clearfix;
+            float: left;
+            width: 100%;
+            margin: 0;
+            font-size: 1.5em;
+        }
+        .wp-post-image {
+            display: block;
+            float: left;
+            padding: .5em .5em .5em 0;
+            margin: 0;
+        }
+        padding-bottom: 1em;
     }
 
 }
@@ -131,6 +152,7 @@ h1 {
 
 /* Links */
 a {
+    text-decoration:none;
     &:link,
     &:visited {color: $accent1;}
     &:hover {color: $accent2;}
@@ -168,13 +190,6 @@ input[type=text], textarea {
     float: left;
 }
 
-
-/* Images
-img {
-    max-width: 100%;
-    max-height:100%;
-    height:auto;
-} */
 
 
 /* Custom Utility Classes */
@@ -227,7 +242,6 @@ img {
  */
 
 .game, .single-move, .role, .journal, .post{
-    width: span-columns(12);
     article {
         display: block;
         width: 100%;
@@ -277,14 +291,6 @@ article {
     }
     @include clearfix;
 
-    /* Articles with a class of role. */
-    &.role{
-        .wp-post-image{
-            float: left;
-            margin-right: rhythm(1);
-        }
-    }
-
     /* Articles with a class of move. */
     &.ivanhoe_move {
         border-top: black 1px solid;
@@ -297,13 +303,18 @@ article {
 
     }
 
-.author .roles {
+.roles, &.role{
     .wp-post-image {
         float:right;
         margin-right:0;
         margin-left: rhythm(1);
         margin-top: rhythm(1);
+        margin-bottom: rhythm(1);
     }
+}
+
+.role {
+    border-top: black 1px solid;
 }
 
 
@@ -320,16 +331,6 @@ article {
     }
 
 }
-
-/* Role page */
-.role {
-    img{
-        max-height: 40em;
-        width: auto;
-    }
-}
-
-
 
 
 /* Make a Move page */
@@ -355,7 +356,6 @@ article {
 
 .parent-btn {
     font-weight: bold;
-    display: block-inline;
     margin-right: 1em;
 }
 
@@ -388,12 +388,12 @@ article {
 /* Game list stylez*/
 
 #box-container {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: flex-start;
-    align-items: stretch;
-    align-content: space-between;
+    @include display-flex(flex);
+    @include flex-wrap(wrap);
+    @include flex-direction(row);
+    @include justify-content(flex-start);
+    @include align-items(stretch);
+    @include align-content(space-between);
     width: 100%;
 }
 
@@ -407,7 +407,7 @@ article {
 
 .ivanhoe_game {
     margin: 1em auto;
-    flex-shrink: 1;
+    @include flex-shrink(1);
     width: 20em;
     background-color: #efefec;
     padding: 2em;
@@ -424,6 +424,7 @@ article {
         border-top: black 1px solid;
         border-bottom: black 1px solid;
         text-align: justify;
+        padding: 1em 0;
     }
 
     .game-title {
