@@ -12,7 +12,7 @@ describe 'Single Rationale View', :type => :feature, :js => true do
         first('a .game-title').click
         make_role
         make_a_move
-        within('#game-data article.role') do
+        within('article.role') do
             first('a').click
         end
         within('.rationales') do
