@@ -1,8 +1,8 @@
 # standard jekyll configuration
 
 permalink: /:categories/:title/
-highlighter:  pygments
-markdown: rdiscount
+highlighter:  rouge
+markdown: kramdown
 exclude: ['readme.md', 'Procfile', 'config.rb', '.gitignore', '.sass-cache', 'Gemfile', 'Gemfile.lock']
 show_drafts: true
 
